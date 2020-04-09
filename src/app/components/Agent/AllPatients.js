@@ -26,7 +26,7 @@ const AllPatients  = (props) =>{
     <div>
     <Submenu />
     <div style={{marginTop:70 ,padding:10}}>
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>All Patients     <Button className='btn-danger'> <Link to="/addpatient" style={{color:'white'}}>New Patient</Link></Button></h1>
+    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>All Patients     <Button className='btn-info' style={{marginLeft:1300, marginBottom:20, marginTop:20}}> <Link to="/addpatient" style={{color:'white'}}>New Patient</Link></Button></h1>
    <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} responsive>
       <thead>
         <tr>
@@ -49,7 +49,7 @@ const AllPatients  = (props) =>{
           <td>0780</td>
           <td>1234</td>
        
-       <td>   <Button className="btn btn-success"><Link to='/patientDetails'>More Details</Link></Button></td> 
+       <td>   <Button className="btn btn-info"><Link to='/patientDetails' style={{color:"white"}}>More Details</Link></Button></td> 
       </tr>
 
       </tbody>

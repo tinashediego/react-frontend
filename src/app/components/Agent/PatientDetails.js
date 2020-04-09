@@ -40,7 +40,7 @@ const PatientDetails  = (props) =>{
     </div>
 
     <Form style={{padding:20, border:"4px solid  rgba(76,140,64,0.6) ",boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
-    <Button className='btn-danger'  onClick={handleClose}>Close</Button>
+    <Button className='btn-secondary' style={{marginBottom:10}}  onClick={handleClose}>Close</Button>
 
     <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Patel Personal Details</h1>
     <Row form>
@@ -112,7 +112,7 @@ const PatientDetails  = (props) =>{
 
     <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
     Last Screening Details  
-     <Button className='btn btn-danger'> 
+     <Button className='btn btn-info' style={{marginLeft:1500,marginBottom:20, marginTop:-20}}> 
      <Link to="/updatePatientDetails" style={{color:'white'}}>
      Update  </Link></Button></h1>
 
@@ -222,7 +222,7 @@ const PatientDetails  = (props) =>{
 
 
     
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Testing Details  <Button className="btn-danger"> <Link to="/test" style={{color:"white"}}>Test Patient</Link></Button></h1>
+    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Testing Details  <Button className="btn-info" style={{marginLeft:1500,marginBottom:20, marginTop:-20}}> <Link to="/test" style={{color:"white"}}>Test Patient</Link></Button></h1>
 
 
     <Row form>

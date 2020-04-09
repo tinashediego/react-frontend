@@ -44,7 +44,7 @@ function UpdatePatientDetails() {
         <Submenu />
         <div style={{marginTop:70 ,padding:10}} >
 
-        <Button className='btn-danger'  onClick={handleClose}>Close</Button>
+        <Button className='btn-secondary' style={{marginBottom:10}}  onClick={handleClose}>Close</Button>
 
         <Form  style={{padding:20, border:"4px solid  rgba(76,140,64,0.6) ",boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}} responsive>
 

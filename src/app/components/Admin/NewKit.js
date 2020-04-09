@@ -49,7 +49,7 @@ import { useHistory } from "react-router";
         <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
 
 
-        <Button className='btn-danger'  onClick={handleClose}>Close</Button>
+        <Button className='btn-secondary' style={{marginTop:10,marginBottom:10}}  onClick={handleClose}>Close</Button>
         
         <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
        New Kit 
@@ -91,7 +91,8 @@ const styles = {
       marginTop:"150px",
       backgroundColor:"#fff" ,
       positon:'inherit',
-      boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+      boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+      paddingBottom:45
     
   
     

@@ -47,7 +47,7 @@ const AllKits  = (props) =>{
     <Submenu />
     <div style={{marginTop:60 ,padding:10}}>
 
-   <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>All Kits      <Button className='btn-danger'> <Link to="/newkit" style={{color:'white'}}>Add NewKit</Link></Button></h1>
+   <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>All Kits      <Button className='btn-info' style={{marginLeft:1400,marginBottom:10,marginTop:10}}> <Link to="/newkit" style={{color:'white'}}>Add NewKit</Link></Button></h1>
     
    <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
       <thead>
