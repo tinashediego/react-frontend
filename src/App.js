@@ -7,50 +7,119 @@ import {  Role } from './utils/helpers/Role';
 import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import { Provider } from "react-redux";
 import store from "./utils/helpers/store"; 
-
-import Landing from "./app/components/layout/Landing";
 import Register from "./app/components/Auth/Register";
 import Login from "./app/components/Auth/Login";
-import privateRoute from "./private/privateRoute";
-import Dashboard from "./app/components/dashboard/Dashboard"; 
+import PrivateRoute from "./private/privateRoute";
+import AdminDashboard from "./app/components/Admin/AdminDashboard"; 
+import AddUser from "./app/components/Admin/AddUser"; 
+import AllUsers from "./app/components/Admin/AllUsers";
+import AllKits from "./app/components/Admin/AllKits";
+import NewKit from "./app/components/Admin/NewKit";
+import axios from 'axios'
+
+import AddPatient from './app/components/Agent/AddPatients'
+import AllPatients  from './app/components/Agent/AllPatients'
+import AgentDashboard  from './app/components/Agent/AgentDashboard'
+import PatientDetails from './app/components/Agent/PatientDetails'
+import UpdatePatientDetails from "./app/components/Agent/UpdatePatientDetails";
+import TestPatient from "./app/components/Agent/TestPatient";
+import PatientDashboard from "./app/components/Patient/PatientDashboard";
 
 
 
 
-// Check for token to keep user logged in
-if (localStorage.jwtToken) {
-  // Set auth token header auth
-  const token = localStorage.jwtToken;
-  setAuthToken(token);
-  // Decode token and get user info and exp
-  const decoded = jwt_decode(token);
-  // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
-  // Check for expired token
-  const currentTime = Date.now() / 1000; // to get in milliseconds
-  if (decoded.exp < currentTime) {
-    // Logout user
-    store.dispatch(logoutUser());
-
-    // Redirect to login
-    window.location.href = "./login";
-  }
-}
 
 
-function App() {
+
+// LocalstorageService
+
+let urls = 'http://45.76.141.84:8302/api/maisha-cov19-app/authenticate'
+
+// Add a request interceptor
+axios.interceptors.request.use(
+   config => {
+    if(config.url === urls){
+   ///   config.headers['Authorization'] = 'Basic YWRtaW4tcG9ydGFsOiNAVTdIanVjd3hPYUBCZUZZdlVjUnlhVnNNJU1uUUN2'
+
+
+
+    }else{
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`   
+      }
+
+    }   // config.headers['Content-Type'] = 'application/json';
+
+       console.log(config)
+       return config;
+   },
+   error => {
+       Promise.reject(error)
+   });
+
+
+
+//Add a response interceptor
+
+axios.interceptors.response.use((response) => {
+   return response
+}, function (error) {
+   const originalRequest = error.config;
+
+   if (error.response.status === 401 && originalRequest.url === 'http://45.76.141.84:8302/api/maisha-cov19-app/authenticate') {
+    window.location.href = '/'
+       return Promise.reject(error);
+   }
+
+   if (error.response.status === 401 && !originalRequest._retry) {
+
+       originalRequest._retry = true;
+       const refreshToken = localStorage.getItem('refresh_token');
+       return axios.post('/auth/token',
+           {
+               "refresh_token": refreshToken
+           })
+           .then(res => {
+               if (res.status === 201) {
+                const token = localStorage.getItem('access_token');
+                   
+                   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                   return axios(originalRequest);
+               }
+           })
+   }
+   return Promise.reject(error);
+});
+
+
+
+
+
+function App() { 
+
   return (
-    <Provider store={store}>
+    <Provider store={store} responsive>
     <Router>
-      <div className="App wrapper">
-    
-        <Route exact path="/" component={Landing} />
-   
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        
+      <div>
+        <Route exact path="/" component={Login} />
         <Switch>
-          <privateRoute exact path="/dashboard"  roles={[Role.Admin]} component={Dashboard} />
+          <PrivateRoute exact path="/dashboard"   component={AdminDashboard} />
+          <PrivateRoute exact path="/dash"   component={AllKits} />
+          <PrivateRoute excat path='/agent' component={AgentDashboard} />
+          <PrivateRoute exact path="/patient" component={PatientDashboard}/>
+          <PrivateRoute exact path="/adduser" component={AddUser} />
+          <PrivateRoute exact path="/allusers" component={AllUsers} />
+          <PrivateRoute exact path="/addpatient" component={AddPatient} />
+          <PrivateRoute exact path="/allpatients" component={AllPatients} />
+          <PrivateRoute exact path="/patientDetails/" component={PatientDetails} />
+          <PrivateRoute excat path="/updatePatientDetails" component={UpdatePatientDetails} />
+          <PrivateRoute excat path="/test" component={TestPatient} />
+        
+          <PrivateRoute exact path="/allkits" component={AllKits} />
+          <PrivateRoute exact path="/newkit" component={NewKit} />
+        
+        
       
         </Switch>
       </div>

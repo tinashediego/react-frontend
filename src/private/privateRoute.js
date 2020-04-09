@@ -4,10 +4,10 @@ import { Route, Redirect } from 'react-router-dom';
 
 const  privateRoute = ({ component: Component, roles ,auth, ...rest }) => (
     <Route {...rest} render={props => {
-        const currentUser = 'Admin';
+        const currentUser = localStorage.getItem('access_token');
         if (!currentUser) {
             // not logged in so redirect to login page with the return url
-            return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+            return <Redirect to={{ pathname: '/', state: { from: props.location } }} />
         }
 
         // check if route is restricted by role
