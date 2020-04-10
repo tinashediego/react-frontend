@@ -8,7 +8,7 @@ const AgentDashboard  = (props) =>{
 
   return (
     <div>
-    <Submenu />
+        
     <div style={{marginTop:70 ,padding:10}}>
     <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Test Statistics</h1>
    <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} responsive>

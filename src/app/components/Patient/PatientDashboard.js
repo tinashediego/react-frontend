@@ -37,7 +37,7 @@ const PatientDashboard  = (props) =>{
 
   return (
     <div>
-    <Submenu />
+        
     <div style={{marginTop:70 ,padding:10}}>
     </div>
 

@@ -24,7 +24,7 @@ const TestPatient  = () =>{
   return (
 
     <div responsive>
-    <Submenu />
+        
 
     <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
     <Button className='btn-secondary' style={{marginBottom:10,marginTop:10}} onClick={handleClose}>Close</Button>

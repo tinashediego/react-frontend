@@ -41,7 +41,7 @@ function UpdatePatientDetails() {
     return (
         <div>
 
-        <Submenu />
+            
         <div style={{marginTop:70 ,padding:10}} >
 
         <Button className='btn-secondary' style={{marginBottom:10}}  onClick={handleClose}>Close</Button>

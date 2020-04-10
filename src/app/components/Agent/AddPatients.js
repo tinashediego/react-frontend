@@ -47,7 +47,7 @@ function handleClose(){
   return (
 
     <div responsive>
-    <Submenu />
+        
     <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
 
 
