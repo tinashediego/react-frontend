@@ -1,5 +1,5 @@
 import React  ,{useState} from 'react';
-import Submenu from '../layout/Admin/SubMenu' 
+ 
 import {
   Row, Col, Form,
   FormGroup, Label, Input,
@@ -45,7 +45,7 @@ import { useHistory } from "react-router";
     
     return (
         <div>
-        <Submenu />
+    
         <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
 
 

@@ -16,7 +16,7 @@ import AllUsers from "./app/components/Admin/AllUsers";
 import AllKits from "./app/components/Admin/AllKits";
 import NewKit from "./app/components/Admin/NewKit";
 import axios from 'axios'
-
+import Admin from './app/components/layout/Admin/Admin'
 import AddPatient from './app/components/Agent/AddPatients'
 import AllPatients  from './app/components/Agent/AllPatients'
 import AgentDashboard  from './app/components/Agent/AgentDashboard'
@@ -104,20 +104,19 @@ function App() {
       <div>
         <Route exact path="/" component={Login} />
         <Switch>
-          <PrivateRoute exact path="/dashboard"   component={AdminDashboard} />
-          <PrivateRoute exact path="/dash"   component={AllKits} />
+          <PrivateRoute exact path="/dashboard"   component={Admin} />
           <PrivateRoute excat path='/agent' component={AgentDashboard} />
           <PrivateRoute exact path="/patient" component={PatientDashboard}/>
-          <PrivateRoute exact path="/adduser" component={AddUser} />
-          <PrivateRoute exact path="/allusers" component={AllUsers} />
+          <PrivateRoute exact path="/adduser" component={Admin} />
+          <PrivateRoute exact path="/allusers" component={Admin} />
           <PrivateRoute exact path="/addpatient" component={AddPatient} />
           <PrivateRoute exact path="/allpatients" component={AllPatients} />
           <PrivateRoute exact path="/patientDetails/" component={PatientDetails} />
           <PrivateRoute excat path="/updatePatientDetails" component={UpdatePatientDetails} />
           <PrivateRoute excat path="/test" component={TestPatient} />
         
-          <PrivateRoute exact path="/allkits" component={AllKits} />
-          <PrivateRoute exact path="/newkit" component={NewKit} />
+          <PrivateRoute exact path="/allkits" component={Admin} />
+          <PrivateRoute exact path="/newkit" component={Admin} />
         
         
       

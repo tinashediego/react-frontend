@@ -1,5 +1,4 @@
 import React  ,{useEffect}from 'react';
-import Submenu from '../layout/Admin/SubMenu' ;
 import { useDispatch, useSelector } from "react-redux";
 import {Button ,Table }  from 'reactstrap'
 import {Link} from  'react-router-dom'
@@ -44,7 +43,7 @@ const AllUsers  = (props) =>{
   ))
   return (
     <div>
-    <Submenu />
+
     <div style={{marginTop:70 ,padding:10}}>
     <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>All Users     <Button className='btn-info' style={{marginLeft:1400,marginBottom:10,marginTop:10}}> <Link to="/adduser" style={{color:'white'}}>Add User</Link></Button></h1>
    <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} responsive>

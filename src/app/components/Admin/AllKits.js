@@ -1,5 +1,4 @@
 import React  ,{useEffect}from 'react';
-import Submenu from '../layout/Admin/SubMenu' ;
 import {Button ,Table }  from 'reactstrap'
 import {Link} from  'react-router-dom'
 import {allKits} from '../../../redux/actions/KitsActions'
@@ -44,7 +43,7 @@ const AllKits  = (props) =>{
   ))*/
   return (
     <div>
-    <Submenu />
+   
     <div style={{marginTop:60 ,padding:10}}>
 
    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>All Kits      <Button className='btn-info' style={{marginLeft:1400,marginBottom:10,marginTop:10}}> <Link to="/newkit" style={{color:'white'}}>Add NewKit</Link></Button></h1>
