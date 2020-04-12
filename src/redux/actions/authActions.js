@@ -7,7 +7,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, ADD_USER, ALL_USERS } from 
 // Register User
 export const addUser = (userData) => dispatch => {
   axios
-    .post("http://45.76.141.84:8302/api/maisha-cov19-app/v1/training-agents", userData)
+    .post("http://45.76.141.84:8080/v1/testing-agents", userData)
     .then(resp=>{
         dispatch({
             type:ADD_USER,
@@ -31,16 +31,16 @@ export const addUser = (userData) => dispatch => {
 export const loginUser = userData => dispatch => {
 
   axios
-    .post("http://45.76.141.84:8302/api/maisha-cov19-app/authenticate",userData)
+    .post("http://45.76.141.84:8080/authenticate",userData)
     .then(res => {
 
-      console.log(res.data.jwt)
+      console.log(res.data)
 
-      localStorage.setItem('access_token' ,res.data.jwt)
+      localStorage.setItem('access_token' ,res.data.jwtToken)
       // Save to localStorage
       // Set token to localStorage
      
-      const decoded = jwt_decode(res.data.jwt);
+const decoded = jwt_decode(res.data.jwtToken);
       console.log(decoded)
 
       var {Role ,username} =  decoded
@@ -48,10 +48,10 @@ export const loginUser = userData => dispatch => {
       
 
       // Set current user
-     // dispatch(setCurrentUser(decoded));
+      dispatch(setCurrentUser(decoded));
 
     
-    localStorage.setItem('username',username)
+  localStorage.setItem('username',username)
 
      localStorage.setItem('Role' ,Role)
         alert('success')
@@ -78,7 +78,7 @@ export const loginUser = userData => dispatch => {
       dispatch({
         type: GET_ERRORS,
         payload: err.message,
-         msg:alert(err.message)
+         msg:alert(err)
       })}
     );
 };
@@ -113,10 +113,7 @@ export const logoutUser = (history) => dispatch => {
 
 export const allUsers = () => dispatch=>{
 
-
-
-
-  axios.get("http://45.76.141.84:8302/api/maisha-cov19-app/v1/trainingAgents/all")
+  axios.get("http://45.76.141.84:8080/v1/testing-agents/all")
        .then(resp=>{
          console.log(resp)
          dispatch({

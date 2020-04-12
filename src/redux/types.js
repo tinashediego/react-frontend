@@ -21,6 +21,7 @@ export const UPDATE_TEST = 'UPDATE_TEST'
 export const UPDATE_SCREEN = 'UPDATE_SCREEN'
 export const ALL_PATIENTS =  'ALL_PATIENTS'
 export const ONE_PATIENT = 'ONE_PATIENT'
+export const ONE_SCREEN = 'ONE_SCREEN'
 
 
 ///User types

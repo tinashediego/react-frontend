@@ -3,31 +3,38 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
-
+import {Link} from 'react-router-dom'
 
 export const mainListItems = (
-  <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItem>
+  <div style={{backgroundColor:"#4c8c40",height:530}}>
+  
     <ListItem button>
 
-    
+
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <DashboardIcon  />
       </ListItemIcon>
-      <ListItemText primary="Patients" />
+      <Link to="/agent" style={{color:'white'}}>
+
+      <ListItemText primary="Dashboard" />
+      </Link>    
     </ListItem>
+    <ListItem button> 
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <Link to='/addpatients' style={{color:'white'}}>
+      <ListItemText primary="Patients" />
+      </Link>
+    </ListItem>  
     <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
+      <Link to='/allkits' style={{color:'white'}}>
       <ListItemText primary="Kits" />
+      </Link>
     </ListItem>
   </div>
 );

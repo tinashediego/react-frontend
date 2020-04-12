@@ -1,19 +1,15 @@
 
 import axios  from 'axios'
-import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT, TEST_PATIENT, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS} from '../types';
+import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT, TEST_PATIENT, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS} from '../types';
 
 
 
 export const addPatient = (user) => dispatch => {
 
 
-
-   let newPatient = JSON.parse(user)
-
-   console.log(newPatient)
     
     axios
-      .post("http://45.76.141.84:8302/api/maisha-cov19-app/v1/testing-process/create-patient",newPatient)
+      .post("http://45.76.141.84:8080/v1/patients",user)
       .then(resp=>{
           dispatch({
               type:ADD_PATIENT,
@@ -48,17 +44,18 @@ export const testPatient = (patientData) => dispatch =>{
                 payload:resp,
                 msg:alert('success')
             })
-            .catch(err=>{
+          
+         }).catch(err=>{
 
-                dispatch({
-                    type:GET_ERRORS,
-                    payload:err,
-                    msg:alert(err.message)
-                })
-            })
-         })
+          dispatch({
+              type:GET_ERRORS,
+              payload:err,
+              msg:alert(err.message)
+          })
+      
+
+})
 }
-
 
 
 export const updatePatient = (patientData) => dispatch =>{
@@ -72,38 +69,38 @@ export const updatePatient = (patientData) => dispatch =>{
                 payload:resp,
                 msg:alert('success')
             })
-            .catch(err=>{
-
-                dispatch({
-                    type:GET_ERRORS,
-                    payload:err,
-                    msg:alert(err.message)
-                })
-            })
+          
          })
+         .catch(err=>{
+
+          dispatch({
+              type:GET_ERRORS,
+              payload:err,
+              msg:alert(err.message)
+          })
+      })
 }
 
 
 export const updateTest = (patientData) => dispatch =>{
 
 
-    axios.post('/testpatient' , patientData)
+    axios.post('http://45.76.141.84:8080/v1/patient-screenings' , patientData)
          .then(resp=>{
 
             dispatch({
                 type:UPDATE_TEST,
                 payload:resp,
                 msg:alert('success')
-            })
+            })})
             .catch(err=>{
-
                 dispatch({
                     type:GET_ERRORS,
                     payload:err,
                     msg:alert(err.message)
                 })
             })
-         })
+         
 }
 
 
@@ -114,7 +111,7 @@ export const allPatient = () => dispatch=>{
   
 
 
-    axios.get("http://45.76.141.84:8302/api/maisha-cov19-app/v1/document-types/all")
+    axios.get("http://45.76.141.84:8080/v1/patients/all")
          .then(resp=>{
            console.log(resp.data)
            dispatch({
@@ -136,7 +133,7 @@ export const allPatient = () => dispatch=>{
   
 export const onePatient = (id) => dispatch=>{
 
-    axios.get(`${id}`)
+    axios.get(`http://45.76.141.84:8080/v1/patients/2`)
          .then(resp=>{
            console.log(resp.data)
            dispatch({
@@ -147,6 +144,26 @@ export const onePatient = (id) => dispatch=>{
             type:GET_ERRORS,
             payload:err,
             msg:alert('trouble getting data ,please refresh')
+          })
+
+        })
+
+  }
+
+
+ export const onePatientScreen = (id) => dispatch=>{
+
+    axios.get(`http://45.76.141.84:8080/v1/patient-screenings/${id}`)
+         .then(resp=>{
+           console.log(resp.data)
+           dispatch({
+           type:ONE_SCREEN,
+           payload:resp
+         })}).catch(err=>{
+          dispatch({
+            type:GET_ERRORS,
+            payload:err,
+         
           })
 
         })

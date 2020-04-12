@@ -1,6 +1,6 @@
 import React ,{useState} from 'react';
 import {
-  Row, Col, Form,
+  Form,
   FormGroup, Label, Input,
   Button,
 } from 'reactstrap';
@@ -18,18 +18,47 @@ const AddUser  = () =>{
 
   const [newUser ,setUser] = useState({
 
-    "address": "",
+    "city": "",
+    "province":"",
+    streetAddress:'',
     "addressOfPractice": "",
     "email": "",
     "firstName": "",
-    "group": "",
+    "gender": "",
     "lastName": "",
-    "nationalIdOrPassportNumber": "",
+    "nationalIdNumber": "",
     "practicingNumber": "",
     "qualification": "",
+    "phoneNumber":"",
     "username": ""
   
   })
+
+  var userData = {
+    
+      "addressOfPractice": newUser.addressOfPractice,
+      "practicingNumber": newUser.practicingNumber,
+      "qualification": newUser.qualification,
+      "userCommand": {
+        "address": {
+          "city": newUser.city,
+          "province": newUser.province,
+          "streetAddress": newUser.streetAddress
+        },
+        "dateOfBirth": newUser.dateOfBirth,
+        "email": newUser.email,
+        "fullName": newUser.firstName,
+        "gender":newUser.gender,
+        "group": 'AGENT',
+        "nationalIdNumber":newUser.nationalIdNumber,
+        "phoneNumber": newUser.phoneNumber,
+        
+      }
+    
+  }
+
+
+
 
   const dispatch = useDispatch();
 
@@ -42,7 +71,7 @@ const AddUser  = () =>{
   function handleSubmit(e) {
     e.preventDefault();
     if (newUser) {
-      dispatch(addUser(newUser))
+      dispatch(addUser(userData))
 
 
     }
@@ -57,26 +86,20 @@ const AddUser  = () =>{
   return (
 
     <div>
-  
-    <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
-    <Button className='btn-secondary' style={{marginTop:10,marginBottom:10}}  onClick={handleClose}>Close</Button>
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
-    New User
-
-
+   <h5 className="h" style={styles.h}>New User</h5>
     
-     </h1>
-    <Form   onSubmit={handleSubmit} >
-      <FormGroup>
+<Form className="col-sm-12" style={{paddingBottom:-20}} onSubmit={handleSubmit}>
+      <div className="row">
+      <FormGroup className="col-sm-6">
         <Label for="firstName">First Name</Label>
         <Input type="text" 
                value={newUser.firstName}  
                
              onChange={e=>setUser({ ...newUser ,firstName:e.target.value})}
-               placeholder="First Name" />
+               placeholder="First Name" className="formControl" />
       </FormGroup>
 
-      <FormGroup>
+      <FormGroup className="col-sm-6">
       <Label for="lastName">Last Name</Label>
       <Input type="text"
             value={newUser.lastName} 
@@ -84,8 +107,10 @@ const AddUser  = () =>{
             onChange={e=>setUser({ ...newUser ,lastName:e.target.value})}
               placeholder="last Name" />
     </FormGroup>
+      </div>
 
-    <FormGroup>
+    <div className="row">
+    <FormGroup className="col-sm-6">
     <Label for="exampleEmail">User Name</Label>
     <Input type="text" 
           value={newUser.username} 
@@ -94,7 +119,7 @@ const AddUser  = () =>{
            placeholder="username" />
   </FormGroup>
 
-      <FormGroup>
+      <FormGroup className="col-sm-6">
         <Label for="examplePassword">Qualification</Label>
         <Input type="text" 
                value={newUser.qualification}
@@ -102,20 +127,22 @@ const AddUser  = () =>{
              onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
                placeholder="Qualification" />
       </FormGroup>
+    </div>
 
-      <FormGroup>
-      <Label for="examplePassword">Group</Label>
-      <Input type="select" name="group"  value={newUser.group} 
-      onChange={e=>setUser({ ...newUser ,group:e.target.value})}> 
-              <option>Select</option>
-              <option value="ADMIN">ADMIN</option>
-              <option value="AGENT">AGENT</option>
+      <div className="row">
+      <FormGroup className="col-sm-6">
+      <Label for="examplePassword">Gender</Label>
+      <Input type="select" name="group"  value={newUser.gender} 
+      onChange={e=>setUser({ ...newUser ,gender:e.target.value})}> 
+               <option>select</option>
+              <option value="MALE">MALE</option>
+              <option value="FEMALE">FEMALE</option>
               </Input>
     </FormGroup>
 
 
 
-      <FormGroup>
+      <FormGroup className="col-sm-6">
       <Label for="exampleEmail">Practicing Number</Label>
       <Input type="text" 
              value={newUser.practicingNumber}
@@ -123,39 +150,88 @@ const AddUser  = () =>{
              placeholder="practicing number" />
     </FormGroup>
 
+      </div>
 
-    <FormGroup>
+    <div className="row">
+    <FormGroup className="col-sm-6">
     <Label for="exampleEmail">Email</Label>
     <Input type="email" name="email" value={newUser.email} onChange={e=>setUser({ ...newUser ,email:e.target.value})} id="exampleEmail" placeholder="Email" />
   </FormGroup>
 
 
-  <FormGroup>
+  <FormGroup className="col-sm-6">
   <Label for="exampleEmail">Phone Number</Label>
   <Input type="number" 
          value={newUser.phoneNumber} 
-         onChange={e=>setUser({ ...newUser ,phoneNumber:e.target.value})} />
+         onChange={e=>setUser({ ...newUser ,phoneNumber:e.target.value})}
+         placeholder="phone number" />
 </FormGroup>
+    </div>
 
 
-<FormGroup>
+<div className="row">
+<FormGroup className="col-sm-6">
 <Label for="exampleEmail">Address of Practise</Label>
 <Input type="text" 
       value={newUser.addressOfPractice} 
       onChange={e=>setUser({ ...newUser ,addressOfPractice:e.target.value})}
-placeholder="with a placeholder" />
+placeholder="Enter Practising Address" />
+
 </FormGroup>
 
-<Col sm={{ size: 10, offset: 4}}>
-<Button color="success" type="submit"  style={{width:200}}>Add user</Button>
-</Col>
+
+
+<FormGroup className="col-sm-6">
+<Label for="exampleEmail">Province</Label>
+<Input type="select" name="group"  value={newUser.province} 
+      onChange={e=>setUser({ ...newUser ,province:e.target.value})}> 
+              <option>Select</option>
+              <option value="BULAWAYO">BULAWAYO</option>
+              <option value="HARARE">HARARE</option>
+              <option value="MANICALAND">MANICALAND</option>
+              <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
+              <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+              <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
+              <option value="MASVINGO">MASVINGO</option>
+              <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
+              <option value="MATABEKELAND_SOUTH">MATABEKELAND_SOUTH</option>
+              <option value="MIDLANDS">MIDLANDS</option>
+              
+              </Input>
+</FormGroup>
+</div>
+
+
+<div className="row">
+<FormGroup className="col-sm-6">
+<Label for="exampleEmail">CITY</Label>
+<Input type="text" 
+      value={newUser.city} 
+      onChange={e=>setUser({ ...newUser ,city:e.target.value})}
+placeholder="city" />
+
+</FormGroup>
+
+
+<FormGroup className="col-sm-6">
+<Label for="exampleEmail">Street Address</Label>
+<Input type="text" 
+      value={newUser.streetAddress} 
+      onChange={e=>setUser({ ...newUser , streetAddress:e.target.value})}
+placeholder="city" />
+
+</FormGroup>
+
+</div>
+<Button color="success" type="submit">Add user</Button>
+
+
+
 
 
   
     </Form>
     
-    
-    </Col>
     
   
   
@@ -163,29 +239,11 @@ placeholder="with a placeholder" />
   );
 }
 
-
-
-
 const styles = {
 
-  container:{
-    
-     
-     border:"4px solid green",
-    marginTop:"150px",
-    backgroundColor:"#fff" ,
-    positon:'inherit',
-    boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+h:{
+  borderLeft:"10px solid #4c8c40",
   
-
-  
-},
-
-
-
-
-
-
 }
-
+}
 export default AddUser;

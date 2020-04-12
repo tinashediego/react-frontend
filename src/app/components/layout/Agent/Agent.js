@@ -19,28 +19,30 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './mainListItems';
-import {useLocation} from 'react-router'
-import AddPatient from '../../Agent/AddPatients';
-import AllPatients from '../../Agent/AllPatients';
-import TestPatient from '../../Agent/TestPatient';
-import UpdatePatientDetails from'../../Agent/UpdatePatientDetails';
+import {useLocation ,useParams} from 'react-router'
+import AllKits from '../../Admin/AllKits';
+import NewKit from '../../Admin/NewKit';
+import AddUser from '../../Admin/AddUser';
+import AllUsers from '../../Admin/AllUsers';
+import AdminDashboard from  '../../Admin/AdminDashboard'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PatientDetails from '../../Agent/PatientDetails';
-import AgentDashboard from '../../Agent/AgentDashboard'
+import AllPatients from '../../Agent/AllPatients';
+import ScreenDetails from '../../Agent/ScreenDetails';
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
+      
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -132,26 +134,31 @@ export default function Agent() {
   };
  
   const location =  useLocation()
+  let  para = useParams()
 
-  console.log(location)
+  console.log(para)
+
+  //console.log(location)
 
 
   function switchPages(){
 
     switch (location.pathname) {
-      case '/agent':
+      case '/dashboard':
 
-       return<AgentDashboard />
-      case '/addpatient':
-          return <AddPatient/>
-     case '/allpatients':
+       return<AdminDashboard/>
+      case '/allkits':
+          return <AllKits/>
+     case '/newkit':
+              return<NewKit/>
+     case'/allpatients' :
               return<AllPatients/>
-     case'/patientDetails' :
-              return<PatientDetails/>
-     case'/updatePatientDetiails':
-             return <UpdatePatientDetails/>
-             case'/test':
-             return <TestPatient/>
+     case`/patientDetails/${para.id}`:
+     
+             return <PatientDetails/>
+    case`/onescreen/${para.id}`:
+
+     return <ScreenDetails />
     
       default:
         break;
@@ -166,7 +173,7 @@ export default function Agent() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)} style={{backgroundColor:"#fff",color:"black"}} >
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -177,15 +184,13 @@ export default function Agent() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit"  style={
-              { color:'red'}
-          } noWrap className={classes.title}>
-            Covid 19
+          <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
+            cassava
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
+            
+              <AccountCircleIcon/>
+          
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -217,8 +222,11 @@ export default function Agent() {
               </Paper>
             </Grid>
           </Grid>
-          <Box pt={4}>
-            <Copyright />
+          <Box style={{marginTop:105,marginBottom:-5}}>
+         
+          <Copyright />
+        
+            
           </Box>
         </Container>
       </main>

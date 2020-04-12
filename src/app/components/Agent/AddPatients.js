@@ -19,13 +19,59 @@ const AddPatient  = () =>{
     "firstName": "",
     "group": "PATIENT",
     "lastName": "",
+    dateOfBirth:new Date(),
     "nationalIdOrPassportNumber": "",
     "phoneNumber":"",
     "gender":"",
+    "city":"",
+    "province":""
     
   })
 
+  let current_datetime =  new Date(patientData.dateOfBirth)
+let formatted_date =  current_datetime.getDate()+'/' +(current_datetime.getMonth() + 1) +'/' + current_datetime.getFullYear() 
+
+
+
+  
+
+  var newPatient={
+  userCommand: {
+    "fullName":patientData.firstName,
+    "group":patientData.group,
+    "gender": patientData.gender,
+    "phoneNumber": patientData.phoneNumber,
+    "email": patientData.email,
+    "nationalIdNumber":patientData.nationalIdOrPassportNumber,
+    "passportNumber": patientData.nationalIdOrPassportNumber,
+    "dateOfBirth":formatted_date,
+    "address": {
+    "streetAddress": patientData.address,
+    "city":patientData.city,
+    "province": patientData.province
+  }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   console.log(patientData)
+  console.log(newPatient)
 
   const dispatch = useDispatch();
   
@@ -35,7 +81,7 @@ const AddPatient  = () =>{
   function handleSubmit(e) {
     e.preventDefault();
     if (patientData) {
-        dispatch(addPatient(patientData))
+        dispatch(addPatient(newPatient))
     }
 }
 
@@ -47,7 +93,7 @@ function handleClose(){
   return (
 
     <div responsive>
-        
+    <Submenu />
     <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
 
 
@@ -89,6 +135,34 @@ function handleClose(){
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
          id="examplePassword" placeholder="password placeholder" />
       </FormGroup>
+      
+<FormGroup >
+<Label for="exampleEmail">Province</Label>
+<Input type="select" name="group"  value={patientData.province} 
+      onChange={e=>setPatient({ ...patientData ,province:e.target.value})}> 
+              <option>Select</option>
+              <option value="BULAWAYO">BULAWAYO</option>
+              <option value="HARARE">HARARE</option>
+              <option value="MANICALAND">MANICALAND</option>
+              <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
+              <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+              <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
+              <option value="MASVINGO">MASVINGO</option>
+              <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
+              <option value="MATABEKELAND_SOUTH">MATABEKELAND_SOUTH</option>
+              <option value="MIDLANDS">MIDLANDS</option>
+              
+              </Input>
+</FormGroup>
+
+<FormGroup className="col-sm-6">
+<Label for="exampleEmail">CITY</Label>
+<Input type="text" 
+      value={patientData.city} 
+      onChange={e=>setPatient({ ...patientData ,city:e.target.value})}
+placeholder="city" />
+
+</FormGroup>
 
 
       <FormGroup>
@@ -119,12 +193,8 @@ function handleClose(){
   <Input type="select" name="gender" value={patientData.gender}
   onChange={e=>setPatient({ ...patientData ,gender:e.target.value})}  id="gender"> 
   <option>Gender</option>
-  <option value="Male">Male</option>
-  <option value="Female">Female</option>
-  <option value="Other">Other</option>
- 
-
-  
+  <option value="MALE">Male</option>
+  <option value="FEMALE">Female</option>
   </Input>
 </Col>
 </FormGroup> 

@@ -16,15 +16,15 @@ import AllUsers from "./app/components/Admin/AllUsers";
 import AllKits from "./app/components/Admin/AllKits";
 import NewKit from "./app/components/Admin/NewKit";
 import axios from 'axios'
-import Admin from './app/components/layout/Admin/Admin'
-import Agent from './app/components/layout/Agent/Agent'
+
 import AddPatient from './app/components/Agent/AddPatients'
 import AllPatients  from './app/components/Agent/AllPatients'
 import AgentDashboard  from './app/components/Agent/AgentDashboard'
-import PatientDetails from './app/components/Agent/PatientDetails'
 import UpdatePatientDetails from "./app/components/Agent/UpdatePatientDetails";
 import TestPatient from "./app/components/Agent/TestPatient";
 import PatientDashboard from "./app/components/Patient/PatientDashboard";
+import Admin from './app/components/layout/Admin/Admin'
+import Agent from "./app/components/layout/Agent/Agent";
 
 
 
@@ -34,23 +34,16 @@ import PatientDashboard from "./app/components/Patient/PatientDashboard";
 
 // LocalstorageService
 
-let urls = 'http://45.76.141.84:8302/api/maisha-cov19-app/authenticate'
-
 // Add a request interceptor
 axios.interceptors.request.use(
    config => {
-    if(config.url === urls){
-   ///   config.headers['Authorization'] = 'Basic YWRtaW4tcG9ydGFsOiNAVTdIanVjd3hPYUBCZUZZdlVjUnlhVnNNJU1uUUN2'
-
-
-
-    }else{
+ 
       const token = localStorage.getItem('access_token');
       if (token) {
         config.headers['Authorization'] = `Bearer ${token}`   
       }
 
-    }   // config.headers['Content-Type'] = 'application/json';
+       // config.headers['Content-Type'] = 'application/json';
 
        console.log(config)
        return config;
@@ -68,7 +61,7 @@ axios.interceptors.response.use((response) => {
 }, function (error) {
    const originalRequest = error.config;
 
-   if (error.response.status === 401 && originalRequest.url === 'http://45.76.141.84:8302/api/maisha-cov19-app/authenticate') {
+   if (error.response.status === 401 && originalRequest.url === 'http://45.76.141.84:8080/authenticate') {
     window.location.href = '/'
        return Promise.reject(error);
    }
@@ -105,18 +98,21 @@ function App() {
       <div>
         <Route exact path="/" component={Login} />
         <Switch>
-          <PrivateRoute exact path="/dashboard"   component={Admin} />
+          <PrivateRoute exact path="/dashboard/"   component={Admin} />
+          <PrivateRoute exact path="/dash"   component={AllKits} />
           <PrivateRoute excat path='/agent' component={Agent} />
-          <PrivateRoute exact path="/patient" component={Agent}/>
+          <PrivateRoute exact path="/patient" component={PatientDashboard}/>
           <PrivateRoute exact path="/adduser" component={Admin} />
           <PrivateRoute exact path="/allusers" component={Admin} />
           <PrivateRoute exact path="/addpatient" component={Agent} />
           <PrivateRoute exact path="/allpatients" component={Agent} />
-          <PrivateRoute exact path="/patientDetails" component={Agent} />
-          <PrivateRoute excat path="/updatePatientDetails" component={Agent} />
-          <PrivateRoute excat path="/test" component={Agent} />        
-          <PrivateRoute exact path="/allkits" component={Admin} />
-          <PrivateRoute exact path="/newkit" component={Admin} />
+          <PrivateRoute exact path="/patientDetails/:id" component={Agent} />
+          <PrivateRoute excat path="/updatePatientDetails" component={UpdatePatientDetails} />
+          <PrivateRoute excat path="/test" component={TestPatient} />
+          <PrivateRoute excat path='/onescreen/:id' component={Agent} />
+        
+          <PrivateRoute exact path="/allkits" component={Agent} />
+          <PrivateRoute exact path="/newkit" component={NewKit} />
         
         
       

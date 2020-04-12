@@ -1,11 +1,26 @@
 import React  ,{useEffect}from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import {Button ,Table }  from 'reactstrap'
+import {Button }  from 'reactstrap'
 import {Link} from  'react-router-dom'
 import {allUsers} from '../../../redux/actions/authActions'
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import DeleteIcon from '@material-ui/icons/Delete';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 
 const AllUsers  = (props) =>{ 
+
+  // Generate Order Data
+function createData(id, date, name, shipTo, paymentMethod, action) {
+  return { id, date, name, shipTo, paymentMethod, action };
+}
+
+
 
 
   const content = useSelector((state) => state.auth.allusers);
@@ -22,20 +37,32 @@ const AllUsers  = (props) =>{
     dispatch(allUsers());
   }, []);
 
+
+  const rows = [
+    createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719'),
+    createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574'),
+    createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253'),
+    createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000'),
+    createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919'),
+    createData(content)
+  ];
+
   let a  =  content.map((x,i)=>(
 
-    <tr key={i}>
-    <th>{i +1}</th>
-    <td>{x.username}</td>
-    <td>{x.firstName}</td>
-    <td>{x.lastName}</td>
-    <td>{x.qualification}</td>
-    <td>{x.email}</td>
-    <td>{x.phoneNumber}</td>
-    <td> {x.addressOfPractice} </td>
+    <TableRow key={i}>
+    <TableCell>{i +1}</TableCell>
+    <TableCell>{x.username}</TableCell>
+    <TableCell>{x.firstName}</TableCell>
+    <TableCell>{x.lastName}</TableCell>
+    <TableCell>{x.qualification}</TableCell>
+    <TableCell>{x.email}</TableCell>
+    <TableCell>{x.phoneNumber}</TableCell>
+    <TableCell> {x.addressOfPractice} </TableCell>
 
-    <td> {x.practicingNumber}</td>
-    </tr>
+    <TableCell> {x.practicingNumber}</TableCell>
+
+    <TableCell align="right"><a href="#" style={{color:"green"}} ><BorderColorIcon/></a>&nbsp;<a style={{color:"red"}} href="#"><DeleteIcon /></a></TableCell>
+    </TableRow>
 
 
   
@@ -44,33 +71,35 @@ const AllUsers  = (props) =>{
   return (
     <div>
 
-    <div style={{marginTop:70 ,padding:10}}>
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>All Users     <Button className='btn-info' style={{marginLeft:1400,marginBottom:10,marginTop:10}}> <Link to="/adduser" style={{color:'white'}}>Add User</Link></Button></h1>
-   <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} responsive>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Username</th>
-          <th>First Name</th>
-          <th>Last name</th>
-          <th>Qualification</th>
-          <th>Email</th>
-          <th>Phone Number</th>    
-          <th>Address Of Practise</th>
-          <th>Practising Number</th>
-        </tr>
-      </thead>
-      <tbody>
+   
 
-      {a}
-      </tbody>
-    </Table>
-    
-    
-    
-    </div>
+    <h5 className="container" style={styles.container}>All Users</h5>
+      <Table size="small" className="table table-striped" >
+  
+  <TableHead>
+    <TableRow>
+      <TableCell>Date</TableCell>
+      <TableCell>Name</TableCell>
+      <TableCell>Ship To</TableCell>
+      <TableCell>Payment Method</TableCell>
+      <TableCell align="right">Action</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    {rows.map((row) => (
+      <TableRow key={row.id}>
+        <TableCell>{row.date}</TableCell>
+        <TableCell>{row.name}</TableCell>
+        <TableCell>{row.shipTo}</TableCell>
+        <TableCell>{row.paymentMethod}</TableCell>
+        <TableCell align="right"><a href="#" style={{color:"green"}} ><BorderColorIcon/></a>&nbsp;<a style={{color:"red"}} href="#"><DeleteIcon /></a></TableCell>
+      </TableRow>
+    ))}
 
-    
+
+    {a}
+  </TableBody>
+</Table>
     </div>
   );
 }
@@ -78,6 +107,10 @@ const AllUsers  = (props) =>{
 
 
 
-
+const styles={
+  container:{
+    borderLeft:"10px solid #4c8c40"
+  },
+}
 
 export default AllUsers

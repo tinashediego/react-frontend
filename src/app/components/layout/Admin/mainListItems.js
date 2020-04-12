@@ -5,9 +5,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
+import { ListSubheader, ExpansionPanel } from '@material-ui/core';
 
 export const mainListItems = (
-  <div>
+  <div style={{backgroundColor:"#4c8c40",height:530}}>
+  
     <ListItem button>
       <ListItemIcon>
         <DashboardIcon />
@@ -16,7 +18,7 @@ export const mainListItems = (
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Users" />
     </ListItem>
@@ -25,6 +27,7 @@ export const mainListItems = (
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Kits" />
+      
     </ListItem>
   </div>
 );

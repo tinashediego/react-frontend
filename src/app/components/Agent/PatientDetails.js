@@ -1,11 +1,25 @@
-import React  ,{useState}from 'react';
-import Submenu from '../layout/Agent/SubMenu' ;
+import React  ,{useState ,useEffect}from 'react';
 import {Button ,Col,Label,Input,FormGroup,Form ,Row ,Table, Modal, ModalHeader, ModalBody, ModalFooter}  from 'reactstrap'
 import { useHistory } from "react-router";
 import {Link} from  'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import {onePatient} from '../../../redux/actions/PatientsActions'
+
 
 
 const PatientDetails  = (props) =>{ 
+
+  
+  const content = useSelector((state) => state.patients.allpatients);
+  
+  //this hook gives us redux store state
+
+
+
+  const dispatch = useDispatch(onePatient());
+  useEffect(() => {
+    dispatch(onePatient());
+  }, []);
 
 
 
@@ -22,6 +36,7 @@ const PatientDetails  = (props) =>{
 
 
 
+
   function handleClose(){
 
     history.goBack()
@@ -30,12 +45,13 @@ const PatientDetails  = (props) =>{
 
 
 
+   console.log(content)
 
 
 
   return (
     <div>
-        
+  
     <div style={{marginTop:70 ,padding:10}}>
     </div>
 
