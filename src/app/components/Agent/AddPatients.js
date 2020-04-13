@@ -1,5 +1,4 @@
 import React , {useState} from 'react';
-import Submenu from '../layout/Agent/SubMenu' 
 import {
    Col, Form,
   FormGroup, Label, Input,
@@ -93,7 +92,7 @@ function handleClose(){
   return (
 
     <div responsive>
-    <Submenu />
+
     <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
 
 
