@@ -27,6 +27,7 @@ import ScreenDetails from '../../Agent/ScreenDetails';
 import AgentDashboard from '../../Agent/AgentDashboard'
 import TestPatient from '../../Agent/TestPatient';
 import AddPatient from '../../Agent/AddPatients';
+import MyTests from "../../Agent/MyTests";
 
 
 function Copyright() {
@@ -164,6 +165,9 @@ export default function Agent() {
 
      case '/addpatient':
        return <AddPatient />
+    
+     case '/mytests':
+      return <MyTests />
     
       default:
         break;

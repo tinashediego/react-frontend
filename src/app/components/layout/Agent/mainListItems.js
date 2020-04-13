@@ -28,6 +28,15 @@ export const mainListItems = (
       <ListItemText primary="Patients" />
       </Link>
     </ListItem>  
+
+    <ListItem button> 
+    <ListItemIcon>
+      <PeopleIcon />
+    </ListItemIcon>
+    <Link to='/mytests' style={{color:'white'}}>
+    <ListItemText primary="Tests" />
+    </Link>
+  </ListItem> 
     <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
