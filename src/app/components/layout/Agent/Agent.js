@@ -14,21 +14,19 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './mainListItems';
 import {useLocation ,useParams} from 'react-router'
 import AllKits from '../../Admin/AllKits';
 import NewKit from '../../Admin/NewKit';
-import AddUser from '../../Admin/AddUser';
-import AllUsers from '../../Admin/AllUsers';
-import AdminDashboard from  '../../Admin/AdminDashboard'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PatientDetails from '../../Agent/PatientDetails';
 import AllPatients from '../../Agent/AllPatients';
 import ScreenDetails from '../../Agent/ScreenDetails';
+import AgentDashboard from '../../Agent/AgentDashboard'
+import TestPatient from '../../Agent/TestPatient';
+import AddPatient from '../../Agent/AddPatients';
 
 
 function Copyright() {
@@ -144,9 +142,9 @@ export default function Agent() {
   function switchPages(){
 
     switch (location.pathname) {
-      case '/dashboard':
+      case '/agent':
 
-       return<AdminDashboard/>
+       return<AgentDashboard/>
       case '/allkits':
           return <AllKits/>
      case '/newkit':
@@ -159,6 +157,13 @@ export default function Agent() {
     case`/onescreen/${para.id}`:
 
      return <ScreenDetails />
+
+     case`/test/${para.id}`:
+
+     return <TestPatient/>
+
+     case '/addpatient':
+       return <AddPatient />
     
       default:
         break;

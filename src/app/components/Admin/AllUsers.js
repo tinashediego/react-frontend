@@ -74,6 +74,7 @@ function createData(id, date, name, shipTo, paymentMethod, action) {
    
 
     <h5 className="container" style={styles.container}>All Users</h5>
+    <button>Add User</button>
       <Table size="small" className="table table-striped" >
   
   <TableHead>

@@ -1,4 +1,4 @@
-import {  ADD_PATIENT, ONE_PATIENT, ALL_PATIENTS, ONE_SCREEN, TEST_PATIENT, UPDATE_TEST, UPDATE_SCREEN  } from "../types";
+import {  ADD_PATIENT, ONE_PATIENT, ALL_PATIENTS, ONE_SCREEN, TEST_PATIENT,ALL_TEST, UPDATE_TEST, UPDATE_SCREEN  } from "../types";
 
 const initialState = {
 
@@ -8,7 +8,8 @@ const initialState = {
   updatescreen:{},
   onepatient:{},
   onescreen:[],
-  allpatients:[]
+  allpatients:[],
+  alltests:[]
 
 };
 
@@ -46,6 +47,13 @@ export default function(state = initialState, action) {
         return {
           ...state, 
         updatetest: action.payload
+        };
+
+
+        case ALL_TEST:
+        return {
+          ...state, 
+        alltests: action.payload
         };
 
         case UPDATE_SCREEN:

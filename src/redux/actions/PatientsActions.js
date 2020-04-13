@@ -1,6 +1,6 @@
 
 import axios  from 'axios'
-import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT, TEST_PATIENT, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS} from '../types';
+import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT, TEST_PATIENT, ALL_TEST, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS} from '../types';
 
 
 
@@ -36,7 +36,7 @@ export const addPatient = (user) => dispatch => {
 export const testPatient = (patientData) => dispatch =>{
 
 
-    axios.post('/testpatient' , patientData)
+    axios.post('http://45.76.141.84:8080/v1/tests' , patientData)
          .then(resp=>{
 
             dispatch({
@@ -170,5 +170,24 @@ export const onePatient = (id) => dispatch=>{
 
   }
 
+ 
+
+
+  export const allPatientTests = (id) => dispatch=>{
+
+    axios.get(` http://45.76.141.84:8080/v1/tests/patient/${id}`)
+         .then(resp=>{
+           dispatch({
+           type:ALL_TEST,
+           payload:resp.data
+         })}).catch(err=>{
+          dispatch({
+            type:GET_ERRORS,
+            payload:err,
+         
+          })
+
+        })
+      }
 
   

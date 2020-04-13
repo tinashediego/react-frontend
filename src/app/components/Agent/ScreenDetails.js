@@ -89,29 +89,17 @@ const username = localStorage.getItem('username')
 
 
   const  newScreen = {
-    "bodyAchesPresent": ScreenData.bodyAchesPresent,
-    "coldsPresent": ScreenData.coldsPresent,
-    "coughPresent": ScreenData.coughPresent,
-    "diarrhoeaPresent":ScreenData.diarrhoeaPresent,
-    "difficultiesInBreathingPresent": ScreenData.difficultiesInBreathingPresent,
-    "fatiguePresent":ScreenData.fatiguePresent,
-    "feverPresent":ScreenData.feverPresent,
-    "hasATravelHistoryToACovid19InfectedArea": ScreenData.hasATravelHistoryToACovid19InfectedArea,
-    "hasDirectContactWithCovid19Patient": ScreenData.hasDirectContactWithCovid19Patient,
-    "hasTravelledPast14Days":ScreenData.hasTravelledPast14Days,
-    "headachePresent":ScreenData.headachePresent, 
-    patientId:para.id,
-    "testingAgentUsername": username
+    "dateOfTest": new Date().toLocaleString(),
+    "patientScreeningId":para.id,
+    "testKitId":1,
+    "testResult": "POSITIVE",
+    "testingAgentUsername": username,
 
 }
 
 
 
 const handleCloseSubmit = () => {
-
-
-
-   
 
 
     dispatchs(updateTest(newScreen))
@@ -128,8 +116,8 @@ const handleCloseSubmit = () => {
 
 
 
-
-
+   
+  
 
 
 
@@ -147,7 +135,7 @@ const handleCloseSubmit = () => {
         <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patel Last Screens</h5>
 
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open alert dialog
+        New Screen
       </Button>
     
         

@@ -24,7 +24,7 @@ export const mainListItems = (
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <Link to='/addpatients' style={{color:'white'}}>
+      <Link to='/allpatients' style={{color:'white'}}>
       <ListItemText primary="Patients" />
       </Link>
     </ListItem>  

@@ -1,26 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import jwt_decode from "jwt-decode";
-import setAuthToken from "./utils/setAuthToken"; 
-import {  Role } from './utils/helpers/Role';
 
-import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import { Provider } from "react-redux";
 import store from "./utils/helpers/store"; 
-import Register from "./app/components/Auth/Register";
 import Login from "./app/components/Auth/Login";
 import PrivateRoute from "./private/privateRoute";
-import AdminDashboard from "./app/components/Admin/AdminDashboard"; 
-import AddUser from "./app/components/Admin/AddUser"; 
-import AllUsers from "./app/components/Admin/AllUsers";
+
 import AllKits from "./app/components/Admin/AllKits";
 import NewKit from "./app/components/Admin/NewKit";
 import axios from 'axios'
 
-import AddPatient from './app/components/Agent/AddPatients'
-import AllPatients  from './app/components/Agent/AllPatients'
-import AgentDashboard  from './app/components/Agent/AgentDashboard'
-import UpdatePatientDetails from "./app/components/Agent/UpdatePatientDetails";
+
 import TestPatient from "./app/components/Agent/TestPatient";
 import PatientDashboard from "./app/components/Patient/PatientDashboard";
 import Admin from './app/components/layout/Admin/Admin'
@@ -107,8 +97,7 @@ function App() {
           <PrivateRoute exact path="/addpatient" component={Agent} />
           <PrivateRoute exact path="/allpatients" component={Agent} />
           <PrivateRoute exact path="/patientDetails/:id" component={Agent} />
-          <PrivateRoute excat path="/updatePatientDetails" component={UpdatePatientDetails} />
-          <PrivateRoute excat path="/test" component={TestPatient} />
+          <PrivateRoute excat path="/test/:id" component={Agent} />
           <PrivateRoute excat path='/onescreen/:id' component={Agent} />
         
           <PrivateRoute exact path="/allkits" component={Agent} />
