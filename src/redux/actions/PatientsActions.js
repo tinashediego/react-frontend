@@ -1,6 +1,6 @@
 
 import axios  from 'axios'
-import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT, TEST_PATIENT, ALL_TEST, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS} from '../types';
+import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT,MYTESTS, TEST_PATIENT, ALL_TEST, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS} from '../types';
 
 
 
@@ -158,7 +158,7 @@ export const onePatient = (id) => dispatch=>{
            console.log(resp.data)
            dispatch({
            type:ONE_SCREEN,
-           payload:resp
+           payload:resp.data
          })}).catch(err=>{
           dispatch({
             type:GET_ERRORS,
@@ -191,3 +191,28 @@ export const onePatient = (id) => dispatch=>{
       }
 
   
+
+
+      export const Mytests = () => dispatch=>{
+
+  
+
+
+        axios.get("http://45.76.141.84:8080/v1/tests/agent/my-tests/unpaged")
+             .then(resp=>{
+               console.log(resp.data)
+               dispatch({
+               type:MYTESTS,
+               payload:resp.data
+             })}).catch(err=>{
+              dispatch({
+                type:GET_ERRORS,
+                payload:err,
+                msg:alert('trouble getting data ,please refresh')
+              })
+    
+            })
+    
+      }
+    
+    

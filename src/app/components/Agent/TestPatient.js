@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     let  para = useParams()
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    const content = useSelector((state) => state.patients.allpatients);
+    const content = useSelector((state) => state.patients.alltests);
     const username = localStorage.getItem('username')
     const dispatch = useDispatch(allPatientTests(para.id));
     const [ScreenData ,setScreen] =  useState({
@@ -70,13 +70,13 @@ const useStyles = makeStyles({
     console.log(content)
 
 
- 
-
-
 const handleCloseSubmit = () => {
 
+  let current_datetime =  new Date()
+  let formatted_date =  current_datetime.getDate()+'/' +(current_datetime.getMonth() + 1) +'/' + current_datetime.getFullYear() 
+
   const  newScreen = {
-    "dateOfTest": new Date().toLocaleString(),
+    "dateOfTest": formatted_date,
     "patientScreeningId":para.id,
     "testKitId":1,
     "testResult": "POSITIVE",

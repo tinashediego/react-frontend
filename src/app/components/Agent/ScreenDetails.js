@@ -68,7 +68,7 @@ const useStyles = makeStyles({
       setOpen(false);
     };
 
-    const content = useSelector((state) => state.patients.allpatients);
+    const content = useSelector((state) => state.patients.onescreen);
 
 
     const dispatch = useDispatch(onePatientScreen(para.id));
@@ -76,7 +76,7 @@ const useStyles = makeStyles({
   const dispatchs = useDispatch();
     useEffect(() => {
       dispatch(onePatientScreen(para.id));
-    });
+    },[]);
 
 
 
@@ -90,7 +90,7 @@ const username = localStorage.getItem('username')
 
   const  newScreen = {
     "dateOfTest": new Date().toLocaleString(),
-    "patientScreeningId":para.id,
+    "patientId":para.id,
     "testKitId":1,
     "testResult": "POSITIVE",
     "testingAgentUsername": username,
@@ -112,8 +112,30 @@ const handleCloseSubmit = () => {
 
 
 
+     
+  let a  = content.map((x,i)=>(
 
-
+    <TableRow key={i}>
+    <TableCell>{i+1}</TableCell>
+    <TableCell>{`${`${x.bodyAchesPresent}`}`}</TableCell>
+    <TableCell>{`${x.coldsPresent}`}</TableCell>
+    <TableCell>{`${x.coughPresent}`}</TableCell>
+    <TableCell>{`${x.diarrhoeaPresent}`}</TableCell>
+    <TableCell>{`${x.difficultiesInBreathingPresent}`}</TableCell>
+    <TableCell> {`${x.headachePresent}`}</TableCell>
+    <TableCell>{`${x.fatiguePresent}`}</TableCell>
+    <TableCell> {`${x.feverPresent}`} </TableCell>
+    <TableCell> {`${x.hasATravelHistoryToACovid19InfectedArea}`} </TableCell>
+    <TableCell> {`${x.hasDirectContactWithCovid19Patient}`} </TableCell>
+    <TableCell> {`${x.hasTravelledPast14Days}`}</TableCell>
+    </TableRow>
+  
+  
+  
+  
+  ))
+  
+  
 
 
    
@@ -138,10 +160,8 @@ const handleCloseSubmit = () => {
         New Screen
       </Button>
     
-        
-        
-        <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
+   
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>No#</TableCell>
@@ -159,26 +179,13 @@ const handleCloseSubmit = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                1
-                </TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-                <TableCell align="right">yes</TableCell>
-              </TableRow>
+        
+
+              {a}
         
           </TableBody>
         </Table>
-      </TableContainer> 
+  
 
 
 

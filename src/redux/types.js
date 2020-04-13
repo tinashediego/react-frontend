@@ -23,6 +23,7 @@ export const ALL_PATIENTS =  'ALL_PATIENTS'
 export const ONE_PATIENT = 'ONE_PATIENT'
 export const ONE_SCREEN = 'ONE_SCREEN'
 export const ALL_TEST ="ALL_TEST"
+export const MYTESTS ="MYTESTS"
 
 
 ///User types

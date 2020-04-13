@@ -4,7 +4,7 @@ import { ADD_KIT  ,ALL_KITS ,GET_ERRORS, ONE_KIT, UPDATE_KIT} from "../types";
   // add a new desktop
   export const addKit = (kitData) => dispatch => {
     axios
-      .post("http://45.76.141.84:8302/api/maisha-cov19-app/v1/test-kits", kitData)
+      .post("http://45.76.141.84:8080/v1/test-kits", kitData)
       .then(resp=>{
           dispatch({
               type:ADD_KIT,
@@ -55,7 +55,7 @@ import { ADD_KIT  ,ALL_KITS ,GET_ERRORS, ONE_KIT, UPDATE_KIT} from "../types";
   
   export const allKits = () => dispatch=>{
 
-    axios.get("http://45.76.141.84:8302/api/maisha-cov19-app/v1/test-kits/used")
+    axios.get("http://45.76.141.84:8080/v1/test-kits/all")
          .then(resp=>{
            console.log(resp)
            dispatch({

@@ -17,7 +17,9 @@ import { useHistory } from "react-router";
 
 
   const [state, setstate] = useState({"batchNumber": "",
-                                          "brandName": ""})
+                                      "brandName": "" ,
+                                      'serialNumber':''
+                                    })
 
 
 
@@ -35,10 +37,7 @@ import { useHistory } from "react-router";
         }
     }
 
-    function handleClose(){
-
-      history.goBack()
-     }
+   
     
     
     
@@ -48,7 +47,7 @@ import { useHistory } from "react-router";
 <div>          
 <div className="h" style={styles.h}><h5>New Kit</h5></div>
 <br></br>
-<Form className="col-sm-12" style={styles.container} onSubmit={handleSubmit} style={{marginBottom:50}}>
+<Form className="col-sm-12" style={styles.container} onSubmit={handleSubmit}>
 
   <FormGroup  >
     <Label for="exampleEmail">Brand Name</Label>
@@ -58,6 +57,11 @@ import { useHistory } from "react-router";
   <FormGroup>
   <Label for="exampleEmail">Batch Number</Label>
   <Input type="number" value={state.batchNumber}  onChange={e=> setstate({ ...state, batchNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
+</FormGroup>
+
+<FormGroup>
+  <Label for="exampleEmail">Serial Number</Label>
+  <Input type="number" value={state.serialNumber}  onChange={e=> setstate({ ...state, serialNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
 </FormGroup>
 
 
@@ -80,7 +84,6 @@ const styles = {
       
        
       border:"4px solid green",
-      marginTop:"150px",
       boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
      
       

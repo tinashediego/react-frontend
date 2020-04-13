@@ -30,6 +30,7 @@ import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -168,7 +169,7 @@ export default function Agent() {
     
      case '/mytests':
       return <MyTests />
-    
+
       default:
         break;
     }

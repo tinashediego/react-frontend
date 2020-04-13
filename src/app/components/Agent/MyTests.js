@@ -1,9 +1,31 @@
-import React  ,{useState}from 'react';
+import React  ,{useState,useEffect}from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import {Button ,Table }  from 'reactstrap'
 import {Link} from  'react-router-dom'
+import { Mytests } from '../../../redux/actions/PatientsActions';
 
 
 const MyTests  = (props) =>{ 
+
+
+
+
+  
+  const content = useSelector((state) => state.auth.allusers);
+  
+  //this hook gives us redux store state
+
+
+  console.log(content)
+  const dispatch = useDispatch(Mytests());
+
+
+
+  let name = localStorage.getItem('username')
+
+  useEffect(() => {
+    dispatch(Mytests(name));
+  }, []);
 
   return (
     <div>
