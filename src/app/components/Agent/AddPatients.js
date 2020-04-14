@@ -7,6 +7,7 @@ import {
 import { useDispatch,} from 'react-redux';
 import {addPatient} from '../../../redux/actions/PatientsActions'
 import { useHistory } from "react-router";
+import { TextField } from '@material-ui/core';
 
 
 const AddPatient  = () =>{
@@ -93,53 +94,87 @@ function handleClose(){
 
     <div responsive>
 
-    <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
+    <Col sm="12" md={{ size: 6, offset: 3 }}>
 
-
-    <Button className='btn-danger'  onClick={handleClose}>Close</Button>
-    
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
+    <h5 style={styles.container}>
     New Patient
-     </h1>
-    <Form  style={{width:'100%'}} onSubmit={handleSubmit}>
-      <FormGroup>
-        <Label for="exampleEmail">First Name</Label>
-        <Input type="text" 
+     </h5>
+    <Form className="col-sm-12" onSubmit={handleSubmit}>
+      
+      <div className="row">
+      <FormGroup style={{marginRight:"20px"}} className="col-sm-6">
+        
+        <TextField label="First Name" 
             value={patientData.firstName}
              onChange={e=>setPatient({ ...patientData ,firstName:e.target.value})}
-                 id="exampleEmail" placeholder="with a placeholder" />
+                 id="exampleEmail" placeholder="First Name" />
       </FormGroup>
 
       <FormGroup>
-      <Label for="exampleEmail">Last Name</Label>
-      <Input type="text"    value={patientData.lastName}
+      <TextField label="Last Name"  value={patientData.lastName}
       onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})}
-      id="exampleEmail" placeholder="with a placeholder" />
+      id="exampleEmail" placeholder="Last Name" />
       
     </FormGroup>
+      </div>
 
-    <FormGroup>
-    <Label for="exampleEmail">National ID</Label>
-    <Input type="username"  
+      <div className="row">
+    <FormGroup style={{marginRight:"20px"}} className="col-sm-6">
     
+    <TextField label="National ID"  
     value={patientData.nationalIdOrPassportNumber}
     onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})}
-    id="exampleEmail" placeholder="with a placeholder" />
+    id="exampleEmail" placeholder="National ID" />
   </FormGroup>
 
       <FormGroup>
-        <Label for="examplePassword">Date Of Birth</Label>
-        <Input type="date" name="password"
+        <TextField label="Date Of Birth" type="date" name="password"
         value={patientData.dateOfBirth}
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
-         id="examplePassword" placeholder="password placeholder" />
+         id="examplePassword" placeholder="Date of Birth" />
       </FormGroup>
+    </div>
       
-<FormGroup >
-<Label for="exampleEmail">Province</Label>
+
+<div className="row">
+<FormGroup className="col-sm-6">
+
+<TextField label="CITY" 
+      value={patientData.city} 
+      onChange={e=>setPatient({ ...patientData ,city:e.target.value})}
+placeholder="city" className="col-sm-6"/>
+
+</FormGroup>
+ <FormGroup className="col-sm-6">
+      <TextField label="Address" value={patientData.address}
+      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} id="exampleEmail" placeholder="Address" />
+    </FormGroup>
+</div>
+
+
+     
+
+<div className="row">
+<FormGroup className="col-sm-6">
+    <TextField type="email"  label="Email"
+    value={patientData.email}
+      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} id="exampleEmail" placeholder="Email" />
+  </FormGroup>
+
+
+  <FormGroup className="col-sm-6">
+  
+  <TextField label='Phone Number' value={patientData.phoneNumber}
+  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} id="exampleEmail" placeholder="Phone Number" />
+</FormGroup>
+</div>
+ 
+<div className="row">
+<FormGroup className="col-sm-6">
+
 <Input type="select" name="group"  value={patientData.province} 
       onChange={e=>setPatient({ ...patientData ,province:e.target.value})}> 
-              <option>Select</option>
+              <option>Province</option>
               <option value="BULAWAYO">BULAWAYO</option>
               <option value="HARARE">HARARE</option>
               <option value="MANICALAND">MANICALAND</option>
@@ -148,59 +183,28 @@ function handleClose(){
               <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
               <option value="MASVINGO">MASVINGO</option>
               <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
-              <option value="MATABEKELAND_SOUTH">MATABEKELAND_SOUTH</option>
+              <option value="MATABEKELAND_SOUTH">MATABELELAND_SOUTH</option>
               <option value="MIDLANDS">MIDLANDS</option>
               
               </Input>
-</FormGroup>
+</FormGroup>   
+
 
 <FormGroup className="col-sm-6">
-<Label for="exampleEmail">CITY</Label>
-<Input type="text" 
-      value={patientData.city} 
-      onChange={e=>setPatient({ ...patientData ,city:e.target.value})}
-placeholder="city" />
 
-</FormGroup>
-
-
-      <FormGroup>
-      <Label for="exampleEmail">Address</Label>
-      <Input type="text"  value={patientData.address}
-      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
-    </FormGroup>
-
-
-    <FormGroup>
-    <Label for="exampleEmail">Email</Label>
-    <Input type="email"  
-    value={patientData.email}
-      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
-  </FormGroup>
-
-
-  <FormGroup>
-  <Label for="exampleEmail">Phone Number</Label>
-  <Input type="text"  value={patientData.phoneNumber}
-  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
-</FormGroup>
-
-
-<FormGroup row>
-<Label for="gender" sm={2}>Gender:</Label>
-<Col sm={10}>
   <Input type="select" name="gender" value={patientData.gender}
   onChange={e=>setPatient({ ...patientData ,gender:e.target.value})}  id="gender"> 
   <option>Gender</option>
   <option value="MALE">Male</option>
   <option value="FEMALE">Female</option>
   </Input>
-</Col>
-</FormGroup> 
 
-<Col sm={{ size: 10, offset: 4}}>
-<Button color="success" type="submit"  style={{width:200}}> Add Patient</Button>
-</Col>
+</FormGroup> 
+</div>
+
+
+<Button color="success" type="submit"> Add Patient</Button>
+
   
     </Form>
     
@@ -219,15 +223,9 @@ placeholder="city" />
 const styles = {
 
   container:{
-    
+    borderLeft:"10px solid #4c8c40",
      
-     border:"4px solid green",
-    marginTop:"150px",
-    backgroundColor:"#fff" ,
-    positon:'inherit',
-    boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
-  
-
+     
   
 },
 

@@ -2,11 +2,12 @@ import React ,{useState} from 'react';
 import {
   Form,
   FormGroup, Label, Input,
-  Button,
+  Button,Col
 } from 'reactstrap';
 import { useDispatch,} from 'react-redux';
 import {addUser} from '../../../redux/actions/authActions'
 import { useHistory } from "react-router";
+import { TextField } from '@material-ui/core';
 
 const AddUser  = () =>{
 
@@ -87,12 +88,11 @@ const AddUser  = () =>{
 
     <div>
    <h5 className="h" style={styles.h}>New User</h5>
-    
-<Form className="col-sm-12" style={{paddingBottom:-20}} onSubmit={handleSubmit}>
+   <Col sm="12" md={{ size: 6, offset: 3 }}>
+<Form className="col-sm-12" onSubmit={handleSubmit}>
       <div className="row">
       <FormGroup className="col-sm-6">
-        <Label for="firstName">First Name</Label>
-        <Input type="text" 
+        <TextField label="First Name" 
                value={newUser.firstName}  
                
              onChange={e=>setUser({ ...newUser ,firstName:e.target.value})}
@@ -100,8 +100,8 @@ const AddUser  = () =>{
       </FormGroup>
 
       <FormGroup className="col-sm-6">
-      <Label for="lastName">Last Name</Label>
-      <Input type="text"
+    
+      <TextField label="Last Name"
             value={newUser.lastName} 
             
             onChange={e=>setUser({ ...newUser ,lastName:e.target.value})}
@@ -111,8 +111,8 @@ const AddUser  = () =>{
 
     <div className="row">
     <FormGroup className="col-sm-6">
-    <Label for="exampleEmail">User Name</Label>
-    <Input type="text" 
+    
+    <TextField label="User Name" 
           value={newUser.username} 
           
           onChange={e=>setUser({ ...newUser ,username:e.target.value})}
@@ -120,8 +120,8 @@ const AddUser  = () =>{
   </FormGroup>
 
       <FormGroup className="col-sm-6">
-        <Label for="examplePassword">Qualification</Label>
-        <Input type="text" 
+        
+        <TextField label="Qualification" 
                value={newUser.qualification}
                
              onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
@@ -131,10 +131,10 @@ const AddUser  = () =>{
 
       <div className="row">
       <FormGroup className="col-sm-6">
-      <Label for="examplePassword">Gender</Label>
+      
       <Input type="select" name="group"  value={newUser.gender} 
       onChange={e=>setUser({ ...newUser ,gender:e.target.value})}> 
-               <option>select</option>
+               <option>Gender</option>
               <option value="MALE">MALE</option>
               <option value="FEMALE">FEMALE</option>
               </Input>
@@ -143,8 +143,8 @@ const AddUser  = () =>{
 
 
       <FormGroup className="col-sm-6">
-      <Label for="exampleEmail">Practicing Number</Label>
-      <Input type="text" 
+      
+      <TextField label="Practicing Number" 
              value={newUser.practicingNumber}
              onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
              placeholder="practicing number" />
@@ -154,14 +154,14 @@ const AddUser  = () =>{
 
     <div className="row">
     <FormGroup className="col-sm-6">
-    <Label for="exampleEmail">Email</Label>
-    <Input type="email" name="email" value={newUser.email} onChange={e=>setUser({ ...newUser ,email:e.target.value})} id="exampleEmail" placeholder="Email" />
+    
+    <TextField label="Email" type="email" name="email" value={newUser.email} onChange={e=>setUser({ ...newUser ,email:e.target.value})} id="exampleEmail" placeholder="Email" />
   </FormGroup>
 
 
   <FormGroup className="col-sm-6">
-  <Label for="exampleEmail">Phone Number</Label>
-  <Input type="number" 
+  
+  <TextField label="Phone Number" 
          value={newUser.phoneNumber} 
          onChange={e=>setUser({ ...newUser ,phoneNumber:e.target.value})}
          placeholder="phone number" />
@@ -171,8 +171,7 @@ const AddUser  = () =>{
 
 <div className="row">
 <FormGroup className="col-sm-6">
-<Label for="exampleEmail">Address of Practise</Label>
-<Input type="text" 
+<TextField label="Address of Practise"
       value={newUser.addressOfPractice} 
       onChange={e=>setUser({ ...newUser ,addressOfPractice:e.target.value})}
 placeholder="Enter Practising Address" />
@@ -182,10 +181,9 @@ placeholder="Enter Practising Address" />
 
 
 <FormGroup className="col-sm-6">
-<Label for="exampleEmail">Province</Label>
 <Input type="select" name="group"  value={newUser.province} 
       onChange={e=>setUser({ ...newUser ,province:e.target.value})}> 
-              <option>Select</option>
+              <option>Province</option>
               <option value="BULAWAYO">BULAWAYO</option>
               <option value="HARARE">HARARE</option>
               <option value="MANICALAND">MANICALAND</option>
@@ -194,7 +192,7 @@ placeholder="Enter Practising Address" />
               <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
               <option value="MASVINGO">MASVINGO</option>
               <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
-              <option value="MATABEKELAND_SOUTH">MATABEKELAND_SOUTH</option>
+              <option value="MATABELELAND_SOUTH">MATABEKELAND_SOUTH</option>
               <option value="MIDLANDS">MIDLANDS</option>
               
               </Input>
@@ -204,8 +202,7 @@ placeholder="Enter Practising Address" />
 
 <div className="row">
 <FormGroup className="col-sm-6">
-<Label for="exampleEmail">CITY</Label>
-<Input type="text" 
+<TextField label="CITY" 
       value={newUser.city} 
       onChange={e=>setUser({ ...newUser ,city:e.target.value})}
 placeholder="city" />
@@ -214,8 +211,7 @@ placeholder="city" />
 
 
 <FormGroup className="col-sm-6">
-<Label for="exampleEmail">Street Address</Label>
-<Input type="text" 
+<TextField label="Street Address" 
       value={newUser.streetAddress} 
       onChange={e=>setUser({ ...newUser , streetAddress:e.target.value})}
 placeholder="city" />
@@ -233,7 +229,7 @@ placeholder="city" />
     </Form>
     
     
-  
+  </Col>
   
   </div>
   );

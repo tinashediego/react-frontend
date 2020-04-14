@@ -3,6 +3,7 @@ import {Col, Form, FormGroup, Label, Input,Button} from 'reactstrap';
 import Background from '../../../assets/1.jpg'
 import { useDispatch,} from 'react-redux';
 import {loginUser} from '../../../redux/actions/authActions'
+import Logo from '../../../assets/logo.png';
 
 const Login  = () =>{
 
@@ -31,8 +32,8 @@ const Login  = () =>{
     <div style={styles.img}/> 
   
     <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
-    <h1 style={{textAlign:"center"}}>Login</h1>
-    <Form  style={{width:'100%',paddingBottom:60}} onSubmit={handleSubmit}>
+    <div style={{textAlign:"center"}}><img src={Logo} style={{width:120}}></img></div>
+    <Form  style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
       <FormGroup>
         <Label for="username">User name</Label>
         <Input type="text" 

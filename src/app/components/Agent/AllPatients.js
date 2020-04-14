@@ -109,8 +109,6 @@ let a  =  content.map((x,i)=>(
     
     
     
-  
-
     
     </div>
   );

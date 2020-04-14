@@ -38,15 +38,6 @@ function createData(id, date, name, shipTo, paymentMethod, action) {
   }, []);
 
 
-  const rows = [
-    createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719'),
-    createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574'),
-    createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253'),
-    createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000'),
-    createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919'),
-    createData(content)
-  ];
-
   let a  =  content.map((x,i)=>(
 
     <TableRow key={i}>
@@ -75,32 +66,13 @@ function createData(id, date, name, shipTo, paymentMethod, action) {
 
     <h5 className="container" style={styles.container}>All Users</h5>
     <button>Add User</button>
-      <Table size="small" className="table table-striped" >
+      
   
-  <TableHead>
-    <TableRow>
-      <TableCell>Date</TableCell>
-      <TableCell>Name</TableCell>
-      <TableCell>Ship To</TableCell>
-      <TableCell>Payment Method</TableCell>
-      <TableCell align="right">Action</TableCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    {rows.map((row) => (
-      <TableRow key={row.id}>
-        <TableCell>{row.date}</TableCell>
-        <TableCell>{row.name}</TableCell>
-        <TableCell>{row.shipTo}</TableCell>
-        <TableCell>{row.paymentMethod}</TableCell>
-        <TableCell align="right"><a href="#" style={{color:"green"}} ><BorderColorIcon/></a>&nbsp;<a style={{color:"red"}} href="#"><DeleteIcon /></a></TableCell>
-      </TableRow>
-    ))}
-
+  
+    
 
     {a}
-  </TableBody>
-</Table>
+ 
     </div>
   );
 }

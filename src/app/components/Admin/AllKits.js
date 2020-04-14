@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import DeleteIcon from '@material-ui/icons/Delete';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import TextField from '@material-ui/core/TextField';
 
 
 
@@ -155,31 +156,25 @@ open={open}
 onClose={handleClose}
 aria-labelledby="alert-dialog-title"
 aria-describedby="alert-dialog-description"
+
 >
-<DialogTitle id="alert-dialog-title">Screeing  Details</DialogTitle>
+<DialogTitle id="alert-dialog-title" style={styles.dialog}>New Kit</DialogTitle>
 <DialogContent>
   <DialogContentText id="alert-dialog-description">
-  <Form className="col-sm-12" style={styles.container} onSubmit={handleSubmit}>
+  <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"800px"}}>
 
-  <FormGroup  >
-    <Label for="exampleEmail">Brand Name</Label>
-    <Input type="text" value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} id="exampleEmail" placeholder="Brand Name" />
+  <FormGroup className="col-sm-12" >
+    
+    <TextField className="col-sm-12" label="Brand Name"  value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} id="exampleEmail" placeholder="Brand Name" />
   </FormGroup>
 
-  <FormGroup>
-  <Label for="exampleEmail">Batch Number</Label>
-  <Input type="number" value={state.batchNumber}  onChange={e=> setstate({ ...state, batchNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
+  <FormGroup className="col-sm-12">
+  <TextField className="col-sm-12" label="Batch Number" type="number" value={state.batchNumber}  onChange={e=> setstate({ ...state, batchNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
 </FormGroup>
 
-<FormGroup>
-  <Label for="exampleEmail">Serial Number</Label>
-  <Input type="number" value={state.serialNumber}  onChange={e=> setstate({ ...state, serialNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
+<FormGroup className="col-sm-12">
+  <TextField className="col-sm-12" label="Serial Number" type="number" value={state.serialNumber}  onChange={e=> setstate({ ...state, serialNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
 </FormGroup>
-
-
-
-<Button color="success" type="submit" className="btn btn-block" style={{marginTop:30}} >Add Kit</Button>
-
 
 </Form>
   </DialogContentText>
@@ -205,6 +200,10 @@ const styles={
   container:{
     borderLeft:"10px solid #4c8c40"
   },
+  dialog:{
+    borderLeft:"10px solid #4c8c40",
+    marginLeft:"10px"
+  }
 }
 
 

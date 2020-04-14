@@ -28,7 +28,7 @@ import AgentDashboard from '../../Agent/AgentDashboard'
 import TestPatient from '../../Agent/TestPatient';
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
-
+import Logo from '../../../../assets/logo.png';
 
 
 function Copyright() {
@@ -195,7 +195,7 @@ export default function Agent() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-            cassava
+          <img src={Logo} style={{width:80}}></img>
           </Typography>
           <IconButton color="inherit">
             

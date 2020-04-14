@@ -26,6 +26,7 @@ import AddUser from '../../Admin/AddUser';
 import AllUsers from '../../Admin/AllUsers';
 import AdminDashboard from  '../../Admin/AdminDashboard'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Logo from '../../../../assets/logo.png';
 
 
 function Copyright() {
@@ -179,7 +180,7 @@ export default function Admin() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-            cassava
+            <img src={Logo} style={{width:80}}></img>
           </Typography>
           <IconButton color="inherit">
             

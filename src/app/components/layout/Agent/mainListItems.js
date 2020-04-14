@@ -12,7 +12,7 @@ export const mainListItems = (
     <ListItem button>
 
 
-      <ListItemIcon>
+      <ListItemIcon style={{color:'white'}}>
         <DashboardIcon  />
       </ListItemIcon>
       <Link to="/agent" style={{color:'white'}}>
@@ -21,7 +21,7 @@ export const mainListItems = (
       </Link>    
     </ListItem>
     <ListItem button> 
-      <ListItemIcon>
+      <ListItemIcon style={{color:'white'}}>
         <PeopleIcon />
       </ListItemIcon>
       <Link to='/allpatients' style={{color:'white'}}>
@@ -30,7 +30,7 @@ export const mainListItems = (
     </ListItem>  
 
     <ListItem button> 
-    <ListItemIcon>
+    <ListItemIcon style={{color:'white'}}>
       <PeopleIcon />
     </ListItemIcon>
     <Link to='/mytests' style={{color:'white'}}>
@@ -38,7 +38,7 @@ export const mainListItems = (
     </Link>
   </ListItem> 
     <ListItem button>
-      <ListItemIcon>
+      <ListItemIcon style={{color:'white'}}>
         <PeopleIcon />
       </ListItemIcon>
       <Link to='/allkits' style={{color:'white'}}>
