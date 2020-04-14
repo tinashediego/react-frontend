@@ -1,6 +1,7 @@
 import React,{useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import {testPatient ,allPatientTests} from '../../../redux/actions/PatientsActions'
+import {testPatient ,allPatientTests ,onePatientScreen} from '../../../redux/actions/PatientsActions'
+import {allKits} from '../../../redux/actions/KitsActions'
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {useLocation ,useParams} from 'react-router'
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import moment from 'moment'
 
 
 import Button from '@material-ui/core/Button';
@@ -19,6 +21,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import createMixins from '@material-ui/core/styles/createMixins';
 
 const useStyles = makeStyles({
   table: {
@@ -34,10 +37,14 @@ const useStyles = makeStyles({
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const content = useSelector((state) => state.patients.alltests);
+    const content2 = useSelector((state) => state.kits.allkits);  
+    const content3 = useSelector((state) => state.patients.onescreen);
     const username = localStorage.getItem('username')
     const dispatch = useDispatch(allPatientTests(para.id));
+    const dispatch2 = useDispatch(allKits());
+    const dispatch3 = useDispatch(onePatientScreen(para.id));
     const [ScreenData ,setScreen] =  useState({
-        "dateOfTest": new Date().toLocaleString(),
+        "dateOfTest": moment().format('DD/MM/YYYY'),
         "patientScreeningId":para.id,
         "testKitId":1,
         "testResult": "POSITIVE",
@@ -62,44 +69,45 @@ const useStyles = makeStyles({
   const dispatchs = useDispatch();
     useEffect(() => {
       dispatch(allPatientTests(para.id));
+      dispatch2(allKits())
+      dispatch3(onePatientScreen(para.id))
     },[]);
 
+  var a = []
+content3.map(x=>{
+
+
+x.map(y=>{
+
+  return  a.push(y.id)
+
+})
+    
+})
 
 
 
-    console.log(content)
+console.log(a[0])
+
 
 
 const handleCloseSubmit = () => {
 
-  let current_datetime =  new Date()
-  let formatted_date =  current_datetime.getDate()+'/' +(current_datetime.getMonth() + 1) +'/' + current_datetime.getFullYear() 
-
+  
   const  newScreen = {
-    "dateOfTest": formatted_date,
-    "patientScreeningId":para.id,
-    "testKitId":1,
-    "testResult": "POSITIVE",
+    "dateOfTest": moment().format('DD/MM/YYYY'),
+    "timeOfTest":moment().format('HH:mm'),
+    "patientScreening":a[0],
+    "testKitId":ScreenData.testKitId,
+    "testResult": ScreenData.testResult,
     "testingAgentUsername": username,
 
         }
     dispatchs(testPatient(newScreen))
+    console.log(newScreen)
     setOpen(false);
 
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -123,11 +131,10 @@ const handleCloseSubmit = () => {
             <TableRow>
               <TableCell>No#</TableCell>
               <TableCell align="right">Date</TableCell>
-              <TableCell align="right">TEst  Kit</TableCell>
+              <TableCell align="right">Kit Used</TableCell>
               <TableCell align="right">Test Agent</TableCell>
               <TableCell align="right">Result</TableCell>
-              <TableCell align="right">Action</TableCell>
-        
+              
             </TableRow>
           </TableHead>
           <TableBody>
@@ -161,20 +168,27 @@ const handleCloseSubmit = () => {
         <DialogContentText id="alert-dialog-description">
 <form>
         <Row form>
+
+        <Col md={12} >
+        <FormGroup>
+          <Label for="exampleCity">Testing Kit:</Label>
+             <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
+            
+             {content2.map((team) => <option key={team.value} value={team.id}>{team.brandName}</option>)}
+                 </Input>
+                 </FormGroup>
+               </Col>
+
           <Col md={12}>
-            <FormGroup>
+
+          <FormGroup>
               <Label for="exampleCity">Testing Kit:</Label>
-                 <Input type="select" name="travelled" value={ScreenData.coughPresent}  onChange={e=>setScreen({ ...ScreenData ,coughPresent:e.target.value})} > 
+                 <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
           <option>Select</option>
-          <option value="true">Yes</option>
-          <option value="false">No</option>
+          <option value="POSITIVE">POSITIVE</option>
+          <option value="NEGATIVE">NEGATIVE</option>
           </Input>
             </FormGroup>
-          </Col>
-
-          <Col md={12}>
-
-          iubuib
           
           </Col>
       

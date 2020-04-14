@@ -28,13 +28,5 @@ export const mainListItems = (
 <ListItemText primary="Users" />
 </Link>
 </ListItem>  
-<ListItem button>
-<ListItemIcon style={{color:'white'}}>
-  <PeopleIcon />
-</ListItemIcon>
-<Link to='/allkits' style={{color:'white'}}>
-<ListItemText primary="Kits" />
-</Link>
-</ListItem>
   </div>
 );

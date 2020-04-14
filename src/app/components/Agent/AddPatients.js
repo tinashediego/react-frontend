@@ -8,6 +8,7 @@ import { useDispatch,} from 'react-redux';
 import {addPatient} from '../../../redux/actions/PatientsActions'
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
+import moment from 'moment'
 
 
 const AddPatient  = () =>{
@@ -19,7 +20,7 @@ const AddPatient  = () =>{
     "firstName": "",
     "group": "PATIENT",
     "lastName": "",
-    dateOfBirth:new Date(),
+    dateOfBirth:'',
     "nationalIdOrPassportNumber": "",
     "phoneNumber":"",
     "gender":"",
@@ -27,10 +28,6 @@ const AddPatient  = () =>{
     "province":""
     
   })
-
-  let current_datetime =  new Date(patientData.dateOfBirth)
-let formatted_date =  current_datetime.getDate()+'/' +(current_datetime.getMonth() + 1) +'/' + current_datetime.getFullYear() 
-
 
 
   
@@ -44,7 +41,7 @@ let formatted_date =  current_datetime.getDate()+'/' +(current_datetime.getMonth
     "email": patientData.email,
     "nationalIdNumber":patientData.nationalIdOrPassportNumber,
     "passportNumber": patientData.nationalIdOrPassportNumber,
-    "dateOfBirth":formatted_date,
+    "dateOfBirth":moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
     "address": {
     "streetAddress": patientData.address,
     "city":patientData.city,

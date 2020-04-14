@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 
 const  privateRoute = ({ component: Component, roles ,auth, ...rest }) => (
+
     <Route {...rest} render={props => {
         const currentUser = localStorage.getItem('access_token');
         if (!currentUser) {

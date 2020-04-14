@@ -26,7 +26,10 @@ import AddUser from '../../Admin/AddUser';
 import AllUsers from '../../Admin/AllUsers';
 import AdminDashboard from  '../../Admin/AdminDashboard'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import Logo from '../../../../assets/logo.png';
+import {logoutUser ,} from '../../../../redux/actions/authActions'
+import { useDispatch ,useSelector} from "react-redux"
+
+//import Logo from '../../../../assets/logo.png';
 
 
 function Copyright() {
@@ -122,6 +125,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Admin() {
+
+  
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -161,6 +167,16 @@ export default function Admin() {
 
   }
 
+  let  username = localStorage.getItem('username')
+
+
+  function logout (){
+
+
+    dispatch(logoutUser())
+
+  }
+
   
 
   console.log(location.pathname)
@@ -180,9 +196,10 @@ export default function Admin() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-            <img src={Logo} style={{width:80}}></img>
+           
           </Typography>
-          <IconButton color="inherit">
+          <IconButton color="inherit"  onClick={logout}>'
+          {username}'
             
               <AccountCircleIcon/>
           

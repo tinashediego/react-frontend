@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     "hasDirectContactWithCovid19Patient": true,
     "hasTravelledPast14Days": true,
     "headachePresent": true, 
-    partnerId:para.id
+     partnerId:para.id
 
     })
 
@@ -89,11 +89,21 @@ const username = localStorage.getItem('username')
 
 
   const  newScreen = {
-    "dateOfTest": new Date().toLocaleString(),
-    "patientId":para.id,
-    "testKitId":1,
-    "testResult": "POSITIVE",
-    "testingAgentUsername": username,
+            
+    "bodyAchesPresent":ScreenData.bodyAchesPresent,
+    "coldsPresent": ScreenData.coldsPresent,
+    "coughPresent": ScreenData.coughPresent,
+    "diarrhoeaPresent": ScreenData.diarrhoeaPresent,
+    "difficultiesInBreathingPresent":ScreenData.difficultiesInBreathingPresent,
+    "fatiguePresent": ScreenData.fatiguePresent,
+    "feverPresent": ScreenData.feverPresent,
+    "hasATravelHistoryToACovid19InfectedArea": ScreenData.hasATravelHistoryToACovid19InfectedArea,
+    "hasDirectContactWithCovid19Patient":ScreenData.hasDirectContactWithCovid19Patient,
+    "hasTravelledPast14Days": ScreenData.hasTravelledPast14Days,
+    "headachePresent":ScreenData.headachePresent , 
+     patientId:para.id,
+     "testingAgentUsername":username
+
 
 }
 
@@ -113,22 +123,29 @@ const handleCloseSubmit = () => {
 
 
      
-  let a  = content.map((x,i)=>(
+  let a  = content.map((x)=>(
 
-    <TableRow key={i}>
-    <TableCell>{i+1}</TableCell>
-    <TableCell>{`${`${x.bodyAchesPresent}`}`}</TableCell>
-    <TableCell>{`${x.coldsPresent}`}</TableCell>
-    <TableCell>{`${x.coughPresent}`}</TableCell>
-    <TableCell>{`${x.diarrhoeaPresent}`}</TableCell>
-    <TableCell>{`${x.difficultiesInBreathingPresent}`}</TableCell>
-    <TableCell> {`${x.headachePresent}`}</TableCell>
-    <TableCell>{`${x.fatiguePresent}`}</TableCell>
-    <TableCell> {`${x.feverPresent}`} </TableCell>
-    <TableCell> {`${x.hasATravelHistoryToACovid19InfectedArea}`} </TableCell>
-    <TableCell> {`${x.hasDirectContactWithCovid19Patient}`} </TableCell>
-    <TableCell> {`${x.hasTravelledPast14Days}`}</TableCell>
-    </TableRow>
+            x.map((y ,i)=>(
+
+              <TableRow key={i}>
+              <TableCell>{i+1}</TableCell>
+              <TableCell>{`${`${y.bodyAchesPresent}`}`}</TableCell>
+              <TableCell>{`${y.coldsPresent}`}</TableCell>
+              <TableCell>{`${y.coughPresent}`}</TableCell>
+              <TableCell>{`${y.diarrhoeaPresent}`}</TableCell>
+              <TableCell>{`${y.difficultiesInBreathingPresent}`}</TableCell>
+              <TableCell> {`${y.headachePresent}`}</TableCell>
+              <TableCell>{`${y.fatiguePresent}`}</TableCell>
+              <TableCell> {`${y.feverPresent}`} </TableCell>
+              <TableCell> {`${y.hasATravelHistoryToACovid19InfectedArea}`} </TableCell>
+              <TableCell> {`${y.hasDirectContactWithCovid19Patient}`} </TableCell>
+              <TableCell> {`${y.hasTravelledPast14Days}`}</TableCell>
+              </TableRow>
+
+
+            ))
+
+   
   
   
   

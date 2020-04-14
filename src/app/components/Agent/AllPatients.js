@@ -4,6 +4,8 @@ import {Link} from  'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import {allPatient} from '../../../redux/actions/PatientsActions'
 import { useHistory } from "react-router";
+import Pageview from '@material-ui/icons/Pageview'
+import moment from 'moment'
 
 
 import Table from '@material-ui/core/Table';
@@ -30,6 +32,10 @@ const AllPatients  = (props) =>{
   }, []);
 
   let history = useHistory()
+
+  var red = 'P'
+
+  console.log(red)
 
  function handleScreens(id){
 
@@ -69,7 +75,7 @@ let a  =  content.map((x,i)=>(
   <TableCell>{x.gender}</TableCell>
   <TableCell> {x.dateOfBirth} </TableCell>
 
-  <TableCell align="right"><Link to={`/onescreen/${x.patientId}`} style={{color:"green"}} ><BorderColorIcon/></Link>&nbsp;<Link style={{color:"red"}} to={`/test/${x.patientId}`}><DeleteIcon /></Link></TableCell>
+  <TableCell align="right"><Link to={`/onescreen/${x.patientId}`} style={{color:"green"}} ><BorderColorIcon/></Link>&nbsp;<Link style={{color:"red"}} to={`/test/${x.patientId}`}><Pageview/></Link></TableCell>
   </TableRow>
 
 

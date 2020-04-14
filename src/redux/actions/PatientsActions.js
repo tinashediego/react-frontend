@@ -38,7 +38,7 @@ export const testPatient = (patientData) => dispatch =>{
 
     axios.post('http://45.76.141.84:8080/v1/tests' , patientData)
          .then(resp=>{
-
+ 
             dispatch({
                 type:TEST_PATIENT,
                 payload:resp,
@@ -87,7 +87,7 @@ export const updateTest = (patientData) => dispatch =>{
 
     axios.post('http://45.76.141.84:8080/v1/patient-screenings' , patientData)
          .then(resp=>{
-
+              console.log(resp.data)
             dispatch({
                 type:UPDATE_TEST,
                 payload:resp,
@@ -153,7 +153,7 @@ export const onePatient = (id) => dispatch=>{
 
  export const onePatientScreen = (id) => dispatch=>{
 
-    axios.get(`http://45.76.141.84:8080/v1/patient-screenings/${id}`)
+    axios.get(`http://45.76.141.84:8080/v1/patient-screenings/all/${id}`)
          .then(resp=>{
            console.log(resp.data)
            dispatch({

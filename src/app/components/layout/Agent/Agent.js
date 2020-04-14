@@ -28,7 +28,8 @@ import AgentDashboard from '../../Agent/AgentDashboard'
 import TestPatient from '../../Agent/TestPatient';
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
-import Logo from '../../../../assets/logo.png';
+import {logoutUser ,} from '../../../../redux/actions/authActions'
+import { useDispatch ,useSelector} from "react-redux"
 
 
 function Copyright() {
@@ -124,6 +125,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Agent() {
+
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -176,7 +179,18 @@ export default function Agent() {
 
   }
 
+  let  username = localStorage.getItem('username')
+
+
+  function logout (){
+
+
+    dispatch(logoutUser())
+
+  }
+
   
+
 
   console.log(location.pathname)
 
@@ -195,9 +209,11 @@ export default function Agent() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-          <img src={Logo} style={{width:80}}></img>
+          
+         
           </Typography>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={logout}>
+          {username}
             
               <AccountCircleIcon/>
           
