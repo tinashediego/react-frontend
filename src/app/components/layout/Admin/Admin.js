@@ -28,6 +28,7 @@ import AdminDashboard from  '../../Admin/AdminDashboard'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch ,useSelector} from "react-redux"
+import Logo from '../../../../assets/logo.png';
 
 //import Logo from '../../../../assets/logo.png';
 
@@ -196,7 +197,7 @@ export default function Admin() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-           
+          <img src={Logo} style={{width:80}}></img>
           </Typography>
           <IconButton color="inherit"  onClick={logout}>'
           {username}'

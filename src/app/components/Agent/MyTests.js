@@ -31,7 +31,7 @@ const MyTests  = (props) =>{
     <div>
     
     <div >
-    <h1 >My Tests</h1>
+    <h5 className="container" style={styles.container}>Tests</h5>
    <Table striped  responsive>
       <thead>
         <tr>
@@ -69,6 +69,15 @@ const MyTests  = (props) =>{
 }
 
 
+const styles={
+  container:{
+    borderLeft:"10px solid #4c8c40"
+  },
+  dialog:{
+    borderLeft:"10px solid #4c8c40",
+    marginLeft:"10px"
+  }
+}
 
 
 
