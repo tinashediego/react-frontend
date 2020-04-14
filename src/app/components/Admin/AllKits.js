@@ -1,20 +1,13 @@
 import React  ,{useEffect , useState}from 'react';
-import {Link} from  'react-router-dom'
 import {allKits ,addKit} from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import DeleteIcon from '@material-ui/icons/Delete';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
-import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import {FormGroup,Form  }  from 'reactstrap'
 import TextField from '@material-ui/core/TextField';
-
-
-
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -29,10 +22,6 @@ const AllKits  = (props) =>{
 
 
   const [open, setOpen] = useState(false);
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, action) {
-  return { id, date, name, shipTo, paymentMethod, action };
-}
 
 
   const content = useSelector((state) => state.kits.allkits);
@@ -119,37 +108,6 @@ function createData(id, date, name, shipTo, paymentMethod, action) {
     {a}
   </TableBody>
 </Table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <Dialog
 open={open}

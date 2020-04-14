@@ -33,7 +33,7 @@ const Login  = () =>{
   
     <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
     <div style={{textAlign:"center"}}>
-      <img style={{height:"100px"}} src={Logo}></img>
+      <img alt="Logo" style={{height:"100px"}} src={Logo}></img>
     </div>
     <Form  style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
       <FormGroup>

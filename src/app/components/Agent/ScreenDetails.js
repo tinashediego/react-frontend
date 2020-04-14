@@ -123,9 +123,9 @@ const handleCloseSubmit = () => {
 
 
      
-  let a  = content.map((x ,i)=>(
+  let a  = content.map((x)=>(
 
-            x.map((y,i)=>(
+            x.map((y ,i)=>(
 
               <TableRow key={i}>
               <TableCell>{i+1}</TableCell>
