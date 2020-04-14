@@ -1,21 +1,98 @@
-import React  ,{useState}from 'react';
-import {Button ,Table }  from 'reactstrap'
+import React  ,{useState ,useEffect}from 'react';
+import {Button }  from 'reactstrap'
 import {Link} from  'react-router-dom'
 import Chart from 'react-apexcharts'
+import { useDispatch, useSelector } from "react-redux";
+import {
+  genderMale,genderFeMale ,maleNegative ,malePositive ,
+  bulawayoNegative,bulawayoPositive ,harareNegative ,hararePositive, 
+  midlandsNegative,midlandsPositive, manicalandNegative ,manicalandPositive
+  ,mashonalandCentralNegative ,mashonalandCentralPositive,  matabelelandNorthPositive,
+  mashonalandEastNegative ,mashonalandEastPositive,
+  mashonalandWestNegative ,mashonalandWestPositive ,masvingoNegative,masvingoPositive ,matabelelandNorthNegative,matabelelandSouthNegative
+  ,
+
+} from '../../../redux/actions/DashboardActions'
+
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 
 
 
 const AgentDashboard  = (props) =>{ 
+
+  const content = useSelector((state) => state.dashboard.gendermale);
+  const content2 = useSelector((state) => state.dashboard.genderfemale);
+  const content3 = useSelector((state) => state.dashboard.malepositive);
+  const content4 = useSelector((state) => state.dashboard.malenegative);
+  const blues1 = useSelector((state) => state.dashboard.bulawayopositive);
+  const blues2= useSelector((state) => state.dashboard.bulawayonegative);
+  const h1 = useSelector((state) => state.dashboard.h1);
+  const h2= useSelector((state) => state.dashboard.h2);
+  const mid1 = useSelector((state) => state.dashboard.mid1);
+  const mid2= useSelector((state) => state.dashboard.mid2);
+  const mic1 = useSelector((state) => state.dashboard.mic1);
+  const mic2= useSelector((state) => state.dashboard.mic2);
+  const mas1 = useSelector((state) => state.dashboard.mas1);
+  const mas2= useSelector((state) => state.dashboard.mas2); 
+  const matn1 = useSelector((state) => state.dashboard.matn1);
+  const matn2= useSelector((state) => state.dashboard.matn2);
+  
+  //this hook gives us redux store state
+
+  const dispatch = useDispatch(genderMale());
+  const dispatch2 =  useDispatch(genderFeMale())
+  const dispatch3 =  useDispatch(malePositive())
+  const dispatch4 =  useDispatch(maleNegative())
+  const dispatch5 =  useDispatch(bulawayoNegative())
+  const dispatch6 =  useDispatch(bulawayoPositive())
+  const dispatch7 =  useDispatch(harareNegative())
+  const dispatch8 =  useDispatch(hararePositive())
+  const dispatch9 =  useDispatch(midlandsPositive())
+  const dispatch10 =  useDispatch(midlandsNegative())
+  const dispatch11 =  useDispatch(manicalandPositive())
+  const dispatch12 =  useDispatch(manicalandNegative())
+  const dispatch13 =  useDispatch(masvingoPositive())
+  const dispatch14 =  useDispatch(masvingoNegative())
+  const dispatch15 =  useDispatch(matabelelandNorthPositive())
+  const dispatch16 =  useDispatch(matabelelandNorthNegative())
+
+  
+  useEffect(() => {
+    dispatch(genderMale());
+    dispatch2(genderFeMale());
+    dispatch3(malePositive())
+    dispatch4(maleNegative())
+    dispatch5(bulawayoNegative())
+    dispatch6(bulawayoPositive())
+    dispatch7(harareNegative())
+    dispatch8(hararePositive())
+    dispatch9(midlandsPositive())
+    dispatch10(midlandsNegative())
+    dispatch11(manicalandPositive())
+    dispatch12(manicalandNegative())
+    dispatch13(masvingoPositive())
+    dispatch14(masvingoNegative())
+    dispatch15(matabelelandNorthPositive())
+    dispatch16(matabelelandNorthNegative())
+
+
+  }, []);
 
 
   let [colum,setColum] = useState({
           
     series: [{
       name: 'NEGATIVE',
-      data: [44, 55, 41, 67, 22, 43 ,55,67,67,45]
+      data: [44, 55, 41, 67, 22, 43 ,55,67,67,blues1]
     }, {
       name: 'POSITIVE',
-      data: [13, 23, 20, 58, 13, 27 ,46,35,56,55]
+      data: [13, 23, 20, 58, 13, 27 ,46,35,56,blues2]
     }],
     options: {
 
@@ -156,7 +233,56 @@ const AgentDashboard  = (props) =>{
   return (
     <div>
     
-    <div >
+    <div className="container" >
+
+    <h5 className="container">TOTAL TEST</h5>
+    <Table size="small" className="table table-striped" >
+
+<TableHead>
+  <TableRow>
+    <TableCell>MALE</TableCell>
+    <TableCell>FEMALE</TableCell>
+   
+  </TableRow>
+</TableHead>
+<TableBody>
+
+    <TableRow>
+    <TableCell>{content}</TableCell>
+      <TableCell>{content2}</TableCell>
+    </TableRow>
+</TableBody>
+</Table>
+ 
+</div>
+
+
+    
+<div className="container" >
+
+<h5 className="container">TOTA TEST RESULTS</h5>
+<Table size="small" className="table table-striped" >
+
+<TableHead>
+<TableRow>
+<TableCell>GENDER</TableCell>
+<TableCell>POSITIVE</TableCell>
+<TableCell>NEGATIVE</TableCell>
+
+</TableRow>
+</TableHead>
+<TableBody>
+
+<TableRow>
+<TableCell>MALE</TableCell>
+<TableCell>{content3}</TableCell>
+  <TableCell>{content4}</TableCell>
+</TableRow>
+</TableBody>
+</Table>
+
+</div>
+
  
 
     <Chart options={colum.options} series={colum.series} type="bar" height={350} />
@@ -164,8 +290,7 @@ const AgentDashboard  = (props) =>{
     <Chart options={totalPositve.options} series={totalPositve.series} type="donut" height={350} />
   
     
-    
-    </div>
+   
 
 
     
