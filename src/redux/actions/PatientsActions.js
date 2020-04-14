@@ -58,15 +58,17 @@ export const testPatient = (patientData) => dispatch =>{
 }
 
 
-export const updatePatient = (patientData) => dispatch =>{
+export const Record = () => dispatch =>{
+
+  let username = localStorage.getItem('username')
 
 
-    axios.post('/testpatient' , patientData)
+    axios.get(`http://45.76.141.84:8080/v1/patient-screenings/agent/my-records?name=${username}`)
          .then(resp=>{
 
             dispatch({
                 type:UPDATE_SCREEN,
-                payload:resp,
+                payload:resp.data,
                 msg:alert('success')
             })
           

@@ -156,7 +156,7 @@ export default function Agent() {
               return<NewKit/>
      case'/allpatients' :
               return<AllPatients/>
-     case`/patientDetails/${para.id}`:
+     case`/patient`:
      
              return <PatientDetails/>
     case`/onescreen/${para.id}`:

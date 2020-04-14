@@ -58,7 +58,7 @@ const PatientDetails  = (props) =>{
     <Form style={{padding:20, border:"4px solid  rgba(76,140,64,0.6) ",boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
     <Button className='btn-secondary' style={{marginBottom:10}}  onClick={handleClose}>Close</Button>
 
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Patel Personal Details</h1>
+    <h1 style={{textAlign:'center'}}>Patel Personal Details</h1>
     <Row form>
       <Col md={6}>
         <FormGroup>
@@ -126,7 +126,7 @@ const PatientDetails  = (props) =>{
 
 
 
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
+    <h1 style={{ textAlign:'center' ,color:"white"}}>
     Last Screening Details  
      <Button className='btn btn-info' style={{marginLeft:1500,marginBottom:20, marginTop:-20}}> 
      <Link to="/updatePatientDetails" style={{color:'white'}}>

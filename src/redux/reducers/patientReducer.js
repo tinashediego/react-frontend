@@ -5,7 +5,7 @@ const initialState = {
   testpatient: {},
   newpatient:{},
   updatetest:{},
-  updatescreen:{},
+  updatescreen:[],
   onepatient:{},
   onescreen:[],
   allpatients:[],
