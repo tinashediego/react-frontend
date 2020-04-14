@@ -89,9 +89,9 @@ let a  =  content.map((x,i)=>(
   return (
     <div>
   
-    <h1>All Patients </h1>
+  <h5 className="container" style={styles.container}>All Patients</h5>
   
-    <button><Link to="/addpatient" >New Patient</Link></button>
+<button className='btn btn-success'><Link to="/addpatient" style={{color:"white"}}>New Patient</Link></button>
     <Table size="small" className="table table-striped" >
 
         <TableHead>
@@ -121,7 +121,15 @@ let a  =  content.map((x,i)=>(
 }
 
 
-
+const styles={
+  container:{
+    borderLeft:"10px solid #4c8c40"
+  },
+  dialog:{
+    borderLeft:"10px solid #4c8c40",
+    marginLeft:"10px"
+  }
+}
 
 
 

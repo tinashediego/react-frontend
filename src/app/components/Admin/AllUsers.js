@@ -65,13 +65,31 @@ function createData(id, date, name, shipTo, paymentMethod, action) {
    
 
     <h5 className="container" style={styles.container}>All Users</h5>
-    <button>Add User</button>
-      
+    <button className="btn btn-success" ><Link to="adduser" style={{color:'white'}}>Add User</Link></button>
+    <Table size="small" className="table table-striped table-bordered" >
   
-  
-    
+  <TableHead>
+    <TableRow>
+      <TableCell>#</TableCell>
+      <TableCell>Username</TableCell>
+      <TableCell>First Name</TableCell>
+      <TableCell>Last Name</TableCell>
+      <TableCell>Qualification</TableCell>
+      <TableCell>Email</TableCell>
+      <TableCell>Phone Number</TableCell>
+      <TableCell>Address of Practicing</TableCell>
+      <TableCell>Practicing Number</TableCell>
+      <TableCell>Actions</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+ 
+
 
     {a}
+  </TableBody>
+</Table>
+      
  
     </div>
   );

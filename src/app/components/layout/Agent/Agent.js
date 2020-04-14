@@ -30,7 +30,7 @@ import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch ,useSelector} from "react-redux"
-
+import Logo from '../../../../assets/logo.png';
 
 function Copyright() {
   return (
@@ -209,7 +209,7 @@ export default function Agent() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-          
+          <img src={Logo} style={{width:80}}></img>
          
           </Typography>
           <IconButton color="inherit" onClick={logout}>
