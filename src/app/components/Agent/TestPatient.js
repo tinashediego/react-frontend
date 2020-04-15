@@ -87,14 +87,6 @@ x.map(y=>{
 
 
 
-<<<<<<< HEAD
-console.log(a)
-console.log(content)
-=======
-console.log(a[0])
->>>>>>> bc10e84612732830d27127797a964a6170add98f
-
-
 
 console.log(content)
 const handleCloseSubmit = () => {
