@@ -78,7 +78,7 @@ content3.map(x=>{
 
 
 x.map(y=>{
-
+  console.log(x)
   return  a.push(y.id)
 
 })
@@ -91,13 +91,14 @@ console.log(a[0])
 
 
 
+console.log(content)
 const handleCloseSubmit = () => {
 
   
   const  newScreen = {
     "dateOfTest": moment().format('DD/MM/YYYY'),
     "timeOfTest":moment().format('HH:mm'),
-    "patientScreening":a[0],
+    "patientScreeningId":a[0],
     "testKitId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
     "testingAgentUsername": username,
@@ -182,7 +183,7 @@ const handleCloseSubmit = () => {
           <Col md={12}>
 
           <FormGroup>
-              <Label for="exampleCity">Testing Kit:</Label>
+              <Label for="exampleCity">Test Kit Result:</Label>
                  <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
           <option>Select</option>
           <option value="POSITIVE">POSITIVE</option>
