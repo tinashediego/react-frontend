@@ -1,7 +1,6 @@
 import React,{useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import {testPatient ,allPatientTests ,onePatientScreen ,
-Record}  from '../../../redux/actions/PatientsActions'
+import {testPatient ,allPatientTests ,onePatientScreen} from '../../../redux/actions/PatientsActions'
 import {allKits} from '../../../redux/actions/KitsActions'
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -40,16 +39,14 @@ const useStyles = makeStyles({
     const content = useSelector((state) => state.patients.alltests);
     const content2 = useSelector((state) => state.kits.allkits);  
     const content3 = useSelector((state) => state.patients.onescreen);
-    const content4 = useSelector((state) => state.patients.updatescreen);
     const username = localStorage.getItem('username')
     const dispatch = useDispatch(allPatientTests(para.id));
     const dispatch2 = useDispatch(allKits());
-    const dispatch4 = useDispatch(Record());
     const dispatch3 = useDispatch(onePatientScreen(para.id));
     const [ScreenData ,setScreen] =  useState({
         "dateOfTest": moment().format('DD/MM/YYYY'),
         "patientScreeningId":para.id,
-        "testKitId":'',
+        "testKitId":1,
         "testResult": "POSITIVE",
         "testingAgentUsername": '' 
     })
@@ -74,7 +71,6 @@ const useStyles = makeStyles({
       dispatch(allPatientTests(para.id));
       dispatch2(allKits())
       dispatch3(onePatientScreen(para.id))
-      dispatch4(Record())
     },[]);
 
   var a = []
@@ -82,7 +78,7 @@ content3.map(x=>{
 
 
 x.map(y=>{
-
+  console.log(x)
   return  a.push(y.id)
 
 })
@@ -91,11 +87,16 @@ x.map(y=>{
 
 
 
+<<<<<<< HEAD
 console.log(a)
 console.log(content)
+=======
+console.log(a[0])
+>>>>>>> bc10e84612732830d27127797a964a6170add98f
 
 
 
+console.log(content)
 const handleCloseSubmit = () => {
 
   
@@ -193,7 +194,7 @@ const handleCloseSubmit = () => {
         <Col md={12} >
         <FormGroup>
           <Label for="exampleCity">Testing Kit:</Label>
-             <Input type="select" name="travelled" value={ScreenData.testKitId}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
+             <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
             
              {content2.map((team) => <option key={team.value} value={team.id}>{team.brandName}</option>)}
                  </Input>
@@ -203,7 +204,7 @@ const handleCloseSubmit = () => {
           <Col md={12}>
 
           <FormGroup>
-              <Label for="exampleCity">Testing Kit:</Label>
+              <Label for="exampleCity">Test Kit Result:</Label>
                  <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
           <option>Select</option>
           <option value="POSITIVE">POSITIVE</option>

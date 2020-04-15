@@ -123,9 +123,9 @@ const handleCloseSubmit = () => {
 
 
      
-  let a  = content.map((x ,i)=>(
+  let a  = content.map((x)=>(
 
-            x.map((y,i)=>(
+            x.map((y ,i)=>(
 
               <TableRow key={i}>
               <TableCell>{i+1}</TableCell>
@@ -171,7 +171,7 @@ const handleCloseSubmit = () => {
 
   
     return (<div>
-        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patel Last Screens</h5>
+        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patient's Last Screens</h5>
 
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         New Screen

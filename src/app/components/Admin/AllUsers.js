@@ -1,23 +1,19 @@
 import React  ,{useEffect}from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import {Button }  from 'reactstrap'
 import {Link} from  'react-router-dom'
 import {allUsers} from '../../../redux/actions/authActions'
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import DeleteIcon from '@material-ui/icons/Delete';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 
 const AllUsers  = (props) =>{ 
 
   // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, action) {
-  return { id, date, name, shipTo, paymentMethod, action };
+function createData(id, date, name, shipTo, paymentMethod) {
+  return { id, date, name, shipTo, paymentMethod};
 }
 
 
@@ -52,7 +48,7 @@ function createData(id, date, name, shipTo, paymentMethod, action) {
 
     <TableCell> {x.practicingNumber}</TableCell>
 
-    <TableCell align="right"><a href="#" style={{color:"green"}} ><BorderColorIcon/></a>&nbsp;<a style={{color:"red"}} href="#"><DeleteIcon /></a></TableCell>
+    
     </TableRow>
 
 
@@ -79,7 +75,7 @@ function createData(id, date, name, shipTo, paymentMethod, action) {
       <TableCell>Phone Number</TableCell>
       <TableCell>Address of Practicing</TableCell>
       <TableCell>Practicing Number</TableCell>
-      <TableCell>Actions</TableCell>
+  
     </TableRow>
   </TableHead>
   <TableBody>
