@@ -92,7 +92,7 @@ x.map(y=>{
 
 
 console.log(a)
-console.log(content4)
+console.log(content)
 
 
 
@@ -116,6 +116,27 @@ const handleCloseSubmit = () => {
 
 
 
+   
+  let ap  = content.map((x ,i)=>(
+
+  
+
+      <TableRow key={i}>
+      <TableCell>{i +1}</TableCell>
+      <TableCell>{x.dateOfTest}</TableCell>
+      <TableCell>{x.timeOfTest}</TableCell>
+      <TableCell>{x.testingAgentFullName}</TableCell>
+      <TableCell>{x.testKitBatchNumber}</TableCell>
+      <TableCell>{x.testKitBrandName}</TableCell>
+      <TableCell>{x.result}</TableCell>
+  
+    
+      </TableRow>
+    
+
+    ))
+
+
 
 
 
@@ -130,33 +151,28 @@ const handleCloseSubmit = () => {
         New Test
       </Button>
     
-        <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
+
+        <Table  aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>No#</TableCell>
-              <TableCell align="right">Date</TableCell>
-              <TableCell align="right">Kit Used</TableCell>
-              <TableCell align="right">Test Agent</TableCell>
-              <TableCell align="right">Result</TableCell>
+              <TableCell >Date</TableCell>
+              <TableCell >Time</TableCell>
+              <TableCell>Agent</TableCell>
+              <TableCell >Kit USed</TableCell>
+              <TableCell >Brand Name</TableCell>
+              <TableCell >Result</TableCell>
               
             </TableRow>
           </TableHead>
           <TableBody>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                1
-                </TableCell>
-                <TableCell align="right">01/01/01</TableCell>
-                <TableCell align="right">Red Cross 123</TableCell>
-                <TableCell align="right">Doc Tawa</TableCell>
-                <TableCell align="right">Positive</TableCell>
-              
-              </TableRow>
+             
+
+              {ap}
         
           </TableBody>
         </Table>
-      </TableContainer> 
+    
 
 
 

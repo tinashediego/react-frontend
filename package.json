@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homage":"http://brandconsult.co.zw/covisys/" ,
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
