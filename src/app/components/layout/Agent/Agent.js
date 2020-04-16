@@ -149,7 +149,7 @@ export default function Agent() {
     switch (location.pathname) {
       case '/agent':
 
-       return<AgentDashboard/>
+       return<MyTests/>
       case '/allkits':
           return <AllKits/>
      case '/newkit':
