@@ -276,102 +276,7 @@ const handleCloseSubmit = () => {
   
     return (<div>
         <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patient's Last Screens</h5>
-
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        New Screen
-      </Button>
-    
-   
-        <Table aria-label="simple table">
-        
-          <TableBody>
-        
-
-              {a}
-        
-          </TableBody>
-        </Table>
-  
-
-
-        <Table className='table table-striped table-bordered' aria-label="custom pagination table">
-      
-        <TableHead>
-            <TableRow>
-              <TableCell>No#</TableCell>
-              <TableCell align="left">BodyAches</TableCell>
-              <TableCell align="left">Cold</TableCell>
-              <TableCell align="left">Cough</TableCell>
-              <TableCell align="left">Diarrhoea</TableCell>
-              <TableCell align="left">Breathing Difficult</TableCell>
-              <TableCell align="left">Fatigue</TableCell>
-              <TableCell align="left">Fever</TableCell>
-              <TableCell align="left">Travelled to invected Areas</TableCell>
-              <TableCell align="left">Contact with Covid patient</TableCell>
-              <TableCell align="left">Travelled in last 14Days</TableCell>
-              <TableCell align="left">Headache</TableCell>
-            </TableRow>
-          </TableHead>
-        <TableBody>
-          {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <TableRow key={row.number}>
-              <TableCell align="left" component="th" scope="row">
-                {row.number}
-              </TableCell>
-              <TableCell align="left">{row.bodyAchesPresent}</TableCell>
-              <TableCell align="left">{row.coldsPresent}</TableCell>
-              <TableCell align="left">{row.coughPresent}</TableCell>
-              <TableCell align="left">{row.diarrhoeaPresent}</TableCell>
-              <TableCell align="left">{row.difficultiesInBreathingPresent}</TableCell>
-              <TableCell align="left">{row.fatiguePresent}</TableCell>
-              <TableCell align="left">{row.feverPresent}</TableCell>
-              <TableCell align="left">{row.hasATravelHistoryToACovid19InfectedArea}</TableCell>
-              <TableCell align="left">{row.hasDirectContactWithCovid19Patient}</TableCell>
-              <TableCell align="left">{row.hasTravelledPast14Days}</TableCell>
-              <TableCell align="left">{row.headachePresent}</TableCell>
-              
-            </TableRow>
-          ))}
-
-        
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: { 'aria-label': 'rows per page' },
-                native: true,
-              }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
-        </TableFooter>
-      </Table>
-
-
-
-
-
-      <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
-      <DialogTitle id="alert-dialog-title">Screeing  Details</DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-<form>
+        <form>
         <Row form>
           <Col md={6}>
             <FormGroup>
@@ -513,39 +418,14 @@ const handleCloseSubmit = () => {
           </Col>
       
         </Row>  
-
+<div align="right">
+<Button variant="contained" color="success" type="submit">
+        submit
+      </Button>
+</div>
         </form>
+       
     
-        
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          Cancel
-        </Button>
-        <Button onClick={handleCloseSubmit} color="primary" autoFocus>
-          Submit
-        </Button>
-      </DialogActions>
-    </Dialog>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

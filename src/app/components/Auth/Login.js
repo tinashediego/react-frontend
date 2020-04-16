@@ -4,6 +4,7 @@ import Background from '../../../assets/1.jpg'
 import { useDispatch,} from 'react-redux';
 import {loginUser} from '../../../redux/actions/authActions'
 import Logo from '../../../assets/logo.png';
+import {TextField} from '@material-ui/core';
 
 const Login  = () =>{
 
@@ -35,29 +36,33 @@ const Login  = () =>{
     <div style={{textAlign:"center"}}>
       <img alt="Logo" style={{height:"100px"}} src={Logo}></img>
     </div>
-    <Form  style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
+    <Form align="center"  style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
       <FormGroup>
-        <Label for="username">User name</Label>
-        <Input type="text" 
+      
+        <TextField 
+                label = "Username"
                name="username"  
                value={userData.username}  
                id="username" 
                placeholder="Username"
                onChange={e=>setData({ ...userData ,username:e.target.value})}
+               style={{width:400}}
                required/>
       </FormGroup>
       <FormGroup>
-        <Label for="examplePassword">Password</Label>
-        <Input type="password" 
+        
+        <TextField type="password" 
+              label="Password"
                name="password" 
                id="password" 
                value={userData.password} 
                placeholder="password"
                onChange={e=>setData({...userData,password:e.target.value})} 
+               style={{width:400}}
                required/>
       </FormGroup>
       
-      <Button color="success" className="btn btn-block"  type="submit">Submit</Button>
+      <Button color="success"style={{width:400}} type="submit">Submit</Button>
   
   
     </Form>
