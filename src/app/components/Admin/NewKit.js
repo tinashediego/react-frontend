@@ -1,17 +1,14 @@
 import React  ,{useState} from 'react';
  
 import {
-  Row, Col, Form,
-  FormGroup, Label, Input,
-  Button,
+  Form,
+  FormGroup, Label, Input
 } from 'reactstrap';
-
-import {Link} from 'react-router-dom'
 import { useDispatch,} from 'react-redux';
 import {addKit} from '../../../redux/actions/KitsActions'
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
-
+import Button from '@material-ui/core/Button';
 
  function NewKit() {
 
@@ -48,28 +45,35 @@ import { TextField } from '@material-ui/core';
 <div>          
 <div className="h" style={styles.h}><h5>New Kit</h5></div>
 <br></br>
-<Form align="center" className="col-sm-12" style={styles.container} onSubmit={handleSubmit}>
+<Form className="col-sm-12" style={styles.container} onSubmit={handleSubmit}>
 
-  <div className="row">
-  <FormGroup className="col-sm-4" >
   
-  <TextField label="Brand Name" type="text" value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} id="exampleEmail" placeholder="Brand Name" required={true} />
+<div className="row">
+<FormGroup className="col-sm-6" >
+  
+  <TextField label="Brand Name" type="text" value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} id="exampleEmail" placeholder="Brand Name" style={{width:500}} required={true} />
 </FormGroup>
 
-<FormGroup className="col-sm-4">
+<FormGroup className="col-sm-6">
 
-<TextField label="Batch Number" type="number" value={state.batchNumber}  onChange={e=> setstate({ ...state, batchNumber:e.target.value})} id="exampleEmail" placeholder="Batch Number" required={true}/>
+<TextField label="Batch Number" type="number" value={state.batchNumber}  onChange={e=> setstate({ ...state, batchNumber:e.target.value})} id="exampleEmail" placeholder="Batch Number" style={{width:500}} required={true}/>
+</FormGroup>
+</div>
+
+<div className="row">
+<FormGroup className="col-sm-6">
+
+<TextField label="Serial Number" type="number" value={state.serialNumber}  onChange={e=> setstate({ ...state, serialNumber:e.target.value})} id="exampleEmail" placeholder="Serial Number" style={{width:500}} required={true} />
+
 </FormGroup>
 
-<FormGroup className="col-sm-4">
 
-<TextField label="Serial Number" type="number" value={state.serialNumber}  onChange={e=> setstate({ ...state, serialNumber:e.target.value})} id="exampleEmail" placeholder="Serial Number" required={true} />
-</FormGroup>
-  </div>
+<div align="right" style={{marginLeft:15,marginTop:10}}><Button color="success" type="submit" variant="contained" >submit</Button></div>
 
 
+</div>
 
-<Button color="success" type="submit" style={{marginTop:30}} >Add Kit</Button>
+
 
 
 </Form>

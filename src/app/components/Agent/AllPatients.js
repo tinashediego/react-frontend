@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
+import Button from '@material-ui/core/Button';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
@@ -156,7 +156,10 @@ export default function AllPatients() {
               <TableCell align="left">{row.passportNumber}</TableCell>
               <TableCell align="left">{row.gender}</TableCell>
               <TableCell align="left">{row.dateOfBirth}</TableCell>
-              <TableCell align="left"><button className="btn btn-success">Screen</button> <button className="btn btn-danger">Test</button></TableCell>
+              <TableCell align="left">
+              <Button type="submit" variant="contained" color="primary" >screen</Button>&nbsp;
+              <Button type="submit" variant="contained" color="success" >test</Button>
+              </TableCell>
             </TableRow>
           ))}
 

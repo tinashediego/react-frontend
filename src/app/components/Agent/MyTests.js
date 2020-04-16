@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['New Patient','Screen Patient', 'New Kit', 'Test Patient'];
+  return ['New Patient','Screen Patient', 'New Kit'];
 }
 
 function getStepContent(step) {
@@ -38,8 +38,6 @@ function getStepContent(step) {
       return <ScreenDetails/>;
     case 2:
       return <NewKit/>;
-    case 3:
-      return <TestPatient/>;
     default:
       return 'Unknown step';
   }
@@ -102,7 +100,7 @@ export default function HorizontalNonLinearStepper() {
       <Stepper nonLinear activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label}>
-            <StepButton onClick={handleStep(index)} completed={completed[index]}>
+            <StepButton onClick="#" completed={completed[index]}>
               {label}
             </StepButton>
           </Step>
@@ -114,7 +112,7 @@ export default function HorizontalNonLinearStepper() {
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            <Button onClick={handleReset}>Add new Patient</Button>
           </div>
         ) : (
           <div>
@@ -123,14 +121,7 @@ export default function HorizontalNonLinearStepper() {
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                Next
-              </Button>
+              
               {activeStep !== steps.length &&
                 (completed[activeStep] ? (
                   <Typography variant="caption" className={classes.completed}>

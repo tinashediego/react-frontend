@@ -26,24 +26,15 @@ export const mainListItems = (
         <PeopleIcon />
       </ListItemIcon>
       <Link to='/allpatients' style={{color:'white'}}>
-      <ListItemText primary="Patients" />
+      <ListItemText primary="All Patients" />
       </Link>
     </ListItem>  
-
-    <ListItem button> 
-    <ListItemIcon style={{color:'white'}}>
-      <BusinessCenterIcon />
-    </ListItemIcon>
-    <Link to='/mytests' style={{color:'white'}}>
-    <ListItemText primary="Tests" />
-    </Link>
-  </ListItem> 
     <ListItem button>
       <ListItemIcon style={{color:'white'}}>
         <BusinessCenterIcon />
       </ListItemIcon>
       <Link to='/allkits' style={{color:'white'}}>
-      <ListItemText primary="Kits" />
+      <ListItemText primary="All Kits" />
       </Link>
     </ListItem>
   </div>

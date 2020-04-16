@@ -2,12 +2,13 @@ import React , {useState} from 'react';
 import {
    Col, Form,
   FormGroup, Label, Input,
-  Button,
-} from 'reactstrap';
+ 
+} from 'reactstrap'
 import { useDispatch,} from 'react-redux';
 import {addPatient} from '../../../redux/actions/PatientsActions'
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import moment from 'moment'
 
 
@@ -91,7 +92,7 @@ function handleClose(){
 
     <div responsive>
 
-    <Col sm="12" md={{ size: 6, offset: 3 }}>
+    
 
     <h5 style={styles.container}>
     New Patient
@@ -104,13 +105,13 @@ function handleClose(){
         <TextField label="First Name" 
             value={patientData.firstName}
              onChange={e=>setPatient({ ...patientData ,firstName:e.target.value})}
-                 id="exampleEmail" placeholder="First Name" />
+                 id="exampleEmail" placeholder="First Name" style={{width:500}} required />
       </FormGroup>
 
       <FormGroup>
       <TextField label="Last Name"  value={patientData.lastName}
       onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})}
-      id="exampleEmail" placeholder="Last Name" />
+      id="exampleEmail" placeholder="Last Name" style={{width:500}} required />
       
     </FormGroup>
       </div>
@@ -121,14 +122,14 @@ function handleClose(){
     <TextField label="National ID"  
     value={patientData.nationalIdOrPassportNumber}
     onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})}
-    id="exampleEmail" placeholder="National ID" />
+    id="exampleEmail" placeholder="National ID" style={{width:500}} required />
   </FormGroup>
 
       <FormGroup>
         <TextField label="Date Of Birth" type="date" name="password"
         value={patientData.dateOfBirth}
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
-         id="examplePassword" placeholder="Date of Birth" />
+         id="examplePassword" placeholder="Date of Birth" style={{width:500}} required />
       </FormGroup>
     </div>
       
@@ -138,13 +139,13 @@ function handleClose(){
 
 <TextField label="CITY" 
       value={patientData.city} 
-      onChange={e=>setPatient({ ...patientData ,city:e.target.value})}
-placeholder="city" className="col-sm-6"/>
+      onChange={e=>setPatient({ ...patientData ,city:e.target.value})} id="examplePassword"
+placeholder="city" style={{width:500}} required/>
 
 </FormGroup>
  <FormGroup className="col-sm-6">
       <TextField label="Address" value={patientData.address}
-      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} id="exampleEmail" placeholder="Address" />
+      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} id="exampleEmail" placeholder="Address" style={{width:500}} required />
     </FormGroup>
 </div>
 
@@ -155,14 +156,14 @@ placeholder="city" className="col-sm-6"/>
 <FormGroup className="col-sm-6">
     <TextField type="email"  label="Email"
     value={patientData.email}
-      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} id="exampleEmail" placeholder="Email" />
+      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} id="exampleEmail" placeholder="Email" style={{width:500}} />
   </FormGroup>
 
 
   <FormGroup className="col-sm-6">
   
-  <TextField label='Phone Number' value={patientData.phoneNumber}
-  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} id="exampleEmail" placeholder="Phone Number" />
+  <TextField label="Phone Number/ Next of Kin's Phone Number" value={patientData.phoneNumber}
+  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} id="exampleEmail" placeholder="Phone Number/ Next of Kin's Phone Number" style={{width:500}} required  />
 </FormGroup>
 </div>
  
@@ -200,14 +201,16 @@ placeholder="city" className="col-sm-6"/>
 </div>
 
 
-<Button color="success" type="submit"> Add Patient</Button>
-
+<div align="right">
+<Button type="submit" variant="contained" color="success" >
+      submit
+</Button>
+</div>
   
     </Form>
     
     
-    </Col>
-    
+ 
   
   
   </div>
