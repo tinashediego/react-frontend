@@ -88,6 +88,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Switch>
           <PrivateRoute exact path="/dashboard/"   component={Admin} />
+
           <PrivateRoute exact path="/dash"   component={AllKits} />
           <PrivateRoute excat path='/agent' component={Agent} />
           <PrivateRoute exact path="/patient" component={PatientDashboard}/>
