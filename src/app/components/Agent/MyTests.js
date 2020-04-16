@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['New Patient','New Kit', 'Screen Patient', 'Test Patient'];
+  return ['New Patient','Screen Patient', 'New Kit', 'Test Patient'];
 }
 
 function getStepContent(step) {
@@ -35,9 +35,9 @@ function getStepContent(step) {
     case 0:
       return <AddPatients/>;
     case 1:
-      return <NewKit/>;
-    case 2:
       return <ScreenDetails/>;
+    case 2:
+      return <NewKit/>;
     case 3:
       return <TestPatient/>;
     default:
