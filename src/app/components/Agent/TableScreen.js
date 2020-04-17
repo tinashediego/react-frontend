@@ -206,11 +206,12 @@ const handleCloseSubmit = () => {
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+     
     >
-      <DialogTitle id="alert-dialog-title">Screeing  Details</DialogTitle>
+      <DialogTitle id="alert-dialog-title" style={{borderLeft:"10px solid #4c8c40",marginLeft:10}}>Screening  Details</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-<form>
+<form className="col-sm-12" >
         <Row form>
           <Col md={6}>
             <FormGroup>

@@ -18,8 +18,8 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
-import Pageview from '@material-ui/icons/Pageview'
-import BorderColorIcon from '@material-ui/icons/BorderColor';
+import {TextField} from '@material-ui/core'
+
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -148,8 +148,12 @@ export default function Pending() {
    
    <div>
       <h5 style={styles.container}>
-    All Pending   <input  placeholder="search by phoneNumber"  value={SearchData.search} onChange={e=>setSearch({ ...SearchData ,search:e.target.value})}/>
+    All Pending   
      </h5>
+     <div align="right" style={{marginBottom:10}}>
+     <TextField sty placeholder="search by phoneNumber"  value={SearchData.search} onChange={e=>setSearch({ ...SearchData ,search:e.target.value})}/>
+    
+     </div>
       <Table className='table table-striped table-bordered' aria-label="custom pagination table">
       
       <TableHead>
