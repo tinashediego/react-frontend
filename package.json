@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homage":"http://brandconsult.co.zw/covisys/" ,
+  "homage": "http://brandconsult.co.zw/covisys/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
@@ -32,10 +32,12 @@
     "react-sidebar": "^3.0.2",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "serve": "^11.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "starts": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
