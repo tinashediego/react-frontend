@@ -157,7 +157,7 @@ aria-describedby="alert-dialog-description"
 <DialogTitle id="alert-dialog-title" style={styles.dialog}>New Kit</DialogTitle>
 <DialogContent>
   <DialogContentText id="alert-dialog-description">
-  <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"800px"}}>
+  <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"100%"}}>
 
   <FormGroup className="col-sm-12" >
     

@@ -46,7 +46,7 @@ const Login  = () =>{
                id="username" 
                placeholder="Username"
                onChange={e=>setData({ ...userData ,username:e.target.value})}
-               style={{width:400}}
+               style={{width:"50%"}}
                required/>
       </FormGroup>
       <FormGroup>
@@ -58,11 +58,11 @@ const Login  = () =>{
                value={userData.password} 
                placeholder="password"
                onChange={e=>setData({...userData,password:e.target.value})} 
-               style={{width:400}}
+               style={{width:"50%"}}
                required/>
       </FormGroup>
       
-      <Button color="success"style={{width:400}} type="submit">Submit</Button>
+      <Button color="success" style={{width:"50%"}} type="submit">Submit</Button>
   
   
     </Form>
