@@ -100,14 +100,14 @@ const AddPatient  = () =>{
         <TextField label="First Name" 
             value={patientData.firstName}
              onChange={e=>setPatient({ ...patientData ,firstName:e.target.value})}
-                 id="exampleEmail" placeholder="First Name" style={{width:500}} required />
+                 id="exampleEmail" placeholder="First Name" style={{width:"50%"}} required />
       </FormGroup>
 
       <FormGroup>
       <TextField label="Last Name"  
       value={patientData.lastName}
       onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})}
-      id="exampleEmail" placeholder="Last Name" style={{width:500}} required />
+      id="exampleEmail" placeholder="Last Name" style={{width:"50%"}} required />
       
     </FormGroup>
       </div>
@@ -118,14 +118,14 @@ const AddPatient  = () =>{
     <TextField label="National ID"  
     value={patientData.nationalIdOrPassportNumber}
     onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})}
-    id="exampleEmail" placeholder="National ID" style={{width:500}} required />
+    id="exampleEmail" placeholder="National ID" style={{width:"50%"}} required />
   </FormGroup>
 
       <FormGroup>
         <TextField label="Date Of Birth" type="date" name="password"
         value={patientData.dateOfBirth}
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
-         id="examplePassword" placeholder="Date of Birth" style={{width:500}} required />
+         id="examplePassword" placeholder="Date of Birth" style={{width:"50%"}} required />
       </FormGroup>
     </div>
       
@@ -136,12 +136,12 @@ const AddPatient  = () =>{
 <TextField label="CITY" 
       value={patientData.city} 
       onChange={e=>setPatient({ ...patientData ,city:e.target.value})} id="examplePassword"
-placeholder="city" style={{width:500}} required/>
+placeholder="city" style={{width:"50%"}} required/>
 
 </FormGroup>
  <FormGroup className="col-sm-6">
       <TextField label="Address" value={patientData.address}
-      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} id="exampleEmail" placeholder="Address" style={{width:500}} required />
+      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} id="exampleEmail" placeholder="Address" style={{width:"50%"}} required />
     </FormGroup>
 </div>
 
@@ -152,14 +152,14 @@ placeholder="city" style={{width:500}} required/>
 <FormGroup className="col-sm-6">
     <TextField type="email"  label="Email"
     value={patientData.email}
-      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} id="exampleEmail" placeholder="Email" style={{width:500}} />
+      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} id="exampleEmail" placeholder="Email" style={{width:"50%"}} />
   </FormGroup>
 
 
   <FormGroup className="col-sm-6">
   
-  <TextField label="Phone Number/ Next of Kin's Phone Number" value={patientData.phoneNumber}
-  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} id="exampleEmail" placeholder="Phone Number/ Next of Kin's Phone Number" style={{width:500}} required  />
+  <TextField label="Phone Number" value={patientData.phoneNumber}
+  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} id="exampleEmail" placeholder="Phone Number/ Next of Kin's Phone Number" style={{width:"50%"}} required  />
 </FormGroup>
 </div>
  

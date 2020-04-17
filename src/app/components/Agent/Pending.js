@@ -6,7 +6,6 @@ import {allPatient} from '../../../redux/actions/PatientsActions'
 import {Link} from  'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import Modal from '@material-ui/core/Modal';
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button';
 import TableFooter from '@material-ui/core/TableFooter';
@@ -86,6 +85,23 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
+function patientsData(number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action) {
+
+  return {number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action};
+}
+
+const rows = [
+  patientsData(1, 'Munya', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(2, 'Patel', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(3, 'Everjoy',+26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(4, 'Memo', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(5, 'Diego', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(6, 'Tinlee', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(7, 'Tanaka', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(8, 'Tello', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  patientsData(9, 'Mulaz', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
+  
+].sort((a, b) => (a.number < b.number ? -1 : 1));
 
 const useStyles2 = makeStyles({
   table: {
@@ -114,23 +130,13 @@ export default function Pending() {
 
   const classes = useStyles2();
 
-  const [open, setOpen] = React.useState(false);
 
 
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = (x) => {
-    setOpen(true);
-
-    console.log(x)
-  };
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -162,6 +168,7 @@ export default function Pending() {
             <TableCell align="left">NO#</TableCell>
             <TableCell align="left">Fullname</TableCell>
             <TableCell align="left">Phone Number</TableCell>
+            <TableCell align="left">Result</TableCell>
             <TableCell align="left">Action</TableCell>
           </TableRow>
         </TableHead>
@@ -179,9 +186,11 @@ export default function Pending() {
                 {i+1}
               </TableCell>
               <TableCell align="left">{row.fullName}</TableCell>
-              <TableCell align="left">{row.phoneNumber}</TableCell>  
-              <TableCell align="left"> 
-              <Button  variant="contained" color="primary"   onClick={()=>( handleOpen({}))} >update</Button>&nbsp;
+              <TableCell align="left">{row.phoneNumber}</TableCell>
+              <TableCell align="left">{row.result}</TableCell>
+              
+              <TableCell align="left">
+              <Button  variant="contained" color="primary" ><Link to={`/onescreen/${row.patientId}`} style={{color:"white"}} >update</Link></Button>&nbsp;
               
               </TableCell>
             </TableRow>
@@ -208,21 +217,6 @@ export default function Pending() {
           </TableRow>
         </TableFooter>
       </Table>
-
-
-
-      <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
-    >
-      <p>Hello there</p>
-    </Modal>
-
-
-
-      
    </div>
   
   );

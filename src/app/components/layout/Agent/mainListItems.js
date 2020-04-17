@@ -9,7 +9,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import NoteIcon from '@material-ui/icons/Note';
 
 export const mainListItems = (
-  <div style={{backgroundColor:"#4c8c40",height:"90vh"}}>
+  <div style={{backgroundColor:"#4c8c40",height:530}}>
   
     <ListItem button>
 
@@ -30,7 +30,14 @@ export const mainListItems = (
       <ListItemText primary="All Patients" />
       </Link>
     </ListItem>  
-
+    <ListItem button>
+      <ListItemIcon style={{color:'white'}}>
+        <NoteIcon />
+      </ListItemIcon>
+      <Link to='/pending' style={{color:'white'}}>
+      <ListItemText primary="Pending Resullts" />
+      </Link>
+    </ListItem>
 
 
     <ListItem button>
