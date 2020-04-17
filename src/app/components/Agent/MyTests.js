@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import AddPatients from '../Agent/AddPatients';
 import ScreenDetails from '../Agent/ScreenDetails';
 import NewKit from '../Admin/NewKit';
-import TestPatient from '../Agent/TestPatient';
 
 const useStyles = makeStyles((theme) => ({
   root: {

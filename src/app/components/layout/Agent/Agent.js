@@ -25,6 +25,8 @@ import PatientDetails from '../../Agent/PatientDetails';
 import AllPatients from '../../Agent/AllPatients';
 import ScreenDetails from '../../Agent/ScreenDetails';
 import AgentDashboard from '../../Agent/AgentDashboard'
+import TableScreen from '../../Agent/TableScreen'
+import TableTestDetails from '../../Agent/TableTestDetails'
 import TestPatient from '../../Agent/TestPatient';
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
@@ -150,22 +152,15 @@ export default function Agent() {
       case '/agent':
 
        return<MyTests/>
-      case '/allkits':
-          return <AllKits/>
-     case '/newkit':
-              return<NewKit/>
      case'/allpatients' :
               return<AllPatients/>
-     case`/patientDetails/${para.id}`:
-     
-             return <PatientDetails/>
     case`/onescreen/${para.id}`:
 
-     return <ScreenDetails />
+     return <TableScreen />
 
      case`/test/${para.id}`:
 
-     return <TestPatient/>
+     return <TableTestDetails/>
 
      case '/addpatient':
        return <AddPatient />

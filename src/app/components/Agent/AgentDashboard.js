@@ -30,19 +30,6 @@ const AgentDashboard  = (props) =>{
   const content2 = useSelector((state) => state.dashboard.genderfemale);
   const content3 = useSelector((state) => state.dashboard.malepositive);
   const content4 = useSelector((state) => state.dashboard.malenegative);
-  const blues1 = useSelector((state) => state.dashboard.bulawayopositive);
-  const blues2= useSelector((state) => state.dashboard.bulawayonegative);
-  const h1 = useSelector((state) => state.dashboard.h1);
-  const h2= useSelector((state) => state.dashboard.h2);
-  const mid1 = useSelector((state) => state.dashboard.mid1);
-  const mid2= useSelector((state) => state.dashboard.mid2);
-  const mic1 = useSelector((state) => state.dashboard.mic1);
-  const mic2= useSelector((state) => state.dashboard.mic2);
-  const mas1 = useSelector((state) => state.dashboard.mas1);
-  const mas2= useSelector((state) => state.dashboard.mas2); 
-  const matn1 = useSelector((state) => state.dashboard.matn1);
-  const matn2= useSelector((state) => state.dashboard.matn2);
-  
   //this hook gives us redux store state
 
   const dispatch = useDispatch(genderMale());

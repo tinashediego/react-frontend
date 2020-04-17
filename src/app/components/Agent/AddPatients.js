@@ -4,7 +4,7 @@ import {
   FormGroup, Label, Input,
  
 } from 'reactstrap'
-import { useDispatch,} from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import {addPatient} from '../../../redux/actions/PatientsActions'
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
@@ -29,9 +29,6 @@ const AddPatient  = () =>{
     "province":""
     
   })
-
-
-  
 
   var newPatient={
   userCommand: {
@@ -73,20 +70,18 @@ const AddPatient  = () =>{
 
   const dispatch = useDispatch();
   
-  let history = useHistory()
-
+  const content = useSelector((state) => state.patients.newpatient);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (patientData) {
         dispatch(addPatient(newPatient))
+      }
+
     }
-}
 
-function handleClose(){
 
-  history.goBack()
- }
+    localStorage.setItem('partnerId' , content)
 
   return (
 

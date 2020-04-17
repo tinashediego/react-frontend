@@ -13,12 +13,17 @@ export const addPatient = (user) => dispatch => {
       .then(resp=>{
           dispatch({
               type:ADD_PATIENT,
-              payload:resp.data,
+              payload:resp.data.id,
               msg:alert("succcess")
 
           })
 
            
+      }).then(x=>{
+
+        console.log(x)
+
+       // localStorage.setItem('patientId',x.id)
       })
       .catch(err =>{ 
 

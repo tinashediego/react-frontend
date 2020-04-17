@@ -1,13 +1,27 @@
-import React,{useState} from 'react'
-import { useDispatch} from "react-redux";
-import {updateTest} from '../../../redux/actions/PatientsActions'
+import React,{useEffect ,useState} from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import {onePatientScreen ,updateTest} from '../../../redux/actions/PatientsActions'
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 import {useParams} from 'react-router'
-import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import {Col,Label,Input,FormGroup,Row }  from 'reactstrap'
 
 
- function ScreenDetails() {
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
+
+ function TableScreen() {
 
     let  para = useParams()
 
@@ -15,9 +29,15 @@ import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
   
 
    
-   var ids = localStorage.getItem('partnerId')
 
-    const [ScreenData ,setScreen] =  useState({       
+
+
+
+
+    const [open, setOpen] = useState(false);
+    const [ScreenData ,setScreen] =  useState({
+
+        
     "bodyAchesPresent": true,
     "coldsPresent": true,
     "coughPresent": true,
@@ -29,16 +49,34 @@ import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
     "hasDirectContactWithCovid19Patient": true,
     "hasTravelledPast14Days": true,
     "headachePresent": true, 
+     partnerId:para.id
+
     })
 
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
 
+    const content = useSelector((state) => state.patients.onescreen);
+
+
+    const dispatch = useDispatch(onePatientScreen(para.id));
     
   const dispatchs = useDispatch();
-   
+    useEffect(() => {
+      dispatch(onePatientScreen(para.id));
+    },[]);
 
 
 
-  const username = localStorage.getItem('username')
+    console.log(content)
+
+
+const username = localStorage.getItem('username')
 
 
 
@@ -56,18 +94,19 @@ import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
     "hasDirectContactWithCovid19Patient":ScreenData.hasDirectContactWithCovid19Patient,
     "hasTravelledPast14Days": ScreenData.hasTravelledPast14Days,
     "headachePresent":ScreenData.headachePresent , 
-     patientId:ids,
+     patientId:para.id,
      "testingAgentUsername":username
 
 
 }
 
 
-const handleSubmit = (e) => {
 
-  e.preventDefault();
+const handleCloseSubmit = () => {
+
 
     dispatchs(updateTest(newScreen))
+    setOpen(false);
 
 
 
@@ -75,12 +114,103 @@ const handleSubmit = (e) => {
 
 
 
+
+     
+  let a  = content.map((x ,i)=>(
+
+            x.map((y,i)=>(
+
+              <TableRow key={i}>
+              <TableCell>{i+1}</TableCell>
+              <TableCell>{`${`${y.bodyAchesPresent}`}`}</TableCell>
+              <TableCell>{`${y.coldsPresent}`}</TableCell>
+              <TableCell>{`${y.coughPresent}`}</TableCell>
+              <TableCell>{`${y.diarrhoeaPresent}`}</TableCell>
+              <TableCell>{`${y.difficultiesInBreathingPresent}`}</TableCell>
+              <TableCell> {`${y.headachePresent}`}</TableCell>
+              <TableCell>{`${y.fatiguePresent}`}</TableCell>
+              <TableCell> {`${y.feverPresent}`} </TableCell>
+              <TableCell> {`${y.hasATravelHistoryToACovid19InfectedArea}`} </TableCell>
+              <TableCell> {`${y.hasDirectContactWithCovid19Patient}`} </TableCell>
+              <TableCell> {`${y.hasTravelledPast14Days}`}</TableCell>
+              </TableRow>
+
+
+            ))
+
+   
   
-    return (
-      
-      <div>
-        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patient's  Screens</h5>
-        <Form   onSubmit={handleSubmit} >
+  
+  
+  
+  ))
+  
+  
+
+
+   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    return (<div>
+        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patel Last Screens</h5>
+
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        New Screen
+      </Button>
+    
+   
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>No#</TableCell>
+              <TableCell align="right">BodyAches</TableCell>
+              <TableCell align="right">Cold</TableCell>
+              <TableCell align="right">Cough</TableCell>
+              <TableCell align="right">Diarrhoea</TableCell>
+              <TableCell align="right">Breathing Difficult</TableCell>
+              <TableCell align="right">Headache</TableCell>
+              <TableCell align="right">Fatigue</TableCell>
+              <TableCell align="right">Fever</TableCell>
+              <TableCell align="right">Travelled to invected Areas</TableCell>
+              <TableCell align="right">Contact with Covid patient</TableCell>
+              <TableCell align="right">Travelled in last 14Days</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+        
+
+              {a}
+        
+          </TableBody>
+        </Table>
+  
+
+
+
+
+
+      <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">Screeing  Details</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+<form>
         <Row form>
           <Col md={6}>
             <FormGroup>
@@ -222,15 +352,39 @@ const handleSubmit = (e) => {
           </Col>
       
         </Row>  
-                <div align="right">
-                <button variant="contained" color="success" type="Submit">
-                        submit
-                      </button>
-                </div>
-        </Form>
-       
-        
+
+        </form>
     
+        
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={handleCloseSubmit} color="primary" autoFocus>
+          Submit
+        </Button>
+      </DialogActions>
+    </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -239,4 +393,4 @@ const handleSubmit = (e) => {
 }
 
 
-export default ScreenDetails
+export default TableScreen

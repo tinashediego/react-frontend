@@ -1,6 +1,9 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useDispatch, useSelector } from "react-redux";
+import {allPatient} from '../../../redux/actions/PatientsActions'
+import {Link} from  'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,6 +17,8 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
+import Pageview from '@material-ui/icons/Pageview'
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -105,7 +110,29 @@ const useStyles2 = makeStyles({
 });
 
 export default function AllPatients() {
+
+
+
+
+
+
+
+  const content = useSelector((state) => state.patients.allpatients);
+  
+  //this hook gives us redux store state
+
+
+  console.log(content)
+  const dispatch = useDispatch(allPatient());
+  useEffect(() => {
+    dispatch(allPatient());
+  }, []);
+
   const classes = useStyles2();
+
+
+
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -119,6 +146,9 @@ export default function AllPatients() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+
+  let a  =  content
 
   return (
    
@@ -143,22 +173,23 @@ export default function AllPatients() {
         </TableHead>
         <TableBody>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <TableRow key={row.number}>
+            ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : a
+          ).map((row ,i) => (
+            <TableRow key={i}>
               <TableCell align="left" component="th" scope="row">
-                {row.number}
+                {i+1}
               </TableCell>
               <TableCell align="left">{row.fullName}</TableCell>
               <TableCell align="left">{row.phoneNumber}</TableCell>
-              <TableCell align="left">{row.nationalId}</TableCell>
+              <TableCell align="left">{row.passportNumber}</TableCell>
               <TableCell align="left">{row.passportNumber}</TableCell>
               <TableCell align="left">{row.gender}</TableCell>
               <TableCell align="left">{row.dateOfBirth}</TableCell>
               <TableCell align="left">
-              <Button type="submit" variant="contained" color="primary" >screen</Button>&nbsp;
-              <Button type="submit" variant="contained" color="success" >test</Button>
+              <Button  variant="contained" color="primary" ><Link to={`/onescreen/${row.patientId}`} style={{color:"white"}} >Screen</Link></Button>&nbsp;
+              <Button  variant="contained" color="success" ><Link style={{color:"red"}} to={`/test/${row.patientId}`}>Test</Link></Button>
+              
               </TableCell>
             </TableRow>
           ))}
@@ -170,7 +201,7 @@ export default function AllPatients() {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
-              count={rows.length}
+              count={a.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
