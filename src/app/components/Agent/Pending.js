@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React , {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
@@ -149,12 +149,12 @@ export default function Pending() {
 
 
   let a  =  content
-
+  const  [SearchData ,setSearch] = useState({search:''})
   return (
    
    <div>
       <h5 style={styles.container}>
-    All Pending   <input  placeholder="search by phoneNumber"/>
+    All Pending   <input  placeholder="search by phoneNumber"  value={SearchData.search} onChange={e=>setSearch({ ...SearchData ,search:e.target.value})}/>
      </h5>
       <Table className='table table-striped table-bordered' aria-label="custom pagination table">
       
@@ -172,7 +172,11 @@ export default function Pending() {
           {(rowsPerPage > 0
             ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : a
-          ).map((row ,i) => (
+          ).filter(  (x)=>{
+
+            return x.phoneNumber.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1
+      
+          }).map((row ,i) => (
             <TableRow key={i}>
               <TableCell align="left" component="th" scope="row">
                 {i+1}
