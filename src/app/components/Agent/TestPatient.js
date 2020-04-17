@@ -217,24 +217,7 @@ const handleCloseSubmit = () => {
 
 
    
-  let ap  = content.map((x ,i)=>(
-
-  
-
-      <TableRow key={i}>
-      <TableCell>{i +1}</TableCell>
-      <TableCell>{x.dateOfTest}</TableCell>
-      <TableCell>{x.timeOfTest}</TableCell>
-      <TableCell>{x.testingAgentFullName}</TableCell>
-      <TableCell>{x.testKitBatchNumber}</TableCell>
-      <TableCell>{x.testKitBrandName}</TableCell>
-      <TableCell>{x.result}</TableCell>
-  
-    
-      </TableRow>
-    
-
-    ))
+  let rows = content
 
 
 

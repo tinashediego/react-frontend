@@ -92,7 +92,7 @@ x.map(y=>{
 
 
 console.log(a)
-console.log(content4)
+console.log(content)
 
 
 
@@ -114,7 +114,7 @@ const handleCloseSubmit = () => {
 
   };
 
-
+let rows = content
 
 
 
@@ -136,23 +136,30 @@ const handleCloseSubmit = () => {
             <TableRow>
               <TableCell>No#</TableCell>
               <TableCell align="right">Date</TableCell>
+              <TableCell align="right">Agent</TableCell>
               <TableCell align="right">Kit Used</TableCell>
-              <TableCell align="right">Test Agent</TableCell>
+              <TableCell align="right">Kit Used</TableCell>
               <TableCell align="right">Result</TableCell>
               
             </TableRow>
           </TableHead>
           <TableBody>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                1
-                </TableCell>
-                <TableCell align="right">01/01/01</TableCell>
-                <TableCell align="right">Red Cross 123</TableCell>
-                <TableCell align="right">Doc Tawa</TableCell>
-                <TableCell align="right">Positive</TableCell>
-              
-              </TableRow>
+            
+              {rows.map((row , i) => (
+                <TableRow key={row.i}>
+                  <TableCell align="left" component="th" scope="row">
+                    {i +1}
+                  </TableCell>
+               
+                  <TableCell align="right">{row.dateOfTest}</TableCell>
+                  <TableCell align="right">{row.testingAgentFullName}</TableCell>
+                  <TableCell align="right">{row.testKitBatchNumber}</TableCell>
+                  <TableCell align="right">{row.testKitBrandName}</TableCell>
+                  <TableCell align="right">{row.result}</TableCell>
+                  
+                  
+                </TableRow>
+              ))}
         
           </TableBody>
         </Table>

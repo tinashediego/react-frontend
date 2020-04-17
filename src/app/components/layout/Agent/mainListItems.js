@@ -33,9 +33,19 @@ export const mainListItems = (
       <ListItemIcon style={{color:'white'}}>
         <BusinessCenterIcon />
       </ListItemIcon>
-      <Link to='/allkits' style={{color:'white'}}>
-      <ListItemText primary="All Kits" />
+      <Link to='/pending' style={{color:'white'}}>
+      <ListItemText primary="Pending Resullts" />
       </Link>
     </ListItem>
+
+
+    <ListItem button>
+    <ListItemIcon style={{color:'white'}}>
+      <BusinessCenterIcon />
+    </ListItemIcon>
+    <Link to='/allkits' style={{color:'white'}}>
+    <ListItemText primary="Kits" />
+    </Link>
+  </ListItem>
   </div>
 );

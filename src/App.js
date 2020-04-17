@@ -103,6 +103,8 @@ function App() {
           <PrivateRoute exact path="/allkits" component={Agent} />
           <PrivateRoute exact path="/newkit" component={Agent} />
           <PrivateRoute excat path='/patient' component={Agent} />
+          <PrivateRoute excat path='/pending' component={Agent} />
+        
         
         
       

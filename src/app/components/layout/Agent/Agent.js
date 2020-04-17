@@ -27,7 +27,7 @@ import ScreenDetails from '../../Agent/ScreenDetails';
 import AgentDashboard from '../../Agent/AgentDashboard'
 import TableScreen from '../../Agent/TableScreen'
 import TableTestDetails from '../../Agent/TableTestDetails'
-import TestPatient from '../../Agent/TestPatient';
+import Pending from '../../Agent/Pending';
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
@@ -161,12 +161,17 @@ export default function Agent() {
      case`/test/${para.id}`:
 
      return <TableTestDetails/>
+     case '/allkits':
+      return <AllKits/>
 
      case '/addpatient':
        return <AddPatient />
     
      case '/mytests':
       return <MyTests />
+
+      case '/pending':
+      return <Pending />
 
       default:
         break;
