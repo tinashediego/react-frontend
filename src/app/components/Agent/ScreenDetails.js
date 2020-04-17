@@ -3,7 +3,8 @@ import { useDispatch} from "react-redux";
 import {updateTest} from '../../../redux/actions/PatientsActions'
 import {useParams} from 'react-router'
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
-
+import { createMuiTheme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button'
 
  function ScreenDetails() {
 
@@ -223,7 +224,7 @@ const handleSubmit = (e) => {
       
         </Row>  
                 <div align="right">
-                <button variant="contained" color="success" type="Submit">
+                <button className="btn btn-success" variant="contained" type="Submit">
                         submit
                       </button>
                 </div>

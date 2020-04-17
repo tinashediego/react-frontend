@@ -198,9 +198,9 @@ placeholder="city" style={{width:500}} required/>
 
 
 <div align="right">
-<Button type="submit" variant="contained" color="success" >
-      submit
-</Button>
+<button className="btn btn-success" variant="contained" type="Submit">
+                        submit
+                      </button>
 </div>
   
     </Form>

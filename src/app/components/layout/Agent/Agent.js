@@ -30,6 +30,7 @@ import TableTestDetails from '../../Agent/TableTestDetails'
 import TestPatient from '../../Agent/TestPatient';
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
+import Results from "../../Agent/Results";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch ,useSelector} from "react-redux"
 import Logo from '../../../../assets/logo.png';
@@ -167,6 +168,7 @@ export default function Agent() {
     
      case '/mytests':
       return <MyTests />
+
 
       default:
         break;
