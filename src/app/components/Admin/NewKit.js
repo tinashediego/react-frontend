@@ -68,7 +68,9 @@ import Button from '@material-ui/core/Button';
 </FormGroup>
 
 
-<div align="right" style={{marginLeft:15,marginTop:10}}><Button color="success" type="submit" variant="contained" >submit</Button></div>
+<div align="right" style={{marginLeft:15,marginTop:10}}> <button className="btn btn-success" variant="contained" type="Submit">
+                        submit
+                      </button></div>
 
 
 </div>
