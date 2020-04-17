@@ -1,6 +1,6 @@
 
 import axios  from 'axios'
-import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT,MYTESTS, TEST_PATIENT, ALL_TEST, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS} from '../types';
+import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT,MYTESTS, TEST_PATIENT, ALL_TEST, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS, PENDING} from '../types';
 
 
 
@@ -120,7 +120,6 @@ export const allPatient = () => dispatch=>{
 
     axios.get("http://45.76.141.84:8080/v1/patients/all")
          .then(resp=>{
-           console.log(resp.data)
            dispatch({
            type:ALL_PATIENTS,
            payload:resp.data
@@ -222,4 +221,27 @@ export const onePatient = (id) => dispatch=>{
     
       }
     
+
+      
+
+  export const allpendingTests = (id) => dispatch=>{
+
+ 
+
+    axios.get(`http://45.76.141.84:8080/v1/tests/agent/my-tests`)
+         .then(resp=>{
+           dispatch({
+           type:PENDING,
+           payload:resp.data
+         })}).catch(err=>{
+          dispatch({
+            type:GET_ERRORS,
+            payload:err,
+         
+          })
+
+        })
+      }
+
+  
     

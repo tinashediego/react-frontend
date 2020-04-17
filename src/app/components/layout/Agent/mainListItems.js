@@ -29,15 +29,7 @@ export const mainListItems = (
       <ListItemText primary="All Patients" />
       </Link>
     </ListItem>  
-    <ListItem button>
-      <ListItemIcon style={{color:'white'}}>
-        <BusinessCenterIcon />
-      </ListItemIcon>
-      <Link to='/pending' style={{color:'white'}}>
-      <ListItemText primary="Pending Resullts" />
-      </Link>
-    </ListItem>
-
+   
 
     <ListItem button>
     <ListItemIcon style={{color:'white'}}>

@@ -55,7 +55,7 @@ import { ADD_KIT  ,ALL_KITS ,GET_ERRORS, ONE_KIT, UPDATE_KIT} from "../types";
   
   export const allKits = () => dispatch=>{
 
-    axios.get("http://45.76.141.84:8080/v1/test-kits/all")
+    axios.get("http://45.76.141.84:8080/v1/test-kits/all/un-used")
          .then(resp=>{
            console.log(resp)
            dispatch({
