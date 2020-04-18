@@ -235,7 +235,7 @@ export default function Admin() {
               </Paper>
             </Grid>
           </Grid>
-          <Box style={{marginTop:105,marginBottom:-5}}>
+          <Box>
          
           <Copyright />
         

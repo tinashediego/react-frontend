@@ -9,7 +9,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import NoteIcon from '@material-ui/icons/Note';
 
 export const mainListItems = (
-  <div style={{backgroundColor:"#4c8c40",height:'90vh'}}>
+  <div style={{backgroundColor:"#4c8c40",minHeight:'90vh'}}>
   
     <ListItem button>
 

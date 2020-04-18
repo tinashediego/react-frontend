@@ -1,15 +1,15 @@
 import React , {useState} from 'react';
-import {
-   Col, Form,
-  FormGroup, Label, Input,
- 
-} from 'reactstrap'
+import {Input,Form} from 'reactstrap';
 import { useDispatch,useSelector } from 'react-redux';
 import {addPatient} from '../../../redux/actions/PatientsActions'
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import moment from 'moment'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 const AddPatient  = () =>{
@@ -92,81 +92,61 @@ const AddPatient  = () =>{
     <h5 style={styles.container}>
     New Patient
      </h5>
-    <Form className="col-sm-12" onSubmit={handleSubmit}>
-      
-      <div className="row">
-      <FormGroup style={{marginRight:"20px"}} className="col-sm-6">
-        
-        <TextField label="First Name" 
+    
+    <Form onSubmit={handleSubmit}>
+    <React.Fragment>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <TextField label="First Name" 
             value={patientData.firstName}
              onChange={e=>setPatient({ ...patientData ,firstName:e.target.value})}
-                 id="exampleEmail" placeholder="First Name" style={{width:"50%"}} required />
-      </FormGroup>
-
-      <FormGroup>
-      <TextField label="Last Name"  
+             placeholder="First Name"
+             autoComplete="firstName"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField label="Last Name"  
       value={patientData.lastName}
       onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})}
-      id="exampleEmail" placeholder="Last Name" style={{width:"50%"}} required />
-      
-    </FormGroup>
-      </div>
-
-      <div className="row">
-    <FormGroup style={{marginRight:"20px"}} className="col-sm-6">
-    
+      placeholder="Last Name" fullWidth required />
+        </Grid>
+        <Grid item xs={12}>
     <TextField label="National ID"  
     value={patientData.nationalIdOrPassportNumber}
     onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})}
-    id="exampleEmail" placeholder="National ID" style={{width:"50%"}} required />
-  </FormGroup>
-
-      <FormGroup>
+    placeholder="National ID" required
+          />
+        </Grid>
+        <Grid item xs={12}>
         <TextField label="Date Of Birth" type="date" name="password"
         value={patientData.dateOfBirth}
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
-         id="examplePassword" placeholder="Date of Birth" style={{width:"50%"}} required />
-      </FormGroup>
-    </div>
-      
-
-<div className="row">
-<FormGroup className="col-sm-6">
-
-<TextField label="CITY" 
+        placeholder="Date of Birth" required />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+        <TextField label="City" 
       value={patientData.city} 
-      onChange={e=>setPatient({ ...patientData ,city:e.target.value})} id="examplePassword"
-placeholder="city" style={{width:"50%"}} required/>
-
-</FormGroup>
- <FormGroup className="col-sm-6">
-      <TextField label="Address" value={patientData.address}
-      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} id="exampleEmail" placeholder="Address" style={{width:"50%"}} required />
-    </FormGroup>
-</div>
-
-
-     
-
-<div className="row">
-<FormGroup className="col-sm-6">
-    <TextField type="email"  label="Email"
+      onChange={e=>setPatient({ ...patientData ,city:e.target.value})}
+placeholder="City" required/>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+        <TextField label="Address" value={patientData.address}
+      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" required />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+        <TextField type="email"  label="Email"
     value={patientData.email}
-      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} id="exampleEmail" placeholder="Email" style={{width:"50%"}} />
-  </FormGroup>
+      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} placeholder="Email" />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField label="Phone Number" value={patientData.phoneNumber}
+  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="Phone Number/ Next of Kin's Phone Number" required  />
+        </Grid>
 
 
-  <FormGroup className="col-sm-6">
-  
-  <TextField label="Phone Number" value={patientData.phoneNumber}
-  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} id="exampleEmail" placeholder="Phone Number/ Next of Kin's Phone Number" style={{width:"50%"}} required  />
-</FormGroup>
-</div>
- 
-<div className="row">
-<FormGroup className="col-sm-6">
-
-<Input type="select" name="group"  value={patientData.province} 
+        <Grid item xs={12}>
+        <Input type="select" name="group"  value={patientData.province} 
       onChange={e=>setPatient({ ...patientData ,province:e.target.value})}> 
               <option>Province</option>
               <option value="BULAWAYO">BULAWAYO</option>
@@ -181,30 +161,19 @@ placeholder="city" style={{width:"50%"}} required/>
               <option value="MIDLANDS">MIDLANDS</option>
               
               </Input>
-</FormGroup>   
-
-
-<FormGroup className="col-sm-6">
-
-  <Input type="select" name="gender" value={patientData.gender}
+        </Grid>
+        <Grid item xs={12}>
+        <Input type="select" name="gender" value={patientData.gender}
   onChange={e=>setPatient({ ...patientData ,gender:e.target.value})}  id="gender"> 
   <option>Gender</option>
   <option value="MALE">Male</option>
   <option value="FEMALE">Female</option>
   </Input>
-
-</FormGroup> 
-</div>
-
-
-<div align="right">
-<button className="btn btn-success" variant="contained" type="Submit">
-                        submit
-                      </button>
-</div>
+        </Grid>
   
+      </Grid>
+    </React.Fragment>
     </Form>
-    
     
  
   
