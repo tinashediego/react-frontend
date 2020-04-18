@@ -111,43 +111,43 @@ const AddPatient  = () =>{
       onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})}
       placeholder="Last Name" fullWidth required />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
     <TextField label="National ID"  
     value={patientData.nationalIdOrPassportNumber}
     onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})}
     placeholder="National ID" required
-          />
+     fullWidth     />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
         <TextField label="Date Of Birth" type="date" name="password"
         value={patientData.dateOfBirth}
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
-        placeholder="Date of Birth" required />
+        placeholder="Date of Birth" fullWidth required />
         </Grid>
         <Grid item xs={12} sm={6}>
         <TextField label="City" 
       value={patientData.city} 
       onChange={e=>setPatient({ ...patientData ,city:e.target.value})}
-placeholder="City" required/>
+      placeholder="City" fullWidth required/>
         </Grid>
         <Grid item xs={12} sm={6}>
         <TextField label="Address" value={patientData.address}
-      onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" required />
+        onChange={e=>setPatient({ ...patientData ,address:e.target.value})} 
+        placeholder="Address" fullWidth required />
         </Grid>
         <Grid item xs={12} sm={6}>
-        <TextField type="email"  label="Email"
-    value={patientData.email}
-      onChange={e=>setPatient({ ...patientData ,email:e.target.value})} placeholder="Email" />
+        <TextField type="email"  label="Email" value={patientData.email}
+        onChange={e=>setPatient({ ...patientData ,email:e.target.value})}
+        placeholder="Email" fullWidth />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
         <TextField label="Phone Number" value={patientData.phoneNumber}
-  onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="Phone Number/ Next of Kin's Phone Number" required  />
+        onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} 
+        placeholder="Phone Number/ Next of Kin's Phone Number" fullWidth required  />
         </Grid>
-
-
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
         <Input type="select" name="group"  value={patientData.province} 
-      onChange={e=>setPatient({ ...patientData ,province:e.target.value})}> 
+        onChange={e=>setPatient({ ...patientData ,province:e.target.value})}> 
               <option>Province</option>
               <option value="BULAWAYO">BULAWAYO</option>
               <option value="HARARE">HARARE</option>
@@ -162,7 +162,7 @@ placeholder="City" required/>
               
               </Input>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
         <Input type="select" name="gender" value={patientData.gender}
   onChange={e=>setPatient({ ...patientData ,gender:e.target.value})}  id="gender"> 
   <option>Gender</option>

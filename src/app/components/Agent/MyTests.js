@@ -85,7 +85,7 @@ export default function Checkout() {
   };
 
   const handleBack = () => {
-    setActiveStep(activeStep + 1);
+    setActiveStep(activeStep - 1);
   };
 
   return (
@@ -130,7 +130,7 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-        <Copyright />
+       
       </main>
     </React.Fragment>
   );
