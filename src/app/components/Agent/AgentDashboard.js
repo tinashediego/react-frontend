@@ -40,63 +40,6 @@ const AgentDashboard  = (props) =>{
   return (
     <div>
     
-    <div className="container" >
-
-    <h5 className="container">TOTAL TEST</h5>
-    <Table size="small" className="table table-striped" >
-
-<TableHead>
-  <TableRow>
-    <TableCell>MALE</TableCell>
-    <TableCell>FEMALE</TableCell>
-   
-  </TableRow>
-</TableHead>
-<TableBody>
-
-    <TableRow>
-    <TableCell>{content}</TableCell>
-      <TableCell>{content2}</TableCell>
-    </TableRow>
-</TableBody>
-</Table>
- 
-</div>
-
-
-    
-<div className="container" >
-
-<h5 className="container">TOTA TEST RESULTS</h5>
-<Table size="small" className="table table-striped" >
-
-<TableHead>
-<TableRow>
-<TableCell>GENDER</TableCell>
-<TableCell>POSITIVE</TableCell>
-<TableCell>NEGATIVE</TableCell>
-
-</TableRow>
-</TableHead>
-<TableBody>
-
-<TableRow>
-<TableCell>MALE</TableCell>
-<TableCell>{content3}</TableCell>
-  <TableCell>{content4}</TableCell>
-</TableRow>
-</TableBody>
-</Table>
-
-</div>
-
- 
-
-    <Chart options={colum.options} series={colum.series} type="bar" height={350} />
-
-    <Chart options={totalPositve.options} series={totalPositve.series} type="donut" height={350} />
-  
-    
    
 
 
