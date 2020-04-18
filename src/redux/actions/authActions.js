@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 
 
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, ADD_USER, ALL_USERS } from "../types";
+// this  is a comment
 
 // Register User
 export const addUser = (userData) => dispatch => {
