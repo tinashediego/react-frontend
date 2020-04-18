@@ -1,5 +1,4 @@
 import React  ,{useState}from 'react';
-import Submenu from '../layout/Patient/SubMenu' ;
 import {Button ,Col,Label,Input,FormGroup,Form ,Row ,Table, Modal, ModalHeader, ModalBody, ModalFooter}  from 'reactstrap'
 import { useHistory } from "react-router";
 import {Link} from  'react-router-dom'
@@ -37,7 +36,6 @@ const PatientDashboard  = (props) =>{
 
   return (
     <div>
-    <Submenu />
     <div style={{marginTop:70 ,padding:10}}>
     </div>
 

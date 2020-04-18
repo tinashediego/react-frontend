@@ -26,73 +26,20 @@ import TableRow from '@material-ui/core/TableRow';
 
 const AdminDashboard  = (props) =>{ 
 
-  const content = useSelector((state) => state.dashboard.gendermale);
-  const content2 = useSelector((state) => state.dashboard.genderfemale);
-  const content3 = useSelector((state) => state.dashboard.malepositive);
-  const content4 = useSelector((state) => state.dashboard.malenegative);
-  const blues1 = useSelector((state) => state.dashboard.bulawayopositive);
-  const blues2= useSelector((state) => state.dashboard.bulawayonegative);
-  const h1 = useSelector((state) => state.dashboard.h1);
-  const h2= useSelector((state) => state.dashboard.h2);
-  const mid1 = useSelector((state) => state.dashboard.mid1);
-  const mid2= useSelector((state) => state.dashboard.mid2);
-  const mic1 = useSelector((state) => state.dashboard.mic1);
-  const mic2= useSelector((state) => state.dashboard.mic2);
-  const mas1 = useSelector((state) => state.dashboard.mas1);
-  const mas2= useSelector((state) => state.dashboard.mas2); 
-  const matn1 = useSelector((state) => state.dashboard.matn1);
-  const matn2= useSelector((state) => state.dashboard.matn2);
-  
+
   //this hook gives us redux store state
 
-  const dispatch = useDispatch(genderMale());
-  const dispatch2 =  useDispatch(genderFeMale())
-  const dispatch3 =  useDispatch(malePositive())
-  const dispatch4 =  useDispatch(maleNegative())
-  const dispatch5 =  useDispatch(bulawayoNegative())
-  const dispatch6 =  useDispatch(bulawayoPositive())
-  const dispatch7 =  useDispatch(harareNegative())
-  const dispatch8 =  useDispatch(hararePositive())
-  const dispatch9 =  useDispatch(midlandsPositive())
-  const dispatch10 =  useDispatch(midlandsNegative())
-  const dispatch11 =  useDispatch(manicalandPositive())
-  const dispatch12 =  useDispatch(manicalandNegative())
-  const dispatch13 =  useDispatch(masvingoPositive())
-  const dispatch14 =  useDispatch(masvingoNegative())
-  const dispatch15 =  useDispatch(matabelelandNorthPositive())
-  const dispatch16 =  useDispatch(matabelelandNorthNegative())
+
 
   
-  useEffect(() => {
-    dispatch(genderMale());
-    dispatch2(genderFeMale());
-    dispatch3(malePositive())
-    dispatch4(maleNegative())
-    dispatch5(bulawayoNegative())
-    dispatch6(bulawayoPositive())
-    dispatch7(harareNegative())
-    dispatch8(hararePositive())
-    dispatch9(midlandsPositive())
-    dispatch10(midlandsNegative())
-    dispatch11(manicalandPositive())
-    dispatch12(manicalandNegative())
-    dispatch13(masvingoPositive())
-    dispatch14(masvingoNegative())
-    dispatch15(matabelelandNorthPositive())
-    dispatch16(matabelelandNorthNegative())
-
-
-  }, []);
-
-   console.log(content2 + "content")
   let colum = {
           
     series: [{
       name: 'NEGATIVE',
-      data: [44, 55, 41, 67, 22, 43 ,55,67,67,content]
+      data: [4, 5, 1, 6, 2, 4 ,5,7,6,5]
     }, {
       name: 'POSITIVE',
-      data: [13, 23, 20, 58, 13, 27 ,46,35,56,content2]
+      data: [3, 3, 2, 8, 3, 2 ,6,3,6,7]
     }],
     options: {
 
@@ -248,8 +195,8 @@ const AdminDashboard  = (props) =>{
 <TableBody>
 
     <TableRow>
-    <TableCell>{content}</TableCell>
-      <TableCell>{content2}</TableCell>
+    <TableCell>{10}</TableCell>
+      <TableCell>{18}</TableCell>
     </TableRow>
 </TableBody>
 </Table>
@@ -260,7 +207,7 @@ const AdminDashboard  = (props) =>{
     
 <div className="container" >
 
-<h5 className="container">TOTA TEST RESULTS</h5>
+<h5 className="container">TOTAL TEST RESULTS</h5>
 <Table size="small" className="table table-striped" >
 
 <TableHead>
@@ -275,8 +222,8 @@ const AdminDashboard  = (props) =>{
 
 <TableRow>
 <TableCell>MALE</TableCell>
-<TableCell>{content3}</TableCell>
-  <TableCell>{content4}</TableCell>
+<TableCell>{10}</TableCell>
+  <TableCell>{15}</TableCell>
 </TableRow>
 </TableBody>
 </Table>

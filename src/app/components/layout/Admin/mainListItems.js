@@ -7,7 +7,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import {Link} from 'react-router-dom'
 
 export const mainListItems = (
-  <div style={{backgroundColor:"#4c8c40",height:530}}>
+  <div style={{backgroundColor:"#4c8c40",height:'90vh'}}>
   
   <ListItem button>
 
