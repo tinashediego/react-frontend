@@ -3,24 +3,6 @@ import {Button }  from 'reactstrap'
 import {Link} from  'react-router-dom'
 import Chart from 'react-apexcharts'
 import { useDispatch, useSelector } from "react-redux";
-import {
-  genderMale,genderFeMale ,maleNegative ,malePositive ,
-  bulawayoNegative,bulawayoPositive ,harareNegative ,hararePositive, 
-  midlandsNegative,midlandsPositive, manicalandNegative ,manicalandPositive
-  ,mashonalandCentralNegative ,mashonalandCentralPositive,  matabelelandNorthPositive,
-  mashonalandEastNegative ,mashonalandEastPositive,
-  mashonalandWestNegative ,mashonalandWestPositive ,masvingoNegative,masvingoPositive ,matabelelandNorthNegative,matabelelandSouthNegative
-  ,
-
-} from '../../../redux/actions/DashboardActions'
-
-
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-
 
 
 

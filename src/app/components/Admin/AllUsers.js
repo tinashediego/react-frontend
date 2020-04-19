@@ -1,4 +1,5 @@
 import React  ,{useEffect}from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import {allUsers} from '../../../redux/actions/authActions'
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -15,6 +16,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Button from '@material-ui/core/Button'
+import {Link} from 'react-router-dom'
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -121,13 +123,61 @@ export default function AllUsers() {
     setPage(0);
   };
 
+  
+  const content = useSelector((state) => state.auth.allusers);
+
+  console.log(content)
+  const dispatch = useDispatch(allUsers());
+
+
+
+  useEffect(() => {
+    dispatch(allUsers());
+  }, []);
+
+
+  let a  =  content.map((x,i)=>(
+
+    <TableRow key={i}>
+    <TableCell>{i +1}</TableCell>
+    <TableCell>{x.username}</TableCell>
+    <TableCell>{x.firstName}</TableCell>
+    <TableCell>{x.lastName}</TableCell>
+    <TableCell>{x.qualification}</TableCell>
+    <TableCell>{x.email}</TableCell>
+    <TableCell>{x.phoneNumber}</TableCell>
+    <TableCell> {x.addressOfPractice} </TableCell>
+
+    <TableCell> {x.practicingNumber}</TableCell>
+
+    <TableCell align="right"><a href="#" style={{color:"green"}} >reset</a>&nbsp;<a style={{color:"red"}} href="#">delete</a></TableCell>
+    </TableRow>
+
+
+  
+ 
+  ))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
    
    <div>
       <h5 style={styles.container}>
     All Users
      </h5>
-     <Button color="success" variant="contained">Add user</Button>
+     <Button style={{color:'green'}}variant="contained"> <Link to='/adduser'>Add user</Link></Button>
       <Table className='table table-striped table-bordered' aria-label="custom pagination table">
       
       <TableHead>
@@ -137,27 +187,31 @@ export default function AllUsers() {
             <TableCell align="left">Fullname</TableCell>
             <TableCell align="left">Phone Number</TableCell>
             <TableCell align="left">National ID</TableCell>
-            <TableCell align="left">Passport Number</TableCell>
-            <TableCell align="left">Gender</TableCell>
-            <TableCell align="left">Date of Birth</TableCell>
+            <TableCell align="left">Practising Number</TableCell>
+            <TableCell align="left">Email</TableCell>
+            <TableCell align="left">Phone Number</TableCell>
+            <TableCell align="left">Adress Of Practice</TableCell>
+            <TableCell align="left">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <TableRow key={row.number}>
-              <TableCell align="left" component="th" scope="row">
-                {row.number}
-              </TableCell>
-              <TableCell align="left">{row.fullName}</TableCell>
-              <TableCell align="left">{row.phoneNumber}</TableCell>
-              <TableCell align="left">{row.nationalId}</TableCell>
-              <TableCell align="left">{row.passportNumber}</TableCell>
-              <TableCell align="left">{row.gender}</TableCell>
-              <TableCell align="left">{row.dateOfBirth}</TableCell>
+            ? content.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : content
+          ).map((x ,i) => (
+            <TableRow key={i}>
+            <TableCell>{i +1}</TableCell>
+            <TableCell>{x.fullName}</TableCell>
+            <TableCell>{x.phoneNumber}</TableCell>
+            <TableCell>{x.nationalIdNumber}</TableCell>
+            <TableCell>{x.practicingNumber}</TableCell>
+            <TableCell>{x.email}</TableCell>
+            <TableCell>{x.phoneNumber}</TableCell>
+            <TableCell> {x.addressOfPractice} </TableCell>
+        
+            <TableCell align="right"><button style={{backgroundColor:"green"}} >reset</button>&nbsp;<button style={{backgroundColor:"red"}} href="#">delete</button></TableCell>
             </TableRow>
+        
           ))}
 
         

@@ -64,7 +64,7 @@ const AddUser  = () =>{
   const dispatch = useDispatch();
 
 
-  console.log(newUser)
+  console.log(userData)
 
 
 
@@ -117,7 +117,19 @@ const AddUser  = () =>{
           
           onChange={e=>setUser({ ...newUser ,username:e.target.value})}
            placeholder="username" />
-  </FormGroup>
+  </FormGroup></div>
+
+  
+  <div className="row">
+
+  <FormGroup className="col-sm-6">
+    
+  <TextField label="National Id Number" 
+        value={newUser.nationalIdNumber} 
+        
+        onChange={e=>setUser({ ...newUser ,nationalIdNumber:e.target.value})}
+         placeholder="National ID Number" />
+</FormGroup>
 
       <FormGroup className="col-sm-6">
         
