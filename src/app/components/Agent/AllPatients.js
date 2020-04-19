@@ -2,7 +2,7 @@ import React , {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
-import {allPatient} from '../../../redux/actions/PatientsActions'
+import {allpendingTests} from '../../../redux/actions/PatientsActions'
 import {Link} from  'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -117,15 +117,15 @@ export default function AllPatients() {
 
 
 
-  const content = useSelector((state) => state.patients.allpatients);
+  const content = useSelector((state) => state.patients.allpendingtests);
   
   //this hook gives us redux store state
 
 
   console.log(content)
-  const dispatch = useDispatch(allPatient());
+  const dispatch = useDispatch(allpendingTests());
   useEffect(() => {
-    dispatch(allPatient());
+    dispatch(allpendingTests());
   }, []);
 
   const classes = useStyles2();

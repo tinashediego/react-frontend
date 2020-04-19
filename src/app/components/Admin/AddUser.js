@@ -27,6 +27,7 @@ const AddUser  = () =>{
     "firstName": "",
     "gender": "",
     "lastName": "",
+    group:'AGENT',
     "nationalIdNumber": "",
     "practicingNumber": "",
     "qualification": "",
@@ -50,7 +51,7 @@ const AddUser  = () =>{
         "email": newUser.email,
         "fullName": newUser.firstName,
         "gender":newUser.gender,
-        "group": 'AGENT',
+        "group": newUser.group,
         "nationalIdNumber":newUser.nationalIdNumber,
         "phoneNumber": newUser.phoneNumber,
         
@@ -117,11 +118,10 @@ const AddUser  = () =>{
           
           onChange={e=>setUser({ ...newUser ,username:e.target.value})}
            placeholder="username" />
-  </FormGroup></div>
-
+  </FormGroup>
   
-  <div className="row">
-
+  
+  
   <FormGroup className="col-sm-6">
     
   <TextField label="National Id Number" 
@@ -129,7 +129,11 @@ const AddUser  = () =>{
         
         onChange={e=>setUser({ ...newUser ,nationalIdNumber:e.target.value})}
          placeholder="National ID Number" />
-</FormGroup>
+</FormGroup></div>
+
+  
+  <div className="row">
+
 
       <FormGroup className="col-sm-6">
         
@@ -139,6 +143,17 @@ const AddUser  = () =>{
              onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
                placeholder="Qualification" />
       </FormGroup>
+
+      
+      <FormGroup className="col-sm-6">
+      
+      <TextField label="Practicing Number" 
+             value={newUser.practicingNumber}
+             onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
+             placeholder="practicing number" />
+    </FormGroup>
+
+
     </div>
 
       <div className="row">
@@ -152,15 +167,20 @@ const AddUser  = () =>{
               </Input>
     </FormGroup>
 
-
-
-      <FormGroup className="col-sm-6">
+    <FormGroup className="col-sm-6">
       
-      <TextField label="Practicing Number" 
-             value={newUser.practicingNumber}
-             onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
-             placeholder="practicing number" />
-    </FormGroup>
+    <Input type="select" name="group"  value={newUser.group} 
+    onChange={e=>setUser({ ...newUser ,group:e.target.value})}> 
+             <option>Gender</option>
+            <option value="AGENT">AGENT</option>
+            <option value="ADMIN">ADMIN</option>
+            </Input>
+  </FormGroup>
+  
+    
+
+
+
 
       </div>
 

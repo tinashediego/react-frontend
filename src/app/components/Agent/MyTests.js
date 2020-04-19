@@ -66,7 +66,7 @@ const steps = ['Add Patients', 'Screen Details', 'Add New kit'];
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddPatients />;
+      return <AddPatients  />;
     case 1:
       return <ScreenDetails />;
     case 2:

@@ -12,7 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
-const AddPatient  = () =>{
+const AddPatient  = (props) =>{
 
   const [patientData ,setPatient]  =  useState(
   {
@@ -29,6 +29,8 @@ const AddPatient  = () =>{
     "province":""
     
   })
+
+  console.log(props)
 
   var newPatient={
   userCommand: {
@@ -173,6 +175,9 @@ const AddPatient  = () =>{
   
       </Grid>
     </React.Fragment>
+
+
+    <buttton type="submit"> Submit</buttton>
     </Form>
     
  

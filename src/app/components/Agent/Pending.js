@@ -190,7 +190,7 @@ export default function Pending() {
               <TableCell align="left">{row.result}</TableCell>
               
               <TableCell align="left">
-              <Button  variant="contained" color="primary" ><Link to={`/onescreen/${row.patientId}`} style={{color:"white"}} >update</Link></Button>&nbsp;
+              <Button  variant="contained" color="primary" ><Link to={`/test/${row.patientId}`} style={{color:"white"}} >update</Link></Button>&nbsp;
               
               </TableCell>
             </TableRow>

@@ -189,7 +189,7 @@ export default function AllUsers() {
             <TableCell align="left">National ID</TableCell>
             <TableCell align="left">Practising Number</TableCell>
             <TableCell align="left">Email</TableCell>
-            <TableCell align="left">Phone Number</TableCell>
+            <TableCell align="left">Group</TableCell>
             <TableCell align="left">Adress Of Practice</TableCell>
             <TableCell align="left">Actions</TableCell>
           </TableRow>
@@ -206,7 +206,7 @@ export default function AllUsers() {
             <TableCell>{x.nationalIdNumber}</TableCell>
             <TableCell>{x.practicingNumber}</TableCell>
             <TableCell>{x.email}</TableCell>
-            <TableCell>{x.phoneNumber}</TableCell>
+            <TableCell>{x.group}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
             <TableCell align="right"><button style={{backgroundColor:"green"}} >reset</button>&nbsp;<button style={{backgroundColor:"red"}} href="#">delete</button></TableCell>
