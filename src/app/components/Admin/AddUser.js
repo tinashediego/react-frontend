@@ -97,7 +97,7 @@ const AddUser  = () =>{
                value={newUser.firstName}  
                
              onChange={e=>setUser({ ...newUser ,firstName:e.target.value})}
-               placeholder="First Name" className="formControl" />
+               placeholder="First Name" className="formControl" required />
       </FormGroup>
 
       <FormGroup className="col-sm-6">
@@ -106,7 +106,7 @@ const AddUser  = () =>{
             value={newUser.lastName} 
             
             onChange={e=>setUser({ ...newUser ,lastName:e.target.value})}
-              placeholder="last Name" />
+              placeholder="last Name" required />
     </FormGroup>
       </div>
 
@@ -117,7 +117,7 @@ const AddUser  = () =>{
           value={newUser.username} 
           
           onChange={e=>setUser({ ...newUser ,username:e.target.value})}
-           placeholder="username" />
+           placeholder="username" required />
   </FormGroup>
   
   
@@ -128,7 +128,7 @@ const AddUser  = () =>{
         value={newUser.nationalIdNumber} 
         
         onChange={e=>setUser({ ...newUser ,nationalIdNumber:e.target.value})}
-         placeholder="National ID Number" />
+         placeholder="e.g 63-1234567A12" required />
 </FormGroup></div>
 
   
@@ -141,7 +141,7 @@ const AddUser  = () =>{
                value={newUser.qualification}
                
              onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
-               placeholder="Qualification" />
+               placeholder="Qualification" required />
       </FormGroup>
 
       
@@ -150,7 +150,7 @@ const AddUser  = () =>{
       <TextField label="Practicing Number" 
              value={newUser.practicingNumber}
              onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
-             placeholder="practicing number" />
+             placeholder="practicing number" required />
     </FormGroup>
 
 
@@ -171,7 +171,7 @@ const AddUser  = () =>{
       
     <Input type="select" name="group"  value={newUser.group} 
     onChange={e=>setUser({ ...newUser ,group:e.target.value})}> 
-             <option>Gender</option>
+             <option>Role</option>
             <option value="AGENT">AGENT</option>
             <option value="ADMIN">ADMIN</option>
             </Input>
@@ -196,7 +196,7 @@ const AddUser  = () =>{
   <TextField label="Phone Number" 
          value={newUser.phoneNumber} 
          onChange={e=>setUser({ ...newUser ,phoneNumber:e.target.value})}
-         placeholder="phone number" />
+         placeholder="+263772123456" required/>
 </FormGroup>
     </div>
 
@@ -206,7 +206,7 @@ const AddUser  = () =>{
 <TextField label="Address of Practise"
       value={newUser.addressOfPractice} 
       onChange={e=>setUser({ ...newUser ,addressOfPractice:e.target.value})}
-placeholder="Enter Practising Address" />
+placeholder="Enter Practising Address" required />
 
 </FormGroup>
 
@@ -237,7 +237,7 @@ placeholder="Enter Practising Address" />
 <TextField label="CITY" 
       value={newUser.city} 
       onChange={e=>setUser({ ...newUser ,city:e.target.value})}
-placeholder="city" />
+placeholder="city" required />
 
 </FormGroup>
 
@@ -246,7 +246,7 @@ placeholder="city" />
 <TextField label="Street Address" 
       value={newUser.streetAddress} 
       onChange={e=>setUser({ ...newUser , streetAddress:e.target.value})}
-placeholder="city" />
+placeholder="city" required />
 
 </FormGroup>
 
