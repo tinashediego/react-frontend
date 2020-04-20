@@ -117,11 +117,11 @@ const AddPatient  = (props) =>{
     <TextField label="National ID"  
     value={patientData.nationalIdOrPassportNumber}
     onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})}
-    placeholder="National ID" required
+    placeholder="e.g 63-1234567A12" required
      fullWidth     />
         </Grid>
         <Grid item xs={12} sm={6}>
-        <TextField label="Date Of Birth" type="date" name="password"
+        <TextField label="Date Of Birth" placeholder="dd/mm/yyyy" name="password"
         value={patientData.dateOfBirth}
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
         placeholder="Date of Birth" fullWidth required />
@@ -145,7 +145,7 @@ const AddPatient  = (props) =>{
         <Grid item xs={12} sm={6}>
         <TextField label="Phone Number" value={patientData.phoneNumber}
         onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} 
-        placeholder="Phone Number/ Next of Kin's Phone Number" fullWidth required  />
+        placeholder="e.g +263772123456" fullWidth required  />
         </Grid>
         <Grid item xs={12} sm={6}>
         <Input type="select" name="group"  value={patientData.province} 
@@ -177,7 +177,9 @@ const AddPatient  = (props) =>{
     </React.Fragment>
 
 
-    <buttton type="submit"> Submit</buttton>
+    <div align="right" style={{paddingTop:10}}>
+   <button className="btn btn-success">submit</button>
+   </div>
     </Form>
     
  

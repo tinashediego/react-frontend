@@ -12,18 +12,22 @@ export const mainListItems = (
   <ListItem button>
 
   
+<Link to="/dashboard">
 <ListItemIcon style={{color:'white'}}>
   <DashboardIcon  />
 </ListItemIcon>
+</Link>
 <Link to="/dashboard" style={{color:'white'}}>
 
 <ListItemText primary="Dashboard" />
 </Link>    
 </ListItem>
 <ListItem button> 
+<Link to="/allusers">
 <ListItemIcon style={{color:'white'}}>
   <PeopleIcon />
 </ListItemIcon>
+</Link>
 <Link to='/allusers' style={{color:'white'}}>
 <ListItemText primary="Users" />
 </Link>

@@ -209,7 +209,10 @@ export default function AllUsers() {
             <TableCell>{x.group}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
-            <TableCell align="right"><button style={{backgroundColor:"green"}} >reset</button>&nbsp;<button style={{backgroundColor:"red"}} href="#">delete</button></TableCell>
+            <TableCell align="right"><button style={{backgroundColor:"green"}} >reset</button>
+            &nbsp;<button style={{backgroundColor:"red"}} href="#">delete</button>
+            &nbsp;<button style={{backgroundColor:"red"}} href="#">reset password</button>
+            &nbsp;<button style={{backgroundColor:"red"}} href="#">suspend</button></TableCell>
             </TableRow>
         
           ))}
