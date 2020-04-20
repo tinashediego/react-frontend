@@ -251,8 +251,11 @@ placeholder="city" />
 </FormGroup>
 
 </div>
-<Button color="success" type="submit">Add user</Button>
 
+
+<div align="right">
+<button className="btn btn-success">submit</button>
+</div>
 
 
 

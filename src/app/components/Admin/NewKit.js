@@ -94,6 +94,9 @@ placeholder="Serial Number"  required={true} />
        
      </Grid>
    </React.Fragment>
+   <div align="right" style={{paddingTop:10}}>
+   <button className="btn btn-success">submit</button>
+   </div>
 </Form>
 
 </div>
