@@ -97,7 +97,7 @@ const AllKits  = (props) =>{
 
     <h5 className="container" style={styles.container}>All Kits</h5>
 
-    <button className='btn btn-success' onClick={handleClickOpen}> Add New Kit</button>
+   
       <Table size="small" className="table table-striped" >
   
   <TableHead>

@@ -223,7 +223,9 @@ const handleSubmit = (e) => {
           </Col>
       
         </Row>  
-               
+        <div align="right" style={{paddingTop:10}}>
+    <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
+    </div> 
         </Form>
        
         

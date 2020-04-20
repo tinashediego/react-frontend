@@ -117,7 +117,7 @@ const AddPatient  = (props) =>{
     <TextField label="National ID"  
     value={patientData.nationalIdOrPassportNumber}
     onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})}
-    placeholder="National ID" required
+    placeholder="e.g 63-1234567A12" required
      fullWidth     />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -177,7 +177,9 @@ const AddPatient  = (props) =>{
     </React.Fragment>
 
 
-    <buttton type="submit"> Submit</buttton>
+    <div align="right" style={{paddingTop:10}}>
+    <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
+    </div>
     </Form>
     
  
