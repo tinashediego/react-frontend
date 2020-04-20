@@ -2,7 +2,7 @@ import React , {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
-import {allPatient ,allpendingTests} from '../../../redux/actions/PatientsActions'
+import {allpendingTests ,updatePendingTest} from '../../../redux/actions/PatientsActions'
 import {Link} from  'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,6 +18,39 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import {TextField} from '@material-ui/core'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import {Col,Label,Input,FormGroup ,Row }  from 'reactstrap'
+
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -112,21 +145,27 @@ const useStyles2 = makeStyles({
 export default function Pending() {
 
 
+  const [ScreenData ,setScreen] =  useState({
+    "dateOfTest":'',
+    "patientScreeningId":'',
+    "testKitId":'',
+    "testResult": "POSITIVE",
+    "testingAgentUsername": '' 
+})
 
 
 
 
 
-  const content = useSelector((state) => state.patients.allpatients);
   const content2 = useSelector((state) => state.patients.allpendingtests)
   
   //this hook gives us redux store state
 
-  const dispatch = useDispatch(allPatient());
+  
   const dtspa4 = useDispatch(allpendingTests())
   useDispatch(allpendingTests())
   useEffect(() => {
-    dispatch(allPatient());
+  
     dtspa4(allpendingTests())
 
   }, []);
@@ -152,8 +191,55 @@ export default function Pending() {
   };
 
 
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+
+
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  var id ;
+function selectItem(x){
+ 
+
+
+     localStorage.setItem('thisid',x)
+     setOpen(true);
+
+ 
+   
+
+
+
+  }
+
+
+
   let a  =  content2
   const  [SearchData ,setSearch] = useState({search:''})
+
+    
+  const dispatched = useDispatch();
+
+  function  handleCloseSubmit(){
+
+    let ids = localStorage.getItem('thisid')
+
+    const  newScreen = {
+     
+      "id":ids,
+      "testResult": ScreenData.testResult,
+  
+  
+          }
+      dispatched(updatePendingTest(newScreen))
+      console.log(newScreen)
+      setOpen(false);
+
+  }
   return (
    
    <div>
@@ -194,7 +280,7 @@ export default function Pending() {
               <TableCell align="left">{row.result}</TableCell>
               
               <TableCell align="left">
-              <Button  variant="contained" color="primary" ><Link to={`/test/${row.patientId}`} style={{color:"white"}} >update</Link></Button>&nbsp;
+              <Button  variant="contained" color="primary" onClick={() => selectItem(row.id)} >update</Button>&nbsp;
               
               </TableCell>
             </TableRow>
@@ -221,6 +307,58 @@ export default function Pending() {
           </TableRow>
         </TableFooter>
       </Table>
+
+
+
+      
+
+      <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">Testing  Details</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+<form>
+        <Row form>
+
+
+          <Col md={12}>
+
+          <FormGroup>
+              <Label for="exampleCity">Testing Kit:</Label>
+                 <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
+          <option>Select</option>
+          <option value="POSITIVE">POSITIVE</option>
+          <option value="NEGATIVE">NEGATIVE</option>
+          </Input>
+            </FormGroup>
+          
+          </Col>
+      
+        </Row>
+         
+
+        </form>
+    
+        
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={handleCloseSubmit} color="primary" autoFocus>
+          Submit
+        </Button>
+      </DialogActions>
+    </Dialog>
+
+
+
+
    </div>
   
   );
