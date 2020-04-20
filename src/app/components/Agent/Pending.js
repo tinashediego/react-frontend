@@ -189,8 +189,8 @@ export default function Pending() {
               <TableCell align="left" component="th" scope="row">
                 {i+1}
               </TableCell>
-              <TableCell align="left">{row.fullName}</TableCell>
-              <TableCell align="left">{row.phoneNumber}</TableCell>
+              <TableCell align="left">{row.patientFullName}</TableCell>
+              <TableCell align="left">{row.patientPhoneNumber}</TableCell>
               <TableCell align="left">{row.result}</TableCell>
               
               <TableCell align="left">
