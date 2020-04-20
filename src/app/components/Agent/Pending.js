@@ -2,7 +2,7 @@ import React , {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
-import {allPatient} from '../../../redux/actions/PatientsActions'
+import {allPatient ,allpendingTests} from '../../../redux/actions/PatientsActions'
 import {Link} from  'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -118,17 +118,21 @@ export default function Pending() {
 
 
   const content = useSelector((state) => state.patients.allpatients);
+  const content2 = useSelector((state) => state.patients.allpendingtests)
   
   //this hook gives us redux store state
 
-
-  console.log(content)
   const dispatch = useDispatch(allPatient());
+  const dtspa4 = useDispatch(allpendingTests())
+  useDispatch(allpendingTests())
   useEffect(() => {
     dispatch(allPatient());
+    dtspa4(allpendingTests())
+
   }, []);
 
   const classes = useStyles2();
+  console.log(content2)
 
 
 
@@ -148,7 +152,7 @@ export default function Pending() {
   };
 
 
-  let a  =  content
+  let a  =  content2
   const  [SearchData ,setSearch] = useState({search:''})
   return (
    
@@ -178,7 +182,7 @@ export default function Pending() {
             : a
           ).filter(  (x)=>{
 
-            return x.phoneNumber.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1
+            return x.result.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1
       
           }).map((row ,i) => (
             <TableRow key={i}>
@@ -190,7 +194,7 @@ export default function Pending() {
               <TableCell align="left">{row.result}</TableCell>
               
               <TableCell align="left">
-              <Button  variant="contained" color="primary" ><Link to={`/test/${row.patientId}`} style={{color:"white"}} >update</Link></Button>&nbsp;
+              <Button  variant="contained" color="primary" ><Link to={`/test/${row.partnerId}`} style={{color:"white"}} >update</Link></Button>&nbsp;
               
               </TableCell>
             </TableRow>

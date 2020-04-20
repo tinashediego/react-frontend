@@ -228,7 +228,7 @@ export const onePatient = (id) => dispatch=>{
 
  
 
-    axios.get(`http://45.76.141.84:8080/v1/tests/agent/my-tests`)
+    axios.get(`http://45.76.141.84:8080/v1/tests/pending`)
          .then(resp=>{
            dispatch({
            type:PENDING,
