@@ -328,7 +328,7 @@ function selectItem(x){
           <Col md={12}>
 
           <FormGroup>
-              <Label for="exampleCity">Testing Kit:</Label>
+              <Label for="exampleCity">RESULT</Label>
                  <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
           <option>Select</option>
           <option value="POSITIVE">POSITIVE</option>
