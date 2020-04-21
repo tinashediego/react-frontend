@@ -136,27 +136,6 @@ export default function AllUsers() {
   }, []);
 
 
-  let a  =  content.map((x,i)=>(
-
-    <TableRow key={i}>
-    <TableCell>{i +1}</TableCell>
-    <TableCell>{x.username}</TableCell>
-    <TableCell>{x.firstName}</TableCell>
-    <TableCell>{x.lastName}</TableCell>
-    <TableCell>{x.qualification}</TableCell>
-    <TableCell>{x.email}</TableCell>
-    <TableCell>{x.phoneNumber}</TableCell>
-    <TableCell> {x.addressOfPractice} </TableCell>
-
-    <TableCell> {x.practicingNumber}</TableCell>
-
-    <TableCell align="right"><a href="#" style={{color:"green"}} >reset</a>&nbsp;<a style={{color:"red"}} href="#">delete</a></TableCell>
-    </TableRow>
-
-
-  
- 
-  ))
 
 
 
@@ -209,10 +188,10 @@ export default function AllUsers() {
             <TableCell>{x.group}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
-            <TableCell align="right"><button style={{backgroundColor:"green"}} >reset</button>
-            &nbsp;<button style={{backgroundColor:"red"}} href="#">delete</button>
-            &nbsp;<button style={{backgroundColor:"red"}} href="#">reset password</button>
-            &nbsp;<button style={{backgroundColor:"red"}} href="#">suspend</button></TableCell>
+            <TableCell align="right"><Button style={{backgroundColor:"green"}} >reset</Button>
+            &nbsp;
+        
+            &nbsp;<Button style={{backgroundColor:"red"}} href="#">suspend</Button></TableCell>
             </TableRow>
         
           ))}
