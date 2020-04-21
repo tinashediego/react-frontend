@@ -45,6 +45,10 @@ export const BULUAYO_POSITIVE = 'BULUAYO_POSITIVE'
 
 export const PENDING ='PENDING'
 
+ export const   SUCCESS = 'ALERT_SUCCESS'
+ export const   ERROR = 'ALERT_ERROR'
+ export const    CLEAR ='ALERT_CLEAR'
+
 export const  MIDLANDS_NEGATIVE = 'MIDLANDS_NEGATIVE'
 export const MIDLANDS_POSITIVE = 'MIDLANDS_POSITIVE'
 
