@@ -1,137 +1,94 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import AddPatients from './AddPatients';
-import ScreenDetails from './ScreenDetails';
-import Newkit from '../Admin/NewKit';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import AddPatients from '../Agent/AddPatients';
+import ScreenDetails from '../Agent/ScreenDetails';
+import NewKit from '../Admin/NewKit';
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative',
+  root: {
+    width: '100%',
   },
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+  backButton: {
+    marginRight: theme.spacing(1),
   },
-  paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
-  },
-  stepper: {
-    padding: theme.spacing(3, 0, 5),
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
 }));
 
-const steps = ['Add Patients', 'Screen Details', 'Add New kit'];
+function getSteps() {
+  return ['Add Patient', 'Screen Patient', 'Add New Kit'];
+}
 
-function getStepContent(step) {
-  switch (step) {
+function getStepContent(stepIndex) {
+  switch (stepIndex) {
     case 0:
-      return <AddPatients  />;
+      return <AddPatients/>;
     case 1:
-      return <ScreenDetails />;
+      return <ScreenDetails/>;
     case 2:
-      return <Newkit />;
+      return <NewKit/>;
     default:
-      throw new Error('Unknown step');
+      return 'Unknown stepIndex';
   }
 }
 
-export default function Checkout() {
+export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const steps = getSteps();
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep(activeStep - 1);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
   };
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <main className={classes.layout}>
-        <Paper className={classes.paper}>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography>
-                  You have successfully Completed all stages
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                    type="submit"
-                  >
-                    {activeStep === steps.length + 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </div>
-              </React.Fragment>
-            )}
-          </React.Fragment>
-        </Paper>
-       
-      </main>
-    </React.Fragment>
+    <div className={classes.root}>
+      <Stepper activeStep={activeStep} alternativeLabel>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+      <div>
+        {activeStep === steps.length ? (
+          <div>
+            <Typography className={classes.instructions}>All steps completed</Typography>
+            <Button color="primary" variant="contained" onClick={handleReset}>Start over</Button>
+          </div>
+        ) : (
+          <div>
+            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <div>
+              <Button
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                className={classes.backButton}
+              >
+                Back
+              </Button>
+              <Button variant="contained" color="primary" onClick={handleNext}>
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

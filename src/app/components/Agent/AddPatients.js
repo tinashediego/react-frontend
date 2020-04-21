@@ -124,7 +124,7 @@ const AddPatient  = (props) =>{
         <TextField label="Date Of Birth" placeholder="dd/mm/yyyy" name="password"
         value={patientData.dateOfBirth}
         onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})}
-        placeholder="Date of Birth" fullWidth required />
+        placeholder="dd/mm/yyyy" fullWidth required />
         </Grid>
         <Grid item xs={12} sm={6}>
         <TextField label="City" 
@@ -178,7 +178,7 @@ const AddPatient  = (props) =>{
 
 
     <div align="right" style={{paddingTop:10}}>
-   <button className="btn btn-success" type="submit">submit</button>
+   <button className="btn btn-success">submit</button>
    </div>
     </Form>
     

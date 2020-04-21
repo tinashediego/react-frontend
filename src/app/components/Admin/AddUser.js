@@ -254,7 +254,7 @@ placeholder="city" required />
 
 
 <div align="right">
-<button className="btn btn-success"  type="submit">submit</button>
+<button className="btn btn-success">submit</button>
 </div>
 
 
