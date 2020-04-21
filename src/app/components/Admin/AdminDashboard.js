@@ -73,13 +73,6 @@ console.log(provinceDemographics)
       return officer.province
     });
 
-
-
-  
- 
- 
- 
-
   }
   console.log(pending)
   let colum = {
