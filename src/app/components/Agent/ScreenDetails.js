@@ -224,7 +224,7 @@ const handleSubmit = (e) => {
       
         </Row>  
         <div align="right" style={{paddingTop:10}}>
-   <button className="btn btn-success">submit</button>
+   <button className="btn btn-success" type="submit" >submit</button>
    </div>
         </Form>
        
