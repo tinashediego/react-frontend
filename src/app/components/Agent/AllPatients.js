@@ -142,6 +142,7 @@ export default function AllPatients() {
                 <TableCell align="left">NO#</TableCell>
                 <TableCell align="left">Fullname</TableCell>
                 <TableCell align="left">Phone Number</TableCell>
+                <TableCell align="left">Email</TableCell>
                 <TableCell align="left">National ID</TableCell>
                 <TableCell align="left">Passport Number</TableCell>
                 <TableCell align="left">Gender</TableCell>
@@ -157,6 +158,7 @@ export default function AllPatients() {
                 </TableCell>
                 <TableCell align="left">{row.fullName}</TableCell>
                 <TableCell align="left">{row.phoneNumber}</TableCell>
+                <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>
                 <TableCell align="left">{row.gender}</TableCell>

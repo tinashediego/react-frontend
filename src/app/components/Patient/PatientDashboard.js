@@ -1,30 +1,19 @@
 import React  ,{useState}from 'react';
-import {Button ,Col,Label,Input,FormGroup,Form ,Row ,Table, Modal, ModalHeader, ModalBody, ModalFooter}  from 'reactstrap'
+import {Col,Label,FormGroup,Form ,Row ,Table,}  from 'reactstrap'
 import { useHistory } from "react-router";
-import {Link} from  'react-router-dom'
 
 
 const PatientDashboard  = (props) =>{ 
 
 
 
-  const {
-    buttonLabel,
-    className
-  } = props;
 
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
   
   let history = useHistory()
 
 
 
-  function handleClose(){
-
-    history.goBack()
-   }
+ 
   
 
 

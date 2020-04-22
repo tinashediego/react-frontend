@@ -1,8 +1,8 @@
 import React ,{useState} from 'react';
 import {
   Form,
-  FormGroup, Label, Input,
-  Button,Col
+  FormGroup,Input,
+  Col
 } from 'reactstrap';
 import { useDispatch,} from 'react-redux';
 import {addUser} from '../../../redux/actions/authActions'
@@ -79,10 +79,6 @@ const AddUser  = () =>{
     }
 }
 
- function handleClose(){
-
-  history.goBack()
- }
 
 
   return (

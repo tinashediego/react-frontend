@@ -80,7 +80,7 @@ const content = useSelector((state) => state.patients.newpatient);
                     <TextField label="National ID" value={patientData.nationalIdOrPassportNumber} onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})} placeholder="e.g 63-1234567A12" required fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="Date Of Birth" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth required />
+                    <TextField label="Date Of Birth" type="date" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth required />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField label="City" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})} placeholder="City" fullWidth required/>
@@ -92,7 +92,7 @@ const content = useSelector((state) => state.patients.newpatient);
                     <TextField type="email" label="Email" value={patientData.email} onChange={e=>setPatient({ ...patientData ,email:e.target.value})} placeholder="Email" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="Phone Number" value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth required />
+                    <TextField label="Phone Number" type="number" value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth required />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Input type="select" name="group" value={patientData.province} onChange={e=>setPatient({ ...patientData ,province:e.target.value})}>
