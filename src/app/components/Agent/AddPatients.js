@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import {addPatient} from '../../../redux/actions/PatientsActions'
 
 import { TextField } from '@material-ui/core';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 import moment from 'moment'
 import Grid from '@material-ui/core/Grid';
@@ -92,7 +93,7 @@ const content = useSelector((state) => state.patients.newpatient);
                     <TextField type="email" label="Email" value={patientData.email} onChange={e=>setPatient({ ...patientData ,email:e.target.value})} placeholder="Email" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="Phone Number" type="number" value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth required />
+                    <TextField label="Phone Number"  type="text"   value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth required />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Input type="select" name="group" value={patientData.province} onChange={e=>setPatient({ ...patientData ,province:e.target.value})}>
