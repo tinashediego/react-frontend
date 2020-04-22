@@ -17,8 +17,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
-import Pageview from '@material-ui/icons/Pageview'
-import BorderColorIcon from '@material-ui/icons/BorderColor';
+
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -85,29 +84,8 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function patientsData(number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action) {
 
-  return {number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action};
-}
 
-const rows = [
-  patientsData(1, 'Munya', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(2, 'Patel', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(3, 'Everjoy',+26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(4, 'Memo', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(5, 'Diego', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(6, 'Tinlee', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(7, 'Tanaka', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(8, 'Tello', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(9, 'Mulaz', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  
-].sort((a, b) => (a.number < b.number ? -1 : 1));
-
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 500,
-  },
-});
 
 export default function AllPatients() {
 
@@ -128,7 +106,7 @@ export default function AllPatients() {
     dispatch(allPatient());
   }, []);
 
-  const classes = useStyles2();
+ 
 
 
 
@@ -136,7 +114,7 @@ export default function AllPatients() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+ 
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -152,70 +130,57 @@ export default function AllPatients() {
 
   return (
    
-   <div>
-      <h5 style={styles.container}>
+    <div>
+    <h5 style={styles.container}>
     All Patients
      </h5>
-      <Table className='table table-striped table-bordered' aria-label="custom pagination table">
-      
-      <TableHead>
-          
-          <TableRow>
-            <TableCell align="left">NO#</TableCell>
-            <TableCell align="left">Fullname</TableCell>
-            <TableCell align="left">Phone Number</TableCell>
-            <TableCell align="left">National ID</TableCell>
-            <TableCell align="left">Passport Number</TableCell>
-            <TableCell align="left">Gender</TableCell>
-            <TableCell align="left">Date of Birth</TableCell>
-            <TableCell align="left">Action</TableCell>
-          </TableRow>
+    <Table className='table table-striped table-bordered' aria-label="custom pagination table">
+
+        <TableHead>
+
+            <TableRow>
+                <TableCell align="left">NO#</TableCell>
+                <TableCell align="left">Fullname</TableCell>
+                <TableCell align="left">Phone Number</TableCell>
+                <TableCell align="left">National ID</TableCell>
+                <TableCell align="left">Passport Number</TableCell>
+                <TableCell align="left">Gender</TableCell>
+                <TableCell align="left">Date of Birth</TableCell>
+                <TableCell align="left">Action</TableCell>
+            </TableRow>
         </TableHead>
         <TableBody>
-          {(rowsPerPage > 0
-            ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : a
-          ).map((row ,i) => (
+            {(rowsPerPage > 0 ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : a ).map((row ,i) => (
             <TableRow key={i}>
-              <TableCell align="left" component="th" scope="row">
-                {i+1}
-              </TableCell>
-              <TableCell align="left">{row.fullName}</TableCell>
-              <TableCell align="left">{row.phoneNumber}</TableCell>
-              <TableCell align="left">{row.passportNumber}</TableCell>
-              <TableCell align="left">{row.passportNumber}</TableCell>
-              <TableCell align="left">{row.gender}</TableCell>
-              <TableCell align="left">{row.dateOfBirth}</TableCell>
-              <TableCell align="left">
-              <Button  variant="contained" color="primary" ><Link to={`/onescreen/${row.patientId}`} style={{color:"white"}} >Screen</Link></Button>&nbsp;
-              <Button  variant="contained" color="success" ><Link style={{color:"red"}} to={`/test/${row.patientId}`}>Test</Link></Button>
-              
-              </TableCell>
-            </TableRow>
-          ))}
+                <TableCell align="left" component="th" scope="row">
+                    {i+1}
+                </TableCell>
+                <TableCell align="left">{row.fullName}</TableCell>
+                <TableCell align="left">{row.phoneNumber}</TableCell>
+                <TableCell align="left">{row.passportNumber}</TableCell>
+                <TableCell align="left">{row.passportNumber}</TableCell>
+                <TableCell align="left">{row.gender}</TableCell>
+                <TableCell align="left">{row.dateOfBirth}</TableCell>
+                <TableCell align="left">
+                    <Button variant="contained" color="primary">
+                        <Link to={`/onescreen/${row.patientId}`} style={{color: "white"}}>Screen</Link>
+                    </Button>&nbsp;
+                    <Button variant="contained" color="success">
+                        <Link style={{color: "red"}} to={`/test/${row.patientId}`}>Test</Link>
+                    </Button>
 
-        
+                </TableCell>
+            </TableRow>
+            ))}
+
         </TableBody>
         <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
-              count={a.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: { 'aria-label': 'rows per page' },
-                native: true,
-              }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
+            <TableRow>
+                <TablePagination rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]} colSpan={3} count={a.length} rowsPerPage={rowsPerPage} page={page} SelectProps={{ inputProps: { 'aria-label': 'rows per page' }, native: true, }} onChangePage={handleChangePage} onChangeRowsPerPage={handleChangeRowsPerPage} ActionsComponent={TablePaginationActions} />
+            </TableRow>
         </TableFooter>
-      </Table>
-   </div>
+    </Table>
+</div>
   
   );
  

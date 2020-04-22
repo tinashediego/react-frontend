@@ -10,7 +10,6 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -19,20 +18,17 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './mainListItems';
 import {useLocation ,useParams} from 'react-router'
 import AllKits from '../../Admin/AllKits';
-import NewKit from '../../Admin/NewKit';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import PatientDetails from '../../Agent/PatientDetails';
+
 import AllPatients from '../../Agent/AllPatients';
-import ScreenDetails from '../../Agent/ScreenDetails';
-import AgentDashboard from '../../Agent/AgentDashboard'
+
 import TableScreen from '../../Agent/TableScreen'
 import TableTestDetails from '../../Agent/TableTestDetails'
 import Pending from '../../Agent/Pending';
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
-import Results from "../../Agent/Results";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
-import { useDispatch ,useSelector} from "react-redux"
+import { useDispatch} from "react-redux"
 import Logo from '../../../../assets/logo.png';
 
 function Copyright() {
@@ -127,11 +123,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
+
 export default function Agent() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const location =  useLocation()
+  let  para = useParams()
+  let  username = localStorage.getItem('username')
+
+
+
+
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -139,13 +147,6 @@ export default function Agent() {
     setOpen(false);
   };
  
-  const location =  useLocation()
-  let  para = useParams()
-
-  console.log(para)
-
-  //console.log(location)
-
 
   function switchPages(){
 
@@ -180,7 +181,7 @@ export default function Agent() {
 
   }
 
-  let  username = localStorage.getItem('username')
+ 
 
 
   function logout (){
@@ -193,70 +194,56 @@ export default function Agent() {
   
  
 
-  console.log(location.pathname)
-
+  
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)} style={{backgroundColor:"#fff",color:"black"}} >
+    <CssBaseline />
+    <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)} style={{backgroundColor: "#fff",color: "black"}}>
         <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-          <img src={Logo} style={{width:80}}></img>
-         
-          </Typography>
-          <IconButton color="inherit" onClick={logout}>
-          {username}
-            
-              <AccountCircleIcon/>
-          
-          </IconButton>
+            <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} className={clsx(classes.menuButton, open && classes.menuButtonHidden)}>
+                <MenuIcon />
+            </IconButton>
+            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                <img src={Logo} style={{width:80}} alt="LOGO"></img>
+
+            </Typography>
+            <IconButton color="inherit" onClick={logout}>
+                {username}
+
+                <AccountCircleIcon/>
+
+            </IconButton>
         </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
+    </AppBar>
+    <Drawer variant="permanent" classes={{ paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose), }} open={open}>
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
+            <IconButton onClick={handleDrawerClose}>
+                <ChevronLeftIcon />
+            </IconButton>
         </div>
         <Divider />
         <List>{mainListItems}</List>
         <Divider />
-       
-      </Drawer>
-      <main className={classes.content}>
+
+    </Drawer>
+    <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
+            <Grid container spacing={3}>
 
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                {switchPages()}
-              </Paper>
+                <Grid item xs={12}>
+                    <Paper className={classes.paper}>
+                        {switchPages()}
+                    </Paper>
+                </Grid>
             </Grid>
-          </Grid>
-          <Box style={{marginTop:105,marginBottom:-5}}>
-         
-          <Copyright />
-        
-            
-          </Box>
+            <Box style={{marginTop:105,marginBottom:-5}}>
+
+                <Copyright />
+
+            </Box>
         </Container>
-      </main>
-    </div>
+    </main>
+</div>
   );
 }

@@ -7,11 +7,10 @@ import Login from "./app/components/Auth/Login";
 import PrivateRoute from "./private/privateRoute";
 
 import AllKits from "./app/components/Admin/AllKits";
-import NewKit from "./app/components/Admin/NewKit";
+
 import axios from 'axios'
 
 
-import TestPatient from "./app/components/Agent/TestPatient";
 import PatientDashboard from "./app/components/Patient/PatientDashboard";
 import Admin from './app/components/layout/Admin/Admin'
 import Agent from "./app/components/layout/Agent/Agent";
@@ -88,7 +87,6 @@ function App() {
         <Route exact path="/" component={Login} />
         <Switch>
           <PrivateRoute exact path="/dashboard/"   component={Admin} />
-
           <PrivateRoute exact path="/dash"   component={AllKits} />
           <PrivateRoute excat path='/agent' component={Agent} />
           <PrivateRoute exact path="/patient" component={PatientDashboard}/>
@@ -104,10 +102,6 @@ function App() {
           <PrivateRoute exact path="/newkit" component={Agent} />
           <PrivateRoute excat path='/patient' component={Agent} />
           <PrivateRoute excat path='/pending' component={Agent} />
-        
-        
-        
-      
         </Switch>
       </div>
     </Router>

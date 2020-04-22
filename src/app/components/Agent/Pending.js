@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
 import {allpendingTests ,updatePendingTest} from '../../../redux/actions/PatientsActions'
-import {Link} from  'react-router-dom'
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -26,31 +26,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import {Col,Label,Input,FormGroup ,Row }  from 'reactstrap'
 
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -118,29 +96,8 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function patientsData(number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action) {
 
-  return {number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action};
-}
 
-const rows = [
-  patientsData(1, 'Munya', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(2, 'Patel', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(3, 'Everjoy',+26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(4, 'Memo', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(5, 'Diego', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(6, 'Tinlee', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(7, 'Tanaka', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(8, 'Tello', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(9, 'Mulaz', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  
-].sort((a, b) => (a.number < b.number ? -1 : 1));
-
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 500,
-  },
-});
 
 export default function Pending() {
 
@@ -170,7 +127,7 @@ export default function Pending() {
 
   }, []);
 
-  const classes = useStyles2();
+
   console.log(content2)
 
 
@@ -179,7 +136,7 @@ export default function Pending() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -191,7 +148,7 @@ export default function Pending() {
   };
 
 
-  const [modalStyle] = React.useState(getModalStyle);
+  
   const [open, setOpen] = React.useState(false);
 
 
@@ -201,7 +158,7 @@ export default function Pending() {
     setOpen(false);
   };
 
-  var id ;
+
 function selectItem(x){
  
 
@@ -242,124 +199,88 @@ function selectItem(x){
   }
   return (
    
-   <div>
-      <h5 style={styles.container}>
+    <div>
+    <h5 style={styles.container}>
     All Pending   
      </h5>
-     <div align="right" style={{marginBottom:10}}>
-     <TextField sty placeholder="search by phoneNumber"  value={SearchData.search} onChange={e=>setSearch({ ...SearchData ,search:e.target.value})}/>
-    
-     </div>
-      <Table className='table table-striped table-bordered' aria-label="custom pagination table">
-      
-      <TableHead>
-          
-          <TableRow>
-            <TableCell align="left">NO#</TableCell>
-            <TableCell align="left">Fullname</TableCell>
-            <TableCell align="left">Phone Number</TableCell>
-            <TableCell align="left">Result</TableCell>
-            <TableCell align="left">Action</TableCell>
-          </TableRow>
+    <div align="right" style={{marginBottom:10}}>
+        <TextField sty placeholder="search by phoneNumber" value={SearchData.search} onChange={e=>setSearch({ ...SearchData ,search:e.target.value})}/>
+
+    </div>
+    <Table className='table table-striped table-bordered' aria-label="custom pagination table">
+
+        <TableHead>
+
+            <TableRow>
+                <TableCell align="left">NO#</TableCell>
+                <TableCell align="left">Fullname</TableCell>
+                <TableCell align="left">Phone Number</TableCell>
+                <TableCell align="left">Result</TableCell>
+                <TableCell align="left">Action</TableCell>
+            </TableRow>
         </TableHead>
         <TableBody>
-          {(rowsPerPage > 0
-            ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : a
-          ).filter(  (x)=>{
-
-            return x.result.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1
-      
-          }).map((row ,i) => (
+            {(rowsPerPage > 0 ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : a ).filter( (x)=>{ return x.result.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).map((row ,i) => (
             <TableRow key={i}>
-              <TableCell align="left" component="th" scope="row">
-                {i+1}
-              </TableCell>
-              <TableCell align="left">{row.patientFullName}</TableCell>
-              <TableCell align="left">{row.patientPhoneNumber}</TableCell>
-              <TableCell align="left">{row.result}</TableCell>
-              
-              <TableCell align="left">
-              <Button  variant="contained" color="primary" onClick={() => selectItem(row.id)} >update</Button>&nbsp;
-              
-              </TableCell>
-            </TableRow>
-          ))}
+                <TableCell align="left" component="th" scope="row">
+                    {i+1}
+                </TableCell>
+                <TableCell align="left">{row.patientFullName}</TableCell>
+                <TableCell align="left">{row.patientPhoneNumber}</TableCell>
+                <TableCell align="left">{row.result}</TableCell>
 
-        
+                <TableCell align="left">
+                    <Button variant="contained" color="primary" onClick={()=> selectItem(row.id)} >update</Button>&nbsp;
+
+                </TableCell>
+            </TableRow>
+            ))}
+
         </TableBody>
         <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
-              count={a.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: { 'aria-label': 'rows per page' },
-                native: true,
-              }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
+            <TableRow>
+                <TablePagination rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]} colSpan={3} count={a.length} rowsPerPage={rowsPerPage} page={page} SelectProps={{ inputProps: { 'aria-label': 'rows per page' }, native: true, }} onChangePage={handleChangePage} onChangeRowsPerPage={handleChangeRowsPerPage} ActionsComponent={TablePaginationActions} />
+            </TableRow>
         </TableFooter>
-      </Table>
+    </Table>
 
+    <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title">Testing Details</DialogTitle>
+        <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+                <form>
+                    <Row form>
 
+                        <Col md={12}>
 
-      
+                            <FormGroup>
+                                <Label for="exampleCity">Testing Kit:</Label>
+                                <Input type="select" name="travelled" value={ScreenData.testResult} onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} >
+                                <option>Select</option>
+                                <option value="POSITIVE">POSITIVE</option>
+                                <option value="NEGATIVE">NEGATIVE</option>
+                                </Input>
+                            </FormGroup>
 
-      <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
-      <DialogTitle id="alert-dialog-title">Testing  Details</DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-<form>
-        <Row form>
+                        </Col>
 
+                    </Row>
 
-          <Col md={12}>
+                </form>
 
-          <FormGroup>
-              <Label for="exampleCity">Testing Kit:</Label>
-                 <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
-          <option>Select</option>
-          <option value="POSITIVE">POSITIVE</option>
-          <option value="NEGATIVE">NEGATIVE</option>
-          </Input>
-            </FormGroup>
-          
-          </Col>
-      
-        </Row>
-         
-
-        </form>
-    
-        
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          Cancel
-        </Button>
-        <Button onClick={handleCloseSubmit} color="primary" autoFocus>
-          Submit
-        </Button>
-      </DialogActions>
+            </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={handleClose} color="primary">
+                Cancel
+            </Button>
+            <Button onClick={handleCloseSubmit} color="primary" autoFocus>
+                Submit
+            </Button>
+        </DialogActions>
     </Dialog>
 
-
-
-
-   </div>
+</div>
   
   );
  

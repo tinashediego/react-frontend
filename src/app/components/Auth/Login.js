@@ -1,5 +1,5 @@
 import React  ,{useState}from 'react';
-import {Col, Form, FormGroup, Label, Input,Button} from 'reactstrap';
+import {Col, Form, FormGroup,Button} from 'reactstrap';
 import Background from '../../../assets/1.jpg'
 import { useDispatch,} from 'react-redux';
 import {loginUser} from '../../../redux/actions/authActions'
@@ -13,10 +13,6 @@ const Login  = () =>{
    const dispatch = useDispatch();
 
    console.log(userData)
-
-
-
-   
    function handleSubmit(e) {
     e.preventDefault();
     if (userData) {
@@ -27,52 +23,31 @@ const Login  = () =>{
 
 
   return (
-
     <div responsive="true">
 
-    <div style={styles.img}/> 
-  
-    <Col  style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
-    <div style={{textAlign:"center"}}>
-      <img alt="Logo" style={{height:"100px"}} src={Logo}></img>
-    </div>
-    <Form align="center"  style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
-      <FormGroup>
-      
-        <TextField 
-                label = "Username"
-               name="username"  
-               value={userData.username}  
-               id="username" 
-               placeholder="Username"
-               onChange={e=>setData({ ...userData ,username:e.target.value})}
-               style={{width:"50%"}}
-               required/>
-      </FormGroup>
-      <FormGroup>
-        
-        <TextField type="password" 
-              label="Password"
-               name="password" 
-               id="password" 
-               value={userData.password} 
-               placeholder="password"
-               onChange={e=>setData({...userData,password:e.target.value})} 
-               style={{width:"50%"}}
-               required/>
-      </FormGroup>
-      
-      <Button color="success" style={{width:"50%"}} type="submit">Submit</Button>
-  
-  
-    </Form>
-    
-    
+    <div style={styles.img}/>
+
+    <Col style={styles.container} sm="12" md={{ size: 6, offset: 3 }}>
+        <div style={{textAlign: "center"}}>
+            <img alt="Logo" style={{height: "100px"}} src={Logo}></img>
+        </div>
+        <Form align="center" style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
+            <FormGroup>
+
+                <TextField label="Username" name="username" value={userData.username} id="username" placeholder="Username" onChange={e=>setData({ ...userData ,username:e.target.value})} style={{width:"50%"}} required/>
+            </FormGroup>
+            <FormGroup>
+
+                <TextField type="password" label="Password" name="password" id="password" value={userData.password} placeholder="password" onChange={e=>setData({...userData,password:e.target.value})} style={{width:"50%"}} required/>
+            </FormGroup>
+
+            <Button color="success" style={{width: "50%"}} type="submit">Submit</Button>
+
+        </Form>
+
     </Col>
-    
-  
-  
-  </div>
+
+</div>
   );
 }
 

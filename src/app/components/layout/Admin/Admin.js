@@ -10,16 +10,13 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './mainListItems';
-import {useLocation ,useParams} from 'react-router'
+import {useLocation} from 'react-router'
 import AllKits from '../../Admin/AllKits';
 import NewKit from '../../Admin/NewKit';
 import AddUser from '../../Admin/AddUser';
@@ -27,7 +24,7 @@ import AllUsers from '../../Admin/AllUsers';
 import AdminDashboard from  '../../Admin/AdminDashboard'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {logoutUser ,} from '../../../../redux/actions/authActions'
-import { useDispatch ,useSelector} from "react-redux"
+import { useDispatch } from "react-redux"
 import Logo from '../../../../assets/logo.png';
 
 //import Logo from '../../../../assets/logo.png';
@@ -125,12 +122,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
 export default function Admin() {
 
   
   const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const location =  useLocation()
+ 
+  
+  let  username = localStorage.getItem('username')
+
+
+
+
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -138,12 +147,8 @@ export default function Admin() {
     setOpen(false);
   };
  
-  const location =  useLocation()
-  let  para = useParams()
+ 
 
-  console.log(para)
-
-  //console.log(location)
 
 
   function switchPages(){
@@ -168,7 +173,6 @@ export default function Admin() {
 
   }
 
-  let  username = localStorage.getItem('username')
 
 
   function logout (){
@@ -197,7 +201,7 @@ export default function Admin() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-          <img src={Logo} style={{width:80}}></img>
+          <img src={Logo} style={{width:80}} alt="Admin"></img>
           </Typography>
           <IconButton color="inherit"  onClick={logout}>'
           {username}'
