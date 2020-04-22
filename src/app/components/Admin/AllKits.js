@@ -9,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+
 import {FormGroup,Form }  from 'reactstrap'
 import TextField from '@material-ui/core/TextField';
 
@@ -20,6 +21,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {Link} from 'react-router-dom'
 
 
 
@@ -96,6 +98,8 @@ const AllKits  = (props) =>{
    
 
     <h5 className="container" style={styles.container}>All Kits</h5>
+    <Button style={{color:'green'}}variant="contained"> <Link to='/newkit'>New Kit</Link></Button>
+
 
       <Table size="small" className="table table-striped" >
   

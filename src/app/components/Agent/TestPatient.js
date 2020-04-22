@@ -210,7 +210,10 @@ const handleCloseSubmit = () => {
         }
     dispatchs(testPatient(newScreen))
     console.log(newScreen)
+
     setOpen(false);
+    dispatch(allPatientTests(para.id));
+   
 
   };
 

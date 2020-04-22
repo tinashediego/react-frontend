@@ -30,6 +30,7 @@ import MyTests from "../../Agent/MyTests";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch} from "react-redux"
 import Logo from '../../../../assets/logo.png';
+import NewKit from '../../Admin/NewKit';
 
 function Copyright() {
   return (
@@ -165,6 +166,8 @@ export default function Agent() {
      return <TableTestDetails/>
      case '/allkits':
       return <AllKits/>
+      case '/newkit':
+      return <NewKit/>
 
      case '/addpatient':
        return <AddPatient />
