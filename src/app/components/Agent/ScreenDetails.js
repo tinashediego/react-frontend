@@ -3,6 +3,7 @@ import { useDispatch} from "react-redux";
 import {updateTest} from '../../../redux/actions/PatientsActions'
 import {useParams} from 'react-router'
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import countryList  from './country'
 
 
  function ScreenDetails() {
@@ -18,19 +19,21 @@ import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
    var ids = localStorage.getItem('partnerId')
 
     const [ScreenData ,setScreen] =  useState({       
-    "bodyAchesPresent": true,
-    "coldsPresent": true,
-    "coughPresent": true,
-    "diarrhoeaPresent": true,
-    "difficultiesInBreathingPresent": true,
-    "fatiguePresent": true,
-    "feverPresent": true,
-    "hasATravelHistoryToACovid19InfectedArea": true,
-    "hasDirectContactWithCovid19Patient": true,
-    "hasTravelledPast14Days": true,
+    "bodyAchesPresent":'',
+    "coldsPresent":'',
+    "coughPresent": '',
+    "diarrhoeaPresent": '',
+    "difficultiesInBreathingPresent": '',
+    "fatiguePresent": '',
+    "feverPresent":'',
+    "hasATravelHistoryToACovid19InfectedArea": '',
+    "hasDirectContactWithCovid19Patient": '',
+    "hasTravelledPast14Days": '',
     "headachePresent": true, 
     })
 
+
+    
 
     
   const dispatchs = useDispatch();
@@ -41,7 +44,7 @@ import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
   const username = localStorage.getItem('username')
 
 
-
+ console.log(countryList)
 
   const  newScreen = {
             
@@ -74,12 +77,33 @@ const handleSubmit = (e) => {
   };
 
 
+  function ifYes(){
+
+
+    if(ScreenData.hasTravelledPast14Days){
+
+        return(   <Col md={6}>
+            <FormGroup>
+                <Label for="exampleCity">WHERE</Label>
+                <Input type="select" name="travelled" value={ScreenData.where} onChange={e=>setScreen({ ...ScreenData ,great:e.target.value})} id="gender">
+                <option>Select</option>
+                {countryList.map((team) => <option key={team.value} value={team}>{team}</option>)}
+             
+                </Input>
+            </FormGroup>
+        </Col>)
+    }
+
+
+
+  }
+  let  patie = localStorage.getItem('currentPatient')
 
   
     return (
       
       <div>
-      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>Patient's  Screens</h5>
+      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{patie}'s  Screens</h5>
       <Form onSubmit={handleSubmit}>
           <Row form>
               <Col md={6}>
@@ -177,32 +201,10 @@ const handleSubmit = (e) => {
   
           </Row>
   
-          <Row form>
-  
-              <Col md={6}>
-                  <FormGroup>
-                      <Label for="exampleState">Travelled in the past 14days</Label>
-                      <Input type="select" name="travelled" value={ScreenData.hasTravelledPast14Days} onChange={e=>setScreen({ ...ScreenData ,hasTravelledPast14Days:e.target.value})} id="gender">
-                      <option>Select</option>
-                      <option value="true">Yes</option>
-                      <option value="false">No</option>
-                      </Input>
-                  </FormGroup>
-              </Col>
-  
-          </Row>
+        
   
           <Row form>
-              <Col md={6}>
-                  <FormGroup>
-                      <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
-                      <Input type="select" name="travelled" value={ScreenData.hasATravelHistoryToACovid19InfectedArea} onChange={e=>setScreen({ ...ScreenData ,hasATravelHistoryToACovid19InfectedArea:e.target.value})} id="gender">
-                      <option>Select</option>
-                      <option value="true">Yes</option>
-                      <option value="false">No</option>
-                      </Input>
-                  </FormGroup>
-              </Col>
+           
               <Col md={6}>
                   <FormGroup>
                       <Label for="exampleState">Any direct contact with a Covid patient</Label>
@@ -213,8 +215,38 @@ const handleSubmit = (e) => {
                       </Input>
                   </FormGroup>
               </Col>
+
+              <Col md={6}>
+              <FormGroup>
+                  <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
+                  <Input type="select" name="travelled" value={ScreenData.hasATravelHistoryToACovid19InfectedArea} onChange={e=>setScreen({ ...ScreenData ,hasATravelHistoryToACovid19InfectedArea:e.target.value})} id="gender">
+                  <option>Select</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                  </Input>
+              </FormGroup>
+          </Col>
   
           </Row>
+
+
+          <Row form>
+
+          <Col md={6}>
+          <FormGroup>
+              <Label for="exampleState">Travelled in the past 21days</Label>
+              <Input type="select" name="travelled" value={ScreenData.hasTravelledPast14Days} onChange={e=>setScreen({ ...ScreenData ,hasTravelledPast14Days:e.target.value})} id="gender">
+              <option>Select</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+              
+              </Input>
+          </FormGroup>
+      </Col>
+       {ifYes()}
+        
+
+      </Row>
           <div align="right" style={{paddingTop:10}}>
               <button className="btn btn-success" type="submit">submit</button>
           </div>

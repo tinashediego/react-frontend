@@ -170,10 +170,6 @@ export default function Agent() {
     
      case '/mytests':
       return <MyTests />
-      case '/pending':
-        return <Pending />
-  
-  
       default:
         break;
     }

@@ -26,6 +26,20 @@ import Agent from "./app/components/layout/Agent/Agent";
 // Add a request interceptor
 axios.interceptors.request.use(
    config => {
+
+
+    if(config.url === "https://covid19.mathdro.id/api/countries"){
+
+    
+      config.headers['Authorization'] = ``   
+
+
+    }
+    else{
+           const token = localStorage.getItem('access_token');
+           if (token) {
+             config.headers['Authorization'] = `Bearer ${token}`   
+           
  
       const token = localStorage.getItem('access_token');
       if (token) {
@@ -36,7 +50,7 @@ axios.interceptors.request.use(
 
        console.log(config)
        return config;
-   },
+   }}},
    error => {
        Promise.reject(error)
    });
@@ -101,7 +115,6 @@ function App() {
           <PrivateRoute exact path="/allkits" component={Admin} />
           <PrivateRoute exact path="/newkit" component={Admin} />
           <PrivateRoute excat path='/patient' component={Agent} />
-          <PrivateRoute excat path='/pending' component={Agent} />
           <PrivateRoute exact path="/allfacilities" component={Admin} />
     
         </Switch>

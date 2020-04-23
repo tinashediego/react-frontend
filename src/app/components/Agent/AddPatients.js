@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import {addPatient} from '../../../redux/actions/PatientsActions'
 
 import { TextField } from '@material-ui/core';
-import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 import moment from 'moment'
 import Grid from '@material-ui/core/Grid';
@@ -37,8 +37,8 @@ const AddPatient  = (props) =>{
     "gender": patientData.gender,
     "phoneNumber": patientData.phoneNumber,
     "email": patientData.email,
-    "nationalIdNumber":patientData.nationalIdOrPassportNumber,
-    "passportNumber": patientData.nationalIdOrPassportNumber,
+    "nationalIdNumber":patientData.nationalId,
+    "passportNumber": patientData.passportNumber,
     "dateOfBirth":moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
     "address": {
     "streetAddress": patientData.address,
@@ -56,10 +56,12 @@ const content = useSelector((state) => state.patients.newpatient);
     e.preventDefault();
     if (patientData) {
         dispatch(addPatient(newPatient))
+        localStorage.setItem('currentPatient',patientData.firstName)
       }
 
     }
     localStorage.setItem('partnerId' , content)
+    
 
   return (
     <div responsive>
@@ -78,23 +80,28 @@ const content = useSelector((state) => state.patients.newpatient);
                     <TextField label="Last Name" value={patientData.lastName} onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})} placeholder="Last Name" fullWidth required />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="National ID" value={patientData.nationalIdOrPassportNumber} onChange={e=>setPatient({ ...patientData ,nationalIdOrPassportNumber:e.target.value})} placeholder="e.g 63-1234567A12" required fullWidth />
+                    <TextField label="National ID" value={patientData.nationalId} onChange={e=>setPatient({ ...patientData ,nationalId:e.target.value})} placeholder="e.g 63-1234567A12" required fullWidth />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                <TextField label="Passport Number" value={patientData.passportNumber} onChange={e=>setPatient({ ...patientData ,passportNumber:e.target.value})} placeholder="e.g passport Number" required fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField label="Date Of Birth" type="date" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth required />
                 </Grid>
+
                 <Grid item xs={12} sm={6}>
-                    <TextField label="City" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})} placeholder="City" fullWidth required/>
+                <TextField type="email" label="Email" value={patientData.email} onChange={e=>setPatient({ ...patientData ,email:e.target.value})} placeholder="Email" fullWidth />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField label="Address" value={patientData.address} onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" fullWidth required />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField type="email" label="Email" value={patientData.email} onChange={e=>setPatient({ ...patientData ,email:e.target.value})} placeholder="Email" fullWidth />
-                </Grid>
+
                 <Grid item xs={12} sm={6}>
                     <TextField label="Phone Number"  type="text"   value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth required />
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                <TextField label="Address" value={patientData.address} onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" fullWidth required />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField label="City" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})} placeholder="City" fullWidth required/>
+                </Grid>     
                 <Grid item xs={12} sm={6}>
                     <Input type="select" name="group" value={patientData.province} onChange={e=>setPatient({ ...patientData ,province:e.target.value})}>
                     <option>Province</option>

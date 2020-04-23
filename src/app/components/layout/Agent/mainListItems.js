@@ -5,8 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import {Link} from 'react-router-dom'
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-import NoteIcon from '@material-ui/icons/Note';
+
 
 export const mainListItems = (
   <div style={{backgroundColor:"#4c8c40",minHeight:'90vh'}}>
@@ -21,7 +20,7 @@ export const mainListItems = (
       </Link>
       <Link to="/agent" style={{color:'white'}}>
 
-      <ListItemText primary="Screen Patient" />
+      <ListItemText primary="TEST PATIENT" />
       </Link>    
     </ListItem>
     <ListItem button> 
@@ -34,15 +33,7 @@ export const mainListItems = (
       <ListItemText primary="All Patients" />
       </Link>
     </ListItem>  
-    <ListItem button>
-      <Link to="/pending">
-      <ListItemIcon style={{color:'white'}}>
-        <NoteIcon />
-      </ListItemIcon>
-      </Link>
-      <Link to='/pending' style={{color:'white'}}>
-      <ListItemText primary="Pending Resullts" />
-      </Link>
-    </ListItem>
+   
+  
   </div>
 );
