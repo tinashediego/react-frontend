@@ -83,23 +83,8 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function patientsData(number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action) {
 
-  return {number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action};
-}
 
-const rows = [
-  patientsData(1, 'Munya', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(2, 'Patel', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(3, 'Everjoy',+26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(4, 'Memo', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(5, 'Diego', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(6, 'Tinlee', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(7, 'Tanaka', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(8, 'Tello', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(9, 'Mulaz', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  
-].sort((a, b) => (a.number < b.number ? -1 : 1));
 
 const useStyles2 = makeStyles({
   table: {
@@ -108,11 +93,11 @@ const useStyles2 = makeStyles({
 });
 
 export default function AllUsers() {
-  const classes = useStyles2();
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -136,20 +121,6 @@ export default function AllUsers() {
   }, []);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
    
    <div>
@@ -169,6 +140,7 @@ export default function AllUsers() {
             <TableCell align="left">Practising Number</TableCell>
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Group</TableCell>
+            <TableCell align="left">Testing Facility</TableCell>
             <TableCell align="left">Adress Of Practice</TableCell>
             <TableCell align="left">Actions</TableCell>
           </TableRow>
@@ -186,12 +158,13 @@ export default function AllUsers() {
             <TableCell>{x.practicingNumber}</TableCell>
             <TableCell>{x.email}</TableCell>
             <TableCell>{x.group}</TableCell>
+            <TableCell>{x.testingFacility}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
-            <TableCell align="right"><Button style={{backgroundColor:"green"}} >reset</Button>
+            <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}} >reset</Button>
             &nbsp;
         
-            &nbsp;<Button style={{backgroundColor:"red"}} href="#">suspend</Button></TableCell>
+            &nbsp;<Button style={{backgroundColor:"red" ,color:"white"}} href="#">suspend</Button></TableCell>
             </TableRow>
         
           ))}
@@ -203,7 +176,7 @@ export default function AllUsers() {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
-              count={rows.length}
+              count={content.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{

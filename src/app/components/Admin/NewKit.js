@@ -14,32 +14,12 @@ import Grid from '@material-ui/core/Grid';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  function NewKit() {
 
 
 
   const [state, setstate] = useState({"batchNumber": "",
-                                      "brandName": "" ,
+                                      "manufacture": "" ,
                                       'serialNumber':''
                                     })
 
@@ -49,9 +29,6 @@ import Grid from '@material-ui/core/Grid';
 
       const dispatch = useDispatch();
       
-  let history = useHistory()
-    
-    
       function handleSubmit(e) {
         e.preventDefault();
         if (state) {
@@ -78,7 +55,7 @@ import Grid from '@material-ui/core/Grid';
        <TextField label="Brand Name" type="text" value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} placeholder="Brand Name" required={true} />
        </Grid>
        <Grid item xs={12} sm={6}>
-       <TextField label="Batch Number" type="number" value={state.batchNumber} 
+       <TextField label="Manufacture" type="text" value={state.manufacture} 
 onChange={e=> setstate({ ...state, batchNumber:e.target.value})}
  placeholder="Batch Number" required={true}/>
        </Grid>

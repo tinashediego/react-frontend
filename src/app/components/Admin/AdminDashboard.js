@@ -77,10 +77,7 @@ console.log(provinceDemographics)
   console.log(pending)
   let colum = {
           
-    series: [{
-      name: 'PENDING',
-      data: pending
-    }, {
+    series:[ {
       name: 'NEGATIVE',
       data: negativeTotal
     }, {

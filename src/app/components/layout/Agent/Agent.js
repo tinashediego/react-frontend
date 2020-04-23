@@ -164,11 +164,7 @@ export default function Agent() {
      case`/test/${para.id}`:
 
      return <TableTestDetails/>
-     case '/allkits':
-      return <AllKits/>
-      case '/newkit':
-      return <NewKit/>
-
+ 
      case '/addpatient':
        return <AddPatient />
     

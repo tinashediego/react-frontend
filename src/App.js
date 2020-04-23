@@ -102,6 +102,8 @@ function App() {
           <PrivateRoute exact path="/newkit" component={Agent} />
           <PrivateRoute excat path='/patient' component={Agent} />
           <PrivateRoute excat path='/pending' component={Agent} />
+          <PrivateRoute exact path="/allfacilities" component={Admin} />
+    
         </Switch>
       </div>
     </Router>

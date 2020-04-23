@@ -1,10 +1,12 @@
-import {  UPDATE_KIT, ADD_KIT, ALL_KITS, ONE_KIT  } from "../types";
+import {  UPDATE_KIT, ADD_KIT, ALL_KITS, ONE_KIT  ,ALL_FACILITY ,ADD_FACILITY, } from "../types";
 
 const initialState = {
   updatekit:{},
   onekit:{},
   newkit:{},
-  allkits:[]
+  newfacility:{},
+  allkits:[],
+  allfacility:[]
 
 };
 
@@ -16,6 +18,11 @@ export default function(state = initialState, action) {
           ...state, 
         newkit: action.payload
         };
+        case ADD_FACILITY:
+        return {
+          ...state, 
+        newfacility: action.payload
+        };
 
         case ALL_KITS:
         return {
@@ -23,6 +30,13 @@ export default function(state = initialState, action) {
         allkits: action.payload
         };
 
+
+        case ALL_FACILITY:
+          return {
+            ...state, 
+          allfacility: action.payload
+          };
+  
         
         case ONE_KIT:
         return {

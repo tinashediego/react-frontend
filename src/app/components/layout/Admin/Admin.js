@@ -26,6 +26,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch } from "react-redux"
 import Logo from '../../../../assets/logo.png';
+import AllFacilities from '../../Admin/AllFacilities';
 
 //import Logo from '../../../../assets/logo.png';
 
@@ -166,6 +167,11 @@ export default function Admin() {
      case'/allusers':
              return <AllUsers/>
 
+    case '/allfacilities':
+          return <AllFacilities />
+
+    
+          
     
       default:
         break;

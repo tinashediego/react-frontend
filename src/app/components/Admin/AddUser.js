@@ -27,7 +27,8 @@ const AddUser  = () =>{
     "firstName": "",
     "gender": "",
     "lastName": "",
-    group:'AGENT',
+    group:'',
+    testingFacility:'',
     "nationalIdNumber": "",
     "practicingNumber": "",
     "qualification": "",
@@ -51,6 +52,7 @@ const AddUser  = () =>{
         "email": newUser.email,
         "fullName": newUser.firstName,
         "gender":newUser.gender,
+        "testingFacility":newUser.testingFacility,
         "group": newUser.group,
         "nationalIdNumber":newUser.nationalIdNumber,
         "phoneNumber": newUser.phoneNumber,
@@ -150,7 +152,26 @@ const AddUser  = () =>{
     </FormGroup>
 
 
+     
+  
+
+
     </div>
+
+    <div className="row">
+    
+ 
+    <FormGroup className="col-sm-12">
+      
+    <Input type="select" name="group"  value={newUser.testingFacility} 
+    onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
+             <option>Testing Facility</option>
+            <option value="AGENT">A</option>
+            <option value="ADMIN">B</option>
+            </Input>
+  </FormGroup>
+
+  </div>
 
       <div className="row">
       <FormGroup className="col-sm-6">
