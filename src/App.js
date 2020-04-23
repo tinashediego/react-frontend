@@ -98,8 +98,8 @@ function App() {
           <PrivateRoute excat path="/test/:id" component={Agent} />
           <PrivateRoute excat path='/onescreen/:id' component={Agent} />
           <PrivateRoute excat path='/mytests' component={Agent} />
-          <PrivateRoute exact path="/allkits" component={Agent} />
-          <PrivateRoute exact path="/newkit" component={Agent} />
+          <PrivateRoute exact path="/allkits" component={Admin} />
+          <PrivateRoute exact path="/newkit" component={Admin} />
           <PrivateRoute excat path='/patient' component={Agent} />
           <PrivateRoute excat path='/pending' component={Agent} />
           <PrivateRoute exact path="/allfacilities" component={Admin} />
