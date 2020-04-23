@@ -26,31 +26,24 @@ import Agent from "./app/components/layout/Agent/Agent";
 // Add a request interceptor
 axios.interceptors.request.use(
    config => {
-
-
     if(config.url === "https://covid19.mathdro.id/api/countries"){
-
-    
-      config.headers['Authorization'] = ``   
-
+   
+      config.headers['Authorization'] = ``  
 
     }
     else{
            const token = localStorage.getItem('access_token');
-           if (token) {
-             config.headers['Authorization'] = `Bearer ${token}`   
-           
- 
-      const token = localStorage.getItem('access_token');
+
+
       if (token) {
         config.headers['Authorization'] = `Bearer ${token}`   
-      }
+      }}
 
        // config.headers['Content-Type'] = 'application/json';
 
        console.log(config)
        return config;
-   }}},
+    },
    error => {
        Promise.reject(error)
    });
