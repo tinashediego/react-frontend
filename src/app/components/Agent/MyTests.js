@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import AddPatients from '../Agent/AddPatients';
 import ScreenDetails from '../Agent/ScreenDetails';
 import NewKit from '../Admin/NewKit';
+import Desicion from './Desicion';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,23 +24,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Add Patient', 'Screen Patient', 'Add New Kit'];
+  return ['Add Patient', 'Screen Patient' ,'Decision', 'Test Patient'];
 }
 
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return <AddPatients/>;
-    case 1:
-      return <ScreenDetails/>;
-    case 2:
-      return <NewKit/>;
-    default:
-      return 'Unknown stepIndex';
-  }
-}
 
 export default function HorizontalLabelPositionBelowStepper() {
+
+
+
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -55,6 +48,28 @@ export default function HorizontalLabelPositionBelowStepper() {
   const handleReset = () => {
     setActiveStep(0);
   };
+
+
+  function getStepContent(stepIndex) {
+    switch (stepIndex) {
+      case 0:
+        return <AddPatients next={handleNext} />;
+      case 1:
+        return <ScreenDetails next={handleNext} />;
+      case 2:
+  
+        return <Desicion next={handleNext} reset={handleReset} />
+     
+  
+        case 3:
+  
+          return <NewKit next={handleNext} reset={handleReset}/>;
+        
+      default:
+        return 'Unknown stepIndex';
+    }
+  }
+  
 
   return (
     <div className={classes.root}>
@@ -82,9 +97,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               >
                 Back
               </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
+             
             </div>
           </div>
         )}

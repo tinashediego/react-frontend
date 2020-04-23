@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import {Input,Form} from 'reactstrap';
-import { useDispatch,useSelector } from 'react-redux';
-import {addPatient} from '../../../redux/actions/PatientsActions'
+
+import axios from  'axios'
 
 import { TextField } from '@material-ui/core';
 
@@ -10,7 +10,7 @@ import moment from 'moment'
 import Grid from '@material-ui/core/Grid';
 
 
-const AddPatient  = (props) =>{
+const AddPatient  = ({next}) =>{
 
   const [patientData ,setPatient]  =  useState(
   {
@@ -28,7 +28,6 @@ const AddPatient  = (props) =>{
     
   })
 
-  console.log(props)
 
   var newPatient={
   userCommand: {
@@ -49,18 +48,31 @@ const AddPatient  = (props) =>{
 
 }
 
-
-const dispatch = useDispatch(); 
-const content = useSelector((state) => state.patients.newpatient);
   function handleSubmit(e) {
+
     e.preventDefault();
-    if (patientData) {
-        dispatch(addPatient(newPatient))
+
+    next()
+    if(patientData){
+
+      axios.post('http://45.76.141.84:8080/v1/patients' ,patientData)
+      .then(resp=>{
+        console.log(resp)
         localStorage.setItem('currentPatient',patientData.firstName)
-      }
+        localStorage.setItem('partnerId' , resp.data.id)
+        next()
+      }).catch(err=>{
+
+        alert(err.message)
+
+      })
 
     }
-    localStorage.setItem('partnerId' , content)
+
+
+    }
+   
+
     
 
   return (
@@ -77,16 +89,16 @@ const content = useSelector((state) => state.patients.newpatient);
                     <TextField label="First Name" value={patientData.firstName} onChange={e=>setPatient({ ...patientData ,firstName:e.target.value})} placeholder="First Name" autoComplete="firstName" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="Last Name" value={patientData.lastName} onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})} placeholder="Last Name" fullWidth required />
+                    <TextField label="Last Name" value={patientData.lastName} onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})} placeholder="Last Name" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="National ID" value={patientData.nationalId} onChange={e=>setPatient({ ...patientData ,nationalId:e.target.value})} placeholder="e.g 63-1234567A12" required fullWidth />
+                    <TextField label="National ID" value={patientData.nationalId} onChange={e=>setPatient({ ...patientData ,nationalId:e.target.value})} placeholder="e.g 63-1234567A12"   fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                <TextField label="Passport Number" value={patientData.passportNumber} onChange={e=>setPatient({ ...patientData ,passportNumber:e.target.value})} placeholder="e.g passport Number" required fullWidth />
+                <TextField label="Passport Number" value={patientData.passportNumber} onChange={e=>setPatient({ ...patientData ,passportNumber:e.target.value})} placeholder="e.g passport Number"   fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="Date Of Birth" type="date" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth required />
+                    <TextField label="Date Of Birth" type="date" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth   />
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
@@ -94,13 +106,13 @@ const content = useSelector((state) => state.patients.newpatient);
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
-                    <TextField label="Phone Number"  type="text"   value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth required />
+                    <TextField label="Phone Number"  type="text"   value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                <TextField label="Address" value={patientData.address} onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" fullWidth required />
+                <TextField label="Address" value={patientData.address} onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" fullWidth   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="City" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})} placeholder="City" fullWidth required/>
+                    <TextField label="City" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})} placeholder="City" fullWidth  />
                 </Grid>     
                 <Grid item xs={12} sm={6}>
                     <Input type="select" name="group" value={patientData.province} onChange={e=>setPatient({ ...patientData ,province:e.target.value})}>

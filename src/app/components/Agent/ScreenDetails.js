@@ -4,9 +4,10 @@ import {updateTest} from '../../../redux/actions/PatientsActions'
 import {useParams} from 'react-router'
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
 import countryList  from './country'
+import axios from 'axios'
 
 
- function ScreenDetails() {
+ function ScreenDetails({next}) {
 
 
 
@@ -44,8 +45,6 @@ import countryList  from './country'
   const username = localStorage.getItem('username')
 
 
- console.log(countryList)
-
   const  newScreen = {
             
     "bodyAchesPresent":ScreenData.bodyAchesPresent,
@@ -69,6 +68,12 @@ import countryList  from './country'
 const handleSubmit = (e) => {
 
   e.preventDefault();
+
+  next()
+  axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
+        .then(resp =>{
+
+        })
 
     dispatchs(updateTest(newScreen))
 
