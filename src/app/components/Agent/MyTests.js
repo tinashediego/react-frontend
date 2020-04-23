@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddPatients from '../Agent/AddPatients';
 import ScreenDetails from '../Agent/ScreenDetails';
-import NewKit from '../Admin/NewKit';
+import NewTest from './NewTest';
 import Desicion from './Desicion';
 
 const useStyles = makeStyles((theme) => ({
@@ -63,7 +63,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   
         case 3:
   
-          return <NewKit next={handleNext} reset={handleReset}/>;
+          return <NewTest next={handleNext} reset={handleReset}/>;
         
       default:
         return 'Unknown stepIndex';
