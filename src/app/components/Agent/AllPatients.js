@@ -146,7 +146,8 @@ export default function AllPatients() {
 
             <TableRow>
                 <TableCell align="left">NO#</TableCell>
-                <TableCell align="left">Fullname</TableCell>
+                <TableCell align="left">First Name</TableCell>
+                <TableCell align="left">Last Name</TableCell>
                 <TableCell align="left">Phone Number</TableCell>
                 <TableCell align="left">Email</TableCell>
                 <TableCell align="left">National ID</TableCell>
@@ -162,7 +163,8 @@ export default function AllPatients() {
                 <TableCell align="left" component="th" scope="row">
                     {i+1}
                 </TableCell>
-                <TableCell align="left">{row.fullName}</TableCell>
+                <TableCell align="left">{row.firstName}</TableCell>
+                <TableCell align="left">{row.lasstName}</TableCell>
                 <TableCell align="left">{row.phoneNumber}</TableCell>
                 <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>
@@ -173,7 +175,7 @@ export default function AllPatients() {
                     <Button variant="contained" color="primary">
                         <Link to={`/onescreen/${row.patientId}`} style={{color: "white"}}>Repeat Screen</Link>
                     </Button>&nbsp;
-                    <Button variant="contained" color="success">
+                    <Button variant="contained">
                         <Link style={{color: "red"}} to={`/test/${row.patientId}`}>Repeat Test</Link>
                     </Button>
 
