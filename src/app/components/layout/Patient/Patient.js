@@ -21,19 +21,10 @@ import {useLocation ,useParams} from 'react-router'
 import AllKits from '../../Admin/AllKits';
 import NewKit from '../../Admin/NewKit';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import PatientDetails from '../../Agent/PatientDetails';
-import AllPatients from '../../Agent/AllPatients';
-import ScreenDetails from '../../Agent/ScreenDetails';
-import AgentDashboard from '../../Agent/AgentDashboard'
-import TableScreen from '../../Agent/TableScreen'
-import TableTestDetails from '../../Agent/TableTestDetails'
-import Pending from '../../Agent/Pending';
-import AddPatient from '../../Agent/AddPatients';
-import MyTests from "../../Agent/MyTests";
-import Results from "../../Agent/Results";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch ,useSelector} from "react-redux"
 import Logo from '../../../../assets/logo.png';
+import PatientDashboard from '../../Patient/PatientDashboard';
 
 function Copyright() {
   return (
@@ -127,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Agent() {
+export default function Patient() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -150,28 +141,9 @@ export default function Agent() {
   function switchPages(){
 
     switch (location.pathname) {
-      case '/agent':
+      case '/patient':
 
-       return<MyTests/>
-     case'/allpatients' :
-              return<AllPatients/>
-    case`/onescreen/${para.id}`:
-
-     return <TableScreen />
-
-     case`/test/${para.id}`:
-
-     return <TableTestDetails/>
-     case '/allkits':
-      return <AllKits/>
-
-     case '/addpatient':
-       return <AddPatient />
-    
-     case '/mytests':
-      return <MyTests />
-      case '/pending':
-        return <Pending />
+       return<PatientDashboard />
   
   
       default:

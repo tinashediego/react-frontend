@@ -101,10 +101,9 @@ export const setUserLoading = () => {
 
 // Log user out
 export const logoutUser = (history) => dispatch => {
-  localStorage.removeItem('access_token')
-  localStorage.removeItem('refresh_token')
-  localStorage.removeItem('authorities' )
-  localStorage.removeItem('username')
+
+
+localStorage.clear()
   window.location.href  = '/'
   // Set current user to empty object {} which will set isAuthenticated to false
   

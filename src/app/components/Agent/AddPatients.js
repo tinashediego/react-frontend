@@ -16,11 +16,13 @@ const AddPatient  = ({next}) =>{
   {
     "address": "",
     "email": "",
+    thisAChild:'',
     "firstName": "",
     "group": "PATIENT",
     "lastName": "",
     dateOfBirth:'',
-    "nationalIdOrPassportNumber": "",
+    "passportNumber": "",
+    nationalId:"",
     "phoneNumber":"",
     "gender":"",
     "city":"",
@@ -40,6 +42,7 @@ const AddPatient  = ({next}) =>{
     "nationalIdNumber":patientData.nationalId,
     "passportNumber": patientData.passportNumber,
     "dateOfBirth":moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
+    thisAChild:patientData.thisAChild,
     "address": {
     "streetAddress": patientData.address,
     "city":patientData.city,
@@ -53,12 +56,12 @@ const AddPatient  = ({next}) =>{
 
     e.preventDefault();
     if(patientData){
-      next()
       axios.post('http://45.76.141.84:8080/v1/patients' ,newPatient)
       .then(resp=>{
         console.log(resp)
         localStorage.setItem('currentPatient',patientData.firstName)
         localStorage.setItem('partnerId' , resp.data.id)
+        alert('success')
         next()
       }).catch(err=>{
 
@@ -136,6 +139,15 @@ const AddPatient  = ({next}) =>{
                     <option value="FEMALE">Female</option>
                     </Input>
                 </Grid>
+
+
+                <Grid item xs={12} sm={6}>
+                <Input type="select" label="Is This a Child" value={patientData.thisAChild} onChange={e=>setPatient({ ...patientData ,thisAChild:e.target.value})} id="gender">
+                <option>is this a  child</option>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+                </Input>
+            </Grid>
 
             </Grid>
         </React.Fragment>

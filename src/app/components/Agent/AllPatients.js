@@ -167,7 +167,7 @@ export default function AllPatients() {
                 <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>
-                <TableCell align="left">{row.result}</TableCell>
+                <TableCell align="left">{row.testResult}</TableCell>
                 <TableCell align="left">{row.dateOfBirth}</TableCell>
                 <TableCell align="left">
                     <Button variant="contained" color="primary">

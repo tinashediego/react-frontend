@@ -1,11 +1,29 @@
-import React  ,{useState}from 'react';
+import React  ,{useState ,useEffect}from 'react';
 import {Col,Label,FormGroup,Form ,Row ,Table,}  from 'reactstrap'
 import { useHistory } from "react-router";
+import axios from 'axios'
 
 
 const PatientDashboard  = (props) =>{ 
 
+  const [repo ,setRepo] = useState([])
 
+
+
+  useEffect(()=>{
+   const  fetchData = async () =>{
+
+    const resp =  await axios.get('http://45.76.141.84:8080/v1/maisha-status-report/all')
+       setRepo(resp)
+  
+
+    }
+
+    fetchData()
+  },[])
+
+
+  console.log(repo)
 
 
   

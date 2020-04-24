@@ -4,6 +4,7 @@ import {allKits} from '../../../redux/actions/KitsActions'
 
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
 import moment from 'moment'
+import axios from 'axios'
 
 
 
@@ -12,7 +13,7 @@ import moment from 'moment'
 
 
 
- function NewTest() {
+ function NewTest({reset}) {
 
   const content2 = useSelector((state) => state.kits.allkits);  
   const dispatch2 = useDispatch(allKits());
@@ -32,7 +33,8 @@ import moment from 'moment'
 
 
 
-const handleSubmit = () => {
+const handleSubmit = (e) => {
+  e.preventDefault()
   let a = localStorage.getItem('username')
   let b= localStorage.getItem('partnerId')
   
@@ -45,6 +47,18 @@ const handleSubmit = () => {
     "testingAgentUsername": a,
 
         }
+
+        axios.post("http://45.76.141.84:8080/v1/tests" ,newScreen)
+             .then(resp=>{
+              alert('succes')
+              reset()         
+             }
+              )
+              .catch(err=>{
+
+                alert(err.message)
+                console.log(err)
+              })
 
     
 
@@ -62,7 +76,7 @@ const handleSubmit = () => {
     <div>
    <h5 className="h" style={styles.h}>Test Patient</h5>
    <Col sm="12" md={{ size: 6, offset: 3 }}>
-   <form>
+   <form onSubmit={handleSubmit}>
    <Row form>
 
    <Col md={12} >

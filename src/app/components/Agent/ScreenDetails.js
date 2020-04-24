@@ -19,7 +19,8 @@ import axios from 'axios'
    
    var ids = localStorage.getItem('partnerId')
 
-    const [ScreenData ,setScreen] =  useState({       
+    const [ScreenData ,setScreen] =  useState({ 
+        thisAChild:false,      
     "bodyAchesPresent":'',
     "coldsPresent":'',
     "coughPresent": '',
@@ -46,7 +47,7 @@ import axios from 'axios'
 
 
   const  newScreen = {
-            
+   
     "bodyAchesPresent":ScreenData.bodyAchesPresent,
     "coldsPresent": ScreenData.coldsPresent,
     "coughPresent": ScreenData.coughPresent,
@@ -70,14 +71,18 @@ const handleSubmit = (e) => {
 
   e.preventDefault();
 
-  next()
+
   axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
         .then(resp =>{
+            alert('success')
             next()
 
+        }).catch(err=>{
+
+
+            alert(err.message)
         })
 
-    dispatchs(updateTest(newScreen))
 
 
 

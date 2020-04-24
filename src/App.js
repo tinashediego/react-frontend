@@ -10,10 +10,9 @@ import AllKits from "./app/components/Admin/AllKits";
 
 import axios from 'axios'
 
-
-import PatientDashboard from "./app/components/Patient/PatientDashboard";
 import Admin from './app/components/layout/Admin/Admin'
 import Agent from "./app/components/layout/Agent/Agent";
+import Patient from "./app/components/layout/Patient/Patient";
 
 
 
@@ -96,7 +95,7 @@ function App() {
           <PrivateRoute exact path="/dashboard/"   component={Admin} />
           <PrivateRoute exact path="/dash"   component={AllKits} />
           <PrivateRoute excat path='/agent' component={Agent} />
-          <PrivateRoute exact path="/patient" component={PatientDashboard}/>
+          <PrivateRoute exact path="/patient" component={Patient}/>
           <PrivateRoute exact path="/adduser" component={Admin} />
           <PrivateRoute exact path="/allusers" component={Admin} />
           <PrivateRoute exact path="/addpatient" component={Agent} />
