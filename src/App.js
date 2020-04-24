@@ -13,6 +13,7 @@ import axios from 'axios'
 import Admin from './app/components/layout/Admin/Admin'
 import Agent from "./app/components/layout/Agent/Agent";
 import Patient from "./app/components/layout/Patient/Patient";
+import Desicion from './app/components/Agent/Desicion'
 
 
 
