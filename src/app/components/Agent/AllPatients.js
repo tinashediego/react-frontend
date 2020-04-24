@@ -18,7 +18,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
-
+import moment from 'moment'
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -146,6 +146,7 @@ export default function AllPatients() {
 
             <TableRow>
                 <TableCell align="left">NO#</TableCell>
+                <TableCell align="left">Date</TableCell>
                 <TableCell align="left">First Name</TableCell>
                 <TableCell align="left">Last Name</TableCell>
                 <TableCell align="left">Phone Number</TableCell>
@@ -158,11 +159,15 @@ export default function AllPatients() {
             </TableRow>
         </TableHead>
         <TableBody>
-            {(rowsPerPage > 0 ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : a ).filter( (x)=>{ return x.phoneNumber.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).map((row ,i) => (
+            {(rowsPerPage > 0 ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : a ).sort(function(a, b) {
+              var dateA = new Date(a.createdDate), dateB = new Date(b.createdDate);
+              return dateA - dateB;
+          }).reverse().filter( (x)=>{ return x.phoneNumber.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).map((row ,i) => (
             <TableRow key={i}>
                 <TableCell align="left" component="th" scope="row">
                     {i+1}
                 </TableCell>
+                <TableCell>{moment(row.createdDate).format('DD/MM/YYYY')}</TableCell>
                 <TableCell align="left">{row.firstName}</TableCell>
                 <TableCell align="left">{row.lasstName}</TableCell>
                 <TableCell align="left">{row.phoneNumber}</TableCell>

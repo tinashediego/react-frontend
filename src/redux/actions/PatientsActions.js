@@ -118,7 +118,7 @@ export const allPatient = () => dispatch=>{
   
 
 
-    axios.get("http://45.76.141.84:8080/v1/patients/all")
+    axios.get("http://45.76.141.84:8080/v1/patients/all/by-agent-facility")
          .then(resp=>{
            dispatch({
            type:ALL_PATIENTS,
