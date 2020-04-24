@@ -18,9 +18,10 @@ import Grid from '@material-ui/core/Grid';
 
 
 
-  const [state, setstate] = useState({"batchNumber": "",
-                                      "manufacture": "" ,
-                                      'serialNumber':''
+  const [state, setstate] = useState({"brandName": "",
+                                      "manufacturer": "" ,
+                                      "used": false
+                                      
                                     })
 
 
@@ -55,16 +56,11 @@ import Grid from '@material-ui/core/Grid';
        <TextField label="Brand Name" type="text" value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} placeholder="Brand Name" required={true} />
        </Grid>
        <Grid item xs={12} sm={6}>
-       <TextField label="Manufacture" type="text" value={state.manufacture} 
-onChange={e=> setstate({ ...state, batchNumber:e.target.value})}
- placeholder="Batch Number" required={true}/>
+       <TextField label="Manufacture" type="text" value={state.manufacturer} 
+onChange={e=> setstate({ ...state, manufacturer:e.target.value})}
+ placeholder="manufacturer" required={true}/>
        </Grid>
-       <Grid item xs={12}>
-       <TextField label="Serial Number" type="number" value={state.serialNumber}  
-onChange={e=> setstate({ ...state, serialNumber:e.target.value})}
-placeholder="Serial Number"  required={true} />
-       </Grid>
-       
+      
      </Grid>
    </React.Fragment>
    <div align="right" style={{paddingTop:10}}>

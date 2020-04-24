@@ -16,7 +16,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 
 
@@ -51,7 +51,7 @@ const AllFacilities  = (props) =>{
 
 
 
-  const [state, setstate] = useState({"testingFacility": "",
+  const [state, setstate] = useState({"testingFacilityName": "",
                                       
                                     })
 
@@ -66,8 +66,23 @@ const AllFacilities  = (props) =>{
       function handleSubmit(e) {
         e.preventDefault();
         if (state) {
-            dispatchs(addfacilty(state))
-            setOpen(false);
+
+
+
+          axios.post('http://45.76.141.84:8080/v1/testing-facilities' ,state)
+               .then(resp=>{
+                 alert('Sucess')
+                 setOpen(false);
+               })
+               .catch(err=>{
+
+               
+                alert(err.message)
+
+               })
+
+     
+          
         }
     }
 
@@ -87,7 +102,7 @@ const AllFacilities  = (props) =>{
     <TableRow key={i}>
     <TableCell>{i +1}</TableCell>
     <TableCell>{x.id}</TableCell>
-    <TableCell>{x.testingFacility}</TableCell>
+    <TableCell>{x.testingFacilityName}</TableCell>
  
     </TableRow>
   
@@ -137,7 +152,7 @@ aria-describedby="alert-dialog-description"
   <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"100%"}}>
   <FormGroup className="col-sm-12" >
     
-    <TextField className="col-sm-12" label="Brand Name"  value={state.testingFacility}  onChange={e=> setstate({ ...state, testingFacility:e.target.value})} id="exampleEmail" placeholder="New Facility" />
+    <TextField className="col-sm-12" label="Facility  Name"  value={state.testingFacilityName}  onChange={e=> setstate({ ...state, testingFacilityName:e.target.value})} id="exampleEmail" placeholder="New Facility" />
   </FormGroup>
 
 </Form>

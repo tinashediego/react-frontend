@@ -314,7 +314,7 @@ const handleCloseSubmit = () => {
         <Col md={12} >
         <FormGroup>
           <Label for="exampleCity">Testing Kit:</Label>
-             <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
+             <Input type="select" name="travelled" value={ScreenData.testKitId}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
             
              {content2.map((team) => <option key={team.value} value={team.id}>{team.brandName}</option>)}
                  </Input>

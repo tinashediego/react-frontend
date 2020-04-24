@@ -1,15 +1,23 @@
-import React ,{useState} from 'react';
+import React ,{useState ,useEffect} from 'react';
 import {
   Form,
   FormGroup,Input,
   Col
 } from 'reactstrap';
-import { useDispatch,} from 'react-redux';
 import {addUser} from '../../../redux/actions/authActions'
+import {Allfacility} from '../../../redux/actions/KitsActions'
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
 
 const AddUser  = () =>{
+
+  
+  const content = useSelector((state) => state.kits.allfacility);
+  
+
+  const dispatchs = useDispatch(Allfacility());
+  
 
 
   let history = useHistory()
@@ -28,7 +36,7 @@ const AddUser  = () =>{
     "gender": "",
     "lastName": "",
     group:'',
-    testingFacility:'',
+    testingFacility:0,
     "nationalIdNumber": "",
     "practicingNumber": "",
     "qualification": "",
@@ -50,9 +58,10 @@ const AddUser  = () =>{
         },
         "dateOfBirth": newUser.dateOfBirth,
         "email": newUser.email,
-        "fullName": newUser.firstName,
+        "firstName": newUser.firstName,
+        "lastName":newUser.lastName,
         "gender":newUser.gender,
-        "testingFacility":newUser.testingFacility,
+        "testingFacilityId":newUser.testingFacility,
         "group": newUser.group,
         "nationalIdNumber":newUser.nationalIdNumber,
         "phoneNumber": newUser.phoneNumber,
@@ -65,9 +74,12 @@ const AddUser  = () =>{
 
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatchs(Allfacility());
+  }, [])
 
 
-  console.log(userData)
+  console.log(content)
 
 
 
@@ -75,6 +87,8 @@ const AddUser  = () =>{
   function handleSubmit(e) {
     e.preventDefault();
     if (newUser) {
+
+      console.log(userData)
       dispatch(addUser(userData))
 
 
@@ -166,8 +180,7 @@ const AddUser  = () =>{
     <Input type="select" name="group"  value={newUser.testingFacility} 
     onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
              <option>Testing Facility</option>
-            <option value="AGENT">A</option>
-            <option value="ADMIN">B</option>
+            {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
             </Input>
   </FormGroup>
 

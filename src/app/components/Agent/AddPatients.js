@@ -31,7 +31,8 @@ const AddPatient  = ({next}) =>{
 
   var newPatient={
   userCommand: {
-    "fullName":patientData.firstName,
+    "firstName":patientData.firstName,
+    "lastName":patientData.lastName,
     "group":patientData.group,
     "gender": patientData.gender,
     "phoneNumber": patientData.phoneNumber,
@@ -51,11 +52,9 @@ const AddPatient  = ({next}) =>{
   function handleSubmit(e) {
 
     e.preventDefault();
-
-    next()
     if(patientData){
-
-      axios.post('http://45.76.141.84:8080/v1/patients' ,patientData)
+      next()
+      axios.post('http://45.76.141.84:8080/v1/patients' ,newPatient)
       .then(resp=>{
         console.log(resp)
         localStorage.setItem('currentPatient',patientData.firstName)

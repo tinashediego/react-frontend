@@ -1,6 +1,5 @@
 import React,{useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import {testPatient ,allPatientTests ,onePatientScreen} from '../../../redux/actions/PatientsActions'
 import {allKits} from '../../../redux/actions/KitsActions'
 
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
@@ -15,7 +14,13 @@ import moment from 'moment'
 
  function NewTest() {
 
-    
+  const content2 = useSelector((state) => state.kits.allkits);  
+  const dispatch2 = useDispatch(allKits());
+  useEffect(() => {
+
+    dispatch2(allKits())
+
+  },[]);
     
     const [ScreenData ,setScreen] =  useState({
         "dateOfTest": moment().format('DD/MM/YYYY'),
@@ -28,19 +33,20 @@ import moment from 'moment'
 
 
 const handleSubmit = () => {
-
+  let a = localStorage.getItem('username')
+  let b= localStorage.getItem('partnerId')
   
   const  newScreen = {
     "dateOfTest": moment().format('DD/MM/YYYY'),
     "timeOfTest":moment().format('HH:mm'),
-    "patientScreeningId":'nno',
+    "patientScreeningId":b,
     "testKitId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
-    "testingAgentUsername": 'uygyy',
+    "testingAgentUsername": a,
 
         }
 
-   
+    
 
   };
 
@@ -62,9 +68,10 @@ const handleSubmit = () => {
    <Col md={12} >
    <FormGroup>
      <Label for="exampleCity">Testing Kit:</Label>
-        <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
+        <Input type="select" name="travelled" value={ScreenData.testKitId}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
        
-       <option>Hello there</option>
+       <option>SELECT</option>
+       {content2.map((team) => <option key={team.id} value={team.id}>{team.brandName}</option>)}
             </Input>
             </FormGroup>
           </Col>
@@ -72,11 +79,12 @@ const handleSubmit = () => {
      <Col md={12}>
 
      <FormGroup>
-         <Label for="exampleCity">Test Kit Result:</Label>
+         <Label for="exampleCity">Test  Result:</Label>
             <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
      <option>Select</option>
      <option value="POSITIVE">POSITIVE</option>
      <option value="NEGATIVE">NEGATIVE</option>
+     <option value="INCONLCUSIVE">IncoNclusive</option>
      </Input>
        </FormGroup>
      

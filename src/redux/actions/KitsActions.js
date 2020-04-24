@@ -99,7 +99,7 @@ import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS, ONE_KIT,
 
   export const Allfacility = () => dispatch=>{
 
-    axios.get("http://45.76.141.84:8080/v1/test-kits/all/un-used")
+    axios.get("http://45.76.141.84:8080/v1/testing-facilities/all")
          .then(resp=>{
            console.log(resp)
            dispatch({

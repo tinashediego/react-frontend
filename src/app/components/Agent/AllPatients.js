@@ -6,6 +6,7 @@ import { allPatient} from '../../../redux/actions/PatientsActions'
 import {Link} from  'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
+import {TextField} from '@material-ui/core'
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button';
 import TableFooter from '@material-ui/core/TableFooter';
@@ -127,6 +128,7 @@ export default function AllPatients() {
 
 
   let a  =  content
+  const  [SearchData ,setSearch] = React.useState({search:''})
 
   return (
    
@@ -134,6 +136,10 @@ export default function AllPatients() {
     <h5 style={styles.container}>
     All Patients
      </h5>
+     <div align="right" style={{marginBottom:10}}>
+     <TextField sty placeholder="search by phoneNumber" value={SearchData.search} onChange={e=>setSearch({ ...SearchData ,search:e.target.value})}/>
+
+ </div>
     <Table className='table table-striped table-bordered' aria-label="custom pagination table">
 
         <TableHead>
@@ -145,13 +151,13 @@ export default function AllPatients() {
                 <TableCell align="left">Email</TableCell>
                 <TableCell align="left">National ID</TableCell>
                 <TableCell align="left">Passport Number</TableCell>
-                <TableCell align="left">Gender</TableCell>
+                <TableCell align="left">Test Result</TableCell>
                 <TableCell align="left">Date of Birth</TableCell>
                 <TableCell align="left">Action</TableCell>
             </TableRow>
         </TableHead>
         <TableBody>
-            {(rowsPerPage > 0 ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : a ).map((row ,i) => (
+            {(rowsPerPage > 0 ? a.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : a ).filter( (x)=>{ return x.phoneNumber.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).map((row ,i) => (
             <TableRow key={i}>
                 <TableCell align="left" component="th" scope="row">
                     {i+1}
@@ -161,14 +167,14 @@ export default function AllPatients() {
                 <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>
-                <TableCell align="left">{row.gender}</TableCell>
+                <TableCell align="left">{row.result}</TableCell>
                 <TableCell align="left">{row.dateOfBirth}</TableCell>
                 <TableCell align="left">
                     <Button variant="contained" color="primary">
-                        <Link to={`/onescreen/${row.patientId}`} style={{color: "white"}}>Screen</Link>
+                        <Link to={`/onescreen/${row.patientId}`} style={{color: "white"}}>Repeat Screen</Link>
                     </Button>&nbsp;
                     <Button variant="contained" color="success">
-                        <Link style={{color: "red"}} to={`/test/${row.patientId}`}>Test</Link>
+                        <Link style={{color: "red"}} to={`/test/${row.patientId}`}>Repeat Test</Link>
                     </Button>
 
                 </TableCell>

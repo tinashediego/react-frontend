@@ -56,8 +56,9 @@ import axios from 'axios'
     "feverPresent": ScreenData.feverPresent,
     "hasATravelHistoryToACovid19InfectedArea": ScreenData.hasATravelHistoryToACovid19InfectedArea,
     "hasDirectContactWithCovid19Patient":ScreenData.hasDirectContactWithCovid19Patient,
-    "hasTravelledPast14Days": ScreenData.hasTravelledPast14Days,
+    "hasTravelledPast21DaysOutsideZimbabwe": ScreenData.hasTravelledPast14Days,
     "headachePresent":ScreenData.headachePresent , 
+    "countryVisited": ScreenData.countryVisited,
      patientId:ids,
      "testingAgentUsername":username
 
@@ -72,6 +73,7 @@ const handleSubmit = (e) => {
   next()
   axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
         .then(resp =>{
+            next()
 
         })
 
@@ -89,8 +91,9 @@ const handleSubmit = (e) => {
 
         return(   <Col md={6}>
             <FormGroup>
-                <Label for="exampleCity">WHERE</Label>
-                <Input type="select" name="travelled" value={ScreenData.where} onChange={e=>setScreen({ ...ScreenData ,great:e.target.value})} id="gender">
+                <Label for="exampleCity">Country 
+                Visited</Label>
+                <Input type="select" name="travelled" value={ScreenData.countryVisited} onChange={e=>setScreen({ ...ScreenData ,countryVisited:e.target.value})} id="gender">
                 <option>Select</option>
                 {countryList.map((team) => <option key={team.value} value={team}>{team}</option>)}
              
