@@ -17,20 +17,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './mainListItems';
 import {useLocation ,useParams} from 'react-router'
-import AllKits from '../../Admin/AllKits';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import AllPatients from '../../Agent/AllPatients';
 
 import TableScreen from '../../Agent/TableScreen'
 import TableTestDetails from '../../Agent/TableTestDetails'
-import Pending from '../../Agent/Pending';
+
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch} from "react-redux"
 import Logo from '../../../../assets/logo.png';
-import NewKit from '../../Admin/NewKit';
+
 
 function Copyright() {
   return (

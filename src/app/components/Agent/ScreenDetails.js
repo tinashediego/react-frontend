@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useDispatch} from "react-redux";
-import {updateTest} from '../../../redux/actions/PatientsActions'
+
 import {useParams} from 'react-router'
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
 import countryList  from './country'

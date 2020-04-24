@@ -4,8 +4,8 @@ import {testPatient ,allPatientTests ,onePatientScreen} from '../../../redux/act
 import {allKits} from '../../../redux/actions/KitsActions'
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import {useLocation ,useParams} from 'react-router'
-import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import {useParams} from 'react-router'
+import {Col,Label,Input,FormGroup,Row }  from 'reactstrap'
 import moment from 'moment'
 
 
@@ -15,7 +15,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import createMixins from '@material-ui/core/styles/createMixins';
+
 import Table from '@material-ui/core/Table';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -94,39 +94,19 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function patientsData(number, date, time,agent,kitUsed,brandName,results) {
 
-  return {number, date, time,agent,kitUsed,brandName,results};
-}
 
-const rows = [
-  patientsData(1, '12-03-1924', 4355,'mula','red cross','red red','negative'),
-  
-  
-].sort((a, b) => (a.number < b.number ? -1 : 1));
 
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 500,
-  },
-});
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
 
 
 
  function TestPatient() {
 
 
-  const classes = useStyles2();
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

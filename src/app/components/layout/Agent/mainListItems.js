@@ -34,18 +34,5 @@ export const mainListItems = (
       </Link>
     </ListItem>  
 
-
-    <ListItem button> 
-    <Link to="/alltests">
-      <ListItemIcon style={{color:'white'}}>
-      <PeopleIcon />
-    </ListItemIcon>
-    </Link>
-    <Link to='/alltests' style={{color:'white'}}>
-    <ListItemText primary="All Test" />
-    </Link>
-  </ListItem>  
-   
-  
   </div>
 );

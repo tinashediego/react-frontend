@@ -1,6 +1,5 @@
 import React  ,{useState ,useEffect}from 'react';
 import {Col,Label,FormGroup,Form ,Row ,Table,}  from 'reactstrap'
-import { useHistory } from "react-router";
 import axios from 'axios'
 
 
@@ -27,7 +26,7 @@ const PatientDashboard  = (props) =>{
 
 
   
-  let history = useHistory()
+  
 
 
 

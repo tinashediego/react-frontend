@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     const content = useSelector((state) => state.patients.alltests);
     const content2 = useSelector((state) => state.kits.allkits);  
     const content3 = useSelector((state) => state.patients.onescreen);
-    const content4 = useSelector((state) => state.patients.updatescreen);
+
     const username = localStorage.getItem('username')
     const dispatch = useDispatch(allPatientTests(para.id));
     const dispatch2 = useDispatch(allKits());
