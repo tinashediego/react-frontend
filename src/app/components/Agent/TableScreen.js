@@ -164,7 +164,7 @@ const handleCloseSubmit = () => {
 
   
     return (<div>
-        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patel Last Screens</h5>
+        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}> Last Screens</h5>
 
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         New Screen

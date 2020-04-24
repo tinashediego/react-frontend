@@ -124,9 +124,9 @@ let rows = content
 
   
     return (<div>
-        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}>Patel Test</h5>
+        <h5 className="h" style={{borderLeft:"10px solid #4c8c40"}}> Test</h5>
 
-        <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+        <Button variant="outlined" color="primary"  elevation={6} onClick={handleClickOpen}>
         New Test
       </Button>
     
