@@ -169,7 +169,7 @@ export default function AllPatients() {
                 </TableCell>
                 <TableCell>{moment(row.createdDate).format('DD/MM/YYYY')}</TableCell>
                 <TableCell align="left">{row.firstName}</TableCell>
-                <TableCell align="left">{row.lasstName}</TableCell>
+                <TableCell align="left">{row.lastName}</TableCell>
                 <TableCell align="left">{row.phoneNumber}</TableCell>
                 <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.passportNumber}</TableCell>

@@ -121,6 +121,24 @@ export default function AllUsers() {
   }, []);
 
 
+
+
+
+
+
+   function reset(){
+
+  alert('password rest')
+
+  }
+
+
+  function suspend(){
+
+    alert('user suspended')
+  }
+
+
   return (
    
    <div>
@@ -134,7 +152,8 @@ export default function AllUsers() {
           
           <TableRow>
             <TableCell align="left">NO#</TableCell>
-            <TableCell align="left">Fullname</TableCell>
+            <TableCell align="left">First name</TableCell>
+            <TableCell align="left">Last name</TableCell>
             <TableCell align="left">Phone Number</TableCell>
             <TableCell align="left">National ID</TableCell>
             <TableCell align="left">Practising Number</TableCell>
@@ -152,7 +171,8 @@ export default function AllUsers() {
           ).map((x ,i) => (
             <TableRow key={i}>
             <TableCell>{i +1}</TableCell>
-            <TableCell>{x.fullName}</TableCell>
+            <TableCell>{x.firstName}</TableCell>
+            <TableCell>{x.lastName}</TableCell>
             <TableCell>{x.phoneNumber}</TableCell>
             <TableCell>{x.nationalIdNumber}</TableCell>
             <TableCell>{x.practicingNumber}</TableCell>
@@ -161,10 +181,10 @@ export default function AllUsers() {
             <TableCell>{x.testingFacility}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
-            <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}} >reset</Button>
+            <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}}   onClick={reset}>reset</Button>
             &nbsp;
         
-            &nbsp;<Button style={{backgroundColor:"red" ,color:"white"}} href="#">suspend</Button></TableCell>
+            &nbsp;<Button style={{backgroundColor:"red" ,color:"white"}} href="#"   onClick={suspend}>suspend</Button></TableCell>
             </TableRow>
         
           ))}

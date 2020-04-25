@@ -38,6 +38,7 @@ const AddUser  = () =>{
     group:'',
     testingFacility:0,
     "nationalIdNumber": "",
+    "passportNumber":'',
     "practicingNumber": "",
     "qualification": "",
     "phoneNumber":"",
@@ -46,29 +47,36 @@ const AddUser  = () =>{
   })
 
   var userData = {
-    
-      "addressOfPractice": newUser.addressOfPractice,
-      "practicingNumber": newUser.practicingNumber,
-      "qualification": newUser.qualification,
-      "userCommand": {
-        "address": {
-          "city": newUser.city,
-          "province": newUser.province,
-          "streetAddress": newUser.streetAddress
-        },
-        "dateOfBirth": newUser.dateOfBirth,
+
+    "x":{
+
+   
+    "userCommand":{
+
+      "dateOfBirth": newUser.dateOfBirth,
         "email": newUser.email,
         "firstName": newUser.firstName,
         "lastName":newUser.lastName,
         "gender":newUser.gender,
         "testingFacilityId":newUser.testingFacility,
         "group": newUser.group,
+        "passortNumber":newUser.nationalIdNumber,
         "nationalIdNumber":newUser.nationalIdNumber,
         "phoneNumber": newUser.phoneNumber,
-        
-      }
-    
+        "address": {
+          "city": newUser.city,
+          "province": newUser.province,
+          "streetAddress": newUser.streetAddress
+        }
+    },
+      "addressOfPractice": newUser.addressOfPractice,
+      "practicingNumber": newUser.practicingNumber,
+      "qualification": newUser.qualification,
+      "testingFacilityId":newUser.testingFacilityId
+   
   }
+
+}
 
 
 
