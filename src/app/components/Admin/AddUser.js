@@ -46,19 +46,13 @@ const AddUser  = () =>{
   
   })
 
-  var userData = {
-
-    "x":{
-
-   
-    "userCommand":{
+  var  userCommand ={
 
       "dateOfBirth": newUser.dateOfBirth,
         "email": newUser.email,
         "firstName": newUser.firstName,
         "lastName":newUser.lastName,
         "gender":newUser.gender,
-        "testingFacilityId":newUser.testingFacility,
         "group": newUser.group,
         "passortNumber":newUser.nationalIdNumber,
         "nationalIdNumber":newUser.nationalIdNumber,
@@ -67,16 +61,16 @@ const AddUser  = () =>{
           "city": newUser.city,
           "province": newUser.province,
           "streetAddress": newUser.streetAddress
-        }
-    },
-      "addressOfPractice": newUser.addressOfPractice,
-      "practicingNumber": newUser.practicingNumber,
-      "qualification": newUser.qualification,
-      "testingFacilityId":newUser.testingFacilityId
+        },
+        "addressOfPractice": newUser.addressOfPractice,
+        "practicingNumber": newUser.practicingNumber,
+        "qualification": newUser.qualification,
+        "testingFacilityId":newUser.testingFacilityId
+    }
+ 
    
-  }
+  
 
-}
 
 
 
@@ -96,8 +90,8 @@ const AddUser  = () =>{
     e.preventDefault();
     if (newUser) {
 
-      console.log(userData)
-      dispatch(addUser(userData))
+      console.log(userCommand)
+      dispatch(addUser(userCommand))
 
 
     }
