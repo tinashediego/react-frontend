@@ -72,13 +72,8 @@ onChange={e=> setstate({ ...state, serialNumber:e.target.value})}
      </Grid>
    </React.Fragment>
    <div align="right" style={{paddingTop:10}}>
-<<<<<<< HEAD
-    <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
-    </div>
-=======
    <button className="btn btn-success" type="submit">submit</button>
    </div>
->>>>>>> 8864102019981080e442ce31136c9c6776564283
 </Form>
 
 </div>
