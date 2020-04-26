@@ -30,7 +30,7 @@ import axios from 'axios'
     "feverPresent":'',
     "hasATravelHistoryToACovid19InfectedArea": '',
     "hasDirectContactWithCovid19Patient": '',
-    "hasTravelledPast14Days": '',
+    "hasTravelledPast14Days": Boolean,
     "headachePresent": true, 
     })
 
@@ -91,8 +91,8 @@ const handleSubmit = (e) => {
 
   function ifYes(){
 
-
-    if(ScreenData.hasTravelledPast14Days){
+    alert(ScreenData.hasTravelledPast14Days)
+    if(ScreenData.hasTravelledPast14Days === 'true'){
 
         return(   <Col md={6}>
             <FormGroup>
@@ -100,11 +100,14 @@ const handleSubmit = (e) => {
                 Visited</Label>
                 <Input type="select" name="travelled" value={ScreenData.countryVisited} onChange={e=>setScreen({ ...ScreenData ,countryVisited:e.target.value})} id="gender">
                 <option>Select</option>
-                {countryList.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                {countryList.map((team,i) => <option key={i} value={team}>{team}</option>)}
              
                 </Input>
             </FormGroup>
         </Col>)
+    }else{
+
+        return ''
     }
 
 

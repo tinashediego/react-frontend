@@ -62,6 +62,8 @@ import axios from 'axios'
 }
 
 
+console.log(countryList)
+
 const handleSubmit = (e) => {
 
   e.preventDefault();

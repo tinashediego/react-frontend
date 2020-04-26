@@ -12,8 +12,8 @@ export default function Report() {
     useEffect(()=>{
         const  fetchData = async () =>{
      
-         const resp =  await axios.get(`http://45.76.141.84:8080/v1/tests/${id}`)
-         const generate =  await axios.post('http://45.76.141.84:8080/v1/maisha-status-report' ,{testID:id})
+         const resp =  await axios.get(`http://45.76.141.84:8080/v1/tests/${id}/agent/test-report`)
+         const generate =  await axios.post('http://45.76.141.84:8080/v1/maisha-status-report' ,{testId:id})
        
         
             setRepo(resp.data)
@@ -37,10 +37,15 @@ export default function Report() {
     }
      
 
-      let {patientScreening} = repo
+      let {patientFullName} =  repo
+
+      console.log(patientFullName)
       // let {patient} =  patientScreening {`${`${patientScreening.bodyAchesPresent}`}`}
 
+      console.log(Object.keys(repo));
 
+
+  
      
 
 
@@ -68,27 +73,20 @@ export default function Report() {
     return (
         <div style={{ border:"4px solid  rgba(76,140,64,0.6) "}}>
   
-        <div>
-         <canvas id="canvas"  align="center" />
-         
-    </div>
-    
     
         <Form style={{padding:20,}}>
-    
-        <div md={6}>
-        
-        
+<Row form>
+        <Col md={6}>
     
         <h3>Patel Personal Details</h3>
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleEmail">First Name</Label>
-              <h6>Patel</h6>
+              <h6>{patientFullName}</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="examplePassword">Last Name</Label>
               <h6>Lincon</h6>
@@ -97,13 +95,13 @@ export default function Report() {
         </Row>
     
         <Row form>
-        <Col md={6}>
+        <Col md={3}>
           <FormGroup>
             <Label for="exampleEmail">Date Of Birth</Label>
             <h6>01/01/01</h6>
           </FormGroup>
         </Col>
-        <Col md={6}>
+        <Col md={3}>
           <FormGroup>
             <Label for="examplePassword"> National Id</Label>
             <h6 >567-296335-f17</h6>
@@ -112,13 +110,13 @@ export default function Report() {
       </Row>
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Address</Label>
               <h6 >47 casteen belverder</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Phone Number</Label>
               <h6>07821442345</h6>
@@ -129,13 +127,13 @@ export default function Report() {
     
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Email Address</Label>
               <h6 >1123@gmail.com</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Gender</Label>
               <h6 >Male</h6>
@@ -146,10 +144,12 @@ export default function Report() {
     
     
         
-        </div>
+ 
+
+        </Col>
     
     
-    
+    <Col md={6}>
     
         <h3>
         Last Screening Details  
@@ -158,13 +158,13 @@ export default function Report() {
         
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Cough:</Label>
              <h6 style={{color:'red'}}>yes</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Colds</Label>
               <h6 style={{color:'red'}}>yes</h6>
@@ -175,13 +175,13 @@ export default function Report() {
         
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Diarrhoea</Label>
               <h6 style={{color:'red'}}>yes</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Sore Throat</Label>
               <h6 style={{color:'red'}}>yes</h6>
@@ -192,13 +192,13 @@ export default function Report() {
         
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Body Aches</Label>
               <h6 style={{color:'red'}}>yes</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Heachache</Label>
               <h6 style={{color:'red'}}>yes</h6>
@@ -209,13 +209,13 @@ export default function Report() {
         
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Tempreratue above 37.8 </Label>
               <h6 style={{color:'red'}}>yes</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Difficulty in breathing</Label>
               <h6 style={{color:'green'}}>No</h6>
@@ -226,13 +226,13 @@ export default function Report() {
         
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Fatigue</Label>
               <h6 style={{color:'red'}}>yes</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Travelled  in the past 14days</Label>
               <h6 style={{color:'red'}}>yes</h6>
@@ -243,13 +243,13 @@ export default function Report() {
         
     
         <Row form>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
               <h6 style={{color:'green'}}>No</h6>
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Any direct contact with a Covid patient</Label>
               <h6 style={{color:'green'}}>No</h6>
@@ -257,7 +257,10 @@ export default function Report() {
           </Col>
       
         </Row>
+
+        </Col>
     
+        </Row>
     
     
         
