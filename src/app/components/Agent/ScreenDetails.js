@@ -30,7 +30,7 @@ import axios from 'axios'
     "feverPresent":'',
     "hasATravelHistoryToACovid19InfectedArea": '',
     "hasDirectContactWithCovid19Patient": '',
-    "hasTravelledPast14Days": Boolean,
+    "hasTravelledPast14Days":'',
     "headachePresent": true, 
     })
 
@@ -92,7 +92,7 @@ const handleSubmit = (e) => {
   function ifYes(){
 
 
-    if(ScreenData.hasTravelledPast14Days){
+    if(ScreenData.hasTravelledPast14Days === 'true'){
 
         return(   <Col md={6}>
             <FormGroup>
