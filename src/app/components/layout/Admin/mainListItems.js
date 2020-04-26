@@ -9,7 +9,7 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import {Link} from 'react-router-dom'
 
 export const mainListItems = (
-  <div style={{backgroundColor:"#4c8c40",height:'90vh'}}>
+  <div className="MuiList-padding" style={{backgroundColor:"#4c8c40",height:'90vh'}}>
   
   <ListItem button>
 
@@ -35,11 +35,6 @@ export const mainListItems = (
 <ListItemText primary="Users" />
 </Link>
 </ListItem> 
-
-
-
-
-
 <ListItem button>
 <Link to="/allkits">
 <ListItemIcon style={{color:'white'}}>
@@ -50,10 +45,6 @@ export const mainListItems = (
 <ListItemText primary="Kits" />
 </Link>
 </ListItem>
-
-
-
-
 <ListItem button> 
 <Link to="/allfacilities">
 <ListItemIcon style={{color:'white'}}>

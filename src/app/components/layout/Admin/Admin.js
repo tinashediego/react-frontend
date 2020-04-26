@@ -27,7 +27,6 @@ import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch } from "react-redux"
 import Logo from '../../../../assets/logo.png';
 import AllFacilities from '../../Admin/AllFacilities';
-
 //import Logo from '../../../../assets/logo.png';
 
 
@@ -42,7 +41,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 200;
+const drawerWidth = "240";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: 36,
+    
   },
   menuButtonHidden: {
     display: 'none',
@@ -117,10 +117,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
+    
   },
   fixedHeight: {
     height: 240,
-  },
+  }
 }));
 
 
@@ -207,7 +208,7 @@ export default function Admin() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-          <img src={Logo} style={{width:80}} alt="Admin"></img>
+          <img src={Logo} style={{width:"64px"}} alt="Admin"></img>
           </Typography>
           <IconButton color="inherit"  onClick={logout}>'
           {username}'
@@ -218,6 +219,7 @@ export default function Admin() {
         </Toolbar>
       </AppBar>
       <Drawer
+      
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -229,7 +231,7 @@ export default function Admin() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <Divider />
+        <Divider/>
         <List>{mainListItems}</List>
         <Divider />
        

@@ -54,18 +54,18 @@ import Grid from '@material-ui/core/Grid';
      
      <Grid container spacing={3}>
        <Grid item xs={12} sm={6}>
-       <TextField label="Brand Name" type="text" value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} placeholder="Brand Name" required={true} />
+       <TextField label="Brand Name" type="text" value={state.brandName} onChange={e=> setstate({ ...state, brandName:e.target.value})} placeholder="Brand Name" fullWidth required={true} />
        </Grid>
        <Grid item xs={12} sm={6}>
        <TextField label="Manufacture" type="text" value={state.manufacturer} 
 onChange={e=> setstate({ ...state, manufacturer:e.target.value})}
- placeholder="manufacturer" required={true}/>
+ placeholder="manufacturer" fullWidth required={true}/>
        </Grid>
 
        <Grid item xs={12} sm={6}>
        <TextField label="Serial Number" type="text" value={state.serialNumber} 
 onChange={e=> setstate({ ...state, serialNumber:e.target.value})}
- placeholder="serial number" required={true}/>
+ placeholder="serial number" fullWidth required={true}/>
        </Grid>
       
       
