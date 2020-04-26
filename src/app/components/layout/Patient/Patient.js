@@ -180,7 +180,7 @@ export default function Patient() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-          <img src={Logo} style={{width:80}} alt="title"></img>
+          <img src={Logo} style={{width:"64px"}} alt="title"></img>
          
           </Typography>
           <IconButton color="inherit" onClick={logout}>
