@@ -33,6 +33,8 @@ import axios from 'axios'
 
 
 const handleSubmit = (e) => {
+
+    next()
   e.preventDefault()
   let a = localStorage.getItem('username')
   

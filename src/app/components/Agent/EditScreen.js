@@ -66,7 +66,7 @@ const handleSubmit = (e) => {
 
   e.preventDefault();
 
-
+  next()
   axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
         .then(resp =>{
            localStorage.setItem('partnerID',resp.data.id)

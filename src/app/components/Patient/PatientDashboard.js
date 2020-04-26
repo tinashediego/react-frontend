@@ -14,11 +14,6 @@ const PatientDashboard  = (props) =>{
    const  fetchData = async () =>{
 
     const resp =  await axios.get('http://45.76.141.84:8080/v1/maisha-status-report')
-    function generateQR() {
-      let str = 'My first QR!'
-      QRCode.toCanvas(document.getElementById('canvas'), str)
-      }
-  
   
    
        setRepo(resp.data)
