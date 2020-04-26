@@ -3,11 +3,64 @@ import { useDispatch} from "react-redux";
 
 import {useParams} from 'react-router'
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import Alert from '@material-ui/lab/Alert';
 import countryList  from './country'
 import axios from 'axios'
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
+function Alerts(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
+
+
+
+
 
 
  function EditScreen({next}) {
+
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+    const [openError, setOpenError] = React.useState(false);
+  
+    const handleClick = () => {
+      setOpen(true);
+    };
+    const handleClickError = () => {
+        setOpenError(true);
+      };
+  
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+      next()
+    };
+
+   const handleCloseError = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpenError(false);
+        
+      };
+  
 
 
 
@@ -72,13 +125,13 @@ const handleSubmit = (e) => {
   axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
         .then(resp =>{
            localStorage.setItem('partnerID',resp.data.id)
-            alert('success')
-            next()
+            handleClick()
+         
 
         }).catch(err=>{
 
-
-            alert(err.message)
+            handleClickError()
+           
         })
 
 
@@ -115,6 +168,23 @@ const handleSubmit = (e) => {
       
       <div>
       <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{para.name}'s  Screens</h5>
+
+      <div className={classes.root}>
+      
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
+
+
+      <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+      <Alert onClose={handleCloseError} severity="error">
+        There was an error 
+      </Alert>
+    </Snackbar>
+    
+    </div>
       <Form onSubmit={handleSubmit}>
           <Row form>
               <Col md={6}>
