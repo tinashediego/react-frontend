@@ -83,7 +83,7 @@ export default function Report({reset}) {
 <Row form>
         <Col md={6}>
     
-        <h3>Patel Personal Details</h3>
+        <h3>Personal Details</h3>
         <Row form>
           <Col md={3}>
             <FormGroup>
