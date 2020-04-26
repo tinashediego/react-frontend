@@ -2,7 +2,7 @@ import React  ,{useState}from 'react';
 import {Col, Form, FormGroup,Button} from 'reactstrap';
 import Background from '../../../assets/1.jpg'
 import { useDispatch,} from 'react-redux';
-import{useLocation} from 'react-router'
+import{useHistory} from 'react-router'
 import Logo from '../../../assets/logo.png';
 
 import axios from "axios"
@@ -13,17 +13,19 @@ import {TextField} from '@material-ui/core';
 const Otp  = () =>{
 
 
-   const [userData ,setData] =  useState({ newpassword:'' ,password:'' ,confirmpassword:""})
+   const [userData ,setData] =  useState({ password:'' ,oldPassword:'' ,confirmPassword:""})
+
+  
 
 
 
-   const pu =  useLocation()
+   const pu =  useHistory()
    console.log(userData)
    function handleSubmit(e) {
     e.preventDefault();
 
 
-    if(userData.newpassword === userData.confirmpassword){
+    if(userData.password === userData.confirmpassword){
 
 
         alert("passwords dont match")
@@ -67,17 +69,17 @@ const Otp  = () =>{
         <Form align="center" style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
             <FormGroup>
 
-                <TextField label="Username" type="oldpassword" value={userData.oldpassword} i placeholder="old password" onChange={e=>setData({ ...userData ,oldpassword:e.target.value})} style={{width:"50%"}} required/>
+                <TextField label="Username" type="oldpassword" value={userData.oldPassword}  placeholder="old password" onChange={e=>setData({ ...userData ,oldPassword:e.target.value})} style={{width:"50%"}} required/>
             </FormGroup>
             <FormGroup>
 
-                <TextField type="password" label="Password" name="password" id="password" value={userData.newpassword} placeholder="password" onChange={e=>setData({...userData,newpassword:e.target.value})} style={{width:"50%"}} required/>
+                <TextField type="password" label="Password" name="password"  value={userData.password} placeholder="password" onChange={e=>setData({...userData,password:e.target.value})} style={{width:"50%"}} required/>
             </FormGroup>
 
 
             <FormGroup>
 
-                <TextField type="password" label="Password" name="password" id="password" value={userData.confirmpassword} placeholder="password" onChange={e=>setData({...userData,confirmpassword:e.target.value})} style={{width:"50%"}} required/>
+                <TextField type="password" label="Password" name="password" id="password" value={userData.confirmPassword} placeholder="password" onChange={e=>setData({...userData,confirmPassword:e.target.value})} style={{width:"50%"}} required/>
             </FormGroup>
 
             <Button color="success" style={{width: "50%"}} type="submit">Submit</Button>

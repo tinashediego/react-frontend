@@ -110,6 +110,7 @@ function App() {
           <PrivateRoute exact path="/newkit" component={Admin} />
           <PrivateRoute exact path="/allfacilities" component={Admin} />
           <PrivateRoute excat path='/test/:id' component={Agent} />
+          <PrivateRoute excat path='/otp' component={Otp} />
     
         </Switch>
       </div>
