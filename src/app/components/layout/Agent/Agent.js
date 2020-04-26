@@ -42,7 +42,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 200;
+const drawerWidth = "200";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -197,7 +197,7 @@ console.log(para)
                 <MenuIcon />
             </IconButton>
             <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                <img src={Logo} style={{width:80}} alt="LOGO"></img>
+                <img src={Logo} style={{width:"64px"}} alt="LOGO"></img>
 
             </Typography>
             <IconButton color="inherit" onClick={logout}>

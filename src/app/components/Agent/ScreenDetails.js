@@ -257,21 +257,9 @@ const handleSubmit = (e) => {
               <option value="false">No</option>
               
               </Input>
-<<<<<<< HEAD
-            </FormGroup>
-          </Col>
-      
-        </Row>  
-        <div align="right" style={{paddingTop:10}}>
-    <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
-    </div> 
-        </Form>
-       
-=======
           </FormGroup>
       </Col>
        {ifYes()}
->>>>>>> 8864102019981080e442ce31136c9c6776564283
         
 
       </Row>
