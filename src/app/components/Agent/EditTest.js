@@ -36,12 +36,13 @@ const handleSubmit = (e) => {
 
   e.preventDefault()
   let a = localStorage.getItem('username')
+   let b  = localStorage.getItem('partnerID')
   
   
   const  newScreen = {
     "dateOfTest": moment().format('DD/MM/YYYY'),
     "timeOfTest":moment().format('HH:mm'),
-    "patientScreeningId":para.id,
+    "patientScreeningId":b,
     "testKitId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
     "testingAgentUsername": a,

@@ -36,7 +36,7 @@ import axios from 'axios'
 const handleSubmit = (e) => {
   e.preventDefault()
   let a = localStorage.getItem('username')
-  let b= localStorage.getItem('partnerId')
+  let b  = localStorage.getItem('partnerID')
   
   const  newScreen = {
     "dateOfTest": moment().format('DD/MM/YYYY'),

@@ -74,6 +74,8 @@ const handleSubmit = (e) => {
 
   axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
         .then(resp =>{
+
+            localStorage.setItem('partnerID',resp.data.id)
             alert('success')
             next()
 
@@ -257,21 +259,9 @@ const handleSubmit = (e) => {
               <option value="false">No</option>
               
               </Input>
-<<<<<<< HEAD
-            </FormGroup>
-          </Col>
-      
-        </Row>  
-        <div align="right" style={{paddingTop:10}}>
-    <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
-    </div> 
-        </Form>
-       
-=======
           </FormGroup>
       </Col>
        {ifYes()}
->>>>>>> 8864102019981080e442ce31136c9c6776564283
         
 
       </Row>
