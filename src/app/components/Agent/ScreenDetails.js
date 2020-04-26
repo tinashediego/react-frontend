@@ -91,8 +91,8 @@ const handleSubmit = (e) => {
 
   function ifYes(){
 
-    alert(ScreenData.hasTravelledPast14Days)
-    if(ScreenData.hasTravelledPast14Days === 'true'){
+
+    if(ScreenData.hasTravelledPast14Days){
 
         return(   <Col md={6}>
             <FormGroup>
