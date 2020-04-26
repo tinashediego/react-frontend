@@ -13,7 +13,7 @@ import axios from 'axios'
 
 
 
- function NewTest({reset}) {
+ function NewTest({next}) {
 
   const content2 = useSelector((state) => state.kits.allkits);  
   const dispatch2 = useDispatch(allKits());
@@ -53,7 +53,7 @@ const handleSubmit = (e) => {
               localStorage.setItem('testId' ,resp.data.id)
               alert('succes')
               localStorage.removeItem('partnerId')
-              reset()         
+              next()         
              }
               )
               .catch(err=>{
