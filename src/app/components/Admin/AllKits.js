@@ -89,6 +89,7 @@ const AllKits  = (props) =>{
     <TableCell>{x.createdDate}</TableCell>
     <TableCell>{x.brandName}</TableCell>
     <TableCell>{x.manufacturer}</TableCell>
+    <TableCell>{x.serialNumber}</TableCell>
     </TableRow>
   
   ))
@@ -110,6 +111,7 @@ const AllKits  = (props) =>{
       <TableCell> Brand Name</TableCell>
     
       <TableCell>manufacturer</TableCell>
+      <TableCell>Serial Number</TableCell>
     </TableRow>
   </TableHead>
   <TableBody>

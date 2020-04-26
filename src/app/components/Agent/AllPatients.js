@@ -127,9 +127,21 @@ export default function AllPatients() {
   };
 
 
+
   let a  =  content
+
+
+
+  
   const  [SearchData ,setSearch] = React.useState({search:''})
 
+
+
+  if(!content){
+
+
+    return 'Loading'
+  }
   return (
    
     <div>
@@ -177,9 +189,7 @@ export default function AllPatients() {
                 <TableCell align="left">{row.testResult}</TableCell>
                 <TableCell align="left">{row.dateOfBirth}</TableCell>
                 <TableCell align="left">
-                    <Button variant="contained" color="primary">
-                        <Link to={`/onescreen/${row.patientId}`} style={{color: "white"}}>Repeat Screen</Link>
-                    </Button>&nbsp;
+                
                     <Button variant="contained">
                         <Link style={{color: "red"}} to={`/test/${row.patientId}`}>Repeat Test</Link>
                     </Button>

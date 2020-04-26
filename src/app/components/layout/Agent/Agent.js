@@ -21,14 +21,14 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import AllPatients from '../../Agent/AllPatients';
 
-import TableScreen from '../../Agent/TableScreen'
-import TableTestDetails from '../../Agent/TableTestDetails'
+
 
 import AddPatient from '../../Agent/AddPatients';
 import MyTests from "../../Agent/MyTests";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch} from "react-redux"
 import Logo from '../../../../assets/logo.png';
+import EditStepper from '../../Agent/EditStepper';
 
 
 function Copyright() {
@@ -137,7 +137,7 @@ export default function Agent() {
   let  username = localStorage.getItem('username')
 
 
-
+console.log(para)
 
 
   const handleDrawerOpen = () => {
@@ -156,19 +156,18 @@ export default function Agent() {
        return<MyTests/>
      case'/allpatients' :
               return<AllPatients/>
-    case`/onescreen/${para.id}`:
-
-     return <TableScreen />
-
+  
      case`/test/${para.id}`:
 
-     return <TableTestDetails/>
+     return <EditStepper/>
  
      case '/addpatient':
        return <AddPatient />
     
      case '/mytests':
       return <MyTests />
+
+    
       default:
         break;
     }

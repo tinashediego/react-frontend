@@ -9,6 +9,7 @@ import {Allfacility} from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
+import axios from 'axios'
 
 const AddUser  = () =>{
 
@@ -46,28 +47,35 @@ const AddUser  = () =>{
   
   })
 
-  var  userCommand ={
 
-      "dateOfBirth": newUser.dateOfBirth,
-        "email": newUser.email,
-        "firstName": newUser.firstName,
-        "lastName":newUser.lastName,
-        "gender":newUser.gender,
-        "group": newUser.group,
-        "passortNumber":newUser.nationalIdNumber,
-        "nationalIdNumber":newUser.nationalIdNumber,
-        "phoneNumber": newUser.phoneNumber,
-        "address": {
-          "city": newUser.city,
-          "province": newUser.province,
-          "streetAddress": newUser.streetAddress
-        },
-        "addressOfPractice": newUser.addressOfPractice,
-        "practicingNumber": newUser.practicingNumber,
-        "qualification": newUser.qualification,
-        "testingFacilityId":newUser.testingFacilityId
-    }
+  let userCommand ={
+
+  
+"userCommand":{
+  "email": newUser.email,
+  "firstName": newUser.firstName,
+  "gender": newUser.gender,
+  "group": newUser.group,
+  "lastName":newUser.lastName,
+  "nationalIdNumber":newUser.nationalIdNumber,
+  "passportNumber": newUser.nationalIdNumber,
+  "phoneNumber": newUser.phoneNumber,
+  "addressOfPractice": newUser.addressOfPractice,
+  "practicingNumber": newUser.practicingNumber,
+  "qualification": newUser.qualification,
+  "testingFacilityId":newUser.testingFacilityId,
+    "address": {
+      "city": newUser.city,
+      "province": newUser.province,
+      "streetAddress": newUser.streetAddress
+    },
+  
+   
+
  
+}
+
+}
    
   
 
@@ -90,8 +98,17 @@ const AddUser  = () =>{
     e.preventDefault();
     if (newUser) {
 
+      axios.post('http://45.76.141.84:8080/v1/testing-agents' ,userCommand)
+           .then(resp=>{
+
+            alert('success')
+           }).catch(err=>{
+
+            alert(err.message)
+           })
+
       console.log(userCommand)
-      dispatch(addUser(userCommand))
+  
 
 
     }

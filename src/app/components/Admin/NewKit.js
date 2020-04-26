@@ -20,6 +20,7 @@ import Grid from '@material-ui/core/Grid';
 
   const [state, setstate] = useState({"brandName": "",
                                       "manufacturer": "" ,
+                                      "serialNumber":"",
                                       "used": false
                                       
                                     })
@@ -60,6 +61,13 @@ import Grid from '@material-ui/core/Grid';
 onChange={e=> setstate({ ...state, manufacturer:e.target.value})}
  placeholder="manufacturer" required={true}/>
        </Grid>
+
+       <Grid item xs={12} sm={6}>
+       <TextField label="Serial Number" type="text" value={state.serialNumber} 
+onChange={e=> setstate({ ...state, serialNumber:e.target.value})}
+ placeholder="serial number" required={true}/>
+       </Grid>
+      
       
      </Grid>
    </React.Fragment>

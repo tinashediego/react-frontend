@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import {Input,Form} from 'reactstrap';
 
+
 import axios from  'axios'
 
 import { TextField } from '@material-ui/core';
@@ -42,7 +43,7 @@ const AddPatient  = ({next}) =>{
     "nationalIdNumber":patientData.nationalId,
     "passportNumber": patientData.passportNumber,
     "dateOfBirth":moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
-    thisAChild:patientData.thisAChild,
+    thisAChildIsThisChildOrincapacitatedToUsePhone:patientData.thisAChild,
     "address": {
     "streetAddress": patientData.address,
     "city":patientData.city,

@@ -7,17 +7,13 @@ import countryList  from './country'
 import axios from 'axios'
 
 
- function ScreenDetails({next}) {
+ function EditScreen({next}) {
 
 
 
     let  para = useParams()
 
-    console.log(para)
-  
 
-   
-   var ids = localStorage.getItem('partnerId')
 
     const [ScreenData ,setScreen] =  useState({ 
         thisAChild:false,      
@@ -37,13 +33,12 @@ import axios from 'axios'
 
     
 
-    
-  const dispatchs = useDispatch();
    
 
 
 
   const username = localStorage.getItem('username')
+  
 
 
   const  newScreen = {
@@ -60,7 +55,7 @@ import axios from 'axios'
     "hasTravelledPast21DaysOutsideZimbabwe": ScreenData.hasTravelledPast14Days,
     "headachePresent":ScreenData.headachePresent , 
     "countryVisited": ScreenData.countryVisited,
-     patientId:ids,
+     patientId:para.id,
      "testingAgentUsername":username
 
 
@@ -74,6 +69,7 @@ const handleSubmit = (e) => {
 
   axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
         .then(resp =>{
+           localStorage.setItem('partnerID',resp.data.id)
             alert('success')
             next()
 
@@ -116,7 +112,7 @@ const handleSubmit = (e) => {
     return (
       
       <div>
-      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{patie}'s  Screens</h5>
+      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{para.name}'s  Screens</h5>
       <Form onSubmit={handleSubmit}>
           <Row form>
               <Col md={6}>
@@ -270,4 +266,4 @@ const handleSubmit = (e) => {
 }
 
 
-export default ScreenDetails
+export default EditScreen

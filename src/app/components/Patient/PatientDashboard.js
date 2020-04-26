@@ -1,6 +1,7 @@
 import React  ,{useState ,useEffect}from 'react';
 import {Col,Label,FormGroup,Form ,Row ,Table,}  from 'reactstrap'
 import axios from 'axios'
+import QRCode from 'qrcode'
 
 
 const PatientDashboard  = (props) =>{ 
@@ -12,22 +13,29 @@ const PatientDashboard  = (props) =>{
   useEffect(()=>{
    const  fetchData = async () =>{
 
-    const resp =  await axios.get('http://45.76.141.84:8080/v1/maisha-status-report/all')
-       setRepo(resp)
+    const resp =  await axios.get('http://45.76.141.84:8080/v1/maisha-status-report')
+    function generateQR() {
+      let str = 'My first QR!'
+      QRCode.toCanvas(document.getElementById('canvas'), str)
+      }
+  
+  
+   
+       setRepo(resp.data)
   
 
     }
 
     fetchData()
+    generateQR()
   },[])
 
 
-  console.log(repo)
-
-
   
-  
-
+  function generateQR() {
+    let str = 'https://telpatizy.herokuapp.com/'
+    QRCode.toCanvas(document.getElementById('canvas'), str)
+    }
 
 
  
@@ -41,13 +49,21 @@ const PatientDashboard  = (props) =>{
 
 
   return (
+    <div style={{ border:"4px solid  rgba(76,140,64,0.6) "}}>
+  
     <div>
-    <div style={{marginTop:70 ,padding:10}}>
-    </div>
+     <canvas id="canvas"  align="center" />
+     
+</div>
 
-    <Form style={{padding:20, border:"4px solid  rgba(76,140,64,0.6) ",boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
 
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Patel Personal Details</h1>
+    <Form style={{padding:20,}}>
+
+    <div md={6}>
+    
+    
+
+    <h3>Patel Personal Details</h3>
     <Row form>
       <Col md={6}>
         <FormGroup>
@@ -112,12 +128,15 @@ const PatientDashboard  = (props) =>{
     </Row>
 
 
+    
+    </div>
 
 
 
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
+
+    <h3>
     Last Screening Details  
-     </h1>
+     </h3>
 
     
 
@@ -225,11 +244,11 @@ const PatientDashboard  = (props) =>{
 
 
     
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Testing Details  </h1>
+    <h3>Testing Details</h3>
 
 
     <Row form>
-    <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" ,}} responsive>
+    <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" ,overflowX: "hidden"}} responsive>
     <thead>
       <tr>
         <th>#</th>
@@ -251,40 +270,6 @@ const PatientDashboard  = (props) =>{
         <td>negative</td>
        
 
-      </tr>
-      <tr>
-      <th scope="row">2</th>
-      <td>01/01/01</td>
-      <td>REd Cross</td>
-      <td>13543</td>
-      <td>Des</td>
-      <td>negative</td>
-     
-
-     
-    
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>01/01/01</td>
-        <td>REd Cross</td>
-        <td>13543</td>
-        <td>Des</td>
-        <td>pending</td>
-        
-
-      =
-      </tr>
-
-
-      <tr>
-        <th scope="row">1</th>
-        <td>01/01/01</td>
-        <td>REd Cross</td>
-        <td>13543</td>
-        <td>Des</td>
-        <td>pending</td>
-     
       </tr>
     </tbody>
   </Table>

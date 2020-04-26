@@ -1,21 +1,18 @@
 import React,{useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {allKits} from '../../../redux/actions/KitsActions'
+import {useParams} from 'react-router'
 
-import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import {Col,Label,Input,FormGroup,Row }  from 'reactstrap'
 import moment from 'moment'
 import axios from 'axios'
 
 
 
-
-
-
-
-
- function NewTest({reset}) {
+ function NewTest({next}) {
 
   const content2 = useSelector((state) => state.kits.allkits);  
+  let  para = useParams()
   const dispatch2 = useDispatch(allKits());
   useEffect(() => {
 
@@ -27,33 +24,38 @@ import axios from 'axios'
         "dateOfTest": moment().format('DD/MM/YYYY'),
         "patientScreeningId":'3234',
         "testKitId":1,
-        "testResult": "",
+        "testResult": "POSITIVE",
         "testingAgentUsername": '' 
     })
 
+
+    console.log(para)
 
 
 const handleSubmit = (e) => {
   e.preventDefault()
   let a = localStorage.getItem('username')
-  let b= localStorage.getItem('partnerId')
+  
   
   const  newScreen = {
     "dateOfTest": moment().format('DD/MM/YYYY'),
     "timeOfTest":moment().format('HH:mm'),
-    "patientScreeningId":b,
+    "patientScreeningId":para.id,
     "testKitId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
     "testingAgentUsername": a,
 
         }
 
+
+        console.log(newScreen)
+
         axios.post("http://45.76.141.84:8080/v1/tests" ,newScreen)
              .then(resp=>{
-              localStorage.setItem('testId' ,resp.data.id)
+
+                localStorage.setItem('testId' ,resp.data.id)
               alert('succes')
-              localStorage.removeItem('partnerId')
-              reset()         
+              next()         
              }
               )
               .catch(err=>{

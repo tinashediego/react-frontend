@@ -5,11 +5,11 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import AddPatients from '../Agent/AddPatients';
+import EditScreen from '../Agent/EditScreen';
 import ScreenDetails from '../Agent/ScreenDetails';
-import NewTest from './NewTest';
+import Report from '../Agent/Report'
+import EditTest from './EditTest';
 import Desicion from './Desicion';
-import Report  from '../Agent/Report'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Add Patient', 'Screen Patient' ,'Decision', 'Test Patient'];
+  return ['Screen Patient' ,'Decision', 'Test Patient' ,'Report'];
 }
 
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function EditStepper() {
 
 
 
@@ -54,21 +54,22 @@ export default function HorizontalLabelPositionBelowStepper() {
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <AddPatients next={handleNext} />;
+        return <EditScreen next={handleNext} />;
       case 1:
-        return <ScreenDetails next={handleNext} />;
-      case 2:
-  
         return <Desicion next={handleNext} reset={handleReset} />
+   
+      case 2:
+        return <EditTest next={handleNext}/>;
+  
+        
      
   
         case 3:
-  
-          return <NewTest next={handleNext} />;
+    
 
 
-          case 4:
-          return <Report  reset={handleReset}/>
+        return <Report  reset={handleReset}/>
+          
         
       default:
         return 'Unknown stepIndex';
