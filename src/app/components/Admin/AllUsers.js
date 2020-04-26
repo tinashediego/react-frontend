@@ -17,7 +17,7 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
-
+import axios from 'axios'
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
@@ -126,9 +126,23 @@ export default function AllUsers() {
 
 
 
-   function reset(){
+   function reset(x ,y){
+  let newData = {
 
-  alert('password rest')
+    email:x,
+    username:y
+  }
+  alert(newData.username)
+
+  axios.post("http://45.76.141.84:8080/v1/users/reset-password",newData)
+       .then(resp=>{
+
+
+        console.log('suceess')
+       }).catch(err=>{
+
+        alert(err.message)
+       })
 
   }
 
@@ -181,10 +195,8 @@ export default function AllUsers() {
             <TableCell>{x.testingFacility}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
-            <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}}   onClick={reset}>reset</Button>
-            &nbsp;
-        
-            &nbsp;<Button style={{backgroundColor:"red" ,color:"white"}} href="#"   onClick={suspend}>suspend</Button></TableCell>
+            <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}}   onClick={()=>{ reset(x.email , x.username)}}>reset</Button>
+            </TableCell>
             </TableRow>
         
           ))}
