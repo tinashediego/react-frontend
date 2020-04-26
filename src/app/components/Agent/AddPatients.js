@@ -1,28 +1,29 @@
 import React , {useState} from 'react';
 import {Input,Form} from 'reactstrap';
-import { useDispatch,useSelector } from 'react-redux';
-import {addPatient} from '../../../redux/actions/PatientsActions'
-import { useHistory } from "react-router";
+
+
+import axios from  'axios'
+
 import { TextField } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+
+
 import moment from 'moment'
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 
 
-const AddPatient  = (props) =>{
+const AddPatient  = ({next}) =>{
 
   const [patientData ,setPatient]  =  useState(
   {
     "address": "",
     "email": "",
+    thisAChild:'',
     "firstName": "",
     "group": "PATIENT",
     "lastName": "",
     dateOfBirth:'',
-    "nationalIdOrPassportNumber": "",
+    "passportNumber": "",
+    nationalId:"",
     "phoneNumber":"",
     "gender":"",
     "city":"",
@@ -30,18 +31,19 @@ const AddPatient  = (props) =>{
     
   })
 
-  console.log(props)
 
   var newPatient={
   userCommand: {
-    "fullName":patientData.firstName,
+    "firstName":patientData.firstName,
+    "lastName":patientData.lastName,
     "group":patientData.group,
     "gender": patientData.gender,
     "phoneNumber": patientData.phoneNumber,
     "email": patientData.email,
-    "nationalIdNumber":patientData.nationalIdOrPassportNumber,
-    "passportNumber": patientData.nationalIdOrPassportNumber,
+    "nationalIdNumber":patientData.nationalId,
+    "passportNumber": patientData.passportNumber,
     "dateOfBirth":moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
+    thisAChildIsThisChildOrincapacitatedToUsePhone:patientData.thisAChild,
     "address": {
     "streetAddress": patientData.address,
     "city":patientData.city,
@@ -51,49 +53,38 @@ const AddPatient  = (props) =>{
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  console.log(patientData)
-  console.log(newPatient)
-
-  const dispatch = useDispatch();
-  
-  const content = useSelector((state) => state.patients.newpatient);
-
   function handleSubmit(e) {
+
     e.preventDefault();
-    if (patientData) {
-        dispatch(addPatient(newPatient))
-      }
+    if(patientData){
+      axios.post('http://45.76.141.84:8080/v1/patients' ,newPatient)
+      .then(resp=>{
+        console.log(resp)
+        localStorage.setItem('currentPatient',patientData.firstName)
+        localStorage.setItem('partnerId' , resp.data.id)
+        alert('success')
+        next()
+      }).catch(err=>{
+
+        alert(err.message)
+
+      })
 
     }
 
 
-    localStorage.setItem('partnerId' , content)
-
-  return (
-
-    <div responsive>
+    }
+   
 
     
+
+  return (
+    <div responsive>
 
     <h5 style={styles.container}>
     New Patient
      </h5>
+<<<<<<< HEAD
     
     <Form onSubmit={handleSubmit}>
     <React.Fragment>
@@ -180,12 +171,83 @@ const AddPatient  = (props) =>{
     <div align="right" style={{paddingTop:10}}>
     <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
     </div>
+=======
+
+    <Form onSubmit={handleSubmit}>
+        <React.Fragment>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                    <TextField label="First Name" value={patientData.firstName} onChange={e=>setPatient({ ...patientData ,firstName:e.target.value})} placeholder="First Name" autoComplete="firstName" fullWidth />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField label="Last Name" value={patientData.lastName} onChange={e=>setPatient({ ...patientData ,lastName:e.target.value})} placeholder="Last Name" fullWidth />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField label="National ID" value={patientData.nationalId} onChange={e=>setPatient({ ...patientData ,nationalId:e.target.value})} placeholder="e.g 63-1234567A12"   fullWidth />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                <TextField label="Passport Number" value={patientData.passportNumber} onChange={e=>setPatient({ ...patientData ,passportNumber:e.target.value})} placeholder="e.g passport Number"   fullWidth />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField label="Date Of Birth" type="date" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth   />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                <TextField type="email" label="Email" value={patientData.email} onChange={e=>setPatient({ ...patientData ,email:e.target.value})} placeholder="Email" fullWidth />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                    <TextField label="Phone Number"  type="text"   value={patientData.phoneNumber} onChange={e=>setPatient({ ...patientData ,phoneNumber:e.target.value})} placeholder="e.g +263772123456" fullWidth   />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                <TextField label="Address" value={patientData.address} onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" fullWidth   />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField label="City" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})} placeholder="City" fullWidth  />
+                </Grid>     
+                <Grid item xs={12} sm={6}>
+                    <Input type="select" name="group" value={patientData.province} onChange={e=>setPatient({ ...patientData ,province:e.target.value})}>
+                    <option>Province</option>
+                    <option value="BULAWAYO">BULAWAYO</option>
+                    <option value="HARARE">HARARE</option>
+                    <option value="MANICALAND">MANICALAND</option>
+                    <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
+                    <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+                    <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
+                    <option value="MASVINGO">MASVINGO</option>
+                    <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
+                    <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
+                    <option value="MIDLANDS">MIDLANDS</option>
+
+                    </Input>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <Input type="select" name="gender" value={patientData.gender} onChange={e=>setPatient({ ...patientData ,gender:e.target.value})} id="gender">
+                    <option>Gender</option>
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                    </Input>
+                </Grid>
+
+
+                <Grid item xs={12} sm={6}>
+                <Input type="select" label="Is This a Child" value={patientData.thisAChild} onChange={e=>setPatient({ ...patientData ,thisAChild:e.target.value})} id="gender">
+                <option>is this a  child</option>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+                </Input>
+            </Grid>
+
+            </Grid>
+        </React.Fragment>
+
+        <div align="right" style={{paddingTop:10}}>
+            <button className="btn btn-success" type="submit">submit</button>
+        </div>
+>>>>>>> 8864102019981080e442ce31136c9c6776564283
     </Form>
-    
- 
-  
-  
-  </div>
+
+</div>
   );
 }
 

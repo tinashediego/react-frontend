@@ -1,15 +1,24 @@
-import React ,{useState} from 'react';
+import React ,{useState ,useEffect} from 'react';
 import {
   Form,
-  FormGroup, Label, Input,
-  Button,Col
+  FormGroup,Input,
+  Col
 } from 'reactstrap';
-import { useDispatch,} from 'react-redux';
 import {addUser} from '../../../redux/actions/authActions'
+import {Allfacility} from '../../../redux/actions/KitsActions'
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
+import axios from 'axios'
 
 const AddUser  = () =>{
+
+  
+  const content = useSelector((state) => state.kits.allfacility);
+  
+
+  const dispatchs = useDispatch(Allfacility());
+  
 
 
   let history = useHistory()
@@ -27,8 +36,10 @@ const AddUser  = () =>{
     "firstName": "",
     "gender": "",
     "lastName": "",
-    group:'AGENT',
+    group:'',
+    testingFacility:0,
     "nationalIdNumber": "",
+    "passportNumber":'',
     "practicingNumber": "",
     "qualification": "",
     "phoneNumber":"",
@@ -36,36 +47,49 @@ const AddUser  = () =>{
   
   })
 
-  var userData = {
-    
-      "addressOfPractice": newUser.addressOfPractice,
-      "practicingNumber": newUser.practicingNumber,
-      "qualification": newUser.qualification,
-      "userCommand": {
-        "address": {
-          "city": newUser.city,
-          "province": newUser.province,
-          "streetAddress": newUser.streetAddress
-        },
-        "dateOfBirth": newUser.dateOfBirth,
-        "email": newUser.email,
-        "fullName": newUser.firstName,
-        "gender":newUser.gender,
-        "group": newUser.group,
-        "nationalIdNumber":newUser.nationalIdNumber,
-        "phoneNumber": newUser.phoneNumber,
-        
-      }
-    
-  }
+
+  let userCommand ={
+
+  
+"userCommand":{
+  "email": newUser.email,
+  "firstName": newUser.firstName,
+  "gender": newUser.gender,
+  "group": newUser.group,
+  "lastName":newUser.lastName,
+  "nationalIdNumber":newUser.nationalIdNumber,
+  "passportNumber": newUser.nationalIdNumber,
+  "phoneNumber": newUser.phoneNumber,
+  "addressOfPractice": newUser.addressOfPractice,
+  "practicingNumber": newUser.practicingNumber,
+  "qualification": newUser.qualification,
+  "testingFacilityId":newUser.testingFacilityId,
+    "address": {
+      "city": newUser.city,
+      "province": newUser.province,
+      "streetAddress": newUser.streetAddress
+    },
+  
+   
+
+ 
+}
+
+}
+   
+  
+
 
 
 
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatchs(Allfacility());
+  }, [])
 
 
-  console.log(userData)
+  console.log(content)
 
 
 
@@ -73,16 +97,23 @@ const AddUser  = () =>{
   function handleSubmit(e) {
     e.preventDefault();
     if (newUser) {
-      dispatch(addUser(userData))
+
+      axios.post('http://45.76.141.84:8080/v1/testing-agents' ,userCommand)
+           .then(resp=>{
+
+            alert('success')
+           }).catch(err=>{
+
+            alert(err.message)
+           })
+
+      console.log(userCommand)
+  
 
 
     }
 }
 
- function handleClose(){
-
-  history.goBack()
- }
 
 
   return (
@@ -97,7 +128,7 @@ const AddUser  = () =>{
                value={newUser.firstName}  
                
              onChange={e=>setUser({ ...newUser ,firstName:e.target.value})}
-               placeholder="First Name" className="formControl" />
+               placeholder="First Name" className="formControl" required />
       </FormGroup>
 
       <FormGroup className="col-sm-6">
@@ -106,7 +137,7 @@ const AddUser  = () =>{
             value={newUser.lastName} 
             
             onChange={e=>setUser({ ...newUser ,lastName:e.target.value})}
-              placeholder="last Name" />
+              placeholder="last Name" required />
     </FormGroup>
       </div>
 
@@ -117,7 +148,7 @@ const AddUser  = () =>{
           value={newUser.username} 
           
           onChange={e=>setUser({ ...newUser ,username:e.target.value})}
-           placeholder="username" />
+           placeholder="username" required />
   </FormGroup>
   
   
@@ -128,7 +159,7 @@ const AddUser  = () =>{
         value={newUser.nationalIdNumber} 
         
         onChange={e=>setUser({ ...newUser ,nationalIdNumber:e.target.value})}
-         placeholder="National ID Number" />
+         placeholder="e.g 63-1234567A12" required />
 </FormGroup></div>
 
   
@@ -141,7 +172,7 @@ const AddUser  = () =>{
                value={newUser.qualification}
                
              onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
-               placeholder="Qualification" />
+               placeholder="Qualification" required />
       </FormGroup>
 
       
@@ -150,11 +181,29 @@ const AddUser  = () =>{
       <TextField label="Practicing Number" 
              value={newUser.practicingNumber}
              onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
-             placeholder="practicing number" />
+             placeholder="practicing number" required />
     </FormGroup>
 
 
+     
+  
+
+
     </div>
+
+    <div className="row">
+    
+ 
+    <FormGroup className="col-sm-12">
+      
+    <Input type="select" name="group"  value={newUser.testingFacility} 
+    onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
+             <option>Testing Facility</option>
+            {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
+            </Input>
+  </FormGroup>
+
+  </div>
 
       <div className="row">
       <FormGroup className="col-sm-6">
@@ -171,7 +220,7 @@ const AddUser  = () =>{
       
     <Input type="select" name="group"  value={newUser.group} 
     onChange={e=>setUser({ ...newUser ,group:e.target.value})}> 
-             <option>Gender</option>
+             <option>Role</option>
             <option value="AGENT">AGENT</option>
             <option value="ADMIN">ADMIN</option>
             </Input>
@@ -196,7 +245,7 @@ const AddUser  = () =>{
   <TextField label="Phone Number" 
          value={newUser.phoneNumber} 
          onChange={e=>setUser({ ...newUser ,phoneNumber:e.target.value})}
-         placeholder="phone number" />
+         placeholder="+263772123456" required/>
 </FormGroup>
     </div>
 
@@ -206,7 +255,7 @@ const AddUser  = () =>{
 <TextField label="Address of Practise"
       value={newUser.addressOfPractice} 
       onChange={e=>setUser({ ...newUser ,addressOfPractice:e.target.value})}
-placeholder="Enter Practising Address" />
+placeholder="Enter Practising Address" required />
 
 </FormGroup>
 
@@ -237,7 +286,7 @@ placeholder="Enter Practising Address" />
 <TextField label="CITY" 
       value={newUser.city} 
       onChange={e=>setUser({ ...newUser ,city:e.target.value})}
-placeholder="city" />
+placeholder="city" required />
 
 </FormGroup>
 
@@ -246,13 +295,16 @@ placeholder="city" />
 <TextField label="Street Address" 
       value={newUser.streetAddress} 
       onChange={e=>setUser({ ...newUser , streetAddress:e.target.value})}
-placeholder="city" />
+placeholder="city" required />
 
 </FormGroup>
 
 </div>
-<Button color="success" type="submit">Add user</Button>
 
+
+<div align="right">
+<button className="btn btn-success"  type="submit">submit</button>
+</div>
 
 
 

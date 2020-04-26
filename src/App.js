@@ -7,14 +7,14 @@ import Login from "./app/components/Auth/Login";
 import PrivateRoute from "./private/privateRoute";
 
 import AllKits from "./app/components/Admin/AllKits";
-import NewKit from "./app/components/Admin/NewKit";
+
 import axios from 'axios'
 
-
-import TestPatient from "./app/components/Agent/TestPatient";
-import PatientDashboard from "./app/components/Patient/PatientDashboard";
 import Admin from './app/components/layout/Admin/Admin'
 import Agent from "./app/components/layout/Agent/Agent";
+import Patient from "./app/components/layout/Patient/Patient";
+import Desicion from './app/components/Agent/Desicion'
+import Otp from './app/components/Patient/Otp'
 
 
 
@@ -27,17 +27,24 @@ import Agent from "./app/components/layout/Agent/Agent";
 // Add a request interceptor
 axios.interceptors.request.use(
    config => {
- 
-      const token = localStorage.getItem('access_token');
+    if(config.url === "https://covid19.mathdro.id/api/countries"){
+   
+      config.headers['Authorization'] = ``  
+
+    }
+    else{
+           const token = localStorage.getItem('access_token');
+
+
       if (token) {
         config.headers['Authorization'] = `Bearer ${token}`   
-      }
+      }}
 
        // config.headers['Content-Type'] = 'application/json';
 
        console.log(config)
        return config;
-   },
+    },
    error => {
        Promise.reject(error)
    });
@@ -88,10 +95,9 @@ function App() {
         <Route exact path="/" component={Login} />
         <Switch>
           <PrivateRoute exact path="/dashboard/"   component={Admin} />
-
           <PrivateRoute exact path="/dash"   component={AllKits} />
           <PrivateRoute excat path='/agent' component={Agent} />
-          <PrivateRoute exact path="/patient" component={PatientDashboard}/>
+          <PrivateRoute exact path="/patient" component={Patient}/>
           <PrivateRoute exact path="/adduser" component={Admin} />
           <PrivateRoute exact path="/allusers" component={Admin} />
           <PrivateRoute exact path="/addpatient" component={Agent} />
@@ -100,14 +106,12 @@ function App() {
           <PrivateRoute excat path="/test/:id" component={Agent} />
           <PrivateRoute excat path='/onescreen/:id' component={Agent} />
           <PrivateRoute excat path='/mytests' component={Agent} />
-          <PrivateRoute exact path="/allkits" component={Agent} />
-          <PrivateRoute exact path="/newkit" component={Agent} />
-          <PrivateRoute excat path='/patient' component={Agent} />
-          <PrivateRoute excat path='/pending' component={Agent} />
-        
-        
-        
-      
+          <PrivateRoute exact path="/allkits" component={Admin} />
+          <PrivateRoute exact path="/newkit" component={Admin} />
+          <PrivateRoute exact path="/allfacilities" component={Admin} />
+          <PrivateRoute excat path='/test/:id' component={Agent} />
+          <PrivateRoute excat path='/otp' component={Otp} />
+    
         </Switch>
       </div>
     </Router>

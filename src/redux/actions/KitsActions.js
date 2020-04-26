@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_KIT  ,ALL_KITS ,GET_ERRORS, ONE_KIT, UPDATE_KIT} from "../types";
+import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS, ONE_KIT, UPDATE_KIT} from "../types";
 
   // add a new desktop
   export const addKit = (kitData) => dispatch => {
@@ -91,5 +91,55 @@ import { ADD_KIT  ,ALL_KITS ,GET_ERRORS, ONE_KIT, UPDATE_KIT} from "../types";
 
   }
 
+
+
+
+
+
+
+  export const Allfacility = () => dispatch=>{
+
+    axios.get("http://45.76.141.84:8080/v1/testing-facilities/all")
+         .then(resp=>{
+           console.log(resp)
+           dispatch({
+           type:ALL_FACILITY,
+           payload:resp.data
+         })}).catch(err=>{
+          dispatch({
+            type:GET_ERRORS,
+            payload:err,
+            msg:alert('trouble getting data ,please refresh')
+          })
+
+        })
+
+  }
+
+
+
+  
+  // add a new desktop
+  export const addfacilty = (fData) => dispatch => {
+    axios
+      .post("http://45.76.141.84:8080/v1/test-kits", fData)
+      .then(resp=>{
+          dispatch({
+              type:ADD_FACILITY,
+              payload:resp,
+              msg:alert("succcess")
+
+          })
+      })
+      .catch(err =>{ 
+
+        console.log(err)
+        dispatch({
+          type: GET_ERRORS,
+          payload: err
+        })
+    }
+      );
+  };
 
   

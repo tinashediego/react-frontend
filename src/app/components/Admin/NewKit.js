@@ -2,38 +2,14 @@ import React  ,{useState} from 'react';
  
 import {
   Form,
-  FormGroup, Label, Input
+ 
 } from 'reactstrap';
 import { useDispatch,} from 'react-redux';
 import {addKit} from '../../../redux/actions/KitsActions'
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -42,9 +18,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 
 
-  const [state, setstate] = useState({"batchNumber": "",
-                                      "brandName": "" ,
-                                      'serialNumber':''
+  const [state, setstate] = useState({"brandName": "",
+                                      "manufacturer": "" ,
+                                      "serialNumber":"",
+                                      "used": false
+                                      
                                     })
 
 
@@ -53,9 +31,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 
       const dispatch = useDispatch();
       
-  let history = useHistory()
-    
-    
       function handleSubmit(e) {
         e.preventDefault();
         if (state) {
@@ -82,21 +57,28 @@ import Checkbox from '@material-ui/core/Checkbox';
        <TextField label="Brand Name" type="text" value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} placeholder="Brand Name" required={true} />
        </Grid>
        <Grid item xs={12} sm={6}>
-       <TextField label="Batch Number" type="number" value={state.batchNumber} 
-onChange={e=> setstate({ ...state, batchNumber:e.target.value})}
- placeholder="Batch Number" required={true}/>
+       <TextField label="Manufacture" type="text" value={state.manufacturer} 
+onChange={e=> setstate({ ...state, manufacturer:e.target.value})}
+ placeholder="manufacturer" required={true}/>
        </Grid>
-       <Grid item xs={12}>
-       <TextField label="Serial Number" type="number" value={state.serialNumber}  
+
+       <Grid item xs={12} sm={6}>
+       <TextField label="Serial Number" type="text" value={state.serialNumber} 
 onChange={e=> setstate({ ...state, serialNumber:e.target.value})}
-placeholder="Serial Number"  required={true} />
+ placeholder="serial number" required={true}/>
        </Grid>
-       
+      
+      
      </Grid>
    </React.Fragment>
    <div align="right" style={{paddingTop:10}}>
+<<<<<<< HEAD
     <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
     </div>
+=======
+   <button className="btn btn-success" type="submit">submit</button>
+   </div>
+>>>>>>> 8864102019981080e442ce31136c9c6776564283
 </Form>
 
 </div>

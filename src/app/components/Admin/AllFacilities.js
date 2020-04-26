@@ -1,6 +1,6 @@
 import React  ,{useEffect , useState}from 'react';
 
-import {allKits ,addKit} from '../../../redux/actions/KitsActions'
+import {Allfacility ,addfacilty} from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
 
 import Table from '@material-ui/core/Table';
@@ -8,24 +8,19 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
-
 import {FormGroup,Form }  from 'reactstrap'
 import TextField from '@material-ui/core/TextField';
-
-
-
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 
 
-const AllKits  = (props) =>{ 
+const AllFacilities  = (props) =>{ 
 
 
 
@@ -33,12 +28,12 @@ const AllKits  = (props) =>{
 // Generate Order Data
 
 
-  const content = useSelector((state) => state.kits.allkits);
+  const content = useSelector((state) => state.kits.allfacility);
   
   //this hook gives us redux store state
 
 
-  const dispatch = useDispatch(allKits());
+  const dispatch = useDispatch(Allfacility());
 
 
   const handleClickOpen = () => {
@@ -51,14 +46,13 @@ const AllKits  = (props) =>{
 
 
   useEffect(() => {
-    dispatch(allKits());
+    dispatch(Allfacility());
   }, [])
 
 
 
-  const [state, setstate] = useState({"batchNumber": "",
-                                      "brandName": "" ,
-                                      'serialNumber':''
+  const [state, setstate] = useState({"testingFacilityName": "",
+                                      
                                     })
 
 
@@ -72,9 +66,30 @@ const AllKits  = (props) =>{
       function handleSubmit(e) {
         e.preventDefault();
         if (state) {
-            dispatchs(addKit(state))
-            setOpen(false);
+
+
+
+          axios.post('http://45.76.141.84:8080/v1/testing-facilities' ,state)
+               .then(resp=>{
+                 alert('Sucess')
+                 setOpen(false);
+               })
+               .catch(err=>{
+
+               
+                alert(err.message)
+
+               })
+
+     
+          
         }
+    }
+
+
+    if(!content){
+
+        return 'Loading  ...'
     }
 
    
@@ -86,10 +101,9 @@ const AllKits  = (props) =>{
 
     <TableRow key={i}>
     <TableCell>{i +1}</TableCell>
-    <TableCell>{x.createdDate}</TableCell>
-    <TableCell>{x.brandName}</TableCell>
-    <TableCell>{x.manufacturer}</TableCell>
-    <TableCell>{x.serialNumber}</TableCell>
+    <TableCell>{x.id}</TableCell>
+    <TableCell>{x.testingFacilityName}</TableCell>
+ 
     </TableRow>
   
   ))
@@ -98,24 +112,17 @@ const AllKits  = (props) =>{
 
    
 
-    <h5 className="container" style={styles.container}>All Kits</h5>
-    <Button style={{color:'green'}}variant="contained" > <Link to='/newkit'>New Kit</Link></Button>
+    <h5 className="container" style={styles.container}>All Facilities</h5>
+    <Button style={{color:'green'}}variant="contained" onClick={handleClickOpen}>New Facility</Button>
 
 
-<<<<<<< HEAD
-   
-=======
->>>>>>> 8864102019981080e442ce31136c9c6776564283
       <Table size="small" className="table table-striped" >
   
   <TableHead>
     <TableRow>
-    <TableCell>No#</TableCell>
-      <TableCell>Date</TableCell>
-      <TableCell> Brand Name</TableCell>
-    
-      <TableCell>manufacturer</TableCell>
-      <TableCell>Serial Number</TableCell>
+      <TableCell>No#</TableCell>
+      <TableCell>ID</TableCell>
+      <TableCell>TESTING FACILITY</TableCell>
     </TableRow>
   </TableHead>
   <TableBody>
@@ -132,31 +139,6 @@ const AllKits  = (props) =>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <Dialog
 open={open}
 onClose={handleClose}
@@ -164,23 +146,14 @@ aria-labelledby="alert-dialog-title"
 aria-describedby="alert-dialog-description"
 
 >
-<DialogTitle id="alert-dialog-title" style={styles.dialog}>New Kit</DialogTitle>
+<DialogTitle id="alert-dialog-title" style={styles.dialog}>New  FACILTY</DialogTitle>
 <DialogContent>
   <DialogContentText id="alert-dialog-description">
   <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"100%"}}>
-
   <FormGroup className="col-sm-12" >
     
-    <TextField className="col-sm-12" label="Brand Name"  value={state.brandName}  onChange={e=> setstate({ ...state, brandName:e.target.value})} id="exampleEmail" placeholder="Brand Name" />
+    <TextField className="col-sm-12" label="Facility  Name"  value={state.testingFacilityName}  onChange={e=> setstate({ ...state, testingFacilityName:e.target.value})} id="exampleEmail" placeholder="New Facility" />
   </FormGroup>
-
-  <FormGroup className="col-sm-12">
-  <TextField className="col-sm-12" label="Batch Number" type="number" value={state.batchNumber}  onChange={e=> setstate({ ...state, batchNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
-</FormGroup>
-
-<FormGroup className="col-sm-12">
-  <TextField className="col-sm-12" label="Serial Number" type="number" value={state.serialNumber}  onChange={e=> setstate({ ...state, serialNumber:e.target.value})} id="exampleEmail" placeholder="with a placeholder" />
-</FormGroup>
 
 </Form>
   </DialogContentText>
@@ -214,4 +187,4 @@ const styles={
 
 
 
-export default AllKits;
+export default AllFacilities;

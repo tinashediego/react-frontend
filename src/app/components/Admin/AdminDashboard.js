@@ -4,13 +4,7 @@ import {Link} from  'react-router-dom'
 import Chart from 'react-apexcharts'
 import { useDispatch, useSelector } from "react-redux";
 import {
-  genderMale,genderFeMale ,maleNegative ,malePositive ,
-  bulawayoNegative,bulawayoPositive ,harareNegative ,hararePositive, 
-  midlandsNegative,midlandsPositive, manicalandNegative ,manicalandPositive
-  ,mashonalandCentralNegative ,mashonalandCentralPositive,  matabelelandNorthPositive,
-  mashonalandEastNegative ,mashonalandEastPositive,
-  mashonalandWestNegative ,mashonalandWestPositive ,masvingoNegative,masvingoPositive ,matabelelandNorthNegative,matabelelandSouthNegative
-  ,
+  Demos
 
 } from '../../../redux/actions/DashboardActions'
 
@@ -27,19 +21,71 @@ import TableRow from '@material-ui/core/TableRow';
 const AdminDashboard  = (props) =>{ 
 
 
+
+  
+  const content = useSelector((state) => state.dashboard.demos);
+  const dispatch = useDispatch(Demos());
+
+  
+  useEffect(() => {
+    dispatch(Demos());
+  }, [])
+
+
+
+let {totalNegativePatients ,totalPositivePatients ,provinceDemographics} =  content
+
+
+
+console.log(provinceDemographics)
+ 
+  
+
   //this hook gives us redux store state
 
 
 
+
+  if(!provinceDemographics){
+
+    return '.... Loading'
+  }else{
+    var pending = provinceDemographics.map(function (officer) {
+      return officer.pendingTotal
+    });
+
+    var negativeTotal = provinceDemographics.map(function (officer) {
+      return officer.negativeTotal
+    });
+
+    var inconclusiveTotal = provinceDemographics.map(function (officer) {
+      return officer.inconclusiveTotal
+    });
+
+    var positiveTotal = provinceDemographics.map(function (officer) {
+      return officer.positiveTotal
+    });
+ 
   
+
+ 
+    var province = provinceDemographics.map(function (officer) {
+      return officer.province
+    });
+
+  }
+  console.log(pending)
   let colum = {
           
-    series: [{
+    series:[ {
       name: 'NEGATIVE',
-      data: [4, 5, 1, 6, 2, 4 ,5,7,6,5]
+      data: negativeTotal
     }, {
+      name: 'INCOCLUSIVE',
+      data: inconclusiveTotal
+    } , {
       name: 'POSITIVE',
-      data: [3, 3, 2, 8, 3, 2 ,6,3,6,7]
+      data: positiveTotal
     }],
     options: {
 
@@ -86,8 +132,7 @@ const AdminDashboard  = (props) =>{
       },
       xaxis: {
         type: 'text',
-        categories: ['Midlands', 'Harare', 'Masvingo', 'Manicaland',
-          'matebeleland South', 'matebeleland North' ,'mashonaland West' ,'mashonaland east' ,'mashonaland North' ,'Bulawayo'        ],
+        categories:province
       },
       legend: {
         position: 'right',
@@ -100,66 +145,6 @@ const AdminDashboard  = (props) =>{
   
   
   }
-
-
-
-
-
-  
-  let [totalPositve,setPositive] = useState(
-    
-    
-    {
-          
-      series: [50, 100],
-      options: {
-
-        title: {
-          text: 'POSTIVES VS NEGATIVES FOR THE TESTED',
-          align: 'left',
-          margin: 10,
-          offsetX: 0,
-          offsetY: 0,
-          floating: false,
-          style: {
-            fontSize:  '14px',
-            fontWeight:  'bold',
-            fontFamily:  undefined,
-            color:  '#263238'
-          },
-      },
-        chart: {
-          type: 'donut',
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-      },
-  
-    }
-  )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -187,54 +172,27 @@ const AdminDashboard  = (props) =>{
 
 <TableHead>
   <TableRow>
-    <TableCell>MALE</TableCell>
-    <TableCell>FEMALE</TableCell>
+    <TableCell>POSITIVE</TableCell>
+    <TableCell>NEGATIVE</TableCell>
    
   </TableRow>
 </TableHead>
 <TableBody>
 
     <TableRow>
-    <TableCell>{10}</TableCell>
-      <TableCell>{18}</TableCell>
+    <TableCell>{totalPositivePatients }</TableCell>
+      <TableCell>{totalNegativePatients}</TableCell>
     </TableRow>
 </TableBody>
 </Table>
  
 </div>
 
-
-    
-<div className="container" >
-
-<h5 className="container">TOTAL TEST RESULTS</h5>
-<Table size="small" className="table table-striped" >
-
-<TableHead>
-<TableRow>
-<TableCell>GENDER</TableCell>
-<TableCell>POSITIVE</TableCell>
-<TableCell>NEGATIVE</TableCell>
-
-</TableRow>
-</TableHead>
-<TableBody>
-
-<TableRow>
-<TableCell>MALE</TableCell>
-<TableCell>{10}</TableCell>
-  <TableCell>{15}</TableCell>
-</TableRow>
-</TableBody>
-</Table>
-
-</div>
-
  
 
     <Chart options={colum.options} series={colum.series} type="bar" height={350} />
 
-    <Chart options={totalPositve.options} series={totalPositve.series} type="donut" height={350} />
+  
   
     
    

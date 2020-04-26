@@ -7,17 +7,13 @@ import countryList  from './country'
 import axios from 'axios'
 
 
- function ScreenDetails({next}) {
+ function EditScreen({next}) {
 
 
 
     let  para = useParams()
 
-    console.log(para)
-  
 
-   
-   var ids = localStorage.getItem('partnerId')
 
     const [ScreenData ,setScreen] =  useState({ 
         thisAChild:false,      
@@ -30,20 +26,19 @@ import axios from 'axios'
     "feverPresent":'',
     "hasATravelHistoryToACovid19InfectedArea": '',
     "hasDirectContactWithCovid19Patient": '',
-    "hasTravelledPast14Days":'',
+    "hasTravelledPast14Days": '',
     "headachePresent": true, 
     })
 
 
     
 
-    
-  const dispatchs = useDispatch();
    
 
 
 
   const username = localStorage.getItem('username')
+  
 
 
   const  newScreen = {
@@ -60,12 +55,14 @@ import axios from 'axios'
     "hasTravelledPast21DaysOutsideZimbabwe": ScreenData.hasTravelledPast14Days,
     "headachePresent":ScreenData.headachePresent , 
     "countryVisited": ScreenData.countryVisited,
-     patientId:ids,
+     patientId:para.id,
      "testingAgentUsername":username
 
 
 }
 
+
+console.log(countryList)
 
 const handleSubmit = (e) => {
 
@@ -74,6 +71,7 @@ const handleSubmit = (e) => {
 
   axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
         .then(resp =>{
+           localStorage.setItem('partnerID',resp.data.id)
             alert('success')
             next()
 
@@ -100,14 +98,11 @@ const handleSubmit = (e) => {
                 Visited</Label>
                 <Input type="select" name="travelled" value={ScreenData.countryVisited} onChange={e=>setScreen({ ...ScreenData ,countryVisited:e.target.value})} id="gender">
                 <option>Select</option>
-                {countryList.map((team,i) => <option key={i} value={team}>{team}</option>)}
+                {countryList.map((team) => <option key={team.value} value={team}>{team}</option>)}
              
                 </Input>
             </FormGroup>
         </Col>)
-    }else{
-
-        return ''
     }
 
 
@@ -119,7 +114,7 @@ const handleSubmit = (e) => {
     return (
       
       <div>
-      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{patie}'s  Screens</h5>
+      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{para.name}'s  Screens</h5>
       <Form onSubmit={handleSubmit}>
           <Row form>
               <Col md={6}>
@@ -257,21 +252,9 @@ const handleSubmit = (e) => {
               <option value="false">No</option>
               
               </Input>
-<<<<<<< HEAD
-            </FormGroup>
-          </Col>
-      
-        </Row>  
-        <div align="right" style={{paddingTop:10}}>
-    <button className="btn btn-success" variant="contained" type="submit"> Submit</button>
-    </div> 
-        </Form>
-       
-=======
           </FormGroup>
       </Col>
        {ifYes()}
->>>>>>> 8864102019981080e442ce31136c9c6776564283
         
 
       </Row>
@@ -285,4 +268,4 @@ const handleSubmit = (e) => {
 }
 
 
-export default ScreenDetails
+export default EditScreen

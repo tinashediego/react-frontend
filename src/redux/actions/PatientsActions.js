@@ -118,7 +118,7 @@ export const allPatient = () => dispatch=>{
   
 
 
-    axios.get("http://45.76.141.84:8080/v1/patients/all")
+    axios.get("http://45.76.141.84:8080/v1/patients/all/by-agent-facility")
          .then(resp=>{
            dispatch({
            type:ALL_PATIENTS,
@@ -139,7 +139,7 @@ export const allPatient = () => dispatch=>{
   
 export const onePatient = (id) => dispatch=>{
 
-    axios.get(`http://45.76.141.84:8080/v1/patients/2`)
+    axios.get(`http://45.76.141.84:8080/v1/patients/id`)
          .then(resp=>{
            console.log(resp.data)
            dispatch({
@@ -199,12 +199,12 @@ export const onePatient = (id) => dispatch=>{
   
 
 
-      export const Mytests = () => dispatch=>{
+      export const updatePendingTest = (x) => dispatch=>{
 
   
 
 
-        axios.get("http://45.76.141.84:8080/v1/tests/agent/my-tests/unpaged")
+        axios.put(`http://45.76.141.84:8080/v1/tests/${x.id}/results`,x)
              .then(resp=>{
                console.log(resp.data)
                dispatch({

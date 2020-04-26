@@ -10,7 +10,6 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -18,22 +17,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './mainListItems';
 import {useLocation ,useParams} from 'react-router'
-import AllKits from '../../Admin/AllKits';
-import NewKit from '../../Admin/NewKit';
+
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import PatientDetails from '../../Agent/PatientDetails';
-import AllPatients from '../../Agent/AllPatients';
-import ScreenDetails from '../../Agent/ScreenDetails';
-import AgentDashboard from '../../Agent/AgentDashboard'
-import TableScreen from '../../Agent/TableScreen'
-import TableTestDetails from '../../Agent/TableTestDetails'
-import Pending from '../../Agent/Pending';
-import AddPatient from '../../Agent/AddPatients';
-import MyTests from "../../Agent/MyTests";
-import Results from "../../Agent/Results";
 import {logoutUser ,} from '../../../../redux/actions/authActions'
-import { useDispatch ,useSelector} from "react-redux"
+import { useDispatch } from "react-redux"
 import Logo from '../../../../assets/logo.png';
+import PatientDashboard from '../../Patient/PatientDashboard';
 
 function Copyright() {
   return (
@@ -127,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Agent() {
+export default function Patient() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -150,28 +139,9 @@ export default function Agent() {
   function switchPages(){
 
     switch (location.pathname) {
-      case '/agent':
+      case '/patient':
 
-       return<MyTests/>
-     case'/allpatients' :
-              return<AllPatients/>
-    case`/onescreen/${para.id}`:
-
-     return <TableScreen />
-
-     case`/test/${para.id}`:
-
-     return <TableTestDetails/>
-     case '/allkits':
-      return <AllKits/>
-
-     case '/addpatient':
-       return <AddPatient />
-    
-     case '/mytests':
-      return <MyTests />
-      case '/pending':
-        return <Pending />
+       return<PatientDashboard />
   
   
       default:
@@ -210,7 +180,7 @@ export default function Agent() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
-          <img src={Logo} style={{width:80}}></img>
+          <img src={Logo} style={{width:80}} alt="title"></img>
          
           </Typography>
           <IconButton color="inherit" onClick={logout}>

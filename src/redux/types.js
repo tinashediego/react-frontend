@@ -45,6 +45,10 @@ export const BULUAYO_POSITIVE = 'BULUAYO_POSITIVE'
 
 export const PENDING ='PENDING'
 
+ export const   SUCCESS = 'ALERT_SUCCESS'
+ export const   ERROR = 'ALERT_ERROR'
+ export const    CLEAR ='ALERT_CLEAR'
+
 export const  MIDLANDS_NEGATIVE = 'MIDLANDS_NEGATIVE'
 export const MIDLANDS_POSITIVE = 'MIDLANDS_POSITIVE'
 
@@ -65,3 +69,5 @@ export const  HARARE_NEGATIVE  ='HARARE_NEGATIVE'
           export const     MATABELELAND_NORTH_POSITIVE =  'MATABELELAND_NORTH_POSITIVE'
           export const    MATABELELAND_SOUTH_NEGATIVE ='MATABELELAND_SOUTH_NEGATIVE'
           export const    MATABELELAND_SOUTH_POSITIVE  = 'MATABELELAND_SOUTH_POSITIVE'
+          export const   ALL_FACILITY  = "ALL_FACILITY "
+          export const  ADD_FACILITY = "ADD_FACILITY,"

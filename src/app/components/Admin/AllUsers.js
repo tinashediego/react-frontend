@@ -17,7 +17,7 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
-
+import axios from 'axios'
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
@@ -83,23 +83,8 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function patientsData(number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action) {
 
-  return {number, fullName, phoneNumber,nationalId,passportNumber,gender,dateOfBirth,action};
-}
 
-const rows = [
-  patientsData(1, 'Munya', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(2, 'Patel', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(3, 'Everjoy',+26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(4, 'Memo', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(5, 'Diego', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(6, 'Tinlee', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(7, 'Tanaka', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(8, 'Tello', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  patientsData(9, 'Mulaz', +26378322333,'63-22344434k43','63-22344434k43','male','03-01-1995'),
-  
-].sort((a, b) => (a.number < b.number ? -1 : 1));
 
 const useStyles2 = makeStyles({
   table: {
@@ -108,11 +93,11 @@ const useStyles2 = makeStyles({
 });
 
 export default function AllUsers() {
-  const classes = useStyles2();
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -136,39 +121,36 @@ export default function AllUsers() {
   }, []);
 
 
-  let a  =  content.map((x,i)=>(
-
-    <TableRow key={i}>
-    <TableCell>{i +1}</TableCell>
-    <TableCell>{x.username}</TableCell>
-    <TableCell>{x.firstName}</TableCell>
-    <TableCell>{x.lastName}</TableCell>
-    <TableCell>{x.qualification}</TableCell>
-    <TableCell>{x.email}</TableCell>
-    <TableCell>{x.phoneNumber}</TableCell>
-    <TableCell> {x.addressOfPractice} </TableCell>
-
-    <TableCell> {x.practicingNumber}</TableCell>
-
-    <TableCell align="right"><a href="#" style={{color:"green"}} >reset</a>&nbsp;<a style={{color:"red"}} href="#">delete</a></TableCell>
-    </TableRow>
-
-
-  
- 
-  ))
 
 
 
 
 
+   function reset(x ,y){
+  let newData = {
+
+    email:x,
+    username:y
+  }
+  alert(newData.username)
+
+  axios.post("http://45.76.141.84:8080/v1/users/reset-password",newData)
+       .then(resp=>{
 
 
+        console.log('suceess')
+       }).catch(err=>{
+
+        alert(err.message)
+       })
+
+  }
 
 
+  function suspend(){
 
-
-
+    alert('user suspended')
+  }
 
 
   return (
@@ -184,12 +166,14 @@ export default function AllUsers() {
           
           <TableRow>
             <TableCell align="left">NO#</TableCell>
-            <TableCell align="left">Fullname</TableCell>
+            <TableCell align="left">First name</TableCell>
+            <TableCell align="left">Last name</TableCell>
             <TableCell align="left">Phone Number</TableCell>
             <TableCell align="left">National ID</TableCell>
             <TableCell align="left">Practising Number</TableCell>
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Group</TableCell>
+            <TableCell align="left">Testing Facility</TableCell>
             <TableCell align="left">Adress Of Practice</TableCell>
             <TableCell align="left">Actions</TableCell>
           </TableRow>
@@ -201,15 +185,18 @@ export default function AllUsers() {
           ).map((x ,i) => (
             <TableRow key={i}>
             <TableCell>{i +1}</TableCell>
-            <TableCell>{x.fullName}</TableCell>
+            <TableCell>{x.firstName}</TableCell>
+            <TableCell>{x.lastName}</TableCell>
             <TableCell>{x.phoneNumber}</TableCell>
             <TableCell>{x.nationalIdNumber}</TableCell>
             <TableCell>{x.practicingNumber}</TableCell>
             <TableCell>{x.email}</TableCell>
             <TableCell>{x.group}</TableCell>
+            <TableCell>{x.testingFacility}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
-            <TableCell align="right"><button style={{backgroundColor:"green"}} >reset</button>&nbsp;<button style={{backgroundColor:"red"}} href="#">delete</button></TableCell>
+            <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}}   onClick={()=>{ reset(x.email , x.username)}}>reset</Button>
+            </TableCell>
             </TableRow>
         
           ))}
@@ -221,7 +208,7 @@ export default function AllUsers() {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
-              count={rows.length}
+              count={content.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{

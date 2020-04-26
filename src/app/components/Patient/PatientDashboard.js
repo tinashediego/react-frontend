@@ -1,300 +1,299 @@
-import React  ,{useState}from 'react';
-import {Button ,Col,Label,Input,FormGroup,Form ,Row ,Table, Modal, ModalHeader, ModalBody, ModalFooter}  from 'reactstrap'
-import { useHistory } from "react-router";
-import {Link} from  'react-router-dom'
+import React, {useState, useEffect} from 'react';
+import {
+    Col,
+    Label,
+    FormGroup,
+    Form,
+    Row,
+    Table
+} from 'reactstrap'
+import {useHistory} from 'react-router'
+import axios from 'axios'
+import QRCode from 'qrcode'
 
+const PatientDashboard = (props) => {
 
-const PatientDashboard  = (props) =>{ 
+    const [repo,
+        setRepo] = useState([])
+    const [user,
+        setUser] = useState([])
 
+    let loc = useHistory()
 
+    useEffect(() => {
+        const fetchData = async() => {
 
-  const {
-    buttonLabel,
-    className
-  } = props;
+            const resp = await axios.get('http://45.76.141.84:8080/v1/maisha-status-report')
+            const users = await axios.get('http://45.76.141.84:8080/v1/users/profile')
 
-  const [modal, setModal] = useState(false);
+            setRepo(resp.data)
+            setUser(users.data)
 
-  const toggle = () => setModal(!modal);
-  
-  let history = useHistory()
+        }
 
+        fetchData()
 
+    }, [])
 
-  function handleClose(){
+    var {usedOTP} = user
 
-    history.goBack()
-   }
-  
+    console.log(usedOTP)
 
+    let {testingDetails} = repo
 
+    if (!usedOTP && !testingDetails) {
 
+        return <canvas id="canvas" align="center"/>
+    } else {
+        function generateQR() {
+            let str = "TEST RESULTS :" + testingDetails.result
+            QRCode.toCanvas(document.getElementById('canvas'), str)
+        }
+        generateQR()
 
+        if (usedOTP) {
 
+            console.log('otp bho')
 
+            if (usedOTP) {
 
+              
+            console.log('otp bho')
+            } else {
 
-  return (
-    <div>
-    <div style={{marginTop:70 ,padding:10}}>
-    </div>
+                loc.push('/otp')
+            }
 
-    <Form style={{padding:20, border:"4px solid  rgba(76,140,64,0.6) ",boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
+        } else {}
 
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Patel Personal Details</h1>
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleEmail">First Name</Label>
-          <h6>Patel</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="examplePassword">Last Name</Label>
-          <h6>Lincon</h6>
-        </FormGroup>
-      </Col>
-    </Row>
+    }
 
-    <Row form>
-    <Col md={6}>
-      <FormGroup>
-        <Label for="exampleEmail">Date Of Birth</Label>
-        <h6>01/01/01</h6>
-      </FormGroup>
-    </Col>
-    <Col md={6}>
-      <FormGroup>
-        <Label for="examplePassword"> National Id</Label>
-        <h6 >567-296335-f17</h6>
-      </FormGroup>
-    </Col>
-  </Row>
+    return (
+        <div style={{
+            border: "4px solid rgba(76,140,64,0.6) "
+        }}>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">Address</Label>
-          <h6 >47 casteen belverder</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Phone Number</Label>
-          <h6>07821442345</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
+            <div>
+                <canvas id="canvas" align="center"/>
 
+            </div>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">Email Address</Label>
-          <h6 >1123@gmail.com</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Gender</Label>
-          <h6 >Male</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
+            <Form style={{
+                padding: 20
+            }}>
 
+                <div md={6}>
 
+                    <h3>{repo.firstName}
+                        Personal Details</h3>
+                    <Row form>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="exampleEmail">First Name</Label>
+                                <h6>{repo.firstName}</h6>
+                            </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="examplePassword">Last Name</Label>
+                                <h6>{repo.lastName}</h6>
+                            </FormGroup>
+                        </Col>
+                    </Row>
 
+                    <Row form>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="exampleEmail">Date Of Birth</Label>
+                                <h6>{repo.dateOfBirth}</h6>
+                            </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="examplePassword">
+                                    National Id</Label>
+                                <h6 >{repo.nationalIDNumber}</h6>
+                            </FormGroup>
+                        </Col>
+                    </Row>
 
+                    <Row form>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="exampleCity">Address</Label>
+                                <h6 >{repo.address}</h6>
+                            </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="exampleState">Phone Number</Label>
+                                <h6>{repo.phoneNumber}</h6>
+                            </FormGroup>
+                        </Col>
 
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>
-    Last Screening Details  
-     </h1>
+                    </Row>
 
-    
+                    <Row form>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="exampleCity">Email Address</Label>
+                                <h6 >{repo.email}</h6>
+                            </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="exampleState">Gender</Label>
+                                <h6 >{repo.gender}</h6>
+                            </FormGroup>
+                        </Col>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">Cough:</Label>
-         <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Colds</Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
-    
+                    </Row>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">Diarrhoea</Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Sore Throat</Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
-    
+                </div>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">Body Aches</Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Heachache</Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
-    
+                <h3>
+                    Last Screening Details
+                </h3>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">Tempreratue above 37.8 </Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Difficulty in breathing</Label>
-          <h6 style={{color:'green'}}>No</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
-    
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleCity">Cough:</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleState">Colds</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">Fatigue</Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Travelled  in the past 14days</Label>
-          <h6 style={{color:'red'}}>yes</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
-    
+                </Row>
 
-    <Row form>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
-          <h6 style={{color:'green'}}>No</h6>
-        </FormGroup>
-      </Col>
-      <Col md={6}>
-        <FormGroup>
-          <Label for="exampleState">Any direct contact with a Covid patient</Label>
-          <h6 style={{color:'green'}}>No</h6>
-        </FormGroup>
-      </Col>
-  
-    </Row>
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleCity">Diarrhoea</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleState">Sore Throat</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
 
+                </Row>
 
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleCity">Body Aches</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleState">Heachache</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
 
-    
-    <h1 style={{backgroundColor:"rgba(76,140,64,0.6) " ,textAlign:'center' ,color:"white" ,boxShadow: "8px 20px 8px 0 rgba(0, 0, 0, 0.2)"}}>Testing Details  </h1>
+                </Row>
 
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleCity">Tempreratue above 37.8
+                            </Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleState">Difficulty in breathing</Label>
+                            <h6
+                                style={{
+                                color: 'green'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
 
-    <Row form>
-    <Table striped style={{boxShadow: "0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" ,}} responsive>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Date</th>
-        <th>Brand Name of Kit</th>
-        <th>Batch Number</th>
-        <th>Testing Agent</th>
-        <th>Result</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>01/01/01</td>
-        <td>REd Cross</td>
-        <td>13543</td>
-        <td>Des</td>
-        <td>negative</td>
-       
+                </Row>
 
-      </tr>
-      <tr>
-      <th scope="row">2</th>
-      <td>01/01/01</td>
-      <td>REd Cross</td>
-      <td>13543</td>
-      <td>Des</td>
-      <td>negative</td>
-     
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleCity">Fatigue</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleState">Travelled in the past 14days</Label>
+                            <h6
+                                style={{
+                                color: 'red'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
 
-     
-    
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>01/01/01</td>
-        <td>REd Cross</td>
-        <td>13543</td>
-        <td>Des</td>
-        <td>pending</td>
-        
+                </Row>
 
-      =
-      </tr>
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
+                            <h6
+                                style={{
+                                color: 'green'
+                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="exampleState">Any direct contact with a Covid patient</Label>
+                            <h6
+                                style={{
+                                color: 'green'
+                            }}>
+                                {`${ `${repo.patientScreeningDTO.coughPresent}`}`}
+                            </h6>
+                        </FormGroup>
+                    </Col>
 
+                </Row>
 
-      <tr>
-        <th scope="row">1</th>
-        <td>01/01/01</td>
-        <td>REd Cross</td>
-        <td>13543</td>
-        <td>Des</td>
-        <td>pending</td>
-     
-      </tr>
-    </tbody>
-  </Table>
-  
+            </Form>
 
-  </Row>
-  </Form>
-
-   
-    </div>
-  );
+        </div>
+    );
 }
-
-
-
-
-
 
 export default PatientDashboard;
