@@ -1,9 +1,10 @@
 import React  ,{useState ,useEffect}from 'react';
 import {Col,Label,FormGroup,Form ,Row ,Table,}  from 'reactstrap'
 import axios from 'axios'
+import { Button } from '@material-ui/core';
 
 
-export default function Report() {
+export default function Report({reset}) {
 
     const [repo ,setRepo] = useState([])
 
@@ -37,13 +38,17 @@ export default function Report() {
     }
      
 
-      let {patientFullName} =  repo
+      let {patientFullName ,result ,dateOfTest,testKitBrandName ,testKitBatchNumber ,testingAgentFullName,patientPhoneNumber ,patientScreening} =  repo
 
-      console.log(patientFullName)
+     
       // let {patient} =  patientScreening {`${`${patientScreening.bodyAchesPresent}`}`}
 
-      console.log(Object.keys(repo));
 
+     // screenData(patientScreening)
+
+      console.log(repo)
+
+   
 
   
      
@@ -119,7 +124,7 @@ export default function Report() {
           <Col md={3}>
             <FormGroup>
               <Label for="exampleState">Phone Number</Label>
-              <h6>07821442345</h6>
+              <h6>{patientPhoneNumber}</h6>
             </FormGroup>
           </Col>
       
@@ -161,7 +166,7 @@ export default function Report() {
           <Col md={3}>
             <FormGroup>
               <Label for="exampleCity">Cough:</Label>
-             <h6 style={{color:'red'}}>yes</h6>
+             <h6 style={{color:'red'}}>{7}</h6>
             </FormGroup>
           </Col>
           <Col md={3}>
@@ -283,11 +288,11 @@ export default function Report() {
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>01/01/01</td>
-            <td>REd Cross</td>
-            <td>13543</td>
-            <td>Des</td>
-            <td>negative</td>
+            <td>{dateOfTest}</td>
+            <td>{testKitBrandName}</td>
+            <td>{testKitBatchNumber}</td>
+            <td>{testingAgentFullName}</td>
+            <td>{result}</td>
            
     
           </tr>
@@ -298,7 +303,7 @@ export default function Report() {
       </Row>
       </Form>
     
-       
+         <Button  onClick={reset} color="primary">Finish</Button>
         </div>
       
     )
