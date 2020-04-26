@@ -128,7 +128,7 @@ const AddPatient  = ({next}) =>{
                     <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
                     <option value="MASVINGO">MASVINGO</option>
                     <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
-                    <option value="MATABEKELAND_SOUTH">MATABELELAND_SOUTH</option>
+                    <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
                     <option value="MIDLANDS">MIDLANDS</option>
 
                     </Input>
