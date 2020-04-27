@@ -39,33 +39,31 @@ const PatientDashboard = (props) => {
 
     console.log(usedOTP)
 
+
     let {testingDetails} = repo
 
-    if (!usedOTP && !testingDetails) {
+    if (!testingDetails) {
+
+        
+
+
+
+
+
 
         return <canvas id="canvas" align="center"/>
+
     } else {
+
+        
+        usedOTP === false ? loc.push('/otp') : console.log('its now true')
         function generateQR() {
             let str = "TEST RESULTS :" + testingDetails.result
             QRCode.toCanvas(document.getElementById('canvas'), str)
         }
         generateQR()
 
-        if (usedOTP) {
-
-            console.log('otp bho')
-
-            if (usedOTP) {
-
-              
-            console.log('otp bho')
-            } else {
-
-                loc.push('/otp')
-            }
-
-        } else {}
-
+      
     }
 
     return (
