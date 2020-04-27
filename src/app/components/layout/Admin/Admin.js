@@ -41,7 +41,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = "240";
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -231,9 +231,9 @@ export default function Admin() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <Divider/>
+      
         <List>{mainListItems}</List>
-        <Divider />
+       
        
       </Drawer>
       <main className={classes.content}>

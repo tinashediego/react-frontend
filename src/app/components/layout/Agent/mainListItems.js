@@ -20,7 +20,7 @@ export const mainListItems = (
       </Link>
       <Link to="/agent" style={{color:'white'}}>
 
-      <ListItemText primary="TEST PATIENT" />
+      <ListItemText primary="Test Patient" />
       </Link>    
     </ListItem>
     <ListItem button> 
