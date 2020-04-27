@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     "hasATravelHistoryToACovid19InfectedArea": '',
     "hasDirectContactWithCovid19Patient": '',
     "hasTravelledPast14Days": '',
-    "headachePresent": true, 
+    "headachePresent": '', 
     })
 
 

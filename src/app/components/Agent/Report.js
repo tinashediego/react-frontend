@@ -12,12 +12,11 @@ export default function Report() {
   useEffect(() => {
     const fetchData = async () => {
 
-      const resp = await axios.get(`http://45.76.141.84:8080/v1/tests/${id}/agent/test-report`)
-      const generate = await axios.post('http://45.76.141.84:8080/v1/maisha-status-report', { testId: id })
+      const resp = await axios.post('http://45.76.141.84:8080/v1/maisha-status-report', { testId: id })
 
 
       setRepo(resp.data)
-      console.log(generate.data)
+     
 
 
     }
@@ -27,22 +26,57 @@ export default function Report() {
   }, [])
 
 
-  //console.log(repo)
+  
+
+console.log(repo)
+
+let {testingDetails ,} = repo
+  if (!repo ) {
+
+    
+
+      return 'loadding'
+  
 
 
-  if (!repo) {
+    
 
+  
 
-    return 'loadding'
+   
   }
 
 
-  let { patientFullName } = repo
 
-  console.log(patientFullName)
+  if(!testingDetails){
+
+        return 'Loading ....'
+
+  }else{
+
+
+    console.log(Object.keys(testingDetails))
+  }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
   // let {patient} =  patientScreening {`${`${patientScreening.bodyAchesPresent}`}`}
 
-  console.log(Object.keys(repo));
+ // console.log(patientScreening[0].patientId);
 
 
 
@@ -94,19 +128,19 @@ export default function Report() {
         <Row form>
           <Col md={12}>
 <fieldset>
-  <legend>Patel Personal Details</legend>
-</fieldset>
+  <legend>{repo.firstName} Personal Details</legend>
+</fieldset>  
   <Row form>
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleEmail">First Name</Label>
-                  <h6>{patientFullName}</h6>
+                  <h6>{repo.firstName}</h6>
                 </FormGroup>
               </Col>
               <Col md={4}>
                 <FormGroup>
                   <Label for="examplePassword">Last Name</Label>
-                  <h6>Lincon</h6>
+                  <h6>{repo.lastName}</h6>
                 </FormGroup>
               </Col>
             </Row>
@@ -115,13 +149,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleEmail">Date Of Birth</Label>
-                  <h6>01/01/01</h6>
+                  <h6>{repo.dateOfBirth}</h6>
                 </FormGroup>
               </Col>
               <Col md={4}>
                 <FormGroup>
                   <Label for="examplePassword"> National Id</Label>
-                  <h6 >567-296335-f17</h6>
+                  <h6 >{repo.nationalIDNumber}</h6>
                 </FormGroup>
               </Col>
             </Row>
@@ -130,13 +164,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">Address</Label>
-                  <h6 >47 casteen belverder</h6>
+                  <h6 >{repo.address}</h6>
                 </FormGroup>
               </Col>
               <Col md={4}>
                 <FormGroup>
                   <Label for="exampleState">Phone Number</Label>
-                  <h6>07821442345</h6>
+                  <h6>{repo.phoneNumber}</h6>
                 </FormGroup>
               </Col>
 
@@ -147,13 +181,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">Email Address</Label>
-                  <h6 >1123@gmail.com</h6>
+                  <h6 >{repo.email}</h6>
                 </FormGroup>
               </Col>
               <Col md={4}>
                 <FormGroup>
                   <Label for="exampleState">Gender</Label>
-                  <h6 >Male</h6>
+                  <h6 >{repo.gender}</h6>
                 </FormGroup>
               </Col>
 
@@ -174,7 +208,7 @@ export default function Report() {
 
            <fieldset>
              <legend>
-             Last Screening Details
+              Screening Details
              </legend>
            </fieldset>
 
@@ -183,13 +217,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">Cough:</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleState">Colds</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.coldsPresent}`}</h6>
                 </FormGroup>
               </Col>
 
@@ -200,13 +234,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">Diarrhoea</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.diarrhoeaPresent}`}</h6>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleState">Sore Throat</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}`}</h6>
                 </FormGroup>
               </Col>
 
@@ -217,13 +251,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">Body Aches</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${`${repo.patientScreeningDTO.bodyAchesPresent}`}`}</h6>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleState">Heachache</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.headachePresent}`}</h6>
                 </FormGroup>
               </Col>
 
@@ -234,13 +268,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">Tempreratue above 37.8 </Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.feverPresent}`}</h6>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleState">Difficulty in breathing</Label>
-                  <h6 style={{ color: 'green' }}>No</h6>
+                  <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}`}</h6>
                 </FormGroup>
               </Col>
 
@@ -251,13 +285,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">Fatigue</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.fatiguePresent}`}</h6>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleState">Travelled  in the past 14days</Label>
-                  <h6 style={{ color: 'red' }}>yes</h6>
+                  <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
                 </FormGroup>
               </Col>
 
@@ -268,13 +302,13 @@ export default function Report() {
               <Col md={5}>
                 <FormGroup>
                   <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
-                  <h6 style={{ color: 'green' }}>No</h6>
+                  <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleState">Any direct contact with a Covid patient</Label>
-                  <h6 style={{ color: 'green' }}>No</h6>
+                  <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
                 </FormGroup>
               </Col>
 
@@ -304,12 +338,16 @@ export default function Report() {
             </thead>
             <tbody>
               <tr>
+
+
+
+              
                 <th scope="row">1</th>
-                <td>01/01/01</td>
-                <td>REd Cross</td>
-                <td>13543</td>
-                <td>Des</td>
-                <td>negative</td>
+                <td>{testingDetails.dateOfTest}</td>
+                <td>{testingDetails.testKitBrandName}</td>
+                <td>{testingDetails.testKitSerialNumber}</td>
+                <td>{testingDetails.testingAgent}</td>
+                <td>{testingDetails.result}</td>
 
 
               </tr>

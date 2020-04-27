@@ -31,7 +31,7 @@ import axios from 'axios'
     "hasATravelHistoryToACovid19InfectedArea": '',
     "hasDirectContactWithCovid19Patient": '',
     "hasTravelledPast14Days":'',
-    "headachePresent": true, 
+    "headachePresent": '', 
     })
 
 

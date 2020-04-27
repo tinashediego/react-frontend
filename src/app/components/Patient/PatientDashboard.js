@@ -156,139 +156,111 @@ const PatientDashboard = (props) => {
                 </h3>
 
                 <Row form>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleCity">Cough:</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleState">Colds</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-
-                </Row>
-
-                <Row form>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleCity">Diarrhoea</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleState">Sore Throat</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-
-                </Row>
-
-                <Row form>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleCity">Body Aches</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleState">Heachache</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-
-                </Row>
-
-                <Row form>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleCity">Tempreratue above 37.8
-                            </Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleState">Difficulty in breathing</Label>
-                            <h6
-                                style={{
-                                color: 'green'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-
-                </Row>
-
-                <Row form>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleCity">Fatigue</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleState">Travelled in the past 14days</Label>
-                            <h6
-                                style={{
-                                color: 'red'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-
-                </Row>
-
-                <Row form>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
-                            <h6
-                                style={{
-                                color: 'green'
-                            }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
-                        </FormGroup>
-                    </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="exampleState">Any direct contact with a Covid patient</Label>
-                            <h6
-                                style={{
-                                color: 'green'
-                            }}>
-                                {`${ `${repo.patientScreeningDTO.coughPresent}`}`}
-                            </h6>
-                        </FormGroup>
-                    </Col>
-
-                </Row>
+                <Col md={5}>
+                  <FormGroup>
+                    <Label for="exampleCity">Cough:</Label>
+                    <h6 style={{ color: 'red' }}>{`${ `${repo.patientScreeningDTO.coughPresent}`}`}</h6>
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="exampleState">Colds</Label>
+                    <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.coldsPresent}`}</h6>
+                  </FormGroup>
+                </Col>
+  
+              </Row>
+  
+  
+              <Row form>
+                <Col md={5}>
+                  <FormGroup>
+                    <Label for="exampleCity">Diarrhoea</Label>
+                    <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.diarrhoeaPresent}`}</h6>
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="exampleState">Sore Throat</Label>
+                    <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}`}</h6>
+                  </FormGroup>
+                </Col>
+  
+              </Row>
+  
+  
+              <Row form>
+                <Col md={5}>
+                  <FormGroup>
+                    <Label for="exampleCity">Body Aches</Label>
+                    <h6 style={{ color: 'red' }}>{`${`${repo.patientScreeningDTO.bodyAchesPresent}`}`}</h6>
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="exampleState">Heachache</Label>
+                    <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.headachePresent}`}</h6>
+                  </FormGroup>
+                </Col>
+  
+              </Row>
+  
+  
+              <Row form>
+                <Col md={5}>
+                  <FormGroup>
+                    <Label for="exampleCity">Tempreratue above 37.8 </Label>
+                    <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.feverPresent}`}</h6>
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="exampleState">Difficulty in breathing</Label>
+                    <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}`}</h6>
+                  </FormGroup>
+                </Col>
+  
+              </Row>
+  
+  
+              <Row form>
+                <Col md={5}>
+                  <FormGroup>
+                    <Label for="exampleCity">Fatigue</Label>
+                    <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.fatiguePresent}`}</h6>
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="exampleState">Travelled  in the past 14days</Label>
+                    <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
+                  </FormGroup>
+                </Col>
+  
+              </Row>
+  
+  
+              <Row form>
+                <Col md={5}>
+                  <FormGroup>
+                    <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
+                    <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="exampleState">Any direct contact with a Covid patient</Label>
+                    <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
+                  </FormGroup>
+                </Col>
+  
+              </Row>
+  
+        
+  
+    
+  
+  
 
             </Form>
 
