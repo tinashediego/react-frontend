@@ -42,7 +42,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 200;
+const drawerWidth = "200";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -214,9 +214,9 @@ console.log(para)
                 <ChevronLeftIcon />
             </IconButton>
         </div>
-        
+        <Divider />
         <List>{mainListItems}</List>
-        
+        <Divider />
 
     </Drawer>
     <main className={classes.content}>
