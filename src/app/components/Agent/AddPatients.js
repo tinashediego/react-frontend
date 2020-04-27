@@ -102,7 +102,7 @@ const AddPatient  = ({next}) =>{
                 <TextField label="Passport Number" value={patientData.passportNumber} onChange={e=>setPatient({ ...patientData ,passportNumber:e.target.value})} placeholder="e.g passport Number"   fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="Date Of Birth" type="date" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth   />
+                    <TextField label="Date Of Birth (dd/mm/yyyy)" name="password" value={patientData.dateOfBirth} onChange={e=>setPatient({ ...patientData ,dateOfBirth:e.target.value})} placeholder="dd/mm/yyyy" fullWidth   />
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
