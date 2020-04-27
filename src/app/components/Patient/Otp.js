@@ -69,17 +69,17 @@ const Otp  = () =>{
         <Form align="center" style={{paddingBottom:20,marginTop:-30}} onSubmit={handleSubmit}>
             <FormGroup>
 
-                <TextField label="Username" type="oldpassword" value={userData.oldPassword}  placeholder="old password" onChange={e=>setData({ ...userData ,oldPassword:e.target.value})} style={{width:"50%"}} required/>
+                <TextField label="old-password" type="password" value={userData.oldPassword}  placeholder="old password" onChange={e=>setData({ ...userData ,oldPassword:e.target.value})} style={{width:"50%"}} required/>
             </FormGroup>
             <FormGroup>
 
-                <TextField type="password" label="Password" name="password"  value={userData.password} placeholder="password" onChange={e=>setData({...userData,password:e.target.value})} style={{width:"50%"}} required/>
+                <TextField type="password" label="new password" name="password"  value={userData.password} placeholder="password" onChange={e=>setData({...userData,password:e.target.value})} style={{width:"50%"}} required/>
             </FormGroup>
 
 
             <FormGroup>
 
-                <TextField type="password" label="Password" name="password" id="password" value={userData.confirmPassword} placeholder="password" onChange={e=>setData({...userData,confirmPassword:e.target.value})} style={{width:"50%"}} required/>
+                <TextField type="password" label="confirm passord" name="password" id="password" value={userData.confirmPassword} placeholder="password" onChange={e=>setData({...userData,confirmPassword:e.target.value})} style={{width:"50%"}} required/>
             </FormGroup>
 
             <Button color="success" style={{width: "50%"}} type="submit">Submit</Button>
