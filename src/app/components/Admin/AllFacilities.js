@@ -273,7 +273,7 @@ aria-labelledby="alert-dialog-title"
 aria-describedby="alert-dialog-description"
 
 >
-<DialogTitle id="alert-dialog-title" style={styles.dialog}>New  FACILTY</DialogTitle>
+<DialogTitle id="alert-dialog-title" style={styles.dialog}>New  FACILITY</DialogTitle>
 <DialogContent>
   <DialogContentText id="alert-dialog-description">
   <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"100%"}}>
