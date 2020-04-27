@@ -60,6 +60,7 @@ const AddPatient  = ({next}) =>{
       axios.post('http://45.76.141.84:8080/v1/patients' ,newPatient)
       .then(resp=>{
         console.log(resp)
+        localStorage.setItem('patientId' ,resp.data.id)
         localStorage.setItem('currentPatient',patientData.firstName)
     
         alert('success')

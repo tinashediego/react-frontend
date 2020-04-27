@@ -38,7 +38,7 @@ export default function Report({reset}) {
     }
      
 
-      let {patientFullName ,result ,dateOfTest,testKitBrandName ,testKitBatchNumber ,testingAgentFullName,patientPhoneNumber ,patientScreening} =  repo
+      let {patientFullName ,result ,dateOfTest,testKitBrandName ,testKitBatchNumber ,testingAgentFullName,patientPhoneNumber ,patientScreeningDTO} =  repo
 
      
       // let {patient} =  patientScreening {`${`${patientScreening.bodyAchesPresent}`}`}

@@ -17,7 +17,7 @@ import axios from 'axios'
   
 
    
-   var ids = localStorage.getItem('partnerId')
+   var ids = localStorage.getItem('patientId')
 
     const [ScreenData ,setScreen] =  useState({ 
         thisAChild:false,      
