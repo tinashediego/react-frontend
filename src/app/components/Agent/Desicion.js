@@ -20,7 +20,7 @@ export default function Desicion({next ,reset}) {
               <Typography color="textSecondary">
                 <Button variant="contained" onClick={reset} color="primary" style={{ height:"20vh" , width:"40vh"}}  elevation={4}>FINISH</Button>
               </Typography>
-           =
+         
             </CardContent>
           </Grid>
           <Grid item xs={12} md={3} component={Card} style={{backgroundColor:"rgba(0,255,0,0.1)"}}  className={cx(styles.card, styles.recovered)}>
