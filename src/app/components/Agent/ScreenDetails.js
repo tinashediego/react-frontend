@@ -198,7 +198,7 @@ const handleSubmit = (e) => {
           <Row form>
               <Col md={6}>
                   <FormGroup>
-                      <Label for="exampleCity">Tempreratue above 37.8 </Label>
+                      <Label for="exampleCity">Fever </Label>
                       <Input type="select" name="travelled" value={ScreenData.feverPresent} onChange={e=>setScreen({ ...ScreenData ,feverPresent:e.target.value})} id="gender">
                       <option>Select</option>
                       <option value="true">Yes</option>
@@ -208,7 +208,7 @@ const handleSubmit = (e) => {
               </Col>
               <Col md={6}>
                   <FormGroup>
-                      <Label for="exampleState">Difficulty in breathing</Label>
+                      <Label for="exampleState">Difficulties in breathing</Label>
                       <Input type="select" name="travelled" value={ScreenData.coughPresent} onChange={e=>setScreen({ ...ScreenData ,coughPresent:e.target.value})} id="gender">
                       <option>Select</option>
                       <option value="true">Yes</option>
@@ -225,7 +225,7 @@ const handleSubmit = (e) => {
            
               <Col md={6}>
                   <FormGroup>
-                      <Label for="exampleState">Any direct contact with a Covid patient</Label>
+                      <Label for="exampleState">Any direct contact with a Covid-19 patient</Label>
                       <Input type="select" name="travelled" value={ScreenData.hasDirectContactWithCovid19Patient} onChange={e=>setScreen({ ...ScreenData ,hasDirectContactWithCovid19Patient:e.target.value})} id="gender">
                       <option>Select</option>
                       <option value="true">Yes</option>
@@ -252,7 +252,7 @@ const handleSubmit = (e) => {
 
           <Col md={6}>
           <FormGroup>
-              <Label for="exampleState">Travelled in the past 21days to Other Countries</Label>
+              <Label for="exampleState">Travelled in the past 21 days to Other Countries</Label>
               <Input type="select" name="travelled" value={ScreenData.hasTravelledPast14Days} onChange={e=>setScreen({ ...ScreenData ,hasTravelledPast14Days:e.target.value})} id="gender">
               <option>Select</option>
               <option value="true">Yes</option>

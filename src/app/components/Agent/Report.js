@@ -267,13 +267,13 @@ let {testingDetails ,} = repo
             <Row form>
               <Col md={5}>
                 <FormGroup>
-                  <Label for="exampleCity">Tempreratue above 37.8 </Label>
+                  <Label for="exampleCity">Fever</Label>
                   <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.feverPresent}`}</h6>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="exampleState">Difficulty in breathing</Label>
+                  <Label for="exampleState">Difficulties in breathing</Label>
                   <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}`}</h6>
                 </FormGroup>
               </Col>
@@ -290,7 +290,7 @@ let {testingDetails ,} = repo
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="exampleState">Travelled  in the past 14days</Label>
+                  <Label for="exampleState">Travelled  in the past 14 days</Label>
                   <h6 style={{ color: 'red' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
                 </FormGroup>
               </Col>
@@ -307,7 +307,7 @@ let {testingDetails ,} = repo
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="exampleState">Any direct contact with a Covid patient</Label>
+                  <Label for="exampleState">Any direct contact with a Covid-19 patient</Label>
                   <h6 style={{ color: 'green' }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}`} </h6>
                 </FormGroup>
               </Col>

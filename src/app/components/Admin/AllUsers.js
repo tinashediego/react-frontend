@@ -174,7 +174,7 @@ export default function AllUsers() {
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Group</TableCell>
             <TableCell align="left">Testing Facility</TableCell>
-            <TableCell align="left">Adress Of Practice</TableCell>
+            <TableCell align="left">Address Of Practice</TableCell>
             <TableCell align="left">Actions</TableCell>
           </TableRow>
         </TableHead>

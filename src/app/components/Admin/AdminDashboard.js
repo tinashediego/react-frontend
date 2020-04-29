@@ -81,7 +81,7 @@ console.log(provinceDemographics)
       name: 'NEGATIVE',
       data: negativeTotal
     }, {
-      name: 'INCOCLUSIVE',
+      name: 'INCONCLUSIVE',
       data: inconclusiveTotal
     } , {
       name: 'POSITIVE',

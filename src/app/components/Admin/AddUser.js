@@ -252,10 +252,10 @@ const AddUser  = () =>{
 
 <div className="row">
 <FormGroup className="col-sm-6">
-<TextField label="Address of Practise"
+<TextField label="Address of Practice"
       value={newUser.addressOfPractice} 
       onChange={e=>setUser({ ...newUser ,addressOfPractice:e.target.value})}
-placeholder="Enter Practising Address" required />
+placeholder="Address of Practice" required />
 
 </FormGroup>
 

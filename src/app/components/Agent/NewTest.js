@@ -5,13 +5,7 @@ import {allKits} from '../../../redux/actions/KitsActions'
 import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
 import moment from 'moment'
 import axios from 'axios'
-
-
-
-
-
-
-
+import { TextField } from '@material-ui/core';
 
  function NewTest({next}) {
 
@@ -44,6 +38,8 @@ const handleSubmit = (e) => {
     "patientScreeningId":b,
     "testKitId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
+    "batchNumber": ScreenData.batchNumber,
+    "serialNumber": ScreenData.serialNumber,
     "testingAgentUsername": a,
 
         }
@@ -92,16 +88,34 @@ const handleSubmit = (e) => {
             </FormGroup>
           </Col>
 
+          <Col md={12} >
+   <FormGroup>
+     <Label for="exampleCity">Testing Kit:</Label>
+        <Input type="select" name="travelled" value={ScreenData.testKitId}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
+       
+       <option>SELECT</option>
+       {content2.map((team) => <option key={team.id} value={team.id}>{team.brandName}</option>)}
+            </Input>
+            </FormGroup>
+          </Col>
+
+          <Col md={12} >
+   <FormGroup>
+    
+        <TextField label="Batch Number" name="travelled" placeholder="Batch Number" value={ScreenData.batchNumber} 
+      onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth /> 
+       
+     
+            </FormGroup>
+          </Col>
+
      <Col md={12}>
 
      <FormGroup>
-         <Label for="exampleCity">Test  Result:</Label>
-            <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
-     <option>Select</option>
-     <option value="POSITIVE">POSITIVE</option>
-     <option value="NEGATIVE">NEGATIVE</option>
-     <option value="INCONCLUSIVE">IncoNclusive</option>
-     </Input>
+         
+            <TextField label="Serial Number" name="travelled" placeholder="Serial Number"
+            value={ScreenData.serialNumber} onChange={e=>setScreen({ ...ScreenData , serialNumber:e.target.value})} fullWidth /> 
+   
        </FormGroup>
      
      </Col>

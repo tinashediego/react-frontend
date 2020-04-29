@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Add Patient', 'Screen Patient' ,'Decision', 'Test Patient' ,'Report'];
+  return ['Add Patient', 'Screen Patient' ,'Decision', 'Test Patient' ,'Maisha Status Report'];
 }
 
 
