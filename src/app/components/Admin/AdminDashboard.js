@@ -75,7 +75,7 @@ const AdminDashboard = () => {
                 '#ff0000',  // color for data at index 2
                   // color for data at index 3
                 //...
-            ],
+            ], 
             title: {
                 text: 'POSITiVE CASES AROUND THE COUNTRY',
                 align: 'left',

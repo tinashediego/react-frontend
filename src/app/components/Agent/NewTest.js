@@ -40,9 +40,9 @@ var newScreen = {
       "timeOfTest":moment().format('HH:mm'),
       "patientScreeningId":b,
       "testKitId":ScreenData.testKitId,
-      "testResult": ScreenData.testResult,
-      "serialNumber": ScreenData.serialNumber,
+      "testResult": ScreenData.testResult,    
       "batchNumber": ScreenData.batchNumber,
+      "serialNumber": ScreenData.serialNumber,
       "testingAgentUsername": a
 
         }
@@ -54,7 +54,7 @@ var newScreen = {
               localStorage.setItem('testId' ,resp.data.id)
               console.log(resp)
               alert('succes')
-              localStorage.removeItem('partnerId')
+              localStorage.removeItem('partnerID')
               next()         
              }
               )
@@ -99,10 +99,9 @@ var newScreen = {
      <Label for="exampleCity">Test Result:</Label>
         <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
        
-       <option>SELECT</option>
-       <option>Positive</option>
-       <option>Negative</option>
-       <option>Inconclusive</option>
+        <option value="POSITIVE">Positive</option>
+        <option value="NEGATIVE">Negative</option>
+        <option value="INCONCLUSIVE">Inconclusive</option>
             </Input>
             </FormGroup>
           </Col>

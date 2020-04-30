@@ -25,7 +25,7 @@ import {TextField} from '@material-ui/core'
         "dateOfTest": moment().format('DD/MM/YYYY'),
         "patientScreeningId":'3234',
         "testKitId":1,
-        "testResult": "POSITIVE",
+        "testResult": "",
         "batchNumber":"",
         "serialNumber":"",
         "testingAgentUsername": '' 
