@@ -71,7 +71,7 @@ const AdminDashboard = () => {
             title: {
                 text: 'POSITiVE CASES AROUND THE COUNTRY',
                 align: 'left',
-                margin: 10,
+                margin: 30,
                 offsetX: 0,
                 offsetY: 0,
                 floating: false,
@@ -79,12 +79,14 @@ const AdminDashboard = () => {
                     fontSize: '14px',
                     fontWeight: 'bold',
                     fontFamily: undefined,
-                    color: '#263238'
+                    color: '#263238',
+                    marginTop:'30px'
                 }
             },
 
             chart: {
                 type: 'bar',
+                margin:30,
                 height: 350,
                 stacked: true,
                 toolbar: {
@@ -139,7 +141,8 @@ const AdminDashboard = () => {
         options: {
             chart: {
                 type: 'bar',
-                height: 430
+                height: 430,
+                marginTop:30
             },
             colors: [
                 '#00ff00', '#ff0000'
@@ -156,7 +159,6 @@ const AdminDashboard = () => {
             title: {
                 text: 'KITS',
                 align: 'left',
-                margin: 10,
                 offsetX: 0,
                 offsetY: 0,
                 floating: false,
@@ -250,10 +252,10 @@ const AdminDashboard = () => {
     return (
         <div>
 
-            <TableContainer component={Paper}>
+            <TableContainer style={{marginTop:30, marginBottom:55}} component={Paper}>
 
-                <h5 className="container">TOTAL TEST</h5>
-                <Table size="small" className="table table-striped">
+                <h5 style={{marginTop:10}} className="container">TOTAL TEST</h5>
+                <Table size="small" className="table table-striped table-bordered" style={{marginTop:5,marginBottom:15}}>
 
                     <TableHead>
                         <TableRow>
@@ -275,13 +277,13 @@ const AdminDashboard = () => {
 
             <Chart options={colum.options} series={colum.series} type="bar" height={350}/>
 
-            <TableContainer component={Paper}>
+            <TableContainer style={{marginTop:50, marginBottom:55}} component={Paper}>
 
-                <h5>BATCHES</h5>
+                <h5 >BATCHES</h5>
                 <Table
                     size="small"
-                    className="table table-striped"
-                    aria-label="customized table">
+                    className="table table-striped table-bordered"
+                    aria-label="customized table" style={{margingTop:15,marginBottom:15}}>
 
                     <TableHead>
                         <TableRow>
