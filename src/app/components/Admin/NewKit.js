@@ -4,18 +4,68 @@ import {
   Form,
  
 } from 'reactstrap';
+import Alert from '@material-ui/lab/Alert';
 import { useDispatch,} from 'react-redux';
 import {addKit} from '../../../redux/actions/KitsActions'
 
 import { TextField } from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios'
 
+import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 
 
  function NewKit() {
 
+
+
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+
+  
+  
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClickError = () => {
+      setOpenError(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+    
+  }
+
+ const handleCloseError = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenError(false);
+      
+    };
 
 
   const [state, setstate] = useState({"brandName": "",
@@ -28,12 +78,19 @@ import Grid from '@material-ui/core/Grid';
 
       console.log(state)
 
-      const dispatch = useDispatch();
       
       function handleSubmit(e) {
         e.preventDefault();
         if (state) {
-            dispatch(addKit(state))
+
+          axios.post('http://45.76.141.84:8080/v1/test-kits' ,state)
+               .then(res=>{
+
+                handleClick()  
+               }).catch(err=>{
+
+              handleClickError()  })
+            
         }
     }
 
@@ -46,6 +103,25 @@ import Grid from '@material-ui/core/Grid';
 
 <div>   
 <div className="h" style={styles.h}><h5>New Kit</h5></div>
+
+
+   
+<div className={classes.root}>
+      
+<Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+  <Alert onClose={handleClose} severity="success">
+    This is a success message!
+  </Alert>
+</Snackbar>
+
+
+<Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+<Alert onClose={handleCloseError} severity="error">
+  There was an error 
+</Alert>
+</Snackbar>
+
+</div>
 
 <Form onSubmit={handleSubmit}>
   
