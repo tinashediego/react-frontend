@@ -125,77 +125,132 @@ const AdminDashboard = () => {
         }
     }
 
-
-
-
     var horizontalBar = {
-     
-          
-      series: [{
-        name:"USED",
-        data: [44]
-      }, {
-        name:'DEFECT',
-        data: [53, ]
-      }],
-      options: {
-        chart: {
-          type: 'bar',
-          height: 430
-        },
-        colors : ['#00ff00', '#ff0000'],
-        plotOptions: {
-          bar: {
-            horizontal: true,
-            dataLabels: {
-              position: 'top',
+
+        series: [
+            {
+                name: "USED",
+                data: [44]
+            }, {
+                name: 'DEFECT',
+                data: [53]
+            }
+        ],
+        options: {
+            chart: {
+                type: 'bar',
+                height: 430
             },
-          }
-        },
+            colors: [
+                '#00ff00', '#ff0000'
+            ],
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    dataLabels: {
+                        position: 'top'
+                    }
+                }
+            },
 
-        title: {
-          text: 'KITS',
-          align: 'left',
-          margin: 10,
-          offsetX: 0,
-          offsetY: 0,
-          floating: false,
-          style: {
-              fontSize: '14px',
-              fontWeight: 'bold',
-              fontFamily: undefined,
-              color: '#263238'
-          }
-      },
-        dataLabels: {
-          enabled: true,
-          offsetX: -6,
-          style: {
-            fontSize: '12px',
-            colors: ['#fff']
-          }
-        },
-        stroke: {
-          show: true,
-          width: 1,
-          colors: ['#fff']
-        },
-        xaxis: {
-          categories: ['USED' ,'DEFECT'],
-        },
-      },
-    
-    
+            title: {
+                text: 'KITS',
+                align: 'left',
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    fontFamily: undefined,
+                    color: '#263238'
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                offsetX: -6,
+                style: {
+                    fontSize: '12px',
+                    colors: ['#fff']
+                }
+            },
+            stroke: {
+                show: true,
+                width: 1,
+                colors: ['#fff']
+            },
+            xaxis: {
+                categories: ['USED', 'DEFECT']
+            }
+        }
     };
-  
 
+    var pieCmyhart = {
 
+        series: [
+            44, 55, 41, 17, 15 ,33,34
+        ],
 
+        options: {
+            chart: {
+                width: 380,
+                type: 'donut'
+            },
+            labels: [
+                'COUGH',
+                'HEADACHE',
+                'Diarrhoea',
+                'Sore Throat',
+                'Body Aches',
+                'Fever',
+                'breathing'
+            ],
+            title: {
+                text: 'SYMPTOMS',
+                align: 'left',
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    fontFamily: undefined,
+                    color: '#263238'
+                }
+            },
+            dataLabels: {
+                enabled: true
+            },
+            fill: {
+                type: 'gradient'
+            },
+            legend: {
+                formatter: function (val, opts) {
+                    return val + " - " + opts.w.globals.series[opts.seriesIndex]
+                }
+            },
+            responsive: [
+                {
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            ]
+        }
+    };
 
     return (
         <div>
 
-        <TableContainer  component={Paper}>
+            <TableContainer component={Paper}>
 
                 <h5 className="container">TOTAL TEST</h5>
                 <Table size="small" className="table table-striped">
@@ -216,44 +271,46 @@ const AdminDashboard = () => {
                     </TableBody>
                 </Table>
 
-                </TableContainer>
+            </TableContainer>
 
             <Chart options={colum.options} series={colum.series} type="bar" height={350}/>
 
+            <TableContainer component={Paper}>
 
+                <h5>BATCHES</h5>
+                <Table
+                    size="small"
+                    className="table table-striped"
+                    aria-label="customized table">
 
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>BUDGETED</TableCell>
+                            <TableCell>SPEND</TableCell>
 
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
 
-<TableContainer  component={Paper}>
-
-
-
-            <h5>BATCHES</h5>
-            <Table size="small" className="table table-striped" aria-label="customized table">
-
-                <TableHead>
-                    <TableRow>
-                        <TableCell>BUDGETED</TableCell>
-                        <TableCell>SPEND</TableCell>
-
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-
-                    <TableRow>
-                        <TableCell>{200}</TableCell>
-                        <TableCell>{50}</TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
+                        <TableRow>
+                            <TableCell>{200}</TableCell>
+                            <TableCell>{50}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
             </TableContainer>
 
+            <Chart
+                options={horizontalBar.options}
+                series={horizontalBar.series}
+                type="bar"
+                height={350}/>
 
-
-
-
-            <Chart options={horizontalBar.options} series={horizontalBar.series} type="bar" height={350}/>
-
+            <Chart
+                options={pieCmyhart.options}
+                series={pieCmyhart.series}
+                type="donut"
+                height={350}/>
 
         </div>
     );
