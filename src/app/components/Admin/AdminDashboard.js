@@ -63,11 +63,19 @@ const AdminDashboard = () => {
                 data: inconclusiveTotal
             }, {
                 name: 'POSITIVE',
-                data: positiveTotal
+                data: positiveTotal ,
+                
             }
         ],
         options: {
 
+            colors: [
+                '#00ff00',    // color for data at index 0
+                '#0000ff',   // color for data at index 1
+                '#ff0000',  // color for data at index 2
+                  // color for data at index 3
+                //...
+            ], 
             title: {
                 text: 'POSITiVE CASES AROUND THE COUNTRY',
                 align: 'left',

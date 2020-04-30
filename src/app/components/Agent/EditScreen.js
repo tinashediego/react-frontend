@@ -11,9 +11,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 
-function Alerts(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -115,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
 }
 
 
-console.log(countryList)
+
 
 const handleSubmit = (e) => {
 
@@ -158,10 +155,8 @@ const handleSubmit = (e) => {
         </Col>)
     }
 
-
-
   }
-  let  patie = localStorage.getItem('currentPatient')
+
   console.log(para.patie)
   
     return (

@@ -2,15 +2,35 @@ import React,{useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {allKits} from '../../../redux/actions/KitsActions'
 import {useParams} from 'react-router'
-
+import Alert from '@material-ui/lab/Alert';
 import {Col,Label,Input,FormGroup,Row }  from 'reactstrap'
 import moment from 'moment'
 import axios from 'axios'
 import {TextField} from '@material-ui/core'
+import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 
 
 
  function NewTest({next}) {
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
 
   const content2 = useSelector((state) => state.kits.allkits);  
   let  para = useParams()
@@ -20,12 +40,41 @@ import {TextField} from '@material-ui/core'
     dispatch2(allKits())
 
   },[]);
+
+
+
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClickError = () => {
+      setOpenError(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+    next()
+  };
+
+ const handleCloseError = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenError(false);
+      
+    };
+
     
     const [ScreenData ,setScreen] =  useState({
         "dateOfTest": moment().format('DD/MM/YYYY'),
         "patientScreeningId":'3234',
         "testKitId":1,
-        "testResult": "POSITIVE",
+        "testResult": "",
         "batchNumber":"",
         "serialNumber":"",
         "testingAgentUsername": '' 
@@ -61,14 +110,12 @@ const handleSubmit = (e) => {
              .then(resp=>{
 
                 localStorage.setItem('testId' ,resp.data.id)
-              alert('succes')
-              next()         
+                handleClick()  
              }
               )
               .catch(err=>{
 
-                alert(err.message)
-                console.log(err)
+                handleClickError()
               })
 
     
@@ -81,6 +128,38 @@ const handleSubmit = (e) => {
 
     <div>
    <h5 className="h" style={styles.h}>Test Patient</h5>
+
+
+   <div className={classes.root}>
+      
+   <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+     <Alert onClose={handleClose} severity="success">
+       This is a success message!
+     </Alert>
+   </Snackbar>
+
+
+   <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+   <Alert onClose={handleCloseError} severity="error">
+     There was an error 
+   </Alert>
+ </Snackbar>
+ 
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    <Col sm="12" md={{ size: 6, offset: 3 }}>
    <form onSubmit={handleSubmit}>
    <Row form>

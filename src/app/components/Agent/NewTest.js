@@ -1,15 +1,66 @@
 import React,{useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {allKits} from '../../../redux/actions/KitsActions'
-
-import {Col,Label,Input,FormGroup,Form ,Row }  from 'reactstrap'
+import Alert from '@material-ui/lab/Alert';
+import {Col,Label,Input,FormGroup ,Row }  from 'reactstrap'
 import moment from 'moment'
 import axios from 'axios'
 import { TextField } from '@material-ui/core';
+import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
+
+
 
  function NewTest({next}) {
 
   const content2 = useSelector((state) => state.kits.allkits);  
+
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+
+
+
+  
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClickError = () => {
+      setOpenError(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+    next()
+  };
+
+ const handleCloseError = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenError(false);
+      
+    };
+
   const dispatch2 = useDispatch(allKits());
   useEffect(() => {
 
@@ -40,9 +91,9 @@ var newScreen = {
       "timeOfTest":moment().format('HH:mm'),
       "patientScreeningId":b,
       "testKitId":ScreenData.testKitId,
-      "testResult": ScreenData.testResult,
-      "serialNumber": ScreenData.serialNumber,
+      "testResult": ScreenData.testResult,    
       "batchNumber": ScreenData.batchNumber,
+      "serialNumber": ScreenData.serialNumber,
       "testingAgentUsername": a
 
         }
@@ -52,16 +103,13 @@ var newScreen = {
         axios.post("http://45.76.141.84:8080/v1/tests" ,newScreen)
              .then(resp=>{
               localStorage.setItem('testId' ,resp.data.id)
-              console.log(resp)
-              alert('succes')
-              localStorage.removeItem('partnerId')
-              next()         
+              localStorage.removeItem('partnerID')
+              handleClick()          
              }
               )
               .catch(err=>{
 
-                alert(err.message)
-                console.log(err)
+                handleClickError()
               })
 
     
@@ -79,6 +127,29 @@ var newScreen = {
 
     <div>
    <h5 className="h" style={styles.h}>Test Patient</h5>
+
+
+
+
+
+   
+   <div className={classes.root}>
+      
+   <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+     <Alert onClose={handleClose} severity="success">
+       This is a success message!
+     </Alert>
+   </Snackbar>
+
+
+   <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+   <Alert onClose={handleCloseError} severity="error">
+     There was an error 
+   </Alert>
+ </Snackbar>
+ 
+ </div>
+
    <Col sm="12" md={{ size: 6, offset: 3 }}>
    <form onSubmit={handleSubmit}>
    <Row form>
@@ -99,10 +170,9 @@ var newScreen = {
      <Label for="exampleCity">Test Result:</Label>
         <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
        
-       <option>SELECT</option>
-       <option>Positive</option>
-       <option>Negative</option>
-       <option>Inconclusive</option>
+        <option value="POSITIVE">Positive</option>
+        <option value="NEGATIVE">Negative</option>
+        <option value="INCONCLUSIVE">Inconclusive</option>
             </Input>
             </FormGroup>
           </Col>
