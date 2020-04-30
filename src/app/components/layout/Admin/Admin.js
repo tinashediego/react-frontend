@@ -15,7 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems } from './mainListItems';
+import { mainListItems} from './mainListItems';
 import {useLocation} from 'react-router'
 import AllKits from '../../Admin/AllKits';
 import NewKit from '../../Admin/NewKit';
