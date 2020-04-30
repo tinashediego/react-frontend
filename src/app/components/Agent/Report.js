@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Label, FormGroup, Form, Row, Table, } from 'reactstrap'
 import axios from 'axios'
+import { Button } from '@material-ui/core';
 
 
-export default function Report() {
+export default function Report({reset}) {
 
   const [repo, setRepo] = useState([])
 
@@ -357,6 +358,10 @@ let {testingDetails ,} = repo
 
         </Row>
       </Form>
+
+
+      <button className="btn btn-primary" onClick={reset} >Finish</button>
+    
 
 
     </div>
