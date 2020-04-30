@@ -170,7 +170,7 @@ export default function AllUsers() {
             <TableCell align="left">Last name</TableCell>
             <TableCell align="left">Phone Number</TableCell>
             <TableCell align="left">National ID</TableCell>
-            <TableCell align="left">Practising Number</TableCell>
+            <TableCell align="left">Practicing Number</TableCell>
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Group</TableCell>
             <TableCell align="left">Testing Facility</TableCell>

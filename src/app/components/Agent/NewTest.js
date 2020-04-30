@@ -38,8 +38,8 @@ const handleSubmit = (e) => {
     "patientScreeningId":b,
     "testKitId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
-    "batchNumber": ScreenData.batchNumber,
     "serialNumber": ScreenData.serialNumber,
+    "batchNumber": ScreenData.batchNumber,
     "testingAgentUsername": a,
 
         }
@@ -47,6 +47,7 @@ const handleSubmit = (e) => {
         axios.post("http://45.76.141.84:8080/v1/tests" ,newScreen)
              .then(resp=>{
               localStorage.setItem('testId' ,resp.data.id)
+              console.log(resp)
               alert('succes')
               localStorage.removeItem('partnerId')
               next()         
@@ -98,7 +99,28 @@ const handleSubmit = (e) => {
             </Input>
             </FormGroup>
           </Col>
+          <Col md={12} >
+   <FormGroup>
+     <Label for="exampleCity">Testing Result:</Label>
+        <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
+       
+       <option>SELECT</option>
+       <option>Positive</option>
+       <option>Negative</option>
+       <option>Inconclusive</option>)}
+            </Input>
+            </FormGroup>
+          </Col>
+          <Col md={12}>
 
+<FormGroup>
+    
+       <TextField label="Serial Number" name="travelled" placeholder="Serial Number"
+       value={ScreenData.serialNumber} onChange={e=>setScreen({ ...ScreenData , serialNumber:e.target.value})} fullWidth /> 
+
+  </FormGroup>
+
+</Col>
           <Col md={12} >
    <FormGroup>
     
@@ -109,16 +131,7 @@ const handleSubmit = (e) => {
             </FormGroup>
           </Col>
 
-     <Col md={12}>
-
-     <FormGroup>
-         
-            <TextField label="Serial Number" name="travelled" placeholder="Serial Number"
-            value={ScreenData.serialNumber} onChange={e=>setScreen({ ...ScreenData , serialNumber:e.target.value})} fullWidth /> 
-   
-       </FormGroup>
-     
-     </Col>
+ 
  
    </Row>
 
