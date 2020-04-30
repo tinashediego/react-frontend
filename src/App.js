@@ -13,7 +13,7 @@ import axios from 'axios'
 import Admin from './app/components/layout/Admin/Admin'
 import Agent from "./app/components/layout/Agent/Agent";
 import Patient from "./app/components/layout/Patient/Patient";
-import Desicion from './app/components/Agent/Desicion'
+
 import Otp from './app/components/Patient/Otp'
 
 
@@ -56,30 +56,11 @@ axios.interceptors.request.use(
 axios.interceptors.response.use((response) => {
    return response
 }, function (error) {
-   const originalRequest = error.config;
+  
 
-   if (error.response.status === 401 && originalRequest.url === 'http://45.76.141.84:8080/authenticate') {
-    window.location.href = '/'
-       return Promise.reject(error);
-   }
+ 
 
-   if (error.response.status === 401 && !originalRequest._retry) {
 
-       originalRequest._retry = true;
-       const refreshToken = localStorage.getItem('refresh_token');
-       return axios.post('/auth/token',
-           {
-               "refresh_token": refreshToken
-           })
-           .then(res => {
-               if (res.status === 201) {
-                const token = localStorage.getItem('access_token');
-                   
-                   axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-                   return axios(originalRequest);
-               }
-           })
-   }
    return Promise.reject(error);
 });
 

@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
     dispatch2(allKits())
 
-  },[]);
+  },[dispatch2]);
     
     const [ScreenData ,setScreen] =  useState({
         "dateOfTest": moment().format('DD/MM/YYYY'),

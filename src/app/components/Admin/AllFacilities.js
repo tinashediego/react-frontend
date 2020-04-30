@@ -1,6 +1,6 @@
 import React  ,{useEffect , useState}from 'react';
 
-import {Allfacility ,addfacilty} from '../../../redux/actions/KitsActions'
+import {Allfacility } from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
 
 import Table from '@material-ui/core/Table';
@@ -27,7 +27,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import {Link} from 'react-router-dom'
+
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -97,12 +97,6 @@ TablePaginationActions.propTypes = {
 
 
 
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 500,
-  },
-});
-
 
 
 const AllFacilities  = (props) =>{ 
@@ -144,7 +138,7 @@ const AllFacilities  = (props) =>{
 
   useEffect(() => {
     dispatch(Allfacility());
-  }, [])
+  }, [dispatch])
 
 
 
@@ -156,7 +150,7 @@ const AllFacilities  = (props) =>{
 
       console.log(state)
 
-      const dispatchs = useDispatch();
+     
       
     
     
@@ -192,18 +186,6 @@ const AllFacilities  = (props) =>{
    
 
 
-  console.log(content)
-
-     let a  =  content.map((x,i)=>(
-
-    <TableRow key={i}>
-    <TableCell>{i +1}</TableCell>
-    <TableCell>{x.id}</TableCell>
-    <TableCell>{x.testingFacilityName}</TableCell>
- 
-    </TableRow>
-  
-  ))
   return (
     <div>
 

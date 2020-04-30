@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
     dispatch2(allKits())
 
-  },[]);
+  },[dispatch2]);
 
 
 
@@ -216,7 +216,7 @@ const handleSubmit = (e) => {
 
    </form>
   </Col>
-  <button className="btn btn-primary">Finish</button>
+
   </div>
   );
 }

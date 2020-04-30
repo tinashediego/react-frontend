@@ -1,7 +1,6 @@
 import React  ,{useState}from 'react';
 import {Col, Form, FormGroup,Button} from 'reactstrap';
-import Background from '../../../assets/1.jpg'
-import { useDispatch,} from 'react-redux';
+import Background from '../../../assets/1.jpg';
 import{useHistory} from 'react-router'
 import Logo from '../../../assets/logo.png';
 

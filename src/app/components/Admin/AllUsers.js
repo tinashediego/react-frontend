@@ -86,11 +86,7 @@ TablePaginationActions.propTypes = {
 
 
 
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 500,
-  },
-});
+
 
 export default function AllUsers() {
 
@@ -118,7 +114,7 @@ export default function AllUsers() {
 
   useEffect(() => {
     dispatch(allUsers());
-  }, []);
+  }, [dispatch]);
 
 
 
@@ -147,10 +143,6 @@ export default function AllUsers() {
   }
 
 
-  function suspend(){
-
-    alert('user suspended')
-  }
 
 
   return (

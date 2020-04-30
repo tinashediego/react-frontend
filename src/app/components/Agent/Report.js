@@ -24,7 +24,7 @@ export default function Report({reset}) {
 
     fetchData()
 
-  }, [])
+  }, [id])
 
 
   
@@ -195,12 +195,7 @@ let {testingDetails ,} = repo
             </Row>
 
           
-
-            
-            
-
-
-
+        
 
           </Col>
 
@@ -360,7 +355,7 @@ let {testingDetails ,} = repo
       </Form>
 
 
-      <button className="btn btn-primary" onClick={reset} >Finish</button>
+      <Button className="btn btn-primary" onClick={reset} >Finish</Button>
     
 
 

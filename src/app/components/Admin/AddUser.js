@@ -4,7 +4,7 @@ import {
   FormGroup,Input,
   Col
 } from 'reactstrap';
-import {addUser} from '../../../redux/actions/authActions'
+
 import {Allfacility} from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -83,10 +83,10 @@ const AddUser  = () =>{
 
 
 
-  const dispatch = useDispatch();
+ 
   useEffect(() => {
     dispatchs(Allfacility());
-  }, [])
+  }, [dispatchs])
 
 
   console.log(content)

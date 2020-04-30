@@ -97,11 +97,6 @@ TablePaginationActions.propTypes = {
 
 
 
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 500,
-  },
-});
 
 
 
@@ -138,9 +133,6 @@ const AllKits  = (props) =>{
   const dispatch = useDispatch(allKits());
 
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -149,7 +141,7 @@ const AllKits  = (props) =>{
 
   useEffect(() => {
     dispatch(allKits());
-  }, [])
+  }, [dispatch])
 
 
 
@@ -174,21 +166,6 @@ const AllKits  = (props) =>{
     }
 
    
-
-
-  console.log(content)
-
-     let a  =  content.map((x,i)=>(
-
-    <TableRow key={i}>
-    <TableCell>{i +1}</TableCell>
-    <TableCell>{x.createdDate}</TableCell>
-    <TableCell>{x.brandName}</TableCell>
-    <TableCell>{x.manufacturer}</TableCell>
-    <TableCell>{x.serialNumber}</TableCell>
-    </TableRow>
-  
-  ))
   return (
     <div>
 

@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 import { useDispatch,} from 'react-redux';
 import {addKit} from '../../../redux/actions/KitsActions'
-import { useHistory } from "react-router";
+
 import { TextField } from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';

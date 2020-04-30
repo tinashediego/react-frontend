@@ -18,7 +18,7 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         dispatch(Demos());
-    }, [])
+    }, [dispatch])
 
     let {totalNegativePatients, totalPositivePatients, provinceDemographics} = content
 

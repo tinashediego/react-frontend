@@ -6,7 +6,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import EditScreen from '../Agent/EditScreen';
-import ScreenDetails from '../Agent/ScreenDetails';
+
 import Report from '../Agent/Report'
 import EditTest from './EditTest';
 import Desicion from './Desicion';
@@ -42,9 +42,7 @@ export default function EditStepper() {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+
 
   const handleReset = () => {
     setActiveStep(0);

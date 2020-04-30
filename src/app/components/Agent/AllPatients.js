@@ -105,7 +105,7 @@ export default function AllPatients() {
   const dispatch = useDispatch(allPatient());
   useEffect(() => {
     dispatch(allPatient());
-  }, []);
+  }, [dispatch]);
 
  
 
@@ -129,6 +129,9 @@ export default function AllPatients() {
 
 
   let a  =  content
+
+
+
 
 
 
