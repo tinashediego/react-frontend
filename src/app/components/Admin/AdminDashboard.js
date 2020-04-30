@@ -63,19 +63,17 @@ const AdminDashboard = () => {
                 data: inconclusiveTotal
             }, {
                 name: 'POSITIVE',
-                data: positiveTotal ,
-                
+                data: positiveTotal
             }
         ],
         options: {
 
             colors: [
-                '#00ff00',    // color for data at index 0
-                '#0000ff',   // color for data at index 1
-                '#ff0000',  // color for data at index 2
-                  // color for data at index 3
-                //...
-            ], 
+                '#00ff00', // color for data at index 0
+                '#0000ff', // color for data at index 1
+                '#ff0000', // color for data at index 2
+                // color for data at index 3 ...
+            ],
             title: {
                 text: 'POSITiVE CASES AROUND THE COUNTRY',
                 align: 'left',
@@ -88,13 +86,13 @@ const AdminDashboard = () => {
                     fontWeight: 'bold',
                     fontFamily: undefined,
                     color: '#263238',
-                    marginTop:'30px'
+                    marginTop: '30px'
                 }
             },
 
             chart: {
                 type: 'bar',
-                margin:30,
+                margin: 30,
                 height: 350,
                 stacked: true,
                 toolbar: {
@@ -150,7 +148,7 @@ const AdminDashboard = () => {
             chart: {
                 type: 'bar',
                 height: 430,
-                marginTop:30
+                marginTop: 30
             },
             colors: [
                 '#00ff00', '#ff0000'
@@ -199,7 +197,13 @@ const AdminDashboard = () => {
     var pieCmyhart = {
 
         series: [
-            44, 55, 41, 17, 15 ,33,34
+            44,
+            55,
+            41,
+            17,
+            15,
+            33,
+            34
         ],
 
         options: {
@@ -260,10 +264,23 @@ const AdminDashboard = () => {
     return (
         <div>
 
-            <TableContainer style={{marginTop:30, marginBottom:55}} component={Paper}>
+            <TableContainer
+            style={{border: "3px solid #f1f1f1" ,marginTop:30}}
+                component={Paper}>
 
-                <h5 style={{marginTop:10}} className="container">TOTAL TEST</h5>
-                <Table size="small" className="table table-striped table-bordered" style={{marginTop:5,marginBottom:15}}>
+                <h5
+                    style={{
+                    marginTop: 10,
+                    borderLeft: "10px solid #4c8c40"
+                }}
+                    className="container">TOTAL TEST</h5>
+                <Table
+                    size="small"
+                    className="table table-striped table-bordered"
+                    style={{
+                    marginTop: 5,
+                    marginBottom: 15
+                }}>
 
                     <TableHead>
                         <TableRow>
@@ -283,15 +300,35 @@ const AdminDashboard = () => {
 
             </TableContainer>
 
+
+
+            <div  style={{border: "3px solid #f1f1f1" ,marginTop:30}}>
+
+            <h5 style={{
+                borderLeft: "10px solid #4c8c40"
+            }}>Cases around the country</h5>
+
             <Chart options={colum.options} series={colum.series} type="bar" height={350}/>
 
-            <TableContainer style={{marginTop:50, marginBottom:55}} component={Paper}>
 
-                <h5 >BATCHES</h5>
+            </div>
+
+            <TableContainer
+               style={{border: "3px solid #f1f1f1" ,marginTop:30}}
+                component={Paper}>
+
+                <h5
+                    style={{
+                    borderLeft: "10px solid #4c8c40"
+                }}>BATCHES</h5>
                 <Table
                     size="small"
                     className="table table-striped table-bordered"
-                    aria-label="customized table" style={{margingTop:15,marginBottom:15}}>
+                    aria-label="customized table"
+                    style={{
+                    margingTop: 15,
+                    marginBottom: 15
+                }}>
 
                     <TableHead>
                         <TableRow>
@@ -310,17 +347,37 @@ const AdminDashboard = () => {
                 </Table>
             </TableContainer>
 
+
+
+<div  style={{border: "3px solid #f1f1f1" ,marginTop:30}}>
+            <h5 style={{
+                borderLeft: "10px solid #4c8c40"
+            }}>KITS DATA</h5>
+  
             <Chart
                 options={horizontalBar.options}
                 series={horizontalBar.series}
                 type="bar"
                 height={350}/>
 
-            <Chart
-                options={pieCmyhart.options}
-                series={pieCmyhart.series}
-                type="donut"
-                height={350}/>
+
+
+
+                </div>
+            <div   style={{border: "3px solid #f1f1f1" ,marginTop:30}}>
+
+                <h5
+                    style={{
+                    borderLeft: "10px solid #4c8c40"
+                }}>SYMPTOMS STATS</h5>
+
+                <Chart
+                    options={pieCmyhart.options}
+                    series={pieCmyhart.series}
+                    type="donut"
+                    height={350}/>
+
+            </div>
 
         </div>
     );
