@@ -9,9 +9,58 @@ import { TextField } from '@material-ui/core';
 
 import moment from 'moment'
 import Grid from '@material-ui/core/Grid';
+import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 
 
 const AddPatient  = ({next}) =>{
+
+  const classes = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+
+
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClickError = () => {
+      setOpenError(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+    next()
+  };
+
+ const handleCloseError = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenError(false);
+      
+    };
+
 
   const [patientData ,setPatient]  =  useState(
   {
@@ -62,12 +111,10 @@ const AddPatient  = ({next}) =>{
         console.log(resp)
         localStorage.setItem('patientId' ,resp.data.id)
         localStorage.setItem('currentPatient',patientData.firstName)
-    
-        alert('success')
-        next()
+        handleClick()  
       }).catch(err=>{
 
-        alert(err.message)
+        handleClickError()
 
       })
 
@@ -85,6 +132,30 @@ const AddPatient  = ({next}) =>{
     <h5 style={styles.container}>
     New Patient
      </h5>
+
+
+
+
+
+     
+
+   <div className={classes.root}>
+      
+   <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+     <Alert onClose={handleClose} severity="success">
+       This is a success message!
+     </Alert>
+   </Snackbar>
+
+
+   <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+   <Alert onClose={handleCloseError} severity="error">
+     There was an error 
+   </Alert>
+ </Snackbar>
+ 
+ </div>
+
 
     <Form onSubmit={handleSubmit}>
         <React.Fragment>
