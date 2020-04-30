@@ -132,7 +132,7 @@ let {testingDetails ,} = repo
   <legend>{repo.firstName} Personal Details</legend>
 </fieldset>  
   <Row form>
-              <Col md={5}>
+              <Col md={4}>
                 <FormGroup>
                   <Label for="exampleEmail">First Name</Label>
                   <h6>{repo.firstName}</h6>
@@ -144,56 +144,66 @@ let {testingDetails ,} = repo
                   <h6>{repo.lastName}</h6>
                 </FormGroup>
               </Col>
+
+
+              <Col md={4}>
+              <FormGroup>
+                <Label for="exampleEmail">Date Of Birth</Label>
+                <h6>{repo.dateOfBirth}</h6>
+              </FormGroup>
+            </Col>
             </Row>
 
             <Row form>
-              <Col md={5}>
-                <FormGroup>
-                  <Label for="exampleEmail">Date Of Birth</Label>
-                  <h6>{repo.dateOfBirth}</h6>
-                </FormGroup>
-              </Col>
+            <Col md={4}>
+            <FormGroup>
+              <Label for="exampleState">Phone Number</Label>
+              <h6>{repo.phoneNumber}</h6>
+            </FormGroup>
+          </Col>
               <Col md={4}>
                 <FormGroup>
                   <Label for="examplePassword"> National Id</Label>
                   <h6 >{repo.nationalIDNumber}</h6>
                 </FormGroup>
               </Col>
+
+              <Col md={4}>
+              <FormGroup>
+                <Label for="examplePassword">Passport Number</Label>
+                <h6 >{repo.passportNumber}</h6>
+              </FormGroup>
+            </Col>
+  
             </Row>
 
+         
             <Row form>
-              <Col md={5}>
+            <Col md={4}>
+            <FormGroup>
+              <Label for="exampleCity">Email Address</Label>
+              <h6 >{repo.email}</h6>
+            </FormGroup>
+          </Col>
+              <Col md={4}>
                 <FormGroup>
                   <Label for="exampleCity">Address</Label>
                   <h6 >{repo.address}</h6>
                 </FormGroup>
               </Col>
               <Col md={4}>
-                <FormGroup>
-                  <Label for="exampleState">Phone Number</Label>
-                  <h6>{repo.phoneNumber}</h6>
-                </FormGroup>
-              </Col>
+              <FormGroup>
+                <Label for="exampleState">Gender</Label>
+                <h6 >{repo.gender}</h6>
+              </FormGroup>
+            </Col>
+
+            
 
             </Row>
 
 
-            <Row form>
-              <Col md={5}>
-                <FormGroup>
-                  <Label for="exampleCity">Email Address</Label>
-                  <h6 >{repo.email}</h6>
-                </FormGroup>
-              </Col>
-              <Col md={4}>
-                <FormGroup>
-                  <Label for="exampleState">Gender</Label>
-                  <h6 >{repo.gender}</h6>
-                </FormGroup>
-              </Col>
-
-            </Row>
-
+        
           
         
 
@@ -327,8 +337,11 @@ let {testingDetails ,} = repo
                 <th>Date</th>
                 <th>Brand Name of Kit</th>
                 <th>Batch Number</th>
-                <th>Testing Agent</th>
                 <th>Result</th>
+                <th>Testing Agent Name</th>
+                <th>Qualification</th>
+                <td>Address</td>
+                
 
               </tr>
             </thead>
@@ -342,8 +355,11 @@ let {testingDetails ,} = repo
                 <td>{testingDetails.dateOfTest}</td>
                 <td>{testingDetails.testKitBrandName}</td>
                 <td>{testingDetails.testKitSerialNumber}</td>
-                <td>{testingDetails.testingAgent}</td>
                 <td>{testingDetails.result}</td>
+                <td>{testingDetails.testingAgent}</td>
+                <td>{testingDetails.qualification}</td>
+                <td>{testingDetails.addressOfPractice}</td>
+                
 
 
               </tr>
