@@ -162,12 +162,12 @@ const handleSubmit = (e) => {
 
   }
   let  patie = localStorage.getItem('currentPatient')
-  console.log(patie)
+  console.log(para.patie)
   
     return (
       
       <div>
-      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{patie}'s  Screens</h5>
+      <h5 className="h" style={{borderLeft: "10px solid #4c8c40"}}>{para.patie}'s  Screens</h5>
 
       <div className={classes.root}>
       

@@ -68,7 +68,7 @@ export default function EditStepper() {
     
 
 
-        return <Report/>
+        return <Report reset={handleReset}/>
           
         
       default:
@@ -96,13 +96,7 @@ export default function EditStepper() {
           <div>
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.backButton}
-              >
-                Back
-              </Button>
+            
              
             </div>
           </div>

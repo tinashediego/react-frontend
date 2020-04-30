@@ -21,28 +21,33 @@ import { TextField } from '@material-ui/core';
         "dateOfTest": moment().format('DD/MM/YYYY'),
         "patientScreeningId":'3234',
         "testKitId":1,
-        "testResult": "",
+        "testResult": '',
+        "batchNumber": '',
+        "serialNumber": '',
         "testingAgentUsername": '' 
     })
 
 
 
-const handleSubmit = (e) => {
+function handleSubmit(e) {
   e.preventDefault()
   let a = localStorage.getItem('username')
   let b  = localStorage.getItem('partnerID')
   
-  const  newScreen = {
-    "dateOfTest": moment().format('DD/MM/YYYY'),
-    "timeOfTest":moment().format('HH:mm'),
-    "patientScreeningId":b,
-    "testKitId":ScreenData.testKitId,
-    "testResult": ScreenData.testResult,
-    "serialNumber": ScreenData.serialNumber,
-    "batchNumber": ScreenData.batchNumber,
-    "testingAgentUsername": a,
+var newScreen = {
+  
+      "dateOfTest": moment().format('DD/MM/YYYY'),
+      "timeOfTest":moment().format('HH:mm'),
+      "patientScreeningId":b,
+      "testKitId":ScreenData.testKitId,
+      "testResult": ScreenData.testResult,
+      "serialNumber": ScreenData.serialNumber,
+      "batchNumber": ScreenData.batchNumber,
+      "testingAgentUsername": a
 
         }
+
+        console.log(newScreen)
 
         axios.post("http://45.76.141.84:8080/v1/tests" ,newScreen)
              .then(resp=>{
@@ -91,36 +96,17 @@ const handleSubmit = (e) => {
 
           <Col md={12} >
    <FormGroup>
-     <Label for="exampleCity">Testing Kit:</Label>
-        <Input type="select" name="travelled" value={ScreenData.testKitId}  onChange={e=>setScreen({ ...ScreenData ,testKitId:e.target.value})} > 
-       
-       <option>SELECT</option>
-       {content2.map((team) => <option key={team.id} value={team.id}>{team.brandName}</option>)}
-            </Input>
-            </FormGroup>
-          </Col>
-          <Col md={12} >
-   <FormGroup>
-     <Label for="exampleCity">Testing Result:</Label>
+     <Label for="exampleCity">Test Result:</Label>
         <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
        
        <option>SELECT</option>
        <option>Positive</option>
        <option>Negative</option>
-       <option>Inconclusive</option>)}
+       <option>Inconclusive</option>
             </Input>
             </FormGroup>
           </Col>
-          <Col md={12}>
 
-<FormGroup>
-    
-       <TextField label="Serial Number" name="travelled" placeholder="Serial Number"
-       value={ScreenData.serialNumber} onChange={e=>setScreen({ ...ScreenData , serialNumber:e.target.value})} fullWidth /> 
-
-  </FormGroup>
-
-</Col>
           <Col md={12} >
    <FormGroup>
     
@@ -131,7 +117,16 @@ const handleSubmit = (e) => {
             </FormGroup>
           </Col>
 
- 
+     <Col md={12}>
+
+     <FormGroup>
+         
+            <TextField label="Serial Number" name="travelled" placeholder="Serial Number"
+            value={ScreenData.serialNumber} onChange={e=>setScreen({ ...ScreenData ,serialNumber:e.target.value})} fullWidth /> 
+   
+       </FormGroup>
+     
+     </Col>
  
    </Row>
 

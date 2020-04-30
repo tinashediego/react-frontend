@@ -6,6 +6,7 @@ import {useParams} from 'react-router'
 import {Col,Label,Input,FormGroup,Row }  from 'reactstrap'
 import moment from 'moment'
 import axios from 'axios'
+import {TextField} from '@material-ui/core'
 
 
 
@@ -25,6 +26,8 @@ import axios from 'axios'
         "patientScreeningId":'3234',
         "testKitId":1,
         "testResult": "POSITIVE",
+        "batchNumber":"",
+        "serialNumber":"",
         "testingAgentUsername": '' 
     })
 
@@ -45,6 +48,8 @@ const handleSubmit = (e) => {
     "patientScreeningId":b,
     "testKitId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
+    "batchNumber": ScreenData.batchNumber,
+    "serialNumber": ScreenData.serialNumber,
     "testingAgentUsername": a,
 
         }
@@ -69,11 +74,6 @@ const handleSubmit = (e) => {
     
 
   };
-
-
-
-
-
 
 
 
@@ -102,14 +102,32 @@ const handleSubmit = (e) => {
          <Label for="exampleCity">Test  Result:</Label>
             <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
      <option>Select</option>
-     <option value="POSITIVE">POSITIVE</option>
-     <option value="NEGATIVE">NEGATIVE</option>
-     <option value="INCONCLUSIVE">IncoNclusive</option>
+     <option value="POSITIVE">Positive</option>
+     <option value="NEGATIVE">Negative</option>
+     <option value="INCONCLUSIVE">Inconclusive</option>
      </Input>
+       </FormGroup>
+   
+     </Col>
+
+     <Col md={12}>
+
+     <FormGroup>
+  
+            <TextField label="Batch Number" name="travelled" value={ScreenData.batchNumber}  onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth placeholder="Batch Number" /> 
+   
        </FormGroup>
      
      </Col>
- 
+     <Col md={12}>
+
+<FormGroup>
+
+       <TextField label="Serial Number" name="travelled" value={ScreenData.serialNumber}  onChange={e=>setScreen({ ...ScreenData ,serialNumber:e.target.value})} fullWidth placeholder="Serial Number" /> 
+
+  </FormGroup>
+
+</Col>
    </Row>
 
    <div align="right" style={{paddingTop:10}}>
@@ -119,7 +137,7 @@ const handleSubmit = (e) => {
 
    </form>
   </Col>
-  
+  <button className="btn btn-primary">Finish</button>
   </div>
   );
 }
