@@ -22,6 +22,25 @@ const Login  = () =>{
 
 
 
+let Role =  localStorage.getItem('Role')
+
+
+switch (Role) {
+    case 'ADMIN':
+      return window.location.href = '/dashboard'
+      case 'AGENT':
+        return window.location.href = '/agent'
+        case 'PATIENT':
+          return window.location.href = '/patient'
+      
+
+  
+    default:
+      break;
+  }
+
+
+
   return (
     <div responsive="true">
 
