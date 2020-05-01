@@ -190,8 +190,12 @@ const AddPatient  = ({next}) =>{
                 <TextField label="Address" value={patientData.address} onChange={e=>setPatient({ ...patientData ,address:e.target.value})} placeholder="Address" fullWidth   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField label="City" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})} placeholder="City" fullWidth  />
-                </Grid>     
+                <Input type="select" name="group" value={patientData.city} onChange={e=>setPatient({ ...patientData ,city:e.target.value})}>
+                <option>City</option>
+                {cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
+
+                </Input>
+            </Grid>     
                 <Grid item xs={12} sm={6}>
                     <Input type="select" name="group" value={patientData.province} onChange={e=>setPatient({ ...patientData ,province:e.target.value})}>
                     <option>Province</option>

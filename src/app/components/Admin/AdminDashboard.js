@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect ,useState} from 'react';
 import Chart from 'react-apexcharts'
 import {useDispatch, useSelector} from "react-redux";
 import {Demos} from '../../../redux/actions/DashboardActions'
+import axios from 'axios'
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -15,55 +16,66 @@ const AdminDashboard = () => {
 
     const content = useSelector((state) => state.dashboard.demos);
     const dispatch = useDispatch(Demos());
+    const [sym ,setSym] = useState([])
+    const [prov ,setProv] = useState([])
 
     useEffect(() => {
         dispatch(Demos());
+        const fetchSym  = async ()=>{
+            const resp1 =  await axios.get('http://45.76.141.84:8080/v1/tests/testing-trigger')
+             setSym(resp1.data)
+            
+        }
+
+        const fetchProvince =  async () =>{
+
+
+            const resp2 =  await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/cumulative/province')
+
+            setProv(resp2.data)
+        }
+
+
+        fetchSym()
+        fetchProvince()
+
+
+
+
+
+
+
+
     }, [dispatch])
+
+
+
 
     let {totalNegativePatients, totalPositivePatients, provinceDemographics} = content
 
-    console.log(provinceDemographics)
+
+    let {cityOrProvinceName} = prov
+    console.log(prov)
 
     //this hook gives us redux store state
 
-    if (!provinceDemographics) {
+    if (!prov) {
 
         return '.... Loading'
-    } else {
-        var pending = provinceDemographics.map(function (officer) {
-            return officer.pendingTotal
-        });
-
-        var negativeTotal = provinceDemographics.map(function (officer) {
-            return officer.negativeTotal
-        });
-
-        var inconclusiveTotal = provinceDemographics.map(function (officer) {
-            return officer.inconclusiveTotal
-        });
-
-        var positiveTotal = provinceDemographics.map(function (officer) {
-            return officer.positiveTotal
-        });
-
-        var province = provinceDemographics.map(function (officer) {
-            return officer.province
-        });
-
-    }
-    console.log(pending)
+    } 
+  
     let colum = {
 
         series: [
-            {
+            {  //
                 name: 'NEGATIVE',
-                data: negativeTotal
+                data:prov.map(({ negativeTestCount }) => negativeTestCount)
             }, {
                 name: 'INCONCLUSIVE',
-                data: inconclusiveTotal
+                data: prov.map(({ inconclusiveTestCount }) => inconclusiveTestCount)
             }, {
                 name: 'POSITIVE',
-                data: positiveTotal
+                data: prov.map(({ positiveTestCount }) => positiveTestCount)
             }
         ],
         options: {
@@ -121,7 +133,7 @@ const AdminDashboard = () => {
             },
             xaxis: {
                 type: 'text',
-                categories: province
+                categories: prov.map(({ cityOrProvinceName }) => cityOrProvinceName)
             },
             legend: {
                 position: 'right',
@@ -197,13 +209,15 @@ const AdminDashboard = () => {
     var pieCmyhart = {
 
         series: [
-            44,
-            55,
-            41,
-            17,
-            15,
-            33,
-            34
+            sym.colds,
+            sym.cough,
+            sym.headache,
+            sym.diarrhoea,
+            sym.soreThroat,
+            
+            sym.bodyAches,
+            sym.fever,
+            sym.difficultiesInBreathing
         ],
 
         options: {
@@ -212,6 +226,7 @@ const AdminDashboard = () => {
                 type: 'donut'
             },
             labels: [
+                'COLDS',
                 'COUGH',
                 'HEADACHE',
                 'Diarrhoea',

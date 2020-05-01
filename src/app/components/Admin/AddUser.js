@@ -9,6 +9,7 @@ import {Allfacility} from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { TextField } from '@material-ui/core';
+import cityList  from '../Agent/city'
 import axios from 'axios'
 
 const AddUser  = () =>{
@@ -89,7 +90,6 @@ const AddUser  = () =>{
   }, [dispatchs])
 
 
-  console.log(content)
 
 
 
@@ -278,15 +278,18 @@ placeholder="Address of Practice" required />
               
               </Input>
 </FormGroup>
+
+
 </div>
 
 
 <div className="row">
 <FormGroup className="col-sm-6">
-<TextField label="CITY" 
-      value={newUser.city} 
-      onChange={e=>setUser({ ...newUser ,city:e.target.value})}
-placeholder="city" required />
+<Input type="select" name="travelled" value={newUser.countryVisited} onChange={e=>setUser({ ...newUser ,city:e.target.value})} >
+<option>City</option>
+{cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
+
+</Input>
 
 </FormGroup>
 
