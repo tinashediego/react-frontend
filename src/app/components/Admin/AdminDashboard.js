@@ -15,6 +15,7 @@ const AdminDashboard = () => {
   
     const [sym ,setSym] = useState([])
     const [prov ,setProv] = useState([])
+    const [util ,setUtils]  = useState([])
 
     useEffect(() => {
        
@@ -33,8 +34,18 @@ const AdminDashboard = () => {
         }
 
 
+
+       const  fetchUtils  =  async () =>{
+
+
+           const resp3 = await  axios.get('http://45.76.141.84:8080/v1/test-kits/test-utilisation')
+
+           setUtils(resp3.data)
+       }
+
         fetchSym()
         fetchProvince()
+        fetchUtils()
 
 
 
@@ -48,13 +59,38 @@ const AdminDashboard = () => {
 
 
 
+    console.log(util)
+    let {agentTestKitCountCollection} = util
+
 
     //this hook gives us redux store state
 
-    if (!prov && !sym) {
+    if (!prov && !sym  && !util) {
+
+
+      
+
+            return '.... Loading'
+
+
+       
+
+      
+    } 
+
+
+    if(!agentTestKitCountCollection){
 
         return '.... Loading'
-    } 
+
+
+    }
+
+
+
+  
+
+   console.log(prov)
   
     let colum = {
 
@@ -142,10 +178,10 @@ const AdminDashboard = () => {
         series: [
             {
                 name: "USED",
-                data: [44]
+                data: [util.totalUsedKits]
             }, {
-                name: 'DEFECT',
-                data: [53]
+                name: 'Unused',
+                data: [util.totalUnUsedKits]
             }
         ],
         options: {
@@ -193,7 +229,7 @@ const AdminDashboard = () => {
                 colors: ['#fff']
             },
             xaxis: {
-                categories: ['USED', 'DEFECT']
+                categories: ['USED', 'UNUSED']
             }
         }
     };
@@ -327,7 +363,7 @@ const AdminDashboard = () => {
                 <h5
                     style={{
                     borderLeft: "10px solid #4c8c40"
-                }}>BATCHES</h5>
+                }}>KIT UTILISATIONS</h5>
                 <Table
                     size="small"
                     className="table table-striped table-bordered"
@@ -339,17 +375,26 @@ const AdminDashboard = () => {
 
                     <TableHead>
                         <TableRow>
-                            <TableCell>BUDGETED</TableCell>
-                            <TableCell>SPEND</TableCell>
+                        <TableCell>No#</TableCell>
+                            <TableCell>AGENT</TableCell>
+                            <TableCell>Total Kits USED</TableCell>
 
                         </TableRow>
                     </TableHead>
                     <TableBody>
 
-                        <TableRow>
-                            <TableCell>{200}</TableCell>
-                            <TableCell>{50}</TableCell>
-                        </TableRow>
+                    {agentTestKitCountCollection.map((x ,i) => (
+                        <TableRow key={i}>
+                <TableCell>{i +1}</TableCell>
+                <TableCell>{x.trainingAgentName}</TableCell>
+                <TableCell>{x.numberOfKitsUsed}</TableCell>
+               
+               
+                </TableRow>
+                    
+                      ))}
+
+                       
                     </TableBody>
                 </Table>
             </TableContainer>

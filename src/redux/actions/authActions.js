@@ -1,81 +1,13 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 
 
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, ADD_USER, ALL_USERS } from "../types";
+
+import { GET_ERRORS,ALL_USERS } from "../types";
 // this  is a comment
 
 
-// Login - get user token
-export const loginUser = userData => dispatch => {
 
-  axios
-    .post("http://45.76.141.84:8080/authenticate",userData)
-    .then(res => {
 
-      console.log(res.data)
-
-      localStorage.setItem('access_token' ,res.data.jwtToken)
-      // Save to localStorage
-      // Set token to localStorage
-     
-const decoded = jwt_decode(res.data.jwtToken);
-      console.log(decoded)
-
-      var {Role ,username} =  decoded
-
-      
-
-      // Set current user
-      dispatch(setCurrentUser(decoded));
-
-    
-  localStorage.setItem('username',username)
-
-     localStorage.setItem('Role' ,Role)
-        alert('success')
-      switch (Role) {
-        case 'ADMIN':
-          return window.location.href = '/dashboard'
-          case 'AGENT':
-            return window.location.href = '/agent'
-            case 'PATIENT':
-              return window.location.href = '/patient'
-          
-    
-      
-        default:
-          break;
-      }
-        
-        
-
- 
-    })
-    .catch(err =>{
-      console.log(err)
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.message,
-         msg:alert(err)
-      })}
-    );
-};
-
-// Set logged in user
-export const setCurrentUser = decoded => {
-  return {
-    type: SET_CURRENT_USER,
-    payload: decoded
-  };
-};
-
-// User loading
-export const setUserLoading = () => {
-  return {
-    type: USER_LOADING
-  };
-};
 
 // Log user out
 export const logoutUser = (history) => dispatch => {
