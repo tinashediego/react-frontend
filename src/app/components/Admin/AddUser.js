@@ -7,7 +7,7 @@ import {
 
 import {Allfacility} from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+
 import { TextField } from '@material-ui/core';
 import cityList  from '../Agent/city'
 import axios from 'axios'
@@ -21,11 +21,9 @@ const AddUser  = () =>{
   const dispatchs = useDispatch(Allfacility());
   
 
-
-  let history = useHistory()
   
   
-  console.log(history)
+  console.log(content)
 
   const [newUser ,setUser] = useState({
 
@@ -51,34 +49,31 @@ const AddUser  = () =>{
 
   let userCommand ={
 
-  
-"userCommand":{
-  "email": newUser.email,
-  "firstName": newUser.firstName,
-  "gender": newUser.gender,
-  "group": newUser.group,
-  "lastName":newUser.lastName,
-  "nationalIdNumber":newUser.nationalIdNumber,
-  "passportNumber": newUser.nationalIdNumber,
-  "phoneNumber": newUser.phoneNumber,
-  "addressOfPractice": newUser.addressOfPractice,
-  "practicingNumber": newUser.practicingNumber,
-  "qualification": newUser.qualification,
-  "testingFacilityId":newUser.testingFacilityId,
-    "address": {
+   "userCommand":{
+     "firstName":newUser.firstName,
+     "lastName":newUser.lastName ,
+     "group":newUser.group,
+     username:newUser.username,
+     "gender":newUser.gender,
+     "phoneNumber": newUser.phoneNumber,
+     "email": newUser.email,
+     "nationalIdNumber":newUser.nationalIdNumber,
+     "passportNumber": newUser.nationalIdNumber,
+     "address": {
       "city": newUser.city,
       "province": newUser.province,
       "streetAddress": newUser.streetAddress
     },
-  
-   
 
- 
-}
+   },
+
+   "qualification": newUser.qualification,
+   "practicingNumber": newUser.practicingNumber,
+   "addressOfPractice": newUser.addressOfPractice,
+   "testingFacilityId":newUser.testingFacility,
 
 }
    
-  
 
 
 
@@ -91,6 +86,7 @@ const AddUser  = () =>{
 
 
 
+  console.log(newUser.testingFacility)
 
 
     
@@ -287,7 +283,7 @@ placeholder="Address of Practice" required />
 <FormGroup className="col-sm-6">
 <Input type="select" name="travelled" value={newUser.countryVisited} onChange={e=>setUser({ ...newUser ,city:e.target.value})} >
 <option>City</option>
-{cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
+{cityList.map((team ,i) => <option key={team.i} value={team}>{team}</option>)}
 
 </Input>
 

@@ -1,7 +1,5 @@
 import React, {useEffect ,useState} from 'react';
 import Chart from 'react-apexcharts'
-import {useDispatch, useSelector} from "react-redux";
-import {Demos} from '../../../redux/actions/DashboardActions'
 import axios from 'axios'
 
 import Table from '@material-ui/core/Table';
@@ -14,13 +12,12 @@ import Paper from '@material-ui/core/Paper';
 
 const AdminDashboard = () => {
 
-    const content = useSelector((state) => state.dashboard.demos);
-    const dispatch = useDispatch(Demos());
+  
     const [sym ,setSym] = useState([])
     const [prov ,setProv] = useState([])
 
     useEffect(() => {
-        dispatch(Demos());
+       
         const fetchSym  = async ()=>{
             const resp1 =  await axios.get('http://45.76.141.84:8080/v1/tests/testing-trigger')
              setSym(resp1.data)
@@ -46,20 +43,15 @@ const AdminDashboard = () => {
 
 
 
-    }, [dispatch])
+    },[])
 
 
 
 
-    let {totalNegativePatients, totalPositivePatients, provinceDemographics} = content
-
-
-    let {cityOrProvinceName} = prov
-    console.log(prov)
 
     //this hook gives us redux store state
 
-    if (!prov) {
+    if (!prov && !sym) {
 
         return '.... Loading'
     } 
@@ -307,8 +299,8 @@ const AdminDashboard = () => {
                     <TableBody>
 
                         <TableRow>
-                            <TableCell>{totalPositivePatients}</TableCell>
-                            <TableCell>{totalNegativePatients}</TableCell>
+                            <TableCell>{10}</TableCell>
+                            <TableCell>{50}</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

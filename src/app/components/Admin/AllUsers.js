@@ -184,7 +184,7 @@ export default function AllUsers() {
             <TableCell>{x.practicingNumber}</TableCell>
             <TableCell>{x.email}</TableCell>
             <TableCell>{x.group}</TableCell>
-            <TableCell>{x.testingFacility}</TableCell>
+            <TableCell>{x.testingFacilityName}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
             <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}}   onClick={()=>{ reset(x.email , x.username)}}>reset</Button>

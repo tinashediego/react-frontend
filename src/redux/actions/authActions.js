@@ -5,29 +5,7 @@ import jwt_decode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, ADD_USER, ALL_USERS } from "../types";
 // this  is a comment
 
-// Register User
-export const addUser = (userData) => dispatch => {
-  axios
-    .post("http://45.76.141.84:8080/v1/testing-agents", userData)
-    .then(resp=>{
-        dispatch({
-            type:ADD_USER,
-            payload:resp.data,
-            msg:alert("succcess")
 
-        })
-    })
-    .catch(err =>{ 
-
-      console.log(err)
-      dispatch({
-        type: GET_ERRORS,
-        payload: err,
-        msg:alert(err.message)
-      })
-  }
-    );
-};
 // Login - get user token
 export const loginUser = userData => dispatch => {
 
