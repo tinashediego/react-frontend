@@ -11,6 +11,7 @@ import moment from 'moment'
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
+import cityList from './city'
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -61,6 +62,8 @@ const AddPatient  = ({next}) =>{
       
     };
 
+
+    console.log(cityList)
 
   const [patientData ,setPatient]  =  useState(
   {
