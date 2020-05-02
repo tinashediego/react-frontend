@@ -209,4 +209,5 @@ var cityList = [
 ]
 
 
+cityList.sort()
 module.exports =  cityList
