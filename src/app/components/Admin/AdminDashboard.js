@@ -200,9 +200,13 @@ const AdminDashboard = () => {
 
 
     
-  console.log(age)
+  
     let {agentTestKitCountCollection} = util
     let {cityDemographics} = totalDemo
+    let {provinceDemographics} = totalDemo
+
+
+    console.log(provinceDemographics)
 
 
 
@@ -236,21 +240,19 @@ const AdminDashboard = () => {
     }
 
 
- console.log(cityDemographics)
-
   
     let colum = {
 
         series: [
             {  //
                 name: 'NEGATIVE',
-                data:prov.map(({ negativeTestCount }) => negativeTestCount)
+                data:provinceDemographics.map(({ negativeTotal }) => negativeTotal)
             }, {
                 name: 'INCONCLUSIVE',
-                data: prov.map(({ inconclusiveTestCount }) => inconclusiveTestCount)
+                data: prov.map(({ inconclusiveTotal }) => inconclusiveTotal)
             }, {
                 name: 'POSITIVE',
-                data: prov.map(({ positiveTestCount }) => positiveTestCount)
+                data: provinceDemographics.map(({ positiveTotal}) => positiveTotal)
             }
         ],
         options: {
@@ -308,7 +310,7 @@ const AdminDashboard = () => {
             },
             xaxis: {
                 type: 'text',
-                categories: prov.map(({ cityOrProvinceName }) => cityOrProvinceName)
+                categories: provinceDemographics.map(({ province }) => province)
             },
             legend: {
                 position: 'right',
