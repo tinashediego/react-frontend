@@ -93,8 +93,8 @@ const AdminDashboard = () => {
 
 
 
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
   
   
   
@@ -114,6 +114,7 @@ const AdminDashboard = () => {
     const [util ,setUtils]  = useState([])
     const [cumCity ,setCum]  =  useState([])
     const [totalDemo ,setDemo] =  useState([])
+    const [age ,setAge]  = useState([])
     
     const  [SearchData ,setSearch] = useState({search:''})
 
@@ -166,11 +167,27 @@ const AdminDashboard = () => {
            setDemo(mydemo.data)
     }
 
+
+
+    const fectAge = async () =>{
+
+        const myage =  await axios.get('http://45.76.141.84:8080/v1/patients/my-record')
+
+        setAge(myage.data)
+
+
+
+
+
+
+    }
+
         fetchSym()
         fetchProvince()
         fetchUtils()
         cummulativeCity ()
         fetchDemo()
+        fectAge()
 
 
 
@@ -183,7 +200,7 @@ const AdminDashboard = () => {
 
 
     
-
+  console.log(age)
     let {agentTestKitCountCollection} = util
     let {cityDemographics} = totalDemo
 
@@ -514,7 +531,7 @@ const AdminDashboard = () => {
                     {(rowsPerPage > 0
                         ? cityDemographics.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         : cityDemographics
-                      ).filter( (x)=>{ return x.city.toUpperCase().indexOf(SearchData.search.toUpperCase()) !== -1 }).map((x ,i) => (
+                      ).sort((a, b) => a.city.localeCompare(b.city)).filter( (x)=>{ return x.city.toUpperCase().indexOf(SearchData.search.toUpperCase()) !== -1 }).map((x ,i) => (
                         <TableRow key={i}>
                 <TableCell>{i +1}</TableCell>
                 <TableCell>{x.city}</TableCell>
