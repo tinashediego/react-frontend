@@ -16,7 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './mainListItems';
-import {useLocation ,useParams} from 'react-router'
+import {useLocation ,useParams ,useHistory} from 'react-router'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import AllPatients from '../../Agent/AllPatients';
@@ -133,8 +133,21 @@ export default function Agent() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const location =  useLocation()
+  let his =  useHistory()
   let  para = useParams()
   let  username = localStorage.getItem('username')
+
+  let Role = localStorage.getItem('Role')
+
+
+  if(Role  !== 'AGENT'){
+
+    localStorage.clear()
+    his.goForward('/')
+
+
+
+  }
 
 
 console.log(para)

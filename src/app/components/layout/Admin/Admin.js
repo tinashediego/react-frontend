@@ -16,7 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems} from './mainListItems';
-import {useLocation} from 'react-router'
+import {useLocation ,useHistory} from 'react-router'
 import AllKits from '../../Admin/AllKits';
 import NewKit from '../../Admin/NewKit';
 import AddUser from '../../Admin/AddUser';
@@ -134,9 +134,22 @@ export default function Admin() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const location =  useLocation()
+  let his =  useHistory()
  
   
   let  username = localStorage.getItem('username')
+  let Role = localStorage.getItem('Role')
+
+
+
+  if(Role  !== 'ADMIN'){
+
+    localStorage.clear()
+    his.goForward('/')
+    
+
+
+  }
 
 
 
