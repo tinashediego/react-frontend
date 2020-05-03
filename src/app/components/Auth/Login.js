@@ -158,48 +158,50 @@ const Login = ({next}) => {
                     marginTop: -30
                 }}
                     onSubmit={handleSubmit}>
-                    <FormGroup>
+                   <div align="center">
+<FormGroup>
 
-                        <TextField
-                            label="Username"
-                            name="username"
-                            value={userData.username}
-                            id="username"
-                            placeholder="Username"
-                            onChange={e => setData({
-                            ...userData,
-                            username: e.target.value
-                        })}
-                            style={{
-                            width: "50%"
-                        }}
-                            required/>
-                    </FormGroup>
-                    <FormGroup>
+<TextField
+    label="Username"
+    name="username"
+    value={userData.username}
+    id="username"
+    placeholder="Username"
+    onChange={e => setData({
+    ...userData,
+    username: e.target.value
+})}
+    style={{
+    width: "50%"
+}}
+    required/>
+</FormGroup>
+<FormGroup>
 
-                        <TextField
-                            type="password"
-                            label="Password"
-                            name="password"
-                            id="password"
-                            value={userData.password}
-                            placeholder="password"
-                            onChange={e => setData({
-                            ...userData,
-                            password: e.target.value
-                        })}
-                            style={{
-                            width: "50%"
-                        }}
-                            required/>
-                    </FormGroup>
+<TextField
+    type="password"
+    label="Password"
+    name="password"
+    id="password"
+    value={userData.password}
+    placeholder="password"
+    onChange={e => setData({
+    ...userData,
+    password: e.target.value
+})}
+    style={{
+    width: "50%"
+}}
+    required/>
+</FormGroup>
 
-                    <Button
-                        color="success"
-                        style={{
-                        width: "50%"
-                    }}
-                        type="submit">Submit</Button>
+<Button
+color="success"
+style={{
+width: "50%"
+}}
+type="submit">Submit</Button>
+                   </div>
 
                 </Form>
 
