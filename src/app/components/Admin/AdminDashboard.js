@@ -136,13 +136,10 @@ const AdminDashboard = () => {
         setCum] = useState([])
     const [totalDemo,
         setDemo] = useState([])
-    const [age,
-        setAge] = useState([])
+
 
     const [cityDaily ,setCityDaily] =  useState([])
     const [cityWeekly , setcityWeek] =  useState([])
-    const [provDaily ,setprovDaily] = useState([])
-    const [ provWeek , setProvWeek] =  useState([])
 
 
 
@@ -192,13 +189,7 @@ const AdminDashboard = () => {
             setDemo(mydemo.data)
         }
 
-        const fectAge = async() => {
-
-            const myage = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/weekly/city')
-
-            setAge(myage.data)
-
-        }
+    
 
 
         const fCityDaily  =  async() => {
@@ -226,23 +217,8 @@ const AdminDashboard = () => {
 
 
 
-        const fProvDaily  =  async() => {
-
-            const provd = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/daily/province')
-
-            setprovDaily(provd.data)
-
-        }
-
-
-        const fProvWeek =  async() => {
-
-            const provW = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/weekly/province')
-
-            setProvWeek(provW.data)
-
-        }
-
+     
+    
 
 
 
@@ -260,18 +236,17 @@ const AdminDashboard = () => {
         fetchUtils()
         cummulativeCity()
         fetchDemo()
-        fectAge()
+   
         fCityDaily()
         fCityWeek()
-        fProvDaily()
-        fProvWeek()
+        
 
-    }, [SearchCityData])
+    }, [SearchCityData.search, SearchProvData.search])
 
     let {agentTestKitCountCollection} = util
     let {cityDemographics} = totalDemo
     let {provinceDemographics} = totalDemo
-    let {ageRangeDemographicsCollection} = cumCity
+
     let {dailyTestCounts} = cityDaily
     let  {weeklyTestCounts} = cityWeekly
     //this hook gives us redux store state
@@ -565,31 +540,7 @@ const AdminDashboard = () => {
         }
     };
 
-    var myscartter = {
 
-        series: bee,
-        options: {
-            chart: {
-                height: 350,
-                type: 'scatter',
-                zoom: {
-                    enabled: true,
-                    type: 'xy'
-                }
-            },
-            xaxis: {
-                tickAmount: 10,
-                labels: {
-                    formatter: function (val) {
-                        return parseFloat(val).toFixed(1)
-                    }
-                }
-            },
-            yaxis: {
-                tickAmount: 7
-            }
-        }
-    };
 
     return (
         <div>
