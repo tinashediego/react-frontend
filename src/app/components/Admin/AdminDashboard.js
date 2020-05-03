@@ -153,6 +153,7 @@ const AdminDashboard = () => {
         setSearch] = useState({search: ''})
 
       const  [SearchCityData ,setCSearch] =  useState({search:'HARARE'})
+      const  [SearchProvData ,setPSearch] =  useState({search:'HARARE'})
 
     useEffect(() => {
 
@@ -202,7 +203,9 @@ const AdminDashboard = () => {
 
         const fCityDaily  =  async() => {
 
-            const cityd = await axios.get(`http://45.76.141.84:8080/v1/tests/test-coverage/daily/city?city=${SearchCityData.search}`)
+            let myq = SearchCityData.search.toUpperCase()
+
+            const cityd = await axios.get(`http://45.76.141.84:8080/v1/tests/test-coverage/daily/city?city=${myq}`)
 
             setCityDaily(cityd.data)
 
@@ -212,7 +215,9 @@ const AdminDashboard = () => {
         
         const fCityWeek =  async() => {
 
-            const cityW = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/weekly/city')
+            let myq = SearchProvData.search.toUpperCase()
+
+            const cityW = await axios.get(`http://45.76.141.84:8080/v1/tests/test-coverage/weekly/city?city=${myq}`)
 
             setcityWeek(cityW.data)
 
@@ -268,7 +273,7 @@ const AdminDashboard = () => {
     let {provinceDemographics} = totalDemo
     let {ageRangeDemographicsCollection} = cumCity
     let {dailyTestCounts} = cityDaily
-
+    let  {weeklyTestCounts} = cityWeekly
     //this hook gives us redux store state
 
     if (!prov && !sym && !util) {
@@ -345,7 +350,7 @@ const AdminDashboard = () => {
     })
 
     
-    console.log(cityDaily)
+    console.log(cityWeekly)
 
 
     let colum = {
@@ -741,7 +746,7 @@ const AdminDashboard = () => {
                     marginTop: 10,
                     borderLeft: "10px solid #4c8c40"
                 }}
-                    className="container">DAILY TEST PER CITY - {SearchCityData.search}</h5>
+                    className="container">DAILY TEST FOR PROVINCE/CITY - {SearchCityData.search}</h5>
 
                     <div
                     align="right"
@@ -793,6 +798,78 @@ const AdminDashboard = () => {
                 </Table>
 
             </TableContainer>
+
+
+
+
+
+
+
+
+            <TableContainer
+            style={{
+            border: "3px solid #f1f1f1",
+            marginTop: 30
+        }}
+            component={Paper}>
+
+            <h5
+                style={{
+                marginTop: 10,
+                borderLeft: "10px solid #4c8c40"
+            }}
+                className="container">WEEKLY TEST FOR PROVINCE/CITY - {SearchProvData.search}</h5>
+
+                <div
+                align="right"
+                style={{
+                marginBottom: 10
+            }}>
+                <TextField
+                    placeholder="search by City"
+                    value={SearchProvData.search}
+                    onChange={e => setPSearch({
+                    ...SearchProvData,
+                    search: e.target.value
+                })}/>
+
+            </div>
+            <Table
+                size="small"
+                className="table table-striped table-bordered"
+                style={{
+                marginTop: 5,
+                marginBottom: 15
+            }}>
+
+                <TableHead>
+                    <TableRow>
+                      <TableCell>DAY OF TEST</TableCell>
+                        <TableCell>POSITIVE</TableCell>
+                        <TableCell>NEGATIVE</TableCell>
+
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+
+
+                     {
+                   
+                        weeklyTestCounts.map((x, i) => (
+                        <TableRow key={i}>
+                            <TableCell>{x.weekOfYear}</TableCell>
+                            <TableCell>{x.positiveTestCount}</TableCell>
+                            <TableCell>{x.negativeTestCount}</TableCell>
+
+                        </TableRow>
+                    ))
+
+                          
+                }
+                </TableBody>
+            </Table>
+
+        </TableContainer>
 
 
             <div
