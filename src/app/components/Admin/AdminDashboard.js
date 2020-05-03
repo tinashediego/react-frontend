@@ -592,16 +592,18 @@ const AdminDashboard = () => {
             <TableContainer
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}
                 component={Paper}>
 
                 <h5
                     style={{
                     marginTop: 10,
-                    borderLeft: "10px solid #4c8c40"
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
                 }}
-                    className="container">TOTAL TEST</h5>
+                    className="container">Total Test</h5>
                 <Table
                     size="small"
                     className="table table-striped table-bordered"
@@ -631,14 +633,16 @@ const AdminDashboard = () => {
             <TableContainer
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}
                 component={Paper}>
 
                 <h5
                     style={{
                     marginTop: 10,
-                    borderLeft: "10px solid #4c8c40"
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
                 }}
                     className="container">Statisics per City</h5>
 
@@ -807,58 +811,88 @@ const AdminDashboard = () => {
             </div>
 
             <TableContainer
-                style={{
-                border: "3px solid #f1f1f1",
-                marginTop: 30
-            }}
+            style={{border: "3px solid #f1f1f1" ,marginTop:30, paddingLeft:10}}
                 component={Paper}>
 
                 <h5
                     style={{
-                    borderLeft: "10px solid #4c8c40"
-                }}>KIT UTILISATIONS</h5>
+                    marginTop: 30,
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
+                }}
+                    className="container">Kit Utilisations</h5>
+
+                    <div align="right" style={{marginBottom:10}}>
+                    <TextField  placeholder="search by Agent Name" value={SearchData.search} onChange={e=>setSearch({ ...SearchData ,search:e.target.value})}/>
+               
+                </div>
                 <Table
                     size="small"
                     className="table table-striped table-bordered"
-                    aria-label="customized table"
                     style={{
-                    margingTop: 15,
+                    marginTop: 5,
                     marginBottom: 15
                 }}>
 
                     <TableHead>
                         <TableRow>
-                            <TableCell>No#</TableCell>
-                            <TableCell>AGENT</TableCell>
-                            <TableCell>Total Kits USED</TableCell>
-
+                        <TableCell>No#</TableCell>
+                            <TableCell>Training Agent Name</TableCell>
+                            <TableCell>Number of Kits Used</TableCell>
+                           
                         </TableRow>
                     </TableHead>
                     <TableBody>
 
-                        {agentTestKitCountCollection.map((x, i) => (
-                            <TableRow key={i}>
-                                <TableCell>{i + 1}</TableCell>
-                                <TableCell>{x.trainingAgentName}</TableCell>
-                                <TableCell>{x.numberOfKitsUsed}</TableCell>
-
-                            </TableRow>
-
-                        ))}
-
+                    {(rowsPerPage > 0
+                        ? agentTestKitCountCollection.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        : agentTestKitCountCollection
+                      ).sort((a, b) => a.trainingAgentName.localeCompare(b.trainingAgentName)).filter( (x)=>{ return x.trainingAgentName.toUpperCase().indexOf(SearchData.search.toUpperCase()) !== -1 }).map((x ,i) => (
+                        <TableRow key={i}>
+                <TableCell>{i +1}</TableCell>
+                <TableCell>{x.trainingAgentName}</TableCell>
+                <TableCell>{x.numberOfKitsUsed}</TableCell>
+     
+               
+                </TableRow>
+                    
+                      ))}
                     </TableBody>
+
+                    <TableFooter>
+                    <TableRow>
+                      <TablePagination
+                        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                        colSpan={3}
+                        count={agentTestKitCountCollection.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        SelectProps={{
+                          inputProps: { 'aria-label': 'rows per page' },
+                          native: true,
+                        }}
+                        onChangePage={handleChangePage}
+                        onChangeRowsPerPage={handleChangeRowsPerPage}
+                        ActionsComponent={TablePaginationActions}
+                      />
+                    </TableRow>
+                  </TableFooter>
                 </Table>
+
             </TableContainer>
+
 
             <div
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}>
                 <h5
                     style={{
-                    borderLeft: "10px solid #4c8c40"
-                }}>KITS DATA</h5>
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
+                }}>Kits Data</h5>
 
                 <Chart
                     options={horizontalBar.options}
@@ -870,13 +904,15 @@ const AdminDashboard = () => {
             <div
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}>
 
                 <h5
                     style={{
-                    borderLeft: "10px solid #4c8c40"
-                }}>SYMPTOMS STATS</h5>
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
+                }}>Symptoms Statistics</h5>
 
                 <Chart
                     options={pieCmyhart.options}
