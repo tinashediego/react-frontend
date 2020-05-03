@@ -81,8 +81,7 @@ const useStyles = makeStyles((theme) => ({
     })
 
 
-    console.log(para)
-
+    console.log(content2)
 
 const handleSubmit = (e) => {
 
@@ -95,7 +94,7 @@ const handleSubmit = (e) => {
     "dateOfTest": moment().format('DD/MM/YYYY'),
     "timeOfTest":moment().format('HH:mm'),
     "patientScreeningId":b,
-    "testKitId":ScreenData.testKitId,
+    "testKitTypeId":ScreenData.testKitId,
     "testResult": ScreenData.testResult,
     "batchNumber": ScreenData.batchNumber,
     "serialNumber": ScreenData.serialNumber,

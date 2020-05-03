@@ -90,7 +90,7 @@ var newScreen = {
       "dateOfTest": moment().format('DD/MM/YYYY'),
       "timeOfTest":moment().format('HH:mm'),
       "patientScreeningId":b,
-      "testKitId":ScreenData.testKitId,
+      "testKitTypeId":ScreenData.testKitId,
       "testResult": ScreenData.testResult,    
       "batchNumber": ScreenData.batchNumber,
       "serialNumber": ScreenData.serialNumber,

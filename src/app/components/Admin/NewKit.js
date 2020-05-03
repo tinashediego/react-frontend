@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
         e.preventDefault();
         if (state) {
 
-          axios.post('http://45.76.141.84:8080/v1/test-kits' ,state)
+          axios.post('http://45.76.141.84:8080/test-kit-type' ,state)
                .then(res=>{
 
                 handleClick()  
