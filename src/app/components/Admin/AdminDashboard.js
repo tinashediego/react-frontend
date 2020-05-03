@@ -506,16 +506,18 @@ const AdminDashboard = () => {
             <TableContainer
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}
                 component={Paper}>
 
                 <h5
                     style={{
                     marginTop: 10,
-                    borderLeft: "10px solid #4c8c40"
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
                 }}
-                    className="container">TOTAL TEST</h5>
+                    className="container">Total Test</h5>
                 <Table
                     size="small"
                     className="table table-striped table-bordered"
@@ -545,14 +547,16 @@ const AdminDashboard = () => {
             <TableContainer
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}
                 component={Paper}>
 
                 <h5
                     style={{
                     marginTop: 10,
-                    borderLeft: "10px solid #4c8c40"
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
                 }}
                     className="container">Statisics per City</h5>
 
@@ -654,13 +658,14 @@ const AdminDashboard = () => {
             </div>
 
             <TableContainer
-            style={{border: "3px solid #f1f1f1" ,marginTop:30}}
+            style={{border: "3px solid #f1f1f1" ,marginTop:30, paddingLeft:10}}
                 component={Paper}>
 
                 <h5
                     style={{
-                    marginTop: 10,
-                    borderLeft: "10px solid #4c8c40"
+                    marginTop: 30,
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
                 }}
                     className="container">Kit Utilisations</h5>
 
@@ -727,12 +732,14 @@ const AdminDashboard = () => {
             <div
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}>
                 <h5
                     style={{
-                    borderLeft: "10px solid #4c8c40"
-                }}>KITS DATA</h5>
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
+                }}>Kits Data</h5>
 
                 <Chart
                     options={horizontalBar.options}
@@ -744,13 +751,15 @@ const AdminDashboard = () => {
             <div
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}>
 
                 <h5
                     style={{
-                    borderLeft: "10px solid #4c8c40"
-                }}>SYMPTOMS STATS</h5>
+                    borderLeft: "10px solid #4c8c40",
+                    paddingLeft:10
+                }}>Symptoms Statistics</h5>
 
                 <Chart
                     options={pieCmyhart.options}
