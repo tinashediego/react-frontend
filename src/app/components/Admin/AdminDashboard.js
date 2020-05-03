@@ -783,79 +783,102 @@ const AdminDashboard = () => {
 
             
             
-
-
-
-
-
-
-
-
             <TableContainer
-            style={{
-            border: "3px solid #f1f1f1",
-            marginTop: 30
-        }}
-            component={Paper}>
-
-            <h5
-                style={{
-                marginTop: 10,
-                borderLeft: "10px solid #4c8c40"
+              style={{
+                border: "3px solid #f1f1f1",
+                marginTop: 30,
+                paddingLeft:10
             }}
-                className="container">WEEKLY TEST FOR PROVINCE/CITY - {SearchProvData.search}</h5>
+                component={Paper}>
 
-                <div
-                align="right"
-                style={{
-                marginBottom: 10
-            }}>
-                <TextField
-                    placeholder="search by City"
-                    value={SearchProvData.search}
-                    onChange={e => setPSearch({
-                    ...SearchProvData,
-                    search: e.target.value
-                })}/>
+                <h5
+                    style={{
+                    marginTop: 30,
+                    paddingLeft:10,
+                    borderLeft: "10px solid #4c8c40"
+                }}
+                    className="container">WEEKLY TEST FOR PROVINCE/CITY - {SearchCityData.search}</h5>
 
-            </div>
-            <Table
-                size="small"
-                className="table table-striped table-bordered"
-                style={{
-                marginTop: 5,
-                marginBottom: 15
-            }}>
+                    <div
+                    align="right"
+                    style={{
+                    marginBottom: 10
+                }}>
+                    <TextField
+                        placeholder="search by City"
+                        value={SearchCityData.search}
+                        onChange={e => setCSearch({
+                        ...SearchCityData,
+                        search: e.target.value
+                    })}/>
 
-                <TableHead>
-                    <TableRow>
-                      <TableCell>DAY OF TEST</TableCell>
-                        <TableCell>POSITIVE</TableCell>
-                        <TableCell>NEGATIVE</TableCell>
+                </div>
+                <Table
+                    size="small"
+                    className="table table-striped table-bordered"
+                    style={{
+                    marginTop: 5,
+                    marginBottom: 15
+                }}>
 
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-
-
-                     {
-                   
-                        weeklyTestCounts.map((x, i) => (
-                        <TableRow key={i}>
-                            <TableCell>{x.weekOfYear}</TableCell>
-                            <TableCell>{x.positiveTestCount}</TableCell>
-                            <TableCell>{x.negativeTestCount}</TableCell>
-
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>No#</TableCell>
+                            <TableCell>CITY</TableCell>
+                            <TableCell>POSITIVE</TableCell>
+                            <TableCell>NEGATIVE</TableCell>
                         </TableRow>
-                    ))
+                    </TableHead>
+                    <TableBody>
 
-                          
-                }
-                </TableBody>
-            </Table>
+                        {(rowsPerPage > 0
+                            ? weeklyTestCounts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            : weeklyTestCounts).sort((a, b) => a.weekOfYear.localeCompare(b.weekOfYear)).filter((x) => {
+                            return x
+                                .weekOfYear
+                                .toUpperCase()
+                                .indexOf(SearchData.search.toUpperCase()) !== -1
+                        }).map((x, i) => (
+                            <TableRow key={i}>
+                                <TableCell>{i + 1}</TableCell>
+                                <TableCell>{x.weekOfYear}</TableCell>
+                                <TableCell>{x.positiveTestCount}</TableCell>
+                                <TableCell>{x.negativeTestCount}</TableCell>
 
-        </TableContainer>
+                            </TableRow>
 
+                        ))}
+                    </TableBody>
+
+                    <TableFooter>
+                        <TableRow>
+                            <TablePagination
+                                rowsPerPageOptions={[
+                                5,
+                                10,
+                                25, {
+                                    label: 'All',
+                                    value: -1
+                                }
+                            ]}
+                                colSpan={3}
+                                count={weeklyTestCounts.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                SelectProps={{
+                                inputProps: {
+                                    'aria-label': 'rows per page'
+                                },
+                                native: true
+                            }}
+                                onChangePage={handleChangePage}
+                                onChangeRowsPerPage={handleChangeRowsPerPage}
+                                ActionsComponent={TablePaginationActions}/>
+                        </TableRow>
+                    </TableFooter>
+                </Table>
+
+            </TableContainer>
 
             <div
                 style={{
