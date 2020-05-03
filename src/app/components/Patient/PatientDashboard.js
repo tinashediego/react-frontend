@@ -35,9 +35,9 @@ const PatientDashboard = (props) => {
 
     }, [])
 
-    var {usedOTP} = user
+    var {otpExpired} = user
 
-    console.log(usedOTP)
+    console.log(otpExpired)
 
 
     let {testingDetails} = repo
@@ -56,7 +56,7 @@ const PatientDashboard = (props) => {
     } else {
 
         
-        usedOTP === false ? loc.push('/otp') : console.log('its now true')
+      otpExpired === true ? loc.push('/otp') : console.log('its now true')
         function generateQR() {
             let str = "TEST RESULTS :" + testingDetails.result
             QRCode.toCanvas(document.getElementById('canvas'), str)

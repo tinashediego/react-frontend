@@ -102,6 +102,12 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired
 };
 
+
+
+
+
+
+
 const AdminDashboard = () => {
 
     const classes = useStyles();
@@ -133,8 +139,20 @@ const AdminDashboard = () => {
     const [age,
         setAge] = useState([])
 
+    const [cityDaily ,setCityDaily] =  useState([])
+    const [cityWeekly , setcityWeek] =  useState([])
+    const [provDaily ,setprovDaily] = useState([])
+    const [ provWeek , setProvWeek] =  useState([])
+
+
+
+
+
+
     const [SearchData,
         setSearch] = useState({search: ''})
+
+      const  [SearchCityData ,setCSearch] =  useState({search:'HARARE'})
 
     useEffect(() => {
 
@@ -181,19 +199,75 @@ const AdminDashboard = () => {
 
         }
 
+
+        const fCityDaily  =  async() => {
+
+            const cityd = await axios.get(`http://45.76.141.84:8080/v1/tests/test-coverage/daily/city?city=${SearchCityData.search}`)
+
+            setCityDaily(cityd.data)
+
+        }
+
+
+        
+        const fCityWeek =  async() => {
+
+            const cityW = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/weekly/city')
+
+            setcityWeek(cityW.data)
+
+        }
+
+
+
+
+        const fProvDaily  =  async() => {
+
+            const provd = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/daily/province')
+
+            setprovDaily(provd.data)
+
+        }
+
+
+        const fProvWeek =  async() => {
+
+            const provW = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/weekly/province')
+
+            setProvWeek(provW.data)
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         fetchSym()
         fetchProvince()
         fetchUtils()
         cummulativeCity()
         fetchDemo()
         fectAge()
+        fCityDaily()
+        fCityWeek()
+        fProvDaily()
+        fProvWeek()
 
-    }, [])
+    }, [SearchCityData])
 
     let {agentTestKitCountCollection} = util
     let {cityDemographics} = totalDemo
     let {provinceDemographics} = totalDemo
     let {ageRangeDemographicsCollection} = cumCity
+    let {dailyTestCounts} = cityDaily
 
     //this hook gives us redux store state
 
@@ -230,10 +304,22 @@ const AdminDashboard = () => {
       </div>
     }
 
+
+    if(!dailyTestCounts){
+
+
+        return <div className={classes.root}>
+        <CircularProgress />
+       
+      </div>
+    
+
+
+    }
     //console.log(cumCity)
 
 
-    console.log(cumCity)
+   // console.log(cumCity)
     let bee = cumCity.map((x) => {
 
         let maxp = x
@@ -259,7 +345,7 @@ const AdminDashboard = () => {
     })
 
     
-    console.log(bee)
+    console.log(cityDaily)
 
 
     let colum = {
@@ -633,6 +719,73 @@ const AdminDashboard = () => {
                                 ActionsComponent={TablePaginationActions}/>
                         </TableRow>
                     </TableFooter>
+                </Table>
+
+            </TableContainer>
+
+
+            
+            <TableContainer
+                style={{
+                border: "3px solid #f1f1f1",
+                marginTop: 30
+            }}
+                component={Paper}>
+
+                <h5
+                    style={{
+                    marginTop: 10,
+                    borderLeft: "10px solid #4c8c40"
+                }}
+                    className="container">DAILY TEST PER CITY - {SearchCityData.search}</h5>
+
+                    <div
+                    align="right"
+                    style={{
+                    marginBottom: 10
+                }}>
+                    <TextField
+                        placeholder="search by City"
+                        value={SearchCityData.search}
+                        onChange={e => setCSearch({
+                        ...SearchCityData,
+                        search: e.target.value
+                    })}/>
+
+                </div>
+                <Table
+                    size="small"
+                    className="table table-striped table-bordered"
+                    style={{
+                    marginTop: 5,
+                    marginBottom: 15
+                }}>
+
+                    <TableHead>
+                        <TableRow>
+                          <TableCell>DAY OF TEST</TableCell>
+                            <TableCell>POSITIVE</TableCell>
+                            <TableCell>NEGATIVE</TableCell>
+
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+
+    
+                         {
+                       
+                            dailyTestCounts.map((x, i) => (
+                            <TableRow key={i}>
+                                <TableCell>{x.dateOfTest}</TableCell>
+                                <TableCell>{x.positiveTestCount}</TableCell>
+                                <TableCell>{x.negativeTestCount}</TableCell>
+
+                            </TableRow>
+                        ))
+
+                              
+                    }
+                    </TableBody>
                 </Table>
 
             </TableContainer>
