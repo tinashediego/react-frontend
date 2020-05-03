@@ -216,7 +216,6 @@ const AddPatient = ({next}) => {
                             ...patientData,
                             dateOfBirth: e.target.value
                         })}
-                            placeholder="dd/mm/yyyy"
                             fullWidth/>
                     </Grid>
 

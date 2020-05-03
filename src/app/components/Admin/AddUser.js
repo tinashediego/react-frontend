@@ -122,7 +122,6 @@ const AddUser  = () =>{
       <FormGroup className="col-sm-6">
         <TextField label="First Name" 
                value={newUser.firstName}  
-               
              onChange={e=>setUser({ ...newUser ,firstName:e.target.value})}
                placeholder="First Name" className="formControl" required />
       </FormGroup>
@@ -140,18 +139,18 @@ const AddUser  = () =>{
     <div className="row">
     <FormGroup className="col-sm-6">
     
-    <TextField label="User Name" 
+    <TextField label="Username" 
           value={newUser.username} 
           
           onChange={e=>setUser({ ...newUser ,username:e.target.value})}
-           placeholder="username" required />
+           placeholder="Username" required />
   </FormGroup>
   
   
   
   <FormGroup className="col-sm-6">
     
-  <TextField label="National Id Number" 
+  <TextField label="National ID Number" 
         value={newUser.nationalIdNumber} 
         
         onChange={e=>setUser({ ...newUser ,nationalIdNumber:e.target.value})}
@@ -179,12 +178,6 @@ const AddUser  = () =>{
              onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
              placeholder="practicing number" required />
     </FormGroup>
-
-
-     
-  
-
-
     </div>
 
     <div className="row">
@@ -241,7 +234,7 @@ const AddUser  = () =>{
   <TextField label="Phone Number" 
          value={newUser.phoneNumber} 
          onChange={e=>setUser({ ...newUser ,phoneNumber:e.target.value})}
-         placeholder="+263772123456" required/>
+         placeholder="e.g +263772123456" required/>
 </FormGroup>
     </div>
 
@@ -254,7 +247,29 @@ const AddUser  = () =>{
 placeholder="Address of Practice" required />
 
 </FormGroup>
+<FormGroup className="col-sm-6">
+<TextField label="Address" 
+      value={newUser.streetAddress} 
+      onChange={e=>setUser({ ...newUser , streetAddress:e.target.value})}
+placeholder="City" required />
 
+</FormGroup>
+
+
+
+
+</div>
+
+
+<div className="row">
+<FormGroup className="col-sm-6">
+<Input type="select" name="travelled" value={newUser.countryVisited} onChange={e=>setUser({ ...newUser ,city:e.target.value})} >
+<option>City</option>
+{cityList.map((team ,i) => <option key={team.i} value={team}>{team}</option>)}
+
+</Input>
+
+</FormGroup>
 
 
 <FormGroup className="col-sm-6">
@@ -273,29 +288,6 @@ placeholder="Address of Practice" required />
               <option value="MIDLANDS">MIDLANDS</option>
               
               </Input>
-</FormGroup>
-
-
-</div>
-
-
-<div className="row">
-<FormGroup className="col-sm-6">
-<Input type="select" name="travelled" value={newUser.countryVisited} onChange={e=>setUser({ ...newUser ,city:e.target.value})} >
-<option>City</option>
-{cityList.map((team ,i) => <option key={team.i} value={team}>{team}</option>)}
-
-</Input>
-
-</FormGroup>
-
-
-<FormGroup className="col-sm-6">
-<TextField label="Street Address" 
-      value={newUser.streetAddress} 
-      onChange={e=>setUser({ ...newUser , streetAddress:e.target.value})}
-placeholder="city" required />
-
 </FormGroup>
 
 </div>
