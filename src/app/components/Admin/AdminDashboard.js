@@ -728,17 +728,18 @@ const AdminDashboard = () => {
             </TableContainer>
 
 
-            
             <TableContainer
-                style={{
+              style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}
                 component={Paper}>
 
                 <h5
                     style={{
-                    marginTop: 10,
+                    marginTop: 30,
+                    paddingLeft:10,
                     borderLeft: "10px solid #4c8c40"
                 }}
                     className="container">DAILY TEST PER CITY - {SearchCityData.search}</h5>
@@ -767,43 +768,79 @@ const AdminDashboard = () => {
 
                     <TableHead>
                         <TableRow>
-                          <TableCell>DAY OF TEST</TableCell>
+                            <TableCell>No#</TableCell>
+                            <TableCell>CITY</TableCell>
                             <TableCell>POSITIVE</TableCell>
                             <TableCell>NEGATIVE</TableCell>
-
                         </TableRow>
                     </TableHead>
                     <TableBody>
 
-    
-                         {
-                       
-                            dailyTestCounts.map((x, i) => (
+                        {(rowsPerPage > 0
+                            ? dailyTestCounts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            : dailyTestCounts).sort((a, b) => a.dateOfTest.localeCompare(b.dateOfTest)).filter((x) => {
+                            return x
+                                .dateOfTest
+                                .toUpperCase()
+                                .indexOf(SearchData.search.toUpperCase()) !== -1
+                        }).map((x, i) => (
                             <TableRow key={i}>
+                                <TableCell>{i + 1}</TableCell>
                                 <TableCell>{x.dateOfTest}</TableCell>
                                 <TableCell>{x.positiveTestCount}</TableCell>
                                 <TableCell>{x.negativeTestCount}</TableCell>
 
                             </TableRow>
-                        ))
 
-                              
-                    }
+                        ))}
                     </TableBody>
+
+                    <TableFooter>
+                        <TableRow>
+                            <TablePagination
+                                rowsPerPageOptions={[
+                                5,
+                                10,
+                                25, {
+                                    label: 'All',
+                                    value: -1
+                                }
+                            ]}
+                                colSpan={3}
+                                count={dailyTestCounts.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                SelectProps={{
+                                inputProps: {
+                                    'aria-label': 'rows per page'
+                                },
+                                native: true
+                            }}
+                                onChangePage={handleChangePage}
+                                onChangeRowsPerPage={handleChangeRowsPerPage}
+                                ActionsComponent={TablePaginationActions}/>
+                        </TableRow>
+                    </TableFooter>
                 </Table>
 
             </TableContainer>
+
+            
+            
 
 
             <div
                 style={{
                 border: "3px solid #f1f1f1",
-                marginTop: 30
+                marginTop: 30,
+                paddingLeft:10
             }}>
 
                 <h5
                     style={{
-                    borderLeft: "10px solid #4c8c40"
+                    borderLeft: "10px solid #4c8c40",
+                    marginTop:30,
+                    paddingLeft:10
                 }}>Cases around the country</h5>
 
                 <Chart options={colum.options} series={colum.series} type="bar" height={350}/>
@@ -891,6 +928,7 @@ const AdminDashboard = () => {
                 <h5
                     style={{
                     borderLeft: "10px solid #4c8c40",
+                    marginTop:30,
                     paddingLeft:10
                 }}>Kits Data</h5>
 
@@ -911,6 +949,7 @@ const AdminDashboard = () => {
                 <h5
                     style={{
                     borderLeft: "10px solid #4c8c40",
+                    marginTop:30,
                     paddingLeft:10
                 }}>Symptoms Statistics</h5>
 
