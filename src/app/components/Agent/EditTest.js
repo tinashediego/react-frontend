@@ -192,7 +192,7 @@ const handleSubmit = (e) => {
 
      <FormGroup>
   
-            <TextField label="Batch Number"  value={ScreenData.batchNumber}  onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth placeholder="Batch Number" /> 
+            <TextField label="Batch Number"  value={ScreenData.batchNumber}  onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth placeholder="Batch Number"  required/> 
    
        </FormGroup>
      

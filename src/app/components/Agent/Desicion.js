@@ -20,6 +20,11 @@ export default function Desicion({next ,reset}) {
               <Typography color="textSecondary">
                 <Button variant="contained" onClick={reset}  style={{ height:"20vh" , backgroundColor:"red" ,width:"40vh"}}  elevation={4}>FINISH</Button>
               </Typography>
+
+          
+            <Typography variant="body2" component="p">
+            DO NOT PROCCED TO TEST
+          </Typography>
          
             </CardContent>
           </Grid>
@@ -29,6 +34,11 @@ export default function Desicion({next ,reset}) {
               <Typography color="textSecondary" >
                 <Button  variant="contained"  onClick={next} style={{backgroundColor:"#8BC34A" , height:"20vh" , width:"40vh"}} elevation={4}>PROCCED</Button>
               </Typography>
+
+
+              <Typography variant="body2" component="p">
+              PROCCED TO TEST
+            </Typography>
             
             </CardContent>
           </Grid>

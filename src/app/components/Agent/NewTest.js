@@ -181,7 +181,7 @@ var newScreen = {
    <FormGroup>
     
         <TextField label="Batch Number" name="travelled" placeholder="Batch Number" value={ScreenData.batchNumber} 
-      onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth /> 
+      onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth   required/> 
        
      
             </FormGroup>
