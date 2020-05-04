@@ -422,7 +422,7 @@ const AdminDashboard = () => {
             } ,
             {
                 name:"DEFECT",
-                data:[6]
+                data:[util.totalDefectiveKits]
             }
         ],
         options: {
