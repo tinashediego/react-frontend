@@ -178,8 +178,8 @@ const handleSubmit = (e) => {
 
      <FormGroup>
          <Label for="exampleCity">Test  Result:</Label>
-            <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
-     <option>Select</option>
+            <Input type="select"  value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
+     <option vale="SELect">Select</option>
      <option value="POSITIVE">Positive</option>
      <option value="NEGATIVE">Negative</option>
      <option value="INCONCLUSIVE">Inconclusive</option>
@@ -192,7 +192,7 @@ const handleSubmit = (e) => {
 
      <FormGroup>
   
-            <TextField label="Batch Number" name="travelled" value={ScreenData.batchNumber}  onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth placeholder="Batch Number" /> 
+            <TextField label="Batch Number"  value={ScreenData.batchNumber}  onChange={e=>setScreen({ ...ScreenData ,batchNumber:e.target.value})} fullWidth placeholder="Batch Number" /> 
    
        </FormGroup>
      

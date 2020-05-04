@@ -168,8 +168,8 @@ var newScreen = {
           <Col md={12} >
    <FormGroup>
      <Label for="exampleCity">Test Result:</Label>
-        <Input type="select" name="travelled" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
-       
+        <Input type="select" value={ScreenData.testResult}  onChange={e=>setScreen({ ...ScreenData ,testResult:e.target.value})} > 
+        <option vale="SELect">Select</option>
         <option value="POSITIVE">Positive</option>
         <option value="NEGATIVE">Negative</option>
         <option value="INCONCLUSIVE">Inconclusive</option>
