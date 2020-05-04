@@ -33,5 +33,17 @@ export const mainListItems = (
       <ListItemText primary="All Patients" />
       </Link>
     </ListItem>  
+
+
+    <ListItem button> 
+    <Link to="/defect">
+      <ListItemIcon style={{color:'white'}}>
+      <PeopleIcon />
+    </ListItemIcon>
+    </Link>
+    <Link to='/defect' style={{color:'white'}}>
+    <ListItemText primary="REGISTER DEFECT" />
+    </Link>
+  </ListItem> 
   </div>
 );

@@ -325,7 +325,8 @@ const AdminDashboard = () => {
     })
 
     
-    console.log(cityWeekly)
+    console.log(util)
+    //console.log(cityDaily)
 
 
     let colum = {
@@ -418,6 +419,10 @@ const AdminDashboard = () => {
             }, {
                 name: 'Unused',
                 data: [util.totalUnUsedKits]
+            } ,
+            {
+                name:"DEFECT",
+                data:[6]
             }
         ],
         options: {
@@ -427,7 +432,7 @@ const AdminDashboard = () => {
                 marginTop: 30
             },
             colors: [
-                '#00ff00', '#ff0000'
+                '#00ff00', '#0000ff', '#ff0000' ,
             ],
             plotOptions: {
                 bar: {
@@ -465,7 +470,7 @@ const AdminDashboard = () => {
                 colors: ['#fff']
             },
             xaxis: {
-                categories: ['USED', 'UNUSED']
+                categories: ['USED', 'UNUSED','DEFECT']
             }
         }
     };
@@ -698,7 +703,7 @@ const AdminDashboard = () => {
                     paddingLeft:10,
                     borderLeft: "10px solid #4c8c40"
                 }}
-                    className="container">DAILY TEST FOR PROVINCE/CITY - {SearchCityData.search}</h5>
+                    className="container">DAILY TEST FOR PROVINCE/CITY - {SearchCityData.search.toUpperCase()}</h5>
 
                     <div
                     align="right"
@@ -734,12 +739,7 @@ const AdminDashboard = () => {
 
                         {(rowsPerPage > 0
                             ? dailyTestCounts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : dailyTestCounts).sort((a, b) => a.dateOfTest.localeCompare(b.dateOfTest)).filter((x) => {
-                            return x
-                                .dateOfTest
-                                .toUpperCase()
-                                .indexOf(SearchData.search.toUpperCase()) !== -1
-                        }).map((x, i) => (
+                            : dailyTestCounts).sort((a, b) => a.dateOfTest.localeCompare(b.dateOfTest)).map((x, i) => (
                             <TableRow key={i}>
                                 <TableCell>{i + 1}</TableCell>
                                 <TableCell>{x.dateOfTest}</TableCell>
@@ -797,7 +797,7 @@ const AdminDashboard = () => {
                     paddingLeft:10,
                     borderLeft: "10px solid #4c8c40"
                 }}
-                    className="container">WEEKLY TEST FOR PROVINCE/CITY - {SearchCityData.search}</h5>
+                    className="container">WEEKLY TEST FOR PROVINCE/CITY - {SearchProvData.search.toUpperCase()}</h5>
 
                     <div
                     align="right"
@@ -806,9 +806,9 @@ const AdminDashboard = () => {
                 }}>
                     <TextField
                         placeholder="search by City"
-                        value={SearchCityData.search}
-                        onChange={e => setCSearch({
-                        ...SearchCityData,
+                        value={SearchProvData.search}
+                        onChange={e => setPSearch({
+                        ...SearchProvData,
                         search: e.target.value
                     })}/>
 
@@ -833,12 +833,8 @@ const AdminDashboard = () => {
 
                         {(rowsPerPage > 0
                             ? weeklyTestCounts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : weeklyTestCounts).sort((a, b) => a.weekOfYear.localeCompare(b.weekOfYear)).filter((x) => {
-                            return x
-                                .weekOfYear
-                                .toUpperCase()
-                                .indexOf(SearchData.search.toUpperCase()) !== -1
-                        }).map((x, i) => (
+                            : weeklyTestCounts).sort((a, b) => a.weekOfYear.localeCompare(b.weekOfYear))
+                                .map((x, i) => (
                             <TableRow key={i}>
                                 <TableCell>{i + 1}</TableCell>
                                 <TableCell>{x.weekOfYear}</TableCell>

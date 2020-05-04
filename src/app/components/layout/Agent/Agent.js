@@ -29,6 +29,7 @@ import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch} from "react-redux"
 import Logo from '../../../../assets/logo.png';
 import EditStepper from '../../Agent/EditStepper';
+import Defect from '../../Agent/Defect';
 
 
 function Copyright() {
@@ -179,6 +180,10 @@ console.log(para)
     
      case '/mytests':
       return <MyTests />
+
+
+      case '/defect':
+      return <Defect />
 
     
       default:
