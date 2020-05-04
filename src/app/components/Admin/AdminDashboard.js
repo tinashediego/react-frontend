@@ -325,7 +325,7 @@ const AdminDashboard = () => {
     })
 
     
-    console.log(util)
+    console.log(cityDaily)
     //console.log(cityDaily)
 
 

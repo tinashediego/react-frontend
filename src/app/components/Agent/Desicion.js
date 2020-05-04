@@ -18,7 +18,7 @@ export default function Desicion({next ,reset}) {
               
              
               <Typography color="textSecondary">
-                <Button variant="contained" onClick={reset} color="primary" style={{ height:"20vh" , width:"40vh"}}  elevation={4}>FINISH</Button>
+                <Button variant="contained" onClick={reset}  style={{ height:"20vh" , backgroundColor:"red" ,width:"40vh"}}  elevation={4}>FINISH</Button>
               </Typography>
          
             </CardContent>

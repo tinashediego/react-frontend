@@ -371,7 +371,7 @@ let {testingDetails ,} = repo
       </Form>
 
 
-      <Button className="btn btn-primary" onClick={reset} >Finish</Button>
+      <Button className="btn btn-primary" onClick={reset} >New Patient</Button>
     
 
 
