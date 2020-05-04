@@ -13,7 +13,7 @@ export default function Desicion({next ,reset}) {
 
         <div className={styles.container}>
         <Grid container spacing={3} justify="center">
-          <Grid item xs={12} md={3} component={Card} style={{backgroundColor:"rgba(0,0,255,0.2)"}}  className={cx(styles.card, styles.infected)} >
+          <Grid item xs={12} md={3} component={Card} style={{backgroundColor:"rgba(255,0,0,0.2)"}}  className={cx(styles.card, styles.infected)} >
             <CardContent>
               
              
