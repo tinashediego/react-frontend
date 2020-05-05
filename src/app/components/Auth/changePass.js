@@ -67,7 +67,7 @@ const ChangePass = () => {
                             label="Old password"
                             type="password"
                             value={userData.oldPassword}
-                            placeholder="old Password"
+                            
                             onChange={e => setData({
                             ...userData,
                             oldPassword: e.target.value
@@ -83,7 +83,7 @@ const ChangePass = () => {
                         label="new password"
                         type="password"
                         value={userData.password}
-                        placeholder="New Password"
+                       
                         onChange={e => setData({
                         ...userData,
                         password: e.target.value
@@ -93,13 +93,13 @@ const ChangePass = () => {
                     }}
                         required/>
                 </FormGroup>
-                <FormGroup>
+                <FormGroup> 
 
                 <TextField
                     label="Confirm password"
                     type="password"
                     value={userData.confirmPassword}
-                    placeholder="cofirm Password"
+                   
                     onChange={e => setData({
                     ...userData,
                     confirmPassword: e.target.value
@@ -115,7 +115,7 @@ const ChangePass = () => {
                         style={{
                         width: "50%"
                     }}
-                        type="submit">Submit</Button>
+                        type="submit">Change Password</Button>
 
                 </Form>
 

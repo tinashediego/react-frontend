@@ -15,6 +15,7 @@ import Agent from "./app/components/layout/Agent/Agent";
 import Patient from "./app/components/layout/Patient/Patient";
 
 import Otp from './app/components/Patient/Otp'
+import ChangePass from "./app/components/Auth/changePass";
 
 
 
@@ -93,6 +94,7 @@ function App() {
           <PrivateRoute excat path='/test/:id' component={Agent} />
           <PrivateRoute excat path='/otp' component={Otp} />
           <PrivateRoute excat path='/defect' component={Agent} />
+          <PrivateRoute exact path='/change' component={ChangePass} />
     
         </Switch>
       </div>
