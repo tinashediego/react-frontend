@@ -208,7 +208,7 @@ console.log(para)
 
   function handlePassword(){
 
-    his.goForward('/changepass')
+    his.goForward('/change')
 
 
 
