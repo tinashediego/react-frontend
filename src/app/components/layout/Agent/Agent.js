@@ -208,7 +208,7 @@ console.log(para)
 
   function handlePassword(){
 
-    his.goForward('/change')
+    his.push('/change') 
 
 
 
@@ -232,9 +232,9 @@ console.log(para)
 
             </Typography>
 
-            <Tooltip title="Log Out" aria-label="Log Out">
+            <Tooltip title="Log Out" aria-label="Log Out" onClick={logout}>
           
-            <IconButton color="inherit" onClick={logout}>
+            <IconButton color="inherit" >
                 {username}
 
                 <AccountCircleIcon/>

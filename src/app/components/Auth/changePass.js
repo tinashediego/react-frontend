@@ -11,9 +11,9 @@ import {TextField} from '@material-ui/core';
 const ChangePass = () => {
 
     const [userData,
-        setData] = useState( {  "confirmPassword": "string",
-        "oldPassword": "string",
-        "password": "string"})
+        setData] = useState( {  "confirmPassword": "",
+        "oldPassword": "",
+        "password": ""})
 
     const pu = useHistory()
     console.log(userData)
@@ -23,7 +23,7 @@ const ChangePass = () => {
             .post('http://45.76.141.84:8080/v1/users/change-password', userData)
             .then(resp => {
                 alert('success')
-                pu.push('/patient')
+                pu.push('/agent')
             })
             .catch(err => {
 
