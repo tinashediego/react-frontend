@@ -18,6 +18,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './mainListItems';
 import {useLocation ,useParams ,useHistory} from 'react-router'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import Tooltip from '@material-ui/core/Tooltip';
+import Fab from '@material-ui/core/Fab';
 
 import AllPatients from '../../Agent/AllPatients';
 
@@ -202,6 +205,16 @@ console.log(para)
 
   }
 
+
+  function handlePassword(){
+
+    his.goForward('/changepass')
+
+
+
+
+  }
+
   
  
 
@@ -218,12 +231,35 @@ console.log(para)
                 <img src={Logo} style={{width:"64px"}} alt="LOGO"></img>
 
             </Typography>
+
+            <Tooltip title="Log Out" aria-label="Log Out">
+          
             <IconButton color="inherit" onClick={logout}>
                 {username}
 
                 <AccountCircleIcon/>
 
             </IconButton>
+            
+
+            </Tooltip>
+
+
+           
+
+            <Tooltip title="Change Password" aria-label="password"  onClick={handlePassword}>
+            <IconButton color="inherit" >
+            
+            <LockOpenIcon/>
+
+            
+            </IconButton>
+            
+          </Tooltip>
+
+      
+
+            
         </Toolbar>
     </AppBar>
     <Drawer variant="permanent" classes={{ paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose), }} open={open}>
