@@ -387,6 +387,35 @@ export default function Report({reset}) {
 
                         </Row>
 
+                        <Row form>
+                        <Col md={5}>
+                            <FormGroup>
+                                <Label for="exampleCity">Country Travveled</Label>
+                                <h6
+                                    style={{
+                                    color:  repo.patientScreeningDTO.countryTravelledTo === null
+                                    ? 'red'
+                                    : 'green'
+                                }}>{repo.patientScreeningDTO.countryTravelledTo}</h6>
+                            </FormGroup>
+                        </Col>
+                        <Col md={3}>
+                            <FormGroup>
+                                <Label for="exampleState">Received any Covid Councelling?</Label>
+                                <h6
+                                    style={{
+                                    color:  repo.patientScreeningDTO.receivedAnyCounsellingOnCovid19 === true
+                                    ? 'red'
+                                    : 'green'
+                                }}>{`${repo.patientScreeningDTO.receivedAnyCounsellingOnCovid19}` === true
+                                        ? 'YES'
+                                        : 'FALSE'}
+                                </h6>
+                            </FormGroup>
+                        </Col>
+
+                    </Row>
+
                     </Col>
 
                 </Row>
