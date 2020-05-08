@@ -52,8 +52,8 @@ export default function EditStepper() {
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <Report reset={handleReset}/>
-        //return   <EditScreen next={handleNext} />;
+       // return <Report reset={handleReset}/>
+        return   <EditScreen next={handleNext} />;
         
           
       case 1:
