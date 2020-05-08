@@ -379,12 +379,8 @@ export default function Report({reset}) {
                                 <Label for="exampleState">Country</Label>
                                 <h6
                                     style={{
-                                    color: repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
-                                    ? 'red'
-                                    : 'green'
-                                }}>{repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
-                                        ? 'YES'
-                                        : 'FALSE'}
+                                    color:'green'
+                                }}>{repo.patientScreeningDTO.countryVisited}
                                 </h6>
                             </FormGroup>
                         </Col>

@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import cityList from './city'
+import HarareSurburbs from './country'
 import {makeStyles} from '@material-ui/core/styles';
 
 import InputLabel from '@material-ui/core/InputLabel';
@@ -85,6 +86,7 @@ const AddPatient = ({next}) => {
         "phoneNumber": "",
         "gender": "",
         "city": "",
+        "suburb":"",
         "province": ""
 
     })
@@ -104,11 +106,47 @@ const AddPatient = ({next}) => {
             "address": {
                 "streetAddress": patientData.address,
                 "city": patientData.city,
-                "province": patientData.province
+                "province": patientData.province,
+                "suburb":patientData.suburb
             }
         }
 
     }
+
+
+    
+  function ifYes(){
+
+
+    if(patientData.city === 'HARARE'){
+
+        return(  
+                    <Grid item xs={12} sm={6}>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                        <Select
+                            native
+                            value={patientData.suburb}
+                            onChange={e => setPatient({
+                            ...patientData,
+                            suburb: e.target.value
+                        })}
+                            inputProps={{
+                            name: 'suburb',
+                            id: 'age-native-simple'
+                        }}>
+                            <option aria-label="None" value=""/>
+                             {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                        </Select>
+                    </FormControl>
+
+                </Grid>)
+    }
+  }
+
+
+
 
     console.log(patientData.province)
 
@@ -255,6 +293,38 @@ const AddPatient = ({next}) => {
                             placeholder="Address"
                             fullWidth/>
                     </Grid>
+
+
+                    <Grid item xs={12} sm={6}>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="age-native-simple">Province</InputLabel>
+                        <Select
+                            native
+                            value={patientData.province}
+                            onChange={e => setPatient({
+                            ...patientData,
+                            province: e.target.value
+                        })}
+                            inputProps={{
+                            name: 'province',
+                            id: 'age-native-simple'
+                        }}>
+                            <option aria-label="None" value=""/>
+                            <option value="BULAWAYO">BULAWAYO</option>
+                            <option value="HARARE">HARARE</option>
+                            <option value="MANICALAND">MANICALAND</option>
+                            <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
+                            <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+                            <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
+                            <option value="MASVINGO">MASVINGO</option>
+                            <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
+                            <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
+                            <option value="MIDLANDS">MIDLANDS</option>
+                        </Select>
+                    </FormControl>
+
+                </Grid>
                     <Grid item xs={12} sm={6}>
 
                         <FormControl className={classes.formControl}>
@@ -270,41 +340,14 @@ const AddPatient = ({next}) => {
                                 name: 'city',
                                 id: 'age-native-simple'
                             }}>
-                                <option aria-label="None" value=""/> {cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                            </Select>
-                        </FormControl>
-
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="age-native-simple">Province</InputLabel>
-                            <Select
-                                native
-                                value={patientData.province}
-                                onChange={e => setPatient({
-                                ...patientData,
-                                province: e.target.value
-                            })}
-                                inputProps={{
-                                name: 'province',
-                                id: 'age-native-simple'
-                            }}>
                                 <option aria-label="None" value=""/>
-                                <option value="BULAWAYO">BULAWAYO</option>
-                                <option value="HARARE">HARARE</option>
-                                <option value="MANICALAND">MANICALAND</option>
-                                <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
-                                <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
-                                <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
-                                <option value="MASVINGO">MASVINGO</option>
-                                <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
-                                <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
-                                <option value="MIDLANDS">MIDLANDS</option>
+                                 {cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
                             </Select>
                         </FormControl>
 
                     </Grid>
+
+                    {ifYes()}
                     <Grid item xs={12} sm={6}>
 
                         <FormControl className={classes.formControl}>

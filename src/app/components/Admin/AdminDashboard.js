@@ -214,23 +214,6 @@ const AdminDashboard = () => {
 
         }
 
-
-
-
-     
-    
-
-
-
-
-
-
-
-
-
-
-
-
         fetchSym()
         fetchProvince()
         fetchUtils()
@@ -295,7 +278,26 @@ const AdminDashboard = () => {
     
 
 
+
+
+      
     }
+
+
+
+   if(!weeklyTestCounts) {
+
+
+
+    
+    return <div className={classes.root}>
+    <CircularProgress />
+   
+  </div>
+
+
+
+   }
     //console.log(cumCity)
 
 
