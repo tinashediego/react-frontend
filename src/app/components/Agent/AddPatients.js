@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import cityList from './city'
-import HarareSurburbs from './country'
+import HarareSurburbs from './HaraS'
+import BulawayoSurbubs from './Blues'
 import {makeStyles} from '@material-ui/core/styles';
 
 import InputLabel from '@material-ui/core/InputLabel';
@@ -117,12 +118,39 @@ const AddPatient = ({next}) => {
     
   function ifYes(){
 
+    console.log(patientData.city)
 
-    if(patientData.city === 'HARARE'){
+    switch (patientData.city) {
+        case 'HARARE':
 
-        return(  
+            return(  
+                <Grid item xs={12} sm={6}>
+
+                <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                    <Select
+                        native
+                        value={patientData.suburb}
+                        onChange={e => setPatient({
+                        ...patientData,
+                        suburb: e.target.value
+                    })}
+                        inputProps={{
+                        name: 'suburb',
+                        id: 'age-native-simple'
+                    }}>
+                        <option aria-label="None" value=""/>
+                         {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                    </Select>
+                </FormControl>
+
+            </Grid>)
+
+            case 'BULAWAYO':
+
+                return(  
                     <Grid item xs={12} sm={6}>
-
+    
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
                         <Select
@@ -137,12 +165,20 @@ const AddPatient = ({next}) => {
                             id: 'age-native-simple'
                         }}>
                             <option aria-label="None" value=""/>
-                             {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                             {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
                         </Select>
                     </FormControl>
-
+    
                 </Grid>)
+            
+    
+    
+        default:
+            break;
     }
+
+
+   
   }
 
 

@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
     "hasDirectContactWithCovid19Patient": '',
     "hasTravelledPast14Days": '',
     "headachePresent": '', 
+    receivedAnyCounsellingOnCovid19:""
     })
 
 
@@ -104,6 +105,7 @@ const useStyles = makeStyles((theme) => ({
     "headachePresent":ScreenData.headachePresent , 
     "countryVisited": ScreenData.countryVisited,
      patientId:para.id,
+     "receivedAnyCounsellingOnCovid19":ScreenData.receivedAnyCounsellingOnCovid19,
      "testingAgentUsername":username
 
 
@@ -274,6 +276,19 @@ const handleSubmit = (e) => {
               </Col>
   
           </Row>
+          <Row form>
+          <Col md={12}>
+              <FormGroup>
+                  <Label for="exampleCity">Received Covid-Related-Councelling Before </Label>
+                  <Input type="select" name="travelled" value={ScreenData.receivedAnyCounsellingOnCovid19} onChange={e=>setScreen({ ...ScreenData ,receivedAnyCounsellingOnCovid19:e.target.value})} >
+                  <option>Select</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                  </Input>
+              </FormGroup>
+          </Col>
+        
+      </Row>
   
         
   
