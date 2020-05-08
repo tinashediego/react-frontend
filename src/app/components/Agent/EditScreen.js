@@ -299,7 +299,7 @@ const handleSubmit = (e) => {
                       <Label for="exampleState">Any direct contact with a Covid-19 patient</Label>
                       <Input type="select" name="travelled" value={ScreenData.hasDirectContactWithCovid19Patient} onChange={e=>setScreen({ ...ScreenData ,hasDirectContactWithCovid19Patient:e.target.value})} id="gender">
                       <option>Select</option>
-                      <option value="true">Yes</option>
+                      <option value="true">Yes</option>  
                       <option value="false">No</option>
                       </Input>
                   </FormGroup>
