@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import cityList from './city'
-import HarareSurburbs from './HaraS'
+import HarareSurburbs from './Haras'
 import BulawayoSurbubs from './Blues'
 import {makeStyles} from '@material-ui/core/styles';
 
