@@ -375,14 +375,7 @@ export default function Report({reset}) {
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
-                            <FormGroup>
-                                <Label for="exampleState">Country</Label>
-                                <h6
-                                    style={{
-                                    color:'green'
-                                }}>{repo.patientScreeningDTO.countryVisited}
-                                </h6>
-                            </FormGroup>
+                        
                         </Col>
 
                         </Row>
@@ -436,6 +429,7 @@ export default function Report({reset}) {
                                 <th>Date</th>
                                 <th>Brand Name of Kit</th>
                                 <th>Batch Number</th>
+                                <th>Serial Number</th>
                                 <th>Result</th>
                                 <th>Testing Agent Name</th>
                                 <th>Qualification</th>
@@ -449,6 +443,7 @@ export default function Report({reset}) {
                                 <th scope="row">1</th>
                                 <td>{testingDetails.dateOfTest}</td>
                                 <td>{testingDetails.testKitBrandName}</td>
+                                <td>{testingDetails.testKitbatchNumber}</td>
                                 <td>{testingDetails.testKitSerialNumber}</td>
                                 <td>{testingDetails.result}</td>
                                 <td>{testingDetails.testingAgent}</td>
