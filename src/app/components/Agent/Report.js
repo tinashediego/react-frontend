@@ -443,7 +443,7 @@ export default function Report({reset}) {
                                 <th scope="row">1</th>
                                 <td>{testingDetails.dateOfTest}</td>
                                 <td>{testingDetails.testKitBrandName}</td>
-                                <td>{testingDetails.testKitbatchNumber}</td>
+                                <td>{testingDetails.testKitBatchNumber}</td>
                                 <td>{testingDetails.testKitSerialNumber}</td>
                                 <td>{testingDetails.result}</td>
                                 <td>{testingDetails.testingAgent}</td>
