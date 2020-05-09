@@ -420,8 +420,9 @@ const AddPatient = ({next}) => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
+                
                 className={classes.submit}
+                style={{backgroundColor:"green" ,color:'white'}}
               >
                 Submit
               </Button>

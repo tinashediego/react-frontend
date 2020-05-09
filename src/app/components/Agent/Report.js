@@ -459,7 +459,7 @@ export default function Report({reset}) {
 
             <Button 
             variant="contained"
-            color="primary"
+            style={{backgroundColor:"green" ,color:'white'}}
             className={classes.submit} onClick={reset}>Go to New Test</Button>
 
 
