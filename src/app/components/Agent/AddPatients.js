@@ -281,16 +281,22 @@ const AddPatient = ({next}) => {
                             fullWidth/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            label="Date Of Birth (dd/mm/yyyy)"
-                            type="date"
-                            name="password"
-                            value={patientData.dateOfBirth}
-                            onChange={e => setPatient({
-                            ...patientData,
-                            dateOfBirth: e.target.value
-                        })}
-                            fullWidth/>
+
+                    <TextField
+                    id="date"
+                    label="DATE OF BIRTH"
+                    type="date"
+                    value={patientData.dateOfBirth}
+                    className={classes.textField}
+                    onChange={e => setPatient({
+                        ...patientData,
+                        dateOfBirth: e.target.value
+                    })}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                       
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
