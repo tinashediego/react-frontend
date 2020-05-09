@@ -389,7 +389,7 @@ export default function Report({reset}) {
                                     color:  repo.patientScreeningDTO.countryTravelledTo === null
                                     ? 'red'
                                     : 'green'
-                                }}>{repo.patientScreeningDTO.countryTravelledTo}</h6>
+                                }}>{repo.patientScreeningDTO.countryTravelledTo === null ? "N/N":repo.patientScreeningDTO.countryTravelledTo}</h6>
                             </FormGroup>
                         </Col>
                         <Col md={3}>
