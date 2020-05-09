@@ -205,7 +205,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{repo.patientScreeningDTO.coughPresent === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
                             <Col md={3}>
@@ -218,7 +218,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.coldsPresent}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
 
@@ -235,7 +235,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.diarrhoeaPresent}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
                             <Col md={3}>
@@ -248,7 +248,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
 
@@ -265,7 +265,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${ `${repo.patientScreeningDTO.bodyAchesPresent}`}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
                             <Col md={3}>
@@ -278,7 +278,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.headachePresent}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
 
@@ -295,7 +295,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.feverPresent}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
                             <Col md={3}>
@@ -308,7 +308,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
 
@@ -325,7 +325,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.fatiguePresent}` === true
                                             ? 'YES'
-                                            : 'FALSE'}</h6>
+                                            : 'NO'}</h6>
                                 </FormGroup>
                             </Col>
                             <Col md={3}>
@@ -338,7 +338,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}` === true
                                             ? 'YES'
-                                            : 'FALSE'}
+                                            : 'NO'}
                                     </h6>
                                 </FormGroup>
                             </Col>
@@ -356,7 +356,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
                                             ? 'YES'
-                                            : 'FALSE'}
+                                            : 'NO'}
                                     </h6>
                                 </FormGroup>
                             </Col>
@@ -370,7 +370,7 @@ export default function Report({reset}) {
                                         : 'green'
                                     }}>{repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
                                             ? 'YES'
-                                            : 'FALSE'}
+                                            : 'NO'}
                                     </h6>
                                 </FormGroup>
                             </Col>
@@ -409,7 +409,7 @@ export default function Report({reset}) {
                                     : 'green'
                                 }}>{`${repo.patientScreeningDTO.receivedAnyCounsellingOnCovid19}` === true
                                         ? 'YES'
-                                        : 'FALSE'}
+                                        : 'NO'}
                                 </h6>
                             </FormGroup>
                         </Col>

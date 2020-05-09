@@ -179,7 +179,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{repo.patientScreeningDTO.coughPresent === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
                 <Col md={3}>
@@ -192,7 +192,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.coldsPresent}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
 
@@ -209,7 +209,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.diarrhoeaPresent}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
                 <Col md={3}>
@@ -222,7 +222,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
 
@@ -239,7 +239,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${ `${repo.patientScreeningDTO.bodyAchesPresent}`}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
                 <Col md={3}>
@@ -252,7 +252,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.headachePresent}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
 
@@ -269,7 +269,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.feverPresent}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
                 <Col md={3}>
@@ -282,7 +282,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
 
@@ -299,7 +299,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.fatiguePresent}` === true
                                 ? 'YES'
-                                : 'FALSE'}</h6>
+                                : 'NO'}</h6>
                     </FormGroup>
                 </Col>
                 <Col md={3}>
@@ -312,7 +312,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}` === true
                                 ? 'YES'
-                                : 'FALSE'}
+                                : 'NO'}
                         </h6>
                     </FormGroup>
                 </Col>
@@ -330,7 +330,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
                                 ? 'YES'
-                                : 'FALSE'}
+                                : 'NO'}
                         </h6>
                     </FormGroup>
                 </Col>
@@ -344,7 +344,7 @@ const PatientDashboard = (props) => {
                             : 'green'
                         }}>{repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
                                 ? 'YES'
-                                : 'FALSE'}
+                                : 'NO'}
                         </h6>
                     </FormGroup>
                 </Col>
