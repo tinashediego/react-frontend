@@ -216,7 +216,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.coldsPresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.coldsPresent}` === true
+                                    }}>{repo.patientScreeningDTO.coldsPresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -233,7 +233,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.diarrhoeaPresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.diarrhoeaPresent}` === true
+                                    }}>{repo.patientScreeningDTO.diarrhoeaPresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -246,7 +246,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.difficultiesInBreathingPresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}` === true
+                                    }}>{repo.patientScreeningDTO.difficultiesInBreathingPresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -263,7 +263,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.bodyAchesPresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${ `${repo.patientScreeningDTO.bodyAchesPresent}`}` === true
+                                    }}>{repo.patientScreeningDTO.bodyAchesPresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -276,7 +276,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.headachePresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.headachePresent}` === true
+                                    }}>{repo.patientScreeningDTO.headachePresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -293,7 +293,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.feverPresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.feverPresent}` === true
+                                    }}>{repo.patientScreeningDTO.feverPresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -306,7 +306,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.difficultiesInBreathingPresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.difficultiesInBreathingPresent}` === true
+                                    }}>{repo.patientScreeningDTO.difficultiesInBreathingPresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -323,7 +323,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.fatiguePresent === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.fatiguePresent}` === true
+                                    }}>{repo.patientScreeningDTO.fatiguePresent === true
                                             ? 'YES'
                                             : 'NO'}</h6>
                                 </FormGroup>
@@ -336,7 +336,7 @@ export default function Report({reset}) {
                                         color:  repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
                                         ? 'red'
                                         : 'green'
-                                    }}>{`${repo.patientScreeningDTO.hasDirectContactWithCovid19Patient}` === true
+                                    }}>{repo.patientScreeningDTO.hasDirectContactWithCovid19Patient === true
                                             ? 'YES'
                                             : 'NO'}
                                     </h6>
@@ -407,7 +407,7 @@ export default function Report({reset}) {
                                     color:  repo.patientScreeningDTO.receivedAnyCounsellingOnCovid19 === true
                                     ? 'red'
                                     : 'green'
-                                }}>{`${repo.patientScreeningDTO.receivedAnyCounsellingOnCovid19}` === true
+                                }}>{repo.patientScreeningDTO.receivedAnyCounsellingOnCovid19 === true
                                         ? 'YES'
                                         : 'NO'}
                                 </h6>
