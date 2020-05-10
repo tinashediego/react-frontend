@@ -14,7 +14,7 @@ import axios from 'axios'
 
 import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles } from '@material-ui/core/styles';
-
+import api from '../../../utils/helpers/api';
 
 
 
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
         e.preventDefault();
         if (state) {
 
-          axios.post('http://45.76.141.84:8080/test-kit-type' ,state)
+          axios.post(`${api.customUrl}/test-kit-type` ,state)
                .then(res=>{
 
                 handleClick()  

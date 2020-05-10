@@ -10,6 +10,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
+import api from '../../../utils/helpers/api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,7 +78,7 @@ const Login = ({next}) => {
         if (userData) {
 
             axios
-                .post('http://45.76.141.84:8080/authenticate', userData)
+                .post(`${api.authUrl}`, userData)
                 .then( async res => {
                     localStorage.setItem('access_token', res.data.jwtToken)
                     const decoded = jwt_decode(res.data.jwtToken);

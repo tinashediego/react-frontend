@@ -11,8 +11,10 @@ import axios from 'axios'
 import {makeStyles} from '@material-ui/core/styles';
 import {Button} from '@material-ui/core';
 import Logo from '../../../assets/logo.png';
-import html2canvas from 'html2canvas'
-import * as jsPDF from 'jspdf';
+import api from '../../../utils/helpers/api';
+
+
+
 
 
 
@@ -52,7 +54,7 @@ export default function Report({reset}) {
     useEffect(() => {
         const fetchData = async() => {
 
-            const resp = await axios.post('http://45.76.141.84:8080/v1/maisha-status-report', {testId: id})
+            const resp = await axios.post(`${api.apiUrl}/maisha-status-report`, {testId: id})
 
             setRepo(resp.data)
 

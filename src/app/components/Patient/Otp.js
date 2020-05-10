@@ -7,6 +7,7 @@ import Logo from '../../../assets/logo.png';
 import axios from "axios"
 
 import {TextField} from '@material-ui/core';
+import api from '../../../utils/helpers/api';
 
 const Otp = () => {
 
@@ -18,7 +19,7 @@ const Otp = () => {
     function handleSubmit(e) {
         e.preventDefault();
         axios
-            .post('http://45.76.141.84:8080/v1/users/regenerate-otp', userData)
+            .post(`${api.apiUrl}/users/regenerate-otp`, userData)
             .then(resp => {
                 alert('success')
                 pu.push('/patient')

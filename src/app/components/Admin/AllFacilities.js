@@ -27,6 +27,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import api from '../../../utils/helpers/api';
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -160,7 +161,7 @@ const AllFacilities  = (props) =>{
 
 
 
-          axios.post('http://45.76.141.84:8080/v1/testing-facilities' ,state)
+          axios.post(`${api.apiUrl}/testing-facilities` ,state)
                .then(resp=>{
                  alert('Sucess')
                  setOpen(false);

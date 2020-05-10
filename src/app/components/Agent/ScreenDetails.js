@@ -7,6 +7,11 @@ import axios from 'axios'
 import Snackbar from '@material-ui/core/Snackbar';
 
 import { makeStyles } from '@material-ui/core/styles';
+import api from '../../../utils/helpers/api';
+
+
+
+
 
 
 
@@ -115,7 +120,7 @@ const handleSubmit = (e) => {
   e.preventDefault();
 
 
-  axios.post("http://45.76.141.84:8080/v1/patient-screenings" ,newScreen)
+  axios.post(`${api.apiUrl}/patient-screenings` ,newScreen)
         .then(resp =>{
 
             localStorage.setItem('partnerID',resp.data.id)

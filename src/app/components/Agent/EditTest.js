@@ -1,7 +1,7 @@
 import React,{useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {allKits} from '../../../redux/actions/KitsActions'
-import {useParams} from 'react-router'
+
 import Alert from '@material-ui/lab/Alert';
 import {Col,Label,Input,FormGroup,Row }  from 'reactstrap'
 import moment from 'moment'
@@ -9,6 +9,7 @@ import axios from 'axios'
 import {TextField} from '@material-ui/core'
 import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles } from '@material-ui/core/styles';
+import api from '../../../utils/helpers/api';
 
 
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   const [openError, setOpenError] = React.useState(false);
 
   const content2 = useSelector((state) => state.kits.allkits);  
-  let  para = useParams()
+  
   const dispatch2 = useDispatch(allKits());
   useEffect(() => {
 
@@ -105,7 +106,7 @@ const handleSubmit = (e) => {
 
         console.log(newScreen)
 
-        axios.post("http://45.76.141.84:8080/v1/tests" ,newScreen)
+        axios.post(`${api.apiUrl}/tests` ,newScreen)
              .then(resp=>{
 
                 localStorage.setItem('testId' ,resp.data.id)

@@ -2,14 +2,14 @@
 import axios  from 'axios'
 import { ADD_PATIENT  ,GET_ERRORS, ONE_PATIENT,MYTESTS, TEST_PATIENT, ALL_TEST, ONE_SCREEN, UPDATE_SCREEN, UPDATE_TEST, ALL_PATIENTS, PENDING} from '../types';
 
-
+import api  from '../../utils/helpers/api'
 
 export const addPatient = (user) => dispatch => {
 
 
     
     axios
-      .post("http://45.76.141.84:8080/v1/patients",user)
+      .post(`${api.apiUrl}/patients`,user)
       .then(resp=>{
           dispatch({
               type:ADD_PATIENT,
@@ -41,7 +41,7 @@ export const addPatient = (user) => dispatch => {
 export const testPatient = (patientData) => dispatch =>{
 
 
-    axios.post('http://45.76.141.84:8080/v1/tests' , patientData)
+    axios.post(`${api.apiUrl}/tests` , patientData)
          .then(resp=>{
  
             dispatch({
@@ -68,7 +68,7 @@ export const Record = () => dispatch =>{
   let username = localStorage.getItem('username')
 
 
-    axios.get(`http://45.76.141.84:8080/v1/patient-screenings/agent/my-records?name=${username}`)
+    axios.get(`${api.apiUrl}/patient-screenings/agent/my-records?name=${username}`)
          .then(resp=>{
 
             dispatch({
@@ -92,7 +92,7 @@ export const Record = () => dispatch =>{
 export const updateTest = (patientData) => dispatch =>{
 
 
-    axios.post('http://45.76.141.84:8080/v1/patient-screenings' , patientData)
+    axios.post(`${api.apiUrl}/patient-screenings`, patientData)
          .then(resp=>{
               console.log(resp.data)
             dispatch({
@@ -118,7 +118,7 @@ export const allPatient = () => dispatch=>{
   
 
 
-    axios.get("http://45.76.141.84:8080/v1/patients/all/by-agent-facility")
+    axios.get(`${api.apiUrl}/patients/all/by-agent-facility`)
          .then(resp=>{
            dispatch({
            type:ALL_PATIENTS,
@@ -139,7 +139,7 @@ export const allPatient = () => dispatch=>{
   
 export const onePatient = (id) => dispatch=>{
 
-    axios.get(`http://45.76.141.84:8080/v1/patients/id`)
+    axios.get(`${api.apiUrl}/patients/${id}`)
          .then(resp=>{
            console.log(resp.data)
            dispatch({
@@ -159,7 +159,7 @@ export const onePatient = (id) => dispatch=>{
 
  export const onePatientScreen = (id) => dispatch=>{
 
-    axios.get(`http://45.76.141.84:8080/v1/patient-screenings/all/${id}`)
+    axios.get(`${api.apiUrl}/patient-screenings/all/${id}`)
          .then(resp=>{
            console.log(resp.data)
            dispatch({
@@ -181,7 +181,7 @@ export const onePatient = (id) => dispatch=>{
 
   export const allPatientTests = (id) => dispatch=>{
 
-    axios.get(` http://45.76.141.84:8080/v1/tests/patient/${id}`)
+    axios.get(`${api.apiUrl}/tests/patient/${id}`)
          .then(resp=>{
            dispatch({
            type:ALL_TEST,
@@ -204,7 +204,7 @@ export const onePatient = (id) => dispatch=>{
   
 
 
-        axios.put(`http://45.76.141.84:8080/v1/tests/${x.id}/results`,x)
+        axios.put(`${api.apiUrl}/tests/${x.id}/results`,x)
              .then(resp=>{
                console.log(resp.data)
                dispatch({
@@ -228,7 +228,7 @@ export const onePatient = (id) => dispatch=>{
 
  
 
-    axios.get(`http://45.76.141.84:8080/v1/tests/pending`)
+    axios.get(`${api.apiUrl}/tests/pending`)
          .then(resp=>{
            dispatch({
            type:PENDING,

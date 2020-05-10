@@ -18,6 +18,7 @@ import TableHead from '@material-ui/core/TableHead';
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import api from '../../../utils/helpers/api';
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
@@ -130,7 +131,7 @@ export default function AllUsers() {
   }
   alert(newData.username)
 
-  axios.post("http://45.76.141.84:8080/v1/users/reset-password",newData)
+  axios.post(`${api.apiUrl}/users/reset-password`,newData)
        .then(resp=>{
 
 

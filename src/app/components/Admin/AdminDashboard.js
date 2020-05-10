@@ -19,7 +19,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import api from '../../../utils/helpers/api';
 const useStyles1 = makeStyles((theme) => ({
     root: {
         flexShrink: 0,
@@ -155,28 +155,28 @@ const AdminDashboard = () => {
     useEffect(() => {
 
         const fetchSym = async() => {
-            const resp1 = await axios.get('http://45.76.141.84:8080/v1/tests/testing-trigger')
+            const resp1 = await axios.get(`${api.apiUrl}/tests/testing-trigger`)
             setSym(resp1.data)
 
         }
 
         const fetchProvince = async() => {
 
-            const resp2 = await axios.get('http://45.76.141.84:8080/v1/tests/test-coverage/cumulative/province')
+            const resp2 = await axios.get(`${api.apiUrl}/tests/test-coverage/cumulative/province`)
 
             setProv(resp2.data)
         }
 
         const fetchUtils = async() => {
 
-            const resp3 = await axios.get('http://45.76.141.84:8080/v1/test-kits/test-utilisation')
+            const resp3 = await axios.get(`${api.apiUrl}/test-kits/test-utilisation`)
 
             setUtils(resp3.data)
         }
 
         const cummulativeCity = async() => {
 
-            const Cum = await axios.get('http://45.76.141.84:8080/v1/patients/demographics/age')
+            const Cum = await axios.get(`${api.apiUrl}/patients/demographics/age`)
 
             setCum(Cum.data)
 
@@ -184,7 +184,7 @@ const AdminDashboard = () => {
 
         const fetchDemo = async() => {
 
-            const mydemo = await axios.get('http://45.76.141.84:8080/v1/patients/demographics')
+            const mydemo = await axios.get(`${api.apiUrl}/patients/demographics`)
 
             setDemo(mydemo.data)
         }
@@ -196,7 +196,7 @@ const AdminDashboard = () => {
 
             let myq = SearchCityData.search.toUpperCase()
 
-            const cityd = await axios.get(`http://45.76.141.84:8080/v1/tests/test-coverage/daily/city?city=${myq}`)
+            const cityd = await axios.get(`${api.apiUrl}/tests/test-coverage/daily/city?city=${myq}`)
 
             setCityDaily(cityd.data)
 
@@ -208,7 +208,7 @@ const AdminDashboard = () => {
 
             let myq = SearchProvData.search.toUpperCase()
 
-            const cityW = await axios.get(`http://45.76.141.84:8080/v1/tests/test-coverage/weekly/city?city=${myq}`)
+            const cityW = await axios.get(`${api.apiUrl}/tests/test-coverage/weekly/city?city=${myq}`)
 
             setcityWeek(cityW.data)
 
@@ -301,31 +301,7 @@ const AdminDashboard = () => {
     //console.log(cumCity)
 
 
-   // console.log(cumCity)
-    let bee = cumCity.map((x) => {
-
-        let maxp = x
-            .ageRangeDemographicsCollection
-            .map(y => {
-
-                let a = {
-                    name: `${x.cityOrProvinceName}`,
-                    data: [
-                        [y.ageRange.max, y.numberOfPositive]
-                    ]
-
-                }
-
-                return a
-
-            })
-
-      
-
-        return maxp
-
-    })
-
+  
     
     console.log(cityDaily)
     //console.log(cityDaily)

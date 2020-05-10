@@ -16,6 +16,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button'
+import api from '../../../utils/helpers/api';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -191,7 +192,7 @@ const AddPatient = ({next}) => {
         e.preventDefault();
         if (patientData) {
             axios
-                .post('http://45.76.141.84:8080/v1/patients', newPatient)
+                .post(`${api.apiUrl}/patients`, newPatient)
                 .then(resp => {
                     console.log(resp)
                     localStorage.setItem('patientId', resp.data.id)

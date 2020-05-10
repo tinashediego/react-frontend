@@ -8,6 +8,7 @@ import axios from 'axios'
 import { TextField } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles } from '@material-ui/core/styles';
+import api from '../../../utils/helpers/api';
 
 
 
@@ -97,7 +98,7 @@ var newScreen = {
 
         console.log(newScreen)
 
-        axios.post("http://45.76.141.84:8080/v1/test-kits/register-defective" ,newScreen)
+        axios.post(`${api.apiUrl}/test-kits/register-defective` ,newScreen)
              .then(resp=>{
               
               

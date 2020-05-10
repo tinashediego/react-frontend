@@ -11,6 +11,7 @@ import {useHistory} from 'react-router'
 import axios from 'axios'
 import QRCode from 'qrcode'
 import Logo from '../../../assets/logo.png';
+import api from '../../../utils/helpers/api';
 
 const PatientDashboard = (props) => {
 
@@ -24,8 +25,8 @@ const PatientDashboard = (props) => {
     useEffect(() => {
         const fetchData = async() => {
 
-            const resp = await axios.get('http://45.76.141.84:8080/v1/maisha-status-report')
-            const users = await axios.get('http://45.76.141.84:8080/v1/users/profile')
+            const resp = await axios.get(`${api.apiUrl}/maisha-status-report`)
+            const users = await axios.get(`${api.apiUrl}/users/profile`)
 
             setRepo(resp.data)
             setUser(users.data)

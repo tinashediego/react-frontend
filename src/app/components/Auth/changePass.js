@@ -7,7 +7,7 @@ import Logo from '../../../assets/logo.png';
 import axios from "axios"
 
 import {TextField} from '@material-ui/core';
-
+import api from '../../../utils/helpers/api';
 const ChangePass = () => {
 
     const [userData,
@@ -20,7 +20,7 @@ const ChangePass = () => {
     function handleSubmit(e) {
         e.preventDefault();
         axios
-            .post('http://45.76.141.84:8080/v1/users/change-password', userData)
+            .post(`${api.apiUrl}/users/change-password`, userData)
             .then(resp => {
                 alert('success')
                 pu.push('/agent')

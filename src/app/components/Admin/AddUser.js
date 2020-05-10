@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TextField } from '@material-ui/core';
 import cityList  from '../Agent/city'
 import axios from 'axios'
+import api from '../../../utils/helpers/api';
 
 const AddUser  = () =>{
 
@@ -94,7 +95,7 @@ const AddUser  = () =>{
     e.preventDefault();
     if (newUser) {
 
-      axios.post('http://45.76.141.84:8080/v1/testing-agents' ,userCommand)
+      axios.post(`${api.apiUrl}/testing-agents` ,userCommand)
            .then(resp=>{
 
             alert('success')

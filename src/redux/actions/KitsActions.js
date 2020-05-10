@@ -1,10 +1,11 @@
 import axios from "axios";
-import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS, ONE_KIT, UPDATE_KIT} from "../types";
+import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS,} from "../types";
+import api  from '../../utils/helpers/api'
 
   // add a new desktop
   export const addKit = (kitData) => dispatch => {
     axios
-      .post("http://45.76.141.84:8080/v1/test-kits", kitData)
+      .post(`${api.apiUrl}/test-kits`, kitData)
       .then(resp=>{
           dispatch({
               type:ADD_KIT,
@@ -27,35 +28,13 @@ import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS, ONE_KIT,
 
 
 
-    // add a new desktop
-    export const updateKit = (kitData) => dispatch => {
-        axios
-          .post("/desktops", kitData)
-          .then(resp=>{
-              dispatch({
-                  type:UPDATE_KIT,
-                  payload:resp.data,
-                  msg:alert("succcess")
-    
-              })
-          })
-          .catch(err =>{ 
-    
-            console.log(err)
-            dispatch({
-              type: GET_ERRORS,
-              payload: err
-            })
-        }
-          );
-      };
     
     
 
   
   export const allKits = () => dispatch=>{
 
-    axios.get("http://45.76.141.84:8080/test-kit-type/all")
+    axios.get(`${api.customUrl}/test-kit-type/all`)
          .then(resp=>{
            console.log(resp)
            dispatch({
@@ -72,24 +51,7 @@ import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS, ONE_KIT,
 
   }
 
-  export const oneKit = (id) => dispatch=>{
 
-    axios.get(`${id}`)
-         .then(resp=>{
-           console.log(resp.data)
-           dispatch({
-           type:ONE_KIT,
-           payload:resp
-         })}).catch(err=>{
-          dispatch({
-            type:GET_ERRORS,
-            payload:err,
-            msg:alert('trouble getting data ,please refresh')
-          })
-
-        })
-
-  }
 
 
 
@@ -99,7 +61,7 @@ import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS, ONE_KIT,
 
   export const Allfacility = () => dispatch=>{
 
-    axios.get("http://45.76.141.84:8080/v1/testing-facilities/all")
+    axios.get(`${api.apiUrl}/testing-facilities/all`)
          .then(resp=>{
            console.log(resp)
            dispatch({
@@ -122,7 +84,7 @@ import { ADD_KIT  ,ALL_KITS , ALL_FACILITY ,ADD_FACILITY,   GET_ERRORS, ONE_KIT,
   // add a new desktop
   export const addfacilty = (fData) => dispatch => {
     axios
-      .post("http://45.76.141.84:8080/v1/test-kits", fData)
+      .post(`${api.apiUrl}/test-kits`, fData)
       .then(resp=>{
           dispatch({
               type:ADD_FACILITY,

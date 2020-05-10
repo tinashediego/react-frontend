@@ -1,7 +1,5 @@
 import axios from "axios";
-
-
-
+import api  from '../../utils/helpers/api'
 import { GET_ERRORS,ALL_USERS } from "../types";
 // this  is a comment
 
@@ -23,7 +21,7 @@ localStorage.clear()
 
 export const allUsers = () => dispatch=>{
 
-  axios.get("http://45.76.141.84:8080/v1/testing-agents/all")
+  axios.get(`${api.apiUrl}/testing-agents/all`)
        .then(resp=>{
          console.log(resp)
          dispatch({
