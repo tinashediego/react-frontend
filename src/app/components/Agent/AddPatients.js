@@ -278,12 +278,13 @@ const AddPatient = ({next}) => {
 
                                 <option value="HARARE">HARARE</option>
                                 <option value="CHITUNGWIZA">CHITUNGWIZA</option>
+                                <option value="ESPWORTH">ESPWORTH</option>
                             </Select>
                         </FormControl>
 
                     </Grid>
                 )
-            case "BULUWAYO":
+            case "BULAWAYO":
                 return (
                     <Grid item xs={12} sm={6}>
 
@@ -704,7 +705,7 @@ const AddPatient = ({next}) => {
                                 <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
                                 <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
                                 <option value="HARARE">HARARE</option>
-                                <option value="BULUWAYO">BULUWAYO</option>
+                                <option value="BULAWAYO">BULAWAYO</option>
                                 <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
                                 <option value="MASVINGO">MASVINGO</option>
                                 <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
