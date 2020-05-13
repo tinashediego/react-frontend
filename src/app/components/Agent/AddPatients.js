@@ -158,6 +158,8 @@ const AddPatient = ({next}) => {
 
     function handleSubmit(e) {
 
+
+        e.preventDefault();
         
     
 
@@ -184,26 +186,37 @@ const AddPatient = ({next}) => {
 
     }
 
+
+
+    if(`${moment().diff(newPatient.dateOfBirth, 'years',false)}`<'1' ||`${moment().diff(newPatient.dateOfBirth, 'years',false)}`>'95'){
+
+        alert('Your date of birth must be  of person betwen 1 & 95')
+
+    }else{
+    
+        axios
+            .post(`${api.apiUrl}/patients`, newPatient)
+            .then(resp => {
+                console.log(resp)
+                localStorage.setItem('patientId', resp.data.id)
+                localStorage.setItem('currentPatient', patientData.firstName)
+                handleClick()
+            })
+            .catch(err => {
+
+                handleClickError()
+
+            })
+
+
+    }
+
   
 
 
-        e.preventDefault();
-        if (patientData) {
-            axios
-                .post(`${api.apiUrl}/patients`, newPatient)
-                .then(resp => {
-                    console.log(resp)
-                    localStorage.setItem('patientId', resp.data.id)
-                    localStorage.setItem('currentPatient', patientData.firstName)
-                    handleClick()
-                })
-                .catch(err => {
+    
 
-                    handleClickError()
-
-                })
-
-        }
+        
 
     }
 
@@ -356,6 +369,8 @@ const AddPatient = ({next}) => {
                                 <option value="MANICALAND">MANICALAND</option>
                                 <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
                                 <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+                                <option value="HARARE">HARARE</option>
+                                <option value="BULUWAYO">BULUWAYO</option>
                                 <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
                                 <option value="MASVINGO">MASVINGO</option>
                                 <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
