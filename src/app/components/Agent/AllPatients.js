@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
 import { allPatient} from '../../../redux/actions/PatientsActions'
+import {useHistory} from 'react-router'
 import {Link} from  'react-router-dom'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -130,9 +131,17 @@ export default function AllPatients() {
 
   let a  =  content
 
+var  pu =  useHistory()
+
+ function testAgain (x ,y){
+
+  localStorage.setItem('tempName' ,y)
+
+  pu.push(`/test/${x}`)
 
 
 
+  }
 
 
   
@@ -193,8 +202,8 @@ export default function AllPatients() {
                 <TableCell align="left">{row.dateOfBirth}</TableCell>
                 <TableCell align="left">
                 
-                    <Button variant="contained">
-                        <Link style={{color: "red"}} to={`/test/${row.patientId}`}>Repeat Test</Link>
+                    <Button variant="contained"    onClick={()=>{ testAgain(row.patientId , row.firstName)}}>
+                        <Link style={{color: "red"}}>Repeat Test</Link>
                     </Button>
 
                 </TableCell>
