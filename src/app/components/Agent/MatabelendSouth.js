@@ -1,0 +1,32 @@
+var matSouth = [
+    'ANTELOPE_MINE',
+    'BEITBRIDGE',
+    'BLANKET',
+    'COLLEEN',
+    'BAWN',
+    'ESIGODINI',
+    'ESIMBOMVU',
+    'FIGTREE',
+    'FILABUSI',
+    'FORT_RIXON',
+    'FORT_USHER',
+    'GWANDA',
+    'KAME',
+    'KEZI',
+    'MANGWE',
+    'MAPHISA',
+    'MARULA',
+    'MAZUNGA',
+    'MBALABALA',
+    'MPHOENGS',
+    'NGWESI',
+    'NSIZA',
+    'PLUMTREE',
+    'TOWLA',
+    'TULI',
+    'VUBACHIKWE',
+    'WEST_NICHOLSON',
+    
+]
+
+module.exports = matSouth
