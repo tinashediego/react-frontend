@@ -8,6 +8,15 @@ import Snackbar from '@material-ui/core/Snackbar';
 import cityList from './city'
 import HarareSurburbs from './Haras'
 import BulawayoSurbubs from './Blues'
+import MidlandsCities from './MIDLANDS'
+import matN  from './MatableNorth'
+import matSouth  from './MatabelendSouth'
+import MasVegas from './Masvingo'
+import manicaland from './Manicalands'
+import   mashcent from './MAshCent'
+import  masheast  from './masheast' 
+import mashwest from './MashWest'
+
 import {makeStyles} from '@material-ui/core/styles';
 
 import InputLabel from '@material-ui/core/InputLabel';
@@ -72,7 +81,7 @@ const AddPatient = ({next}) => {
 
     };
 
-    console.log(cityList)
+
 
     const [patientData,
         setPatient] = useState({
@@ -93,7 +102,7 @@ const AddPatient = ({next}) => {
 
     })
 
-    function ifYes() {
+    function handleCities() {
 
         console.log(patientData.city)
 
@@ -154,6 +163,254 @@ const AddPatient = ({next}) => {
 
     }
 
+
+    function handleProvinces (){
+
+
+
+
+        switch (patientData.province) {
+            case 'MIDLANDS':
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {MidlandsCities.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+            
+        
+                case  "MANICALAND":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {manicaland.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+                case  "MASHONALAND_CENTRAL":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {mashcent.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+                case   "MASHONALAND_EAST":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {masheast.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+                case   "HARARE":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+                case   "BULUWAYO":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'suburb',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+                case    "MASHONALAND_WEST":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {mashwest.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+
+                case    "MASVINGO":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {MasVegas.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+                case    "MATABELELAND_NORTH":
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {matN.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+
+                case   "MATABELELAND_SOUTH":
+
+                    return (
+                        <Grid item xs={12} sm={6}>
+    
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                                <Select
+                                    native
+                                    value={patientData.city}
+                                    onChange={e => setPatient({
+                                    ...patientData,
+                                    city: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'city',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/> {matSouth.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                </Select>
+                            </FormControl>
+    
+                        </Grid>
+                    )
+                   
+            default:
+                break;
+        }
+    }
+
     
 
     function handleSubmit(e) {
@@ -193,6 +450,9 @@ const AddPatient = ({next}) => {
         alert('Your date of birth must be  of person betwen 1 & 95')
 
     }else{
+
+
+
     
         axios
             .post(`${api.apiUrl}/patients`, newPatient)
@@ -380,29 +640,8 @@ const AddPatient = ({next}) => {
                         </FormControl>
 
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="age-native-simple">City</InputLabel>
-                            <Select
-                                native
-                                value={patientData.city}
-                                required
-                                onChange={e => setPatient({
-                                ...patientData,
-                                city: e.target.value
-                            })}
-                                inputProps={{
-                                name: 'city',
-                                id: 'age-native-simple'
-                            }}>
-                                <option aria-label="None" value=""/> {cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                            </Select>
-                        </FormControl>
-
-                    </Grid>
-
-                    {ifYes()}
+                    {handleProvinces()}
+                    {handleCities()}
                     <Grid item xs={12} sm={6}>
 
                         <FormControl className={classes.formControl}>

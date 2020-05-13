@@ -1,0 +1,30 @@
+var masheast = [
+'ARCTURUS',
+'BEATRICE',
+'BONDAMAKARA',
+'BROMLEY',
+'CHITUNGWIZA',
+'EPWORTH',
+'GOROMONZI',
+'HARARE',
+'JURU',
+'KOTWA',
+'MACHEKE',
+'MAHUSEKWA',
+'MAKAHA',
+'MAKOSA',
+'MARONDERA',
+'MUREWA',
+'MUTAWATAWA',
+'MUTOKO',
+'NHARIRA',
+'NYAMAPANDA',
+'RUWA',
+'SADZA',
+'SUSWE',
+'WEDZA'
+
+
+]
+
+module.exports =  masheast
