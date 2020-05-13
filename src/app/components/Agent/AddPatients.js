@@ -354,8 +354,6 @@ const AddPatient = ({next}) => {
                             id: 'age-native-simple'
                         }}>
                             <option aria-label="None" value=""/>
-                            <option value="BULAWAYO">BULAWAYO</option>
-                            <option value="HARARE">HARARE</option>
                             <option value="MANICALAND">MANICALAND</option>
                             <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
                             <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
