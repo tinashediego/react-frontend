@@ -42,7 +42,7 @@ export const mainListItems = (
     </ListItemIcon>
     </Link>
     <Link to='/defect' style={{color:'white'}}>
-    <ListItemText primary="REGISTER DEFECT" />
+    <ListItemText primary="Register Defect" />
     </Link>
   </ListItem> 
   </div>

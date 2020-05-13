@@ -25,9 +25,9 @@ const ChangePass = () => {
                 alert('success')
                 pu.push('/agent')
             })
-            .catch(err => {
-
-                alert(err.message)
+            .catch((err) => {
+                /*alert(err.message)*/
+                alert("Error, please make sure you are entering correct details");
             })
 
     }

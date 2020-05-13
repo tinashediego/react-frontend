@@ -276,14 +276,14 @@ const AddPatient = ({next}) => {
                             ...patientData,
                             passportNumber: e.target.value
                         })}
-                            placeholder="e.g passport Number"
+                            placeholder="e.g CB3225572"
                             fullWidth />
                     </Grid>
                     <Grid item xs={12} sm={6}>
 
                         <TextField
                             id="date"
-                            label="DATE OF BIRTH"
+                            label="Date of Birth"
                             type="date"
                             value={patientData.dateOfBirth}
                             required
