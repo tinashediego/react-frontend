@@ -169,7 +169,7 @@ var  pu =  useHistory()
         <TableHead>
 
             <TableRow>
-                <TableCell align="left">NO#</TableCell>
+                
                 <TableCell align="left">Date</TableCell>
                 <TableCell align="left">First Name</TableCell>
                 <TableCell align="left">Last Name</TableCell>
@@ -188,9 +188,7 @@ var  pu =  useHistory()
               return dateA - dateB;
           }).reverse().filter( (x)=>{ return x.phoneNumber.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).map((row ,i) => (
             <TableRow key={i}>
-                <TableCell align="left" component="th" scope="row">
-                    {i+1}
-                </TableCell>
+                
                 <TableCell>{moment(row.createdDate).format('DD/MM/YYYY')}</TableCell>
                 <TableCell align="left">{row.firstName}</TableCell>
                 <TableCell align="left">{row.lastName}</TableCell>
