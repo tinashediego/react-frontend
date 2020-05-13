@@ -19,23 +19,23 @@ import Button from '@material-ui/core/Button'
 import api from '../../../utils/helpers/api';
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1)
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2)
+    }
 }));
 
 const AddPatient = ({next}) => {
@@ -88,18 +88,87 @@ const AddPatient = ({next}) => {
         "phoneNumber": "",
         "gender": "",
         "city": "",
-        "suburb":"",
+        "suburb": "",
         "province": ""
 
     })
 
+    function ifYes() {
+
+        console.log(patientData.city)
+
+        switch (patientData.city) {
+            case 'HARARE':
+
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                            <Select
+                                native
+                                value={patientData.suburb}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                suburb: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+
+            case 'BULAWAYO':
+
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                            <Select
+                                native
+                                value={patientData.suburb}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                suburb: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+
+            default:
+                break;
+        }
+
+    }
+
+    
+
+    function handleSubmit(e) {
+
+        
+    
+
+        
     var newPatient = {
         userCommand: {
             "firstName": patientData.firstName,
             "lastName": patientData.lastName,
             "group": patientData.group,
             "gender": patientData.gender,
-            "phoneNumber": patientData.phoneNumber,
+            "phoneNumber":'+263' + patientData.phoneNumber.substr(1),
             "email": patientData.email,
             "nationalIdNumber": patientData.nationalId,
             "passportNumber": patientData.passportNumber,
@@ -109,85 +178,14 @@ const AddPatient = ({next}) => {
                 "streetAddress": patientData.address,
                 "city": patientData.city,
                 "province": patientData.province,
-                "suburb":patientData.suburb
+                "suburb": patientData.suburb
             }
         }
 
     }
 
+  
 
-    
-  function ifYes(){
-
-    console.log(patientData.city)
-
-    switch (patientData.city) {
-        case 'HARARE':
-
-            return(  
-                <Grid item xs={12} sm={6}>
-
-                <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
-                    <Select
-                        native
-                        value={patientData.suburb}
-                        onChange={e => setPatient({
-                        ...patientData,
-                        suburb: e.target.value
-                    })}
-                        inputProps={{
-                        name: 'suburb',
-                        id: 'age-native-simple'
-                    }}>
-                        <option aria-label="None" value=""/>
-                         {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                    </Select>
-                </FormControl>
-
-            </Grid>)
-
-            case 'BULAWAYO':
-
-                return(  
-                    <Grid item xs={12} sm={6}>
-    
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
-                        <Select
-                            native
-                            value={patientData.suburb}
-                            onChange={e => setPatient({
-                            ...patientData,
-                            suburb: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'suburb',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/>
-                             {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
-    
-                </Grid>)
-            
-    
-    
-        default:
-            break;
-    }
-
-
-   
-  }
-
-
-
-
-    console.log(patientData.province)
-
-    function handleSubmit(e) {
 
         e.preventDefault();
         if (patientData) {
@@ -210,12 +208,11 @@ const AddPatient = ({next}) => {
     }
 
     return (
-      <Container component="main" maxWidth="xl">
+        <Container component="main" maxWidth="xl">
 
-        <Typography component="h1" style={styles.container} variant="h5">
-        New Patient
-        </Typography>
-         
+            <Typography component="h1" style={styles.container} variant="h5">
+                New Patient
+            </Typography>
 
             <div className={classes.root}>
 
@@ -246,7 +243,8 @@ const AddPatient = ({next}) => {
                         })}
                             placeholder="First Name"
                             autoComplete="firstName"
-                            fullWidth/>
+                            fullWidth required
+                            />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
@@ -257,7 +255,7 @@ const AddPatient = ({next}) => {
                             lastName: e.target.value
                         })}
                             placeholder="Last Name"
-                            fullWidth/>
+                            fullWidth required/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
@@ -268,7 +266,7 @@ const AddPatient = ({next}) => {
                             nationalId: e.target.value
                         })}
                             placeholder="e.g 63-1234567A12"
-                            fullWidth/>
+                            fullWidth required/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
@@ -279,25 +277,25 @@ const AddPatient = ({next}) => {
                             passportNumber: e.target.value
                         })}
                             placeholder="e.g passport Number"
-                            fullWidth/>
+                            fullWidth />
                     </Grid>
                     <Grid item xs={12} sm={6}>
 
-                    <TextField
-                    id="date"
-                    label="DATE OF BIRTH"
-                    type="date"
-                    value={patientData.dateOfBirth}
-                    className={classes.textField}
-                    onChange={e => setPatient({
-                        ...patientData,
-                        dateOfBirth: e.target.value
-                    })}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                       
+                        <TextField
+                            id="date"
+                            label="DATE OF BIRTH"
+                            type="date"
+                            value={patientData.dateOfBirth}
+                            required
+                            className={classes.textField}
+                            onChange={e => setPatient({
+                            ...patientData,
+                            dateOfBirth: e.target.value
+                        })}
+                            InputLabelProps={{
+                            shrink: true
+                        }}/>
+
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
@@ -310,20 +308,21 @@ const AddPatient = ({next}) => {
                             email: e.target.value
                         })}
                             placeholder="Email"
-                            fullWidth/>
+                            fullWidth required/>
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Phone Number"
-                            type="text"
+                            type='number'
+                            name="number"
                             value={patientData.phoneNumber}
                             onChange={e => setPatient({
                             ...patientData,
                             phoneNumber: e.target.value
                         })}
-                            placeholder="e.g +263772123456"
-                            fullWidth/>
+                            placeholder="0123456789"
+                            fullWidth required/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
@@ -334,38 +333,38 @@ const AddPatient = ({next}) => {
                             address: e.target.value
                         })}
                             placeholder="Address"
-                            fullWidth/>
+                            fullWidth required/>
                     </Grid>
-
 
                     <Grid item xs={12} sm={6}>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Province</InputLabel>
-                        <Select
-                            native
-                            value={patientData.province}
-                            onChange={e => setPatient({
-                            ...patientData,
-                            province: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'province',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/>
-                            <option value="MANICALAND">MANICALAND</option>
-                            <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
-                            <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
-                            <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
-                            <option value="MASVINGO">MASVINGO</option>
-                            <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
-                            <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
-                            <option value="MIDLANDS">MIDLANDS</option>
-                        </Select>
-                    </FormControl>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">Province</InputLabel>
+                            <Select
+                                native
+                                value={patientData.province}
+                                required
+                                onChange={e => setPatient({
+                                ...patientData,
+                                province: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'province',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/>
+                                <option value="MANICALAND">MANICALAND</option>
+                                <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
+                                <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+                                <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
+                                <option value="MASVINGO">MASVINGO</option>
+                                <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
+                                <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
+                                <option value="MIDLANDS">MIDLANDS</option>
+                            </Select>
+                        </FormControl>
 
-                </Grid>
+                    </Grid>
                     <Grid item xs={12} sm={6}>
 
                         <FormControl className={classes.formControl}>
@@ -373,6 +372,7 @@ const AddPatient = ({next}) => {
                             <Select
                                 native
                                 value={patientData.city}
+                                required
                                 onChange={e => setPatient({
                                 ...patientData,
                                 city: e.target.value
@@ -381,8 +381,7 @@ const AddPatient = ({next}) => {
                                 name: 'city',
                                 id: 'age-native-simple'
                             }}>
-                                <option aria-label="None" value=""/>
-                                 {cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                <option aria-label="None" value=""/> {cityList.map((team) => <option key={team.value} value={team}>{team}</option>)}
                             </Select>
                         </FormControl>
 
@@ -395,6 +394,7 @@ const AddPatient = ({next}) => {
                             <InputLabel htmlFor="age-native-simple">Gender</InputLabel>
                             <Select
                                 native
+                                required
                                 value={patientData.gender}
                                 onChange={e => setPatient({
                                 ...patientData,
@@ -416,18 +416,19 @@ const AddPatient = ({next}) => {
                 </Grid>
 
                 <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                
-                className={classes.submit}
-                style={{backgroundColor:"green" ,color:'white'}}
-              >
-                Submit
-              </Button>
+                    type="submit"
+                    fullWidth 
+                    variant="contained"
+                    className={classes.submit}
+                    style={{
+                    backgroundColor: "green",
+                    color: 'white'
+                }}>
+                    Submit
+                </Button>
             </form>
 
-            </Container>
+        </Container>
     );
 }
 
