@@ -11,7 +11,7 @@ import BulawayoSurbubs from './Blues'
 import MidlandsCities from './MIDLANDS'
 import matN  from './MatableNorth'
 import matSouth  from './MatabelendSouth'
-import MasVegas from './Masvingo'
+import masvingo from './Masvingo'
 import manicaland from './Manicalands'
 import   mashcent from './MAshCent'
 import  masheast  from './masheast' 
@@ -351,7 +351,7 @@ const AddPatient = ({next}) => {
                                     name: 'city',
                                     id: 'age-native-simple'
                                 }}>
-                                    <option aria-label="None" value=""/> {MasVegas.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                                    <option aria-label="None" value=""/> {masvingo.map((team) => <option key={team.value} value={team}>{team}</option>)}
                                 </Select>
                             </FormControl>
     
@@ -411,67 +411,74 @@ const AddPatient = ({next}) => {
         }
     }
 
-    
+
 
     function handleSubmit(e) {
 
+    
 
-        e.preventDefault();
+            e.preventDefault();
         
     
 
         
-    var newPatient = {
-        userCommand: {
-            "firstName": patientData.firstName,
-            "lastName": patientData.lastName,
-            "group": patientData.group,
-            "gender": patientData.gender,
-            "phoneNumber":'+263' + patientData.phoneNumber.substr(1),
-            "email": patientData.email,
-            "nationalIdNumber": patientData.nationalId,
-            "passportNumber": patientData.passportNumber,
-            "dateOfBirth": moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
-            thisAChildIsThisChildOrincapacitatedToUsePhone: patientData.thisAChild,
-            "address": {
-                "streetAddress": patientData.address,
-                "city": patientData.city,
-                "province": patientData.province,
-                "suburb": patientData.suburb
+            var newPatient = {
+                userCommand: {
+                    "firstName": patientData.firstName,
+                    "lastName": patientData.lastName,
+                    "group": patientData.group,
+                    "gender": patientData.gender,
+                    "phoneNumber":'+263' + patientData.phoneNumber.substr(1),
+                    "email": patientData.email,
+                    "nationalIdNumber": patientData.nationalId,
+                    "passportNumber": patientData.passportNumber,
+                    "dateOfBirth": moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
+                    thisAChildIsThisChildOrincapacitatedToUsePhone: patientData.thisAChild,
+                    "address": {
+                        "streetAddress": patientData.address,
+                        "city": patientData.city,
+                        "province": patientData.province,
+                        "suburb": patientData.suburb
+                    }
+                }
+        
             }
+        
+        
+        
+            if(`${moment().diff(patientData.dateOfBirth, 'years',false)}`<'1' ||`${moment().diff(patientData.dateOfBirth, 'years',false)}`>'95'){
+        
+                alert('Your date of birth must be  of person betwen 1 & 95')
+        
+            }else{
+        
+        
+        
+            
+                axios
+                    .post(`${api.apiUrl}/patients`, newPatient)
+                    .then(resp => {
+                        console.log(resp)
+                        localStorage.setItem('patientId', resp.data.id)
+                        localStorage.setItem('currentPatient', patientData.firstName)
+                        handleClick()
+                    })
+                    .catch(err => {
+        
+                        handleClickError()
+        
+                    })
+        
+        
+            
+        
+          
+        
+        
+
+
         }
 
-    }
-
-
-
-    if(`${moment().diff(newPatient.dateOfBirth, 'years',false)}`<'1' ||`${moment().diff(newPatient.dateOfBirth, 'years',false)}`>'95'){
-
-        alert('Your date of birth must be  of person betwen 1 & 95')
-
-    }else{
-
-
-
-    
-        axios
-            .post(`${api.apiUrl}/patients`, newPatient)
-            .then(resp => {
-                console.log(resp)
-                localStorage.setItem('patientId', resp.data.id)
-                localStorage.setItem('currentPatient', patientData.firstName)
-                handleClick()
-            })
-            .catch(err => {
-
-                handleClickError()
-
-            })
-
-
-    }
-
-  
 
 
     

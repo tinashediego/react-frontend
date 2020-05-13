@@ -1,4 +1,4 @@
-var MasVegas = [   
+var masvingo = [   
 'BASERA',
 'BIKITA',
 'BUFFALO_RANGE',
@@ -33,5 +33,5 @@ var MasVegas = [
 'ZAKA',
 'ZIMUTO_SIDING']
 
-module.export = MasVegas
+module.exports = masvingo
 
