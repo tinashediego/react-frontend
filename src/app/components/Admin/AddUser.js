@@ -279,6 +279,8 @@ placeholder="City" required />
               <option>Province</option>
           
               <option value="MANICALAND">MANICALAND</option>
+              <option value="HARARE">HARARE</option>
+              <option value="BULUWAYO">BULUWAYO</option>
               <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
               <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
               <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
