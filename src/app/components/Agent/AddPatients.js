@@ -411,6 +411,22 @@ const AddPatient = ({next}) => {
         }
     }
 
+    function isAlphaNumeric(e) {
+
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+        var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
+        document.getElementById("error").style.display = ret ? "none" : "inline";
+        return ret;
+    }
+
 
 
     function handleSubmit(e) {
@@ -517,6 +533,7 @@ const AddPatient = ({next}) => {
                         <TextField
                             label="First Name"
                             value={patientData.firstName}
+                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             firstName: e.target.value
@@ -525,21 +542,25 @@ const AddPatient = ({next}) => {
                             autoComplete="firstName"
                             fullWidth required
                             />
+                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Last Name"
                             value={patientData.lastName}
+                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             lastName: e.target.value
                         })}
                             placeholder="Last Name"
                             fullWidth required/>
+                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="National ID"
+                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
                             value={patientData.nationalId}
                             onChange={e => setPatient({
                             ...patientData,
@@ -547,17 +568,20 @@ const AddPatient = ({next}) => {
                         })}
                             placeholder="e.g 63-1234567A12"
                             fullWidth required/>
+                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Passport Number"
                             value={patientData.passportNumber}
+                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             passportNumber: e.target.value
                         })}
                             placeholder="e.g CB3225572"
                             fullWidth />
+                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
 
@@ -575,6 +599,7 @@ const AddPatient = ({next}) => {
                             InputLabelProps={{
                             shrink: true
                         }}/>
+                        <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
 
                     </Grid>
 
@@ -596,6 +621,7 @@ const AddPatient = ({next}) => {
                             label="Phone Number"
                             type='number'
                             name="number"
+                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
                             value={patientData.phoneNumber}
                             onChange={e => setPatient({
                             ...patientData,
@@ -603,17 +629,20 @@ const AddPatient = ({next}) => {
                         })}
                             placeholder="0123456789"
                             fullWidth required/>
+                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Address"
                             value={patientData.address}
+                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             address: e.target.value
                         })}
                             placeholder="Address"
                             fullWidth required/>
+                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
