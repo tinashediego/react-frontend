@@ -9,12 +9,12 @@ import cityList from './city'
 import HarareSurburbs from './Haras'
 import BulawayoSurbubs from './Blues'
 import MidlandsCities from './MIDLANDS'
-import matN  from './MatableNorth'
-import matSouth  from './MatabelendSouth'
+import matN from './MatableNorth'
+import matSouth from './MatabelendSouth'
 import masvingo from './Masvingo'
 import manicaland from './Manicalands'
-import   mashcent from './MAshCent'
-import  masheast  from './masheast' 
+import mashcent from './MAshCent'
+import masheast from './masheast'
 import mashwest from './MashWest'
 
 import {makeStyles} from '@material-ui/core/styles';
@@ -80,8 +80,6 @@ const AddPatient = ({next}) => {
         setOpenError(false);
 
     };
-
-
 
     const [patientData,
         setPatient] = useState({
@@ -163,11 +161,7 @@ const AddPatient = ({next}) => {
 
     }
 
-
-    function handleProvinces (){
-
-
-
+    function handleProvinces() {
 
         switch (patientData.province) {
             case 'MIDLANDS':
@@ -193,219 +187,222 @@ const AddPatient = ({next}) => {
 
                     </Grid>
                 )
-            
-        
-                case  "MANICALAND":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {manicaland.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
-                case  "MASHONALAND_CENTRAL":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {mashcent.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
-                case   "MASHONALAND_EAST":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {masheast.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
-                case   "HARARE":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
-                case   "BULUWAYO":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'suburb',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
-                case    "MASHONALAND_WEST":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {mashwest.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
 
-                case    "MASVINGO":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {masvingo.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
-                case    "MATABELELAND_NORTH":
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {matN.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
+            case "MANICALAND":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-                case   "MATABELELAND_SOUTH":
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {manicaland.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    return (
-                        <Grid item xs={12} sm={6}>
-    
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                                <Select
-                                    native
-                                    value={patientData.city}
-                                    onChange={e => setPatient({
-                                    ...patientData,
-                                    city: e.target.value
-                                })}
-                                    inputProps={{
-                                    name: 'city',
-                                    id: 'age-native-simple'
-                                }}>
-                                    <option aria-label="None" value=""/> {matSouth.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                                </Select>
-                            </FormControl>
-    
-                        </Grid>
-                    )
-                   
+                    </Grid>
+                )
+            case "MASHONALAND_CENTRAL":
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {mashcent.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+            case "MASHONALAND_EAST":
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {masheast.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+            case "HARARE":
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/>
+
+                                <option value="HARARE">HARARE</option>
+                                <option value="CHITUNGWIZA">CHITUNGWIZA</option>
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+            case "BULUWAYO":
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/>
+                                <option value="BULAWAYO">BULUWAYO</option>
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+            case "MASHONALAND_WEST":
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {mashwest.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+
+            case "MASVINGO":
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {masvingo.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+            case "MATABELELAND_NORTH":
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {matN.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+
+            case "MATABELELAND_SOUTH":
+
+                return (
+                    <Grid item xs={12} sm={6}>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={patientData.city}
+                                onChange={e => setPatient({
+                                ...patientData,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {matSouth.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+
+                    </Grid>
+                )
+
             default:
                 break;
         }
@@ -413,7 +410,7 @@ const AddPatient = ({next}) => {
 
     function isAlphaNumeric(e) {
 
-        var specialKeys = new Array();
+        var specialKeys = [];
         specialKeys.push(8); //Backspace
         specialKeys.push(9); //Tab
         specialKeys.push(46); //Delete
@@ -421,85 +418,68 @@ const AddPatient = ({next}) => {
         specialKeys.push(35); //End
         specialKeys.push(37); //Left
         specialKeys.push(39); //Right
-        var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+        var keyCode = e.keyCode == 0
+            ? e.charCode
+            : e.keyCode;
         var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
-        document.getElementById("error").style.display = ret ? "none" : "inline";
+        document
+            .getElementById("error")
+            .style
+            .display = ret
+            ? "none"
+            : "inline";
         return ret;
     }
 
-
-
     function handleSubmit(e) {
 
-    
+        e.preventDefault();
 
-            e.preventDefault();
-        
-    
-
-        
-            var newPatient = {
-                userCommand: {
-                    "firstName": patientData.firstName,
-                    "lastName": patientData.lastName,
-                    "group": patientData.group,
-                    "gender": patientData.gender,
-                    "phoneNumber":'+263' + patientData.phoneNumber.substr(1),
-                    "email": patientData.email,
-                    "nationalIdNumber": patientData.nationalId,
-                    "passportNumber": patientData.passportNumber,
-                    "dateOfBirth": moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
-                    thisAChildIsThisChildOrincapacitatedToUsePhone: patientData.thisAChild,
-                    "address": {
-                        "streetAddress": patientData.address,
-                        "city": patientData.city,
-                        "province": patientData.province,
-                        "suburb": patientData.suburb
-                    }
+        var newPatient = {
+            userCommand: {
+                "firstName": patientData.firstName,
+                "lastName": patientData.lastName,
+                "group": patientData.group,
+                "gender": patientData.gender,
+                "phoneNumber": '+263' + patientData
+                    .phoneNumber
+                    .substr(1),
+                "email": patientData.email,
+                "nationalIdNumber": patientData.nationalId,
+                "passportNumber": patientData.passportNumber,
+                "dateOfBirth": moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
+                thisAChildIsThisChildOrincapacitatedToUsePhone: patientData.thisAChild,
+                "address": {
+                    "streetAddress": patientData.address,
+                    "city": patientData.city,
+                    "province": patientData.province,
+                    "suburb": patientData.suburb
                 }
-        
             }
-        
-        
-        
-            if(`${moment().diff(patientData.dateOfBirth, 'years',false)}`<'1' ||`${moment().diff(patientData.dateOfBirth, 'years',false)}`>'95'){
-        
-                alert('Your date of birth must be  of person betwen 1 & 95')
-        
-            }else{
-        
-        
-        
-            
-                axios
-                    .post(`${api.apiUrl}/patients`, newPatient)
-                    .then(resp => {
-                        console.log(resp)
-                        localStorage.setItem('patientId', resp.data.id)
-                        localStorage.setItem('currentPatient', patientData.firstName)
-                        handleClick()
-                    })
-                    .catch(err => {
-        
-                        handleClickError()
-        
-                    })
-        
-        
-            
-        
-          
-        
-        
-
 
         }
 
+        if (`${moment().diff(patientData.dateOfBirth, 'years', false)}` < '1' || `${moment().diff(patientData.dateOfBirth, 'years', false)}` > '95') {
 
+            alert('Your date of birth must be  of person betwen 1 & 95')
 
-    
+        } else {
 
-        
+            axios
+                .post(`${api.apiUrl}/patients`, newPatient)
+                .then(resp => {
+                    console.log(resp)
+                    localStorage.setItem('patientId', resp.data.id)
+                    localStorage.setItem('currentPatient', patientData.firstName)
+                    handleClick()
+                })
+                .catch(err => {
+
+                    handleClickError()
+
+                })
+
+        }
 
     }
 
@@ -533,55 +513,89 @@ const AddPatient = ({next}) => {
                         <TextField
                             label="First Name"
                             value={patientData.firstName}
-                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
+                            onKeyPress={(e) => {
+                            isAlphaNumeric(e)
+                        }}
+                            ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             firstName: e.target.value
                         })}
                             placeholder="First Name"
                             autoComplete="firstName"
-                            fullWidth required
-                            />
-                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
+                            fullWidth
+                            required/>
+                        <span
+                            id="error"
+                            style={{
+                            color: 'red',
+                            display: 'none'
+                        }}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Last Name"
                             value={patientData.lastName}
-                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
+                            onKeyPress={(e) => {
+                            isAlphaNumeric(e)
+                        }}
+                            ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             lastName: e.target.value
                         })}
                             placeholder="Last Name"
-                            fullWidth required/>
-                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
+                            fullWidth
+                            required/>
+                        <span
+                            id="error"
+                            style={{
+                            color: 'red',
+                            display: 'none'
+                        }}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="National ID"
-                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
+                            onKeyPress={(e) => {
+                            isAlphaNumeric(e)
+                        }}
+                            ondrop="return false;"
                             value={patientData.nationalId}
                             onChange={e => setPatient({
                             ...patientData,
                             nationalId: e.target.value
                         })}
                             placeholder="e.g 63-1234567A12"
-                            fullWidth required/>
-                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
+                            fullWidth
+                            required/>
+                        <span
+                            id="error"
+                            style={{
+                            color: 'red',
+                            display: 'none'
+                        }}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Passport Number"
                             value={patientData.passportNumber}
-                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
+                            onKeyPress={(e) => {
+                            isAlphaNumeric(e)
+                        }}
+                            ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             passportNumber: e.target.value
                         })}
                             placeholder="e.g CB3225572"
-                            fullWidth />
-                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
+                            fullWidth/>
+                        <span
+                            id="error"
+                            style={{
+                            color: 'red',
+                            display: 'none'
+                        }}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
 
@@ -599,7 +613,12 @@ const AddPatient = ({next}) => {
                             InputLabelProps={{
                             shrink: true
                         }}/>
-                        <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
+                        <span
+                            id="error"
+                            style={{
+                            color: 'red',
+                            display: 'none'
+                        }}>* Special Characters not allowed</span>
 
                     </Grid>
 
@@ -613,7 +632,8 @@ const AddPatient = ({next}) => {
                             email: e.target.value
                         })}
                             placeholder="Email"
-                            fullWidth required/>
+                            fullWidth
+                            required/>
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
@@ -621,28 +641,46 @@ const AddPatient = ({next}) => {
                             label="Phone Number"
                             type='number'
                             name="number"
-                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
+                            onKeyPress={(e) => {
+                            isAlphaNumeric(e)
+                        }}
+                            ondrop="return false;"
                             value={patientData.phoneNumber}
                             onChange={e => setPatient({
                             ...patientData,
                             phoneNumber: e.target.value
                         })}
                             placeholder="0123456789"
-                            fullWidth required/>
-                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
+                            fullWidth
+                            required/>
+                        <span
+                            id="error"
+                            style={{
+                            color: 'red',
+                            display: 'none'
+                        }}>* Special Characters not allowed</span>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Address"
                             value={patientData.address}
-                            onKeyPress={(e)=>{ isAlphaNumeric(e)}} ondrop="return false;"
+                            onKeyPress={(e) => {
+                            isAlphaNumeric(e)
+                        }}
+                            ondrop="return false;"
                             onChange={e => setPatient({
                             ...patientData,
                             address: e.target.value
                         })}
                             placeholder="Address"
-                            fullWidth required/>
-                            <span id="error" style={{color: 'red', display:'none'}}>* Special Characters not allowed</span>
+                            fullWidth
+                            required/>
+                        <span
+                            id="error"
+                            style={{
+                            color: 'red',
+                            display: 'none'
+                        }}>* Special Characters not allowed</span>
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
@@ -707,7 +745,7 @@ const AddPatient = ({next}) => {
 
                 <Button
                     type="submit"
-                    fullWidth 
+                    fullWidth
                     variant="contained"
                     className={classes.submit}
                     style={{
