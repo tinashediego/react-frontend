@@ -158,7 +158,6 @@ export default function AllUsers() {
       <TableHead>
           
           <TableRow>
-            <TableCell align="left">NO#</TableCell>
             <TableCell align="left">First name</TableCell>
             <TableCell align="left">Last name</TableCell>
             <TableCell align="left">Phone Number</TableCell>
@@ -177,7 +176,6 @@ export default function AllUsers() {
             : content
           ).map((x ,i) => (
             <TableRow key={i}>
-            <TableCell>{i +1}</TableCell>
             <TableCell>{x.firstName}</TableCell>
             <TableCell>{x.lastName}</TableCell>
             <TableCell>{x.phoneNumber}</TableCell>
