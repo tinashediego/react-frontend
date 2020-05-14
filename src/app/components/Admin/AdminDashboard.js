@@ -619,7 +619,7 @@ const AdminDashboard = () => {
 
                         {(rowsPerPage > 0
                             ? cityDemographics.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : cityDemographics).sort((a, b) => a.city.localeCompare(b.city)).filter((x) => {
+                            : cityDemographics).filter((x) => {
                             return x
                                 .city
                                 .toUpperCase()

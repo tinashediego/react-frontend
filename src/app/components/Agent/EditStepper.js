@@ -57,7 +57,7 @@ export default function EditStepper() {
         
           
       case 1:
-        return <Desicion next={handleNext} reset={handleReset} />
+        return  <Desicion next={handleNext} reset={handleReset} />
    
       case 2:
         return <EditTest next={handleNext}/>
