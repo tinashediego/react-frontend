@@ -431,6 +431,73 @@ const AddPatient = ({next}) => {
             : "inline";
         return ret;
     }
+    function isAlphaNumeric2(e) {
+
+        var specialKeys = [];
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        var keyCode = e.keyCode === 0
+            ? e.charCode
+            : e.keyCode;
+        var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) !== -1 && e.charCode !== e.keyCode));
+        document
+            .getElementById("error2")
+            .style
+            .display = ret
+            ? "none"
+            : "inline";
+        return ret;
+    }
+    function isAlphaNumeric3(e) {
+
+        var specialKeys = [];
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        var keyCode = e.keyCode === 0
+            ? e.charCode
+            : e.keyCode;
+        var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) !== -1 && e.charCode !== e.keyCode));
+        document
+            .getElementById("error3")
+            .style
+            .display = ret
+            ? "none"
+            : "inline";
+        return ret;
+    }
+
+    function isAlphaNumeric4(e) {
+
+        var specialKeys = [];
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        var keyCode = e.keyCode === 0
+            ? e.charCode
+            : e.keyCode;
+        var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) !== -1 && e.charCode !== e.keyCode));
+        document
+            .getElementById("error4")
+            .style
+            .display = ret
+            ? "none"
+            : "inline";
+        return ret;
+    }
 
 
     
@@ -541,7 +608,7 @@ const AddPatient = ({next}) => {
                             label="Last Name"
                             value={patientData.lastName}
                             onKeyPress={(e) => {
-                            isAlphaNumeric(e)
+                            isAlphaNumeric2(e)
                         }}
                             ondrop="return false;"
                             onChange={e => setPatient({
@@ -552,7 +619,7 @@ const AddPatient = ({next}) => {
                             fullWidth
                             required/>
                         <span
-                            id="error"
+                            id="error2"
                             style={{
                             color: 'red',
                             display: 'none'
@@ -562,7 +629,7 @@ const AddPatient = ({next}) => {
                         <TextField
                             label="National ID"
                             onKeyPress={(e) => {
-                            isAlphaNumeric(e)
+                            isAlphaNumeric3(e)
                         }}
                             ondrop="return false;"
                             value={patientData.nationalId}
@@ -574,7 +641,7 @@ const AddPatient = ({next}) => {
                             fullWidth
                             required/>
                         <span
-                            id="error"
+                            id="error3"
                             style={{
                             color: 'red',
                             display: 'none'
@@ -585,7 +652,7 @@ const AddPatient = ({next}) => {
                             label="Passport Number"
                             value={patientData.passportNumber}
                             onKeyPress={(e) => {
-                            isAlphaNumeric(e)
+                            isAlphaNumeric4(e)
                         }}
                             ondrop="return false;"
                             onChange={e => setPatient({
@@ -595,7 +662,7 @@ const AddPatient = ({next}) => {
                             placeholder="e.g CB3225572"
                             fullWidth/>
                         <span
-                            id="error"
+                            id="error4"
                             style={{
                             color: 'red',
                             display: 'none'
