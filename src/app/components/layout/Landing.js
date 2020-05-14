@@ -13,7 +13,6 @@ function Landing(props) {
     <div style={{backgroundColor:"red" , marginTop:"150px", width:200,height:100 ,border:"20px solid yellow",}}>
     
     </div>
-
     
     </div>
    

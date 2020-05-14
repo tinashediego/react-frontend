@@ -150,15 +150,12 @@ export default function Patient() {
   }
 
   //console.log(location)
-
-
   function switchPages(){
 
     switch (location.pathname) {
       case '/patient':
 
        return<PatientDashboard />
-  
   
       default:
         break;
