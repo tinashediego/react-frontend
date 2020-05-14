@@ -114,7 +114,7 @@ export default function Report({reset}) {
                 <Row form>
                     <Col md={12}>
                         <fieldset>
-                            <legend>{repo.firstName}
+                            <legend>{repo.firstName + ''}
                                 Personal Details</legend>
                         </fieldset>
                         <Row form>

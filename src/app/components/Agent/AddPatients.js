@@ -5,7 +5,7 @@ import moment from 'moment'
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
-import cityList from './city'
+
 import HarareSurburbs from './Haras'
 import BulawayoSurbubs from './Blues'
 import MidlandsCities from './MIDLANDS'
@@ -419,10 +419,10 @@ const AddPatient = ({next}) => {
         specialKeys.push(35); //End
         specialKeys.push(37); //Left
         specialKeys.push(39); //Right
-        var keyCode = e.keyCode == 0
+        var keyCode = e.keyCode === 0
             ? e.charCode
             : e.keyCode;
-        var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
+        var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) !== -1 && e.charCode !== e.keyCode));
         document
             .getElementById("error")
             .style
@@ -431,6 +431,9 @@ const AddPatient = ({next}) => {
             : "inline";
         return ret;
     }
+
+
+    
 
     function handleSubmit(e) {
 
@@ -460,7 +463,7 @@ const AddPatient = ({next}) => {
 
         }
 
-        if (`${moment().diff(patientData.dateOfBirth, 'years', false)}` < '1' || `${moment().diff(patientData.dateOfBirth, 'years', false)}` > '95') {
+        if (`${moment().diff(patientData.dateOfBirth, 'days', false)}` < '1'  ) {
 
             alert('Your date of birth must be  of person betwen 1 & 95')
 
