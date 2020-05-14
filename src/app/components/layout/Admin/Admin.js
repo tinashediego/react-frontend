@@ -183,10 +183,7 @@ export default function Admin() {
 
     case '/allfacilities':
           return <AllFacilities />
-
-    
           
-    
       default:
         break;
     }

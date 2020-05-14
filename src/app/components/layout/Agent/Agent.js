@@ -195,16 +195,11 @@ console.log(para)
 
   }
 
- 
-
-
   function logout (){
-
 
     dispatch(logoutUser())
 
   }
-
 
   function handlePassword(){
 
@@ -217,7 +212,6 @@ console.log(para)
 
   
  
-
   
   return (
     <div className={classes.root}>
