@@ -278,7 +278,7 @@ const AddPatient = ({next}) => {
 
                                 <option value="HARARE">HARARE</option>
                                 <option value="CHITUNGWIZA">CHITUNGWIZA</option>
-                                <option value="ESPWORTH">ESPWORTH</option>
+                                <option value="EPWORTH">EPWORTH</option>
                             </Select>
                         </FormControl>
 
