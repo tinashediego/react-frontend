@@ -617,19 +617,15 @@ const AdminDashboard = () => {
                     </TableHead>
                     <TableBody>
 
-                        {(rowsPerPage > 0
-                            ? cityDemographics.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : cityDemographics).filter((x) => {
-                            return x
-                                .city
-                                .toUpperCase()
-                                .indexOf(SearchData.search.toUpperCase()) !== -1
-                        }).map((x, i) => (
-                            <TableRow key={i}>
+                                {(rowsPerPage > 0
+                                    ? cityDemographics
+                                    : cityDemographics
+                                  ).sort((a, b) => a.city.localeCompare(b.city)).filter( (row)=>{ return row.city.toUpperCase().indexOf(SearchData.search.toUpperCase()) !== -1 }).map((row ,i) => (
+                                    <TableRow key={i}>
                                 <TableCell>{i + 1}</TableCell>
-                                <TableCell>{x.city}</TableCell>
-                                <TableCell>{x.positiveTotal}</TableCell>
-                                <TableCell>{x.negativeTotal}</TableCell>
+                                <TableCell>{row.city}</TableCell>
+                                <TableCell>{row.positiveTotal}</TableCell>
+                                <TableCell>{row.negativeTotal}</TableCell>
 
                             </TableRow>
 
