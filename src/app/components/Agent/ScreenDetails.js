@@ -226,7 +226,7 @@ const handleSubmit = (e) => {
               </Col>
               <Col md={6}>
                   <FormGroup>
-                      <Label for="exampleState">Sore Throat</Label>
+                      <Label for="exampleState">Difficult in Breathing</Label>
                       <Input type="select" name="travelled" value={ScreenData.difficultiesInBreathingPresent} onChange={e=>setScreen({ ...ScreenData ,difficultiesInBreathingPresent:e.target.value})}  >
                       <option>Select</option>
                       <option value="true">Yes</option>
@@ -272,20 +272,8 @@ const handleSubmit = (e) => {
                       </Input>
                   </FormGroup>
               </Col>
+
               <Col md={6}>
-                  <FormGroup>
-                      <Label for="exampleState">Difficulties in breathing</Label>
-                      <Input type="select" name="travelled" value={ScreenData.coughPresent} onChange={e=>setScreen({ ...ScreenData ,coughPresent:e.target.value})}  >
-                      <option>Select</option>
-                      <option value="true">Yes</option>
-                      <option value="false">No</option>
-                      </Input>
-                  </FormGroup>
-              </Col>
-  
-          </Row>
-          <Row form>
-          <Col md={12}>
               <FormGroup>
                   <Label for="exampleCity">Received Covid-Related-Councelling Before </Label>
                   <Input type="select" name="travelled" value={ScreenData.receivedAnyCounsellingOnCovid19} onChange={e=>setScreen({ ...ScreenData ,receivedAnyCounsellingOnCovid19:e.target.value})} >
@@ -295,8 +283,10 @@ const handleSubmit = (e) => {
                   </Input>
               </FormGroup>
           </Col>
-        
-      </Row>
+       
+  
+          </Row>
+  
   
         
   
