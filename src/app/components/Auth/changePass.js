@@ -17,18 +17,91 @@ const ChangePass = () => {
 
     const pu = useHistory()
     console.log(userData)
+
+    function validatePassword(password) {
+                
+        // Do not show anything when the length of password is zero.
+        if (userData.password.length === 0) {
+            document.getElementById("msg").innerHTML = "";
+            return;
+        }
+        // Create an array and push all possible values that you want in password
+        var matchedCase = [];
+        matchedCase.push("[$@$!%*#?&]"); // Special Charector
+        matchedCase.push("[A-Z]");      // Uppercase Alpabates
+        matchedCase.push("[0-9]");      // Numbers
+        matchedCase.push("[a-z]");     // Lowercase Alphabates
+
+        // Check the conditions
+        var ctr = 0;
+        for (var i = 0; i < matchedCase.length; i++) {
+            if (new RegExp(matchedCase[i]).test(userData.password)) {
+                ctr++;
+            }
+        }
+        // Display it
+        var color = "";
+        var strength = "";
+        switch (ctr) {
+            case 0:
+             strength = "OMG Weak!!";
+               color = "red";
+            break;
+            case 1:
+                strength = "Super very Weak"
+                color = "red";
+                break ;
+            case 2:
+                strength = "Very Weak";
+                color = "red";
+                break;
+            case 3:
+                strength = "Medium";
+                color = "orange";
+                break;
+            case 4:
+                strength = "Strong";
+                color = "green";
+                break;
+
+                default:
+                    break 
+
+                
+        }
+        document.getElementById("msg").innerHTML = strength;
+        document.getElementById("msg").style.color = color;
+    }
     function handleSubmit(e) {
         e.preventDefault();
+
+        if(userData.confirmPassword !== userData.password){
+
+
+            
+
+            alert('passwords not matchin')
+        }else{
+
+
+            
         axios
-            .post(`${api.apiUrl}/users/change-password`, userData)
-            .then(resp => {
-                alert('success')
-                pu.push('/agent')
-            })
-            .catch((err) => {
-                /*alert(err.message)*/
-                alert("Error, please make sure you are entering correct details");
-            })
+        .post(`${api.apiUrl}/users/change-password`, userData)
+        .then(resp => {
+            alert('success')
+            pu.push('/agent')
+        })
+        .catch((err) => {
+            /*alert(err.message)*/
+            alert("Error, please make sure you are entering correct details");
+        })
+
+
+        }
+
+
+
+    
 
     }
 
@@ -83,6 +156,9 @@ const ChangePass = () => {
                         label="new password"
                         type="password"
                         value={userData.password}
+                        onKeyPress={
+                            validatePassword
+                        }
                        
                         onChange={e => setData({
                         ...userData,
@@ -92,8 +168,10 @@ const ChangePass = () => {
                         width: "50%"
                     }}
                         required/>
-                </FormGroup>
+                                        </FormGroup>
+                
                 <FormGroup> 
+                <span id="msg"></span>
 
                 <TextField
                     label="Confirm password"
