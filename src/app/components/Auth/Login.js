@@ -4,6 +4,8 @@ import Background from '../../../assets/1.jpg'
 import Logo from '../../../assets/logo.png';
 import {TextField} from '@material-ui/core';
 import jwt_decode from "jwt-decode";
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
 
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -206,7 +208,17 @@ type="submit">Submit</Button>
 
                 </Form>
 
+
+
+                <Grid item>
+                <Link href="/otp" variant="body2">
+                  {"Login as Patient😊"}
+                </Link>
+              </Grid>
+
             </Col>
+
+            
 
         </div>
     );

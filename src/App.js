@@ -15,6 +15,7 @@ import Agent from "./app/components/layout/Agent/Agent";
 import Patient from "./app/components/layout/Patient/Patient";
 
 import Otp from './app/components/Patient/Otp'
+import PatLogin from './app/components/Patient/PatLogin'
 import ChangePass from "./app/components/Auth/changePass";
 
 
@@ -92,7 +93,8 @@ function App() {
           <PrivateRoute exact path="/newkit" component={Admin} />
           <PrivateRoute exact path="/allfacilities" component={Admin} />
           <PrivateRoute excat path='/test/:id' component={Agent} />
-          <PrivateRoute excat path='/otp' component={Otp} />
+          <Route excat path='/otp' component={Otp} />
+          <Route excat path='/patLogin' component={PatLogin} />
           <PrivateRoute excat path='/defect' component={Agent} />
           <PrivateRoute exact path='/change' component={ChangePass} />
     

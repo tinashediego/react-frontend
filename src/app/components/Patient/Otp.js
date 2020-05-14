@@ -21,8 +21,10 @@ const Otp = () => {
         axios
             .post(`${api.apiUrl}/users/regenerate-otp`, userData)
             .then(resp => {
+                localStorage.setItem('tenp' ,userData.nationalIdNumber)
+
                 alert('success')
-                pu.push('/patient')
+                pu.push('/patLogin')
             })
             .catch(err => {
 
@@ -32,7 +34,7 @@ const Otp = () => {
     }
 
     return (
-        <div responsive="true">
+        <div>
 
             <div style={styles.img}/>
 
@@ -67,6 +69,8 @@ const Otp = () => {
                             type="text"
                             value={userData.nationalIdNumber}
                             placeholder="nationalIdNumber"
+                        
+                             
                             onChange={e => setData({
                             ...userData,
                             nationalIdNumber: e.target.value
@@ -82,7 +86,7 @@ const Otp = () => {
                         style={{
                         width: "50%"
                     }}
-                        type="submit">Submit</Button>
+                        type="submit">GENERATE OTP</Button>
 
                 </Form>
 
