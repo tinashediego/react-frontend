@@ -79,7 +79,12 @@ const useStyles = makeStyles((theme) => ({
         "testingAgentUsername": '' 
     })
 
-
+    function resetForm ()  {
+      this.setState({"testKitTypeId":'',    
+      "batchNumber": '',
+      "serialNumber": '',
+      "testingAgentUsername": ''})
+  }
 
 function handleSubmit(e) {
   e.preventDefault()
@@ -102,15 +107,17 @@ var newScreen = {
              .then(resp=>{
               
               
-              handleClick()          
+              handleClick() 
+             
              }
+             
               )
               .catch(err=>{
 
                 handleClickError()
               })
 
-    
+             
 
   };
 
@@ -182,7 +189,7 @@ var newScreen = {
      <FormGroup>
          
             <TextField label="Serial Number" name="travelled" placeholder="Serial Number"
-            value={ScreenData.serialNumber} onChange={e=>setScreen({ ...ScreenData ,serialNumber:e.target.value})} fullWidth /> 
+            value={ScreenData.serialNumber} onChange={e=>setScreen({ ...ScreenData ,serialNumber:e.target.value})} fullWidth required /> 
    
        </FormGroup>
      
@@ -191,7 +198,7 @@ var newScreen = {
    </Row>
 
    <div align="right" style={{paddingTop:10}}>
-   <button className="btn btn-success" type="submit">submit</button>
+   <button className="btn btn-success" type="submit" onClick="resetForm()">submit</button>
 </div>
     
 
