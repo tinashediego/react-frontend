@@ -106,7 +106,16 @@ var newScreen = {
         axios.post(`${api.apiUrl}/test-kits/register-defective` ,newScreen)
              .then(resp=>{
               
-               window.location.href = '/defect'
+
+              setScreen({
+                "dateOfTest": moment().format('DD/MM/YYYY'),
+                "patientScreeningId":'3234',
+                "testKitId":1,
+                "testResult": '',
+                "batchNumber": '',
+                "serialNumber": '',
+                "testingAgentUsername": '' 
+            })
               handleClick() 
              
              }
