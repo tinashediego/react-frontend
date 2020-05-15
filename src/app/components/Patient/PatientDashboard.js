@@ -98,7 +98,7 @@ const PatientDashboard = (props) => {
 
                 <div md={6}>
 
-                    <h3>{repo.firstName}
+                    <h3>{repo.firstName + '   '}
                         Personal Details</h3>
                     <Row form>
                         <Col md={6}>

@@ -129,7 +129,7 @@ export default function AllUsers() {
     email:x,
     username:y
   }
-  alert(newData.username)
+  
 
   axios.post(`${api.apiUrl}/users/reset-password`,newData)
        .then(resp=>{
