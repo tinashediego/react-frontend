@@ -97,7 +97,7 @@ const AddUser  = () =>{
 
       axios.post(`${api.apiUrl}/testing-agents` ,userCommand)
            .then(resp=>{
-
+           setUser('')
             alert('success')
            }).catch(err=>{
 
@@ -280,7 +280,7 @@ placeholder="City" required />
           
               <option value="MANICALAND">MANICALAND</option>
               <option value="HARARE">HARARE</option>
-              <option value="BULUWAYO">BULUWAYO</option>
+              <option value="BULAWAYO">BULAWAYO</option>
               <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
               <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
               <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>

@@ -27,8 +27,8 @@ const Otp = () => {
                 pu.push('/patLogin')
             })
             .catch(err => {
-
-                alert(err.message)
+                 
+                alert('OTP CAN BE ONLY BE REQUESTED AFTER 24 HOURS')
             })
 
     }

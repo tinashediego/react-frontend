@@ -117,6 +117,22 @@ const AdminDashboard = () => {
     const [rowsPerPage,
         setRowsPerPage] = useState(5);
 
+
+        const [sym,
+            setSym] = useState([])
+        const [prov,
+            setProv] = useState([])
+        const [util,
+            setUtils] = useState([])
+        const [cumCity,
+            setCum] = useState([])
+        const [totalDemo,
+            setDemo] = useState([])
+    
+    
+        const [cityDaily ,setCityDaily] =  useState([])
+        const [cityWeekly , setcityWeek] =  useState([])
+
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -126,21 +142,7 @@ const AdminDashboard = () => {
         setPage(0);
     };
 
-    const [sym,
-        setSym] = useState([])
-    const [prov,
-        setProv] = useState([])
-    const [util,
-        setUtils] = useState([])
-    const [cumCity,
-        setCum] = useState([])
-    const [totalDemo,
-        setDemo] = useState([])
-
-
-    const [cityDaily ,setCityDaily] =  useState([])
-    const [cityWeekly , setcityWeek] =  useState([])
-    
+ 
 
 
 
@@ -619,9 +621,9 @@ const AdminDashboard = () => {
                     <TableBody>
 
                                 {(rowsPerPage > 0
-                                    ? cityDemographics
+                                    ? cityDemographics.filter( (row)=>{ return row.city.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     : cityDemographics
-                                  ).sort((a, b) => a.city.localeCompare(b.city)).filter( (row)=>{ return row.city.toUpperCase().indexOf(SearchData.search.toUpperCase()) !== -1 }).map((row ,i) => (
+                                  ).filter( (row)=>{ return row.city.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).map((row ,i) => (
                                     <TableRow key={i}>
                                 <TableCell>{i + 1}</TableCell>
                                 <TableCell>{row.city}</TableCell>
