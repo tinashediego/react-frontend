@@ -138,8 +138,26 @@ const AddUser  = () =>{
 
       axios.post(`${api.apiUrl}/testing-agents` ,userCommand)
            .then(resp=>{
-           setUser('')
-           handleClick() 
+
+
+            handleClick()
+           setUser({
+            "city": "",
+            "province":"",
+            streetAddress:'',
+            "addressOfPractice": "",
+            "email": "",
+            "firstName": "",
+            "gender": "",
+            "lastName": "",
+            group:'',
+            testingFacility:0,
+            "nationalIdNumber": "",
+            "passportNumber":'',
+            "practicingNumber": "",
+            "qualification": "",
+            "phoneNumber":"",
+            "username": ''})
             
            }).catch(err=>{
             handleClickError()
@@ -304,27 +322,6 @@ const AddUser  = () =>{
 </FormGroup>
     </div>
 
-
-<div className="row">
-<FormGroup className="col-sm-6">
-<TextField label="Address of Practice"
-      value={newUser.addressOfPractice} 
-      onChange={e=>setUser({ ...newUser ,addressOfPractice:e.target.value})}
-placeholder="Address of Practice" required />
-
-</FormGroup>
-<FormGroup className="col-sm-6">
-<TextField label="Address" 
-      value={newUser.streetAddress} 
-      onChange={e=>setUser({ ...newUser , streetAddress:e.target.value})}
-placeholder="City" required />
-
-</FormGroup>
-
-
-
-
-</div>
 
 
 <div className="row">
