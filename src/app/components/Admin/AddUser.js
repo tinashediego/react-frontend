@@ -260,6 +260,19 @@ const AddUser  = () =>{
     </FormGroup>
     </div>
 
+
+       
+    <FormGroup className="col-sm-12">
+      
+    <TextField label="Residential Addresss" 
+           value={newUser.streetAddress}
+           onChange={e=>setUser({ ...newUser ,streetAddress:e.target.value})}
+           placeholder="Residential Addresss" required />
+  </FormGroup>
+
+
+
+    
     <div className="row">
     
  

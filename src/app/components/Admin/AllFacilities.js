@@ -560,6 +560,7 @@ function handleProvinces() {
   "location": {
     "city": state.city,
     "province": state.province,
+    "streetAddress": state.streetAddress,
     surburb:state.surburb
   
   },
@@ -735,12 +736,17 @@ aria-describedby="alert-dialog-description"
 {handleProvinces()}
 {handleCities()}
 
+<FormGroup className="col-sm-12" >
+    
+<TextField className="col-sm-12" label="streetAddress"  value={state.streetAddress}  onChange={e=> setstate({ ...state, streetAddress:e.target.value})} id="exampleEmail" placeholder="New Facility" />
+</FormGroup>
+
 
 </Form>
   </DialogContentText>
 </DialogContent>
 <DialogActions>
-  <Button onClick={handleClose} color="primary">
+  <Button onClick={handleCloseR} color="primary">
     Cancel
   </Button>
   <Button onClick={handleSubmit} color="primary" autoFocus>
