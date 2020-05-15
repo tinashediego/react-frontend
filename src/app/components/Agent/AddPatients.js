@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
 const AddPatient = ({next}) => {
 
     const classes = useStyles();
-
-    const [open,
+    const [openBirth, setOpenBirth] = useState();
+        const [open,
         setOpen] = React.useState(false);
     const [openError,
         setOpenError] = React.useState(false);
@@ -63,6 +63,13 @@ const AddPatient = ({next}) => {
         setOpenError(true);
     };
 
+    const handleClickErrorBirth = () => {
+        setOpenBirth(true);
+    };
+
+    const handleCloseErrorBirth = ()=>{
+        setOpenBirth(false);
+    }
     const handleClose = (reason) => {
         if (reason === 'clickaway') {
             return;
@@ -531,7 +538,7 @@ const AddPatient = ({next}) => {
         }
 
         if (`${moment().diff(patientData.dateOfBirth, 'days', false)}` < '1'  ) {
-
+            handleClickErrorBirth()
             alert('Please enter a valid date of birth!')
 
         } else {
@@ -578,6 +585,15 @@ const AddPatient = ({next}) => {
    }}>
                     <Alert onClose={handleCloseError} severity="error">
                         There was an error, try again
+                    </Alert>
+                </Snackbar>
+
+                <Snackbar open={openBirth} autoHideDuration={5000} onClose={handleCloseErrorBirth} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }}>
+                    <Alert onClose={handleCloseErrorBirth} severity="error">
+                        Enter a valid date of birth
                     </Alert>
                 </Snackbar>
 

@@ -8,7 +8,78 @@ import axios from "axios"
 
 import {TextField} from '@material-ui/core';
 import api from '../../../utils/helpers/api';
+import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+import {makeStyles} from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1)
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2)
+    }
+}));
+
 const ChangePass = () => {
+
+    const classes = useStyles();
+
+    const [openIncorrect,setOpenIncorrect] = useState();
+
+    const [open,
+        setOpen] = React.useState(false);
+    const [openError,
+        setOpenError] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+    const handleClickError = () => {
+        setOpenError(true);
+    };
+
+    const handleClickIncorrect = () => {
+        setOpenIncorrect(true);
+    };
+
+    const handleClose = (reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+        
+    };
+
+    const handleCloseIncorrect = (reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenIncorrect(false);
+        
+    };
+
+    const handleCloseError = (reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenError(false);
+
+    };
 
     const [userData,
         setData] = useState( {  "confirmPassword": "",
@@ -44,23 +115,23 @@ const ChangePass = () => {
         var strength = "";
         switch (ctr) {
             case 0:
-             strength = "OMG Weak!!";
-               color = "red";
+                strength = "Password: Very weak";
+                color = "red";
             break;
             case 1:
-                strength = "Super very Weak"
+                strength = "Password: Very weak";
                 color = "red";
                 break ;
             case 2:
-                strength = "Very Weak";
+                strength = "Password: Very weak";
                 color = "red";
                 break;
             case 3:
-                strength = "Medium";
+                strength = "Password: Medium";
                 color = "orange";
                 break;
             case 4:
-                strength = "Strong";
+                strength = "Password: Strong";
                 color = "green";
                 break;
 
@@ -80,7 +151,8 @@ const ChangePass = () => {
 
             
 
-            alert('passwords not matchin')
+           // alert('')
+            handleClickIncorrect()
         }else{
 
 
@@ -88,12 +160,14 @@ const ChangePass = () => {
         axios
         .post(`${api.apiUrl}/users/change-password`, userData)
         .then(resp => {
-            alert('success')
+            //alert('success')
+            handleClick()
             pu.push('/agent')
         })
         .catch((err) => {
             /*alert(err.message)*/
-            alert("Error, please make sure you are entering correct details");
+            //alert("Error, please make sure you are entering correct details");
+            handleClickError()
         })
 
 
@@ -131,9 +205,40 @@ const ChangePass = () => {
                     align="center"
                     style={{
                     paddingBottom: 20,
-                    marginTop: -30
+                    marginTop: -30,textAlign:"center"
                 }}
                     onSubmit={handleSubmit}>
+
+<div className={classes.root}>
+
+<Snackbar open={open} onClose={handleClose} anchorOrigin={{
+vertical: "top",
+horizontal: "center"
+}}>
+    <Alert onClose={handleClose} severity="success">
+        User password changed successfully
+    </Alert>
+</Snackbar>
+
+<Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+vertical: "top",
+horizontal: "center"
+}}>
+    <Alert onClose={handleCloseError} severity="error">
+        Enter correct details
+    </Alert>
+</Snackbar>
+
+<Snackbar open={openIncorrect} autoHideDuration={5000} onClose={handleCloseIncorrect} anchorOrigin={{
+vertical: "top",
+horizontal: "center"
+}}>
+    <Alert onClose={handleCloseIncorrect} severity="error">
+        Passwords not matching
+    </Alert>
+</Snackbar>
+
+</div>
                     <FormGroup>
 
                         <TextField
@@ -171,8 +276,7 @@ const ChangePass = () => {
                                         </FormGroup>
                 
                 <FormGroup> 
-                <span id="msg"></span>
-
+                <div style={{marginTop:0,marginBottom:"5px"}}><span id="msg"></span></div>
                 <TextField
                     label="Confirm password"
                     type="password"

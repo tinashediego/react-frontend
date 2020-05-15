@@ -60,7 +60,7 @@ const PatientDashboard = (props) => {
         
       otpExpired === true ? loc.push('/otp') : console.log('its now true')
         function generateQR() {
-            let str = "TEST RESULTS :" + testingDetails.result
+            let str = "Maisha covid-19 test result :" + testingDetails.result
             QRCode.toCanvas(document.getElementById('canvas'), str)
         }
         generateQR()

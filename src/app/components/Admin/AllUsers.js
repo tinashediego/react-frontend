@@ -199,10 +199,10 @@ export default function AllUsers() {
 
         handleClick() 
         
-        console.log('suceess')
+        console.log('success')
        }).catch(err=>{
         handleClickError() 
-        alert(err.message)
+      
        })
 
   }

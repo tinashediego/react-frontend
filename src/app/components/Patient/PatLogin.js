@@ -6,10 +6,8 @@ import {TextField} from '@material-ui/core';
 import jwt_decode from "jwt-decode";
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
-
 import {makeStyles} from '@material-ui/core/styles';
 import axios from 'axios'
 import api from '../../../utils/helpers/api';
@@ -118,13 +116,19 @@ const PatLogin = ({next}) => {
 
             <div className={classes.root}>
 
-                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                <Snackbar open={open} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success">
                         This is a success message!
                     </Alert>
                 </Snackbar>
 
-                <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+                <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }}>
                     <Alert onClose={handleCloseError} severity="error">
                         There was an error
                     </Alert>

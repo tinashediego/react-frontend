@@ -251,7 +251,7 @@ const AllFacilities  = (props) =>{
                             inputProps={{
                             name: 'suburb',
                             id: 'age-native-simple'
-                        }}>
+                        }} required>
                             <option aria-label="None" value=""/> {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
                         </Select>
                     </FormControl>
@@ -580,7 +580,7 @@ function handleProvinces() {
 
                 handleClickError()
                
-                alert(err.message)
+                //alert(err.message)
 
                })
 
@@ -614,14 +614,20 @@ function handleProvinces() {
 
     <div className={classes.root}>
       
-    <Snackbar open={openR} autoHideDuration={3000} onClose={handleCloseR}>
+    <Snackbar open={openR} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }} onClose={handleCloseR}>
       <Alert onClose={handleCloseR} severity="success">
         This is a success message!
       </Alert>
     </Snackbar>
 
 
-    <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+    <Snackbar open={openError} autoHideDuration={5000} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }} onClose={handleCloseError}>
     <Alert onClose={handleCloseError} severity="error">
       There was an error 
     </Alert>
@@ -697,13 +703,13 @@ aria-labelledby="alert-dialog-title"
 aria-describedby="alert-dialog-description"
 
 >
-<DialogTitle id="alert-dialog-title" style={styles.dialog}>New  Facility</DialogTitle>
+<DialogTitle id="alert-dialog-title" style={styles.dialog}>New Facility</DialogTitle>
 <DialogContent>
   <DialogContentText id="alert-dialog-description">
   <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"100%"}}>
   <FormGroup className="col-sm-12" >
     
-    <TextField className="col-sm-12" label="Facility  Name"  value={state.testingFacilityName}  onChange={e=> setstate({ ...state, testingFacilityName:e.target.value})} id="exampleEmail" placeholder="New Facility" required={true} />
+    <TextField className="col-sm-12" label="Facility  Name"  value={state.testingFacilityName}  onChange={e=> setstate({ ...state, testingFacilityName:e.target.value})} id="exampleEmail" placeholder="New Facility" required />
   </FormGroup>
   <FormControl className={classes.formControl}>
   <InputLabel htmlFor="age-native-simple">Province</InputLabel>
