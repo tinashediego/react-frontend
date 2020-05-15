@@ -141,14 +141,14 @@ var newScreen = {
       
    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
      <Alert onClose={handleClose} severity="success">
-       This is a success message!
+       Patient tested successfully
      </Alert>
    </Snackbar>
 
 
    <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
    <Alert onClose={handleCloseError} severity="error">
-     There was an error 
+     There was an error, try again 
    </Alert>
  </Snackbar>
  

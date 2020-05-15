@@ -4,17 +4,58 @@ import {
   FormGroup,Input,
   Col
 } from 'reactstrap';
-
+import Alert from '@material-ui/lab/Alert';
 import {Allfacility} from '../../../redux/actions/KitsActions'
 import { useDispatch, useSelector } from "react-redux";
-
+import Snackbar from '@material-ui/core/Snackbar';
 import { TextField } from '@material-ui/core';
 import cityList  from '../Agent/city'
 import axios from 'axios'
 import api from '../../../utils/helpers/api';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 const AddUser  = () =>{
 
+
+  const classes = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClickError = () => {
+      setOpenError(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+
+  };
+
+ const handleCloseError = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenError(false);
+      
+    };
   
   const content = useSelector((state) => state.kits.allfacility);
   
@@ -97,6 +138,9 @@ const AddUser  = () =>{
 
       axios.post(`${api.apiUrl}/testing-agents` ,userCommand)
            .then(resp=>{
+
+
+            handleClick()
            setUser({
             "city": "",
             "province":"",
@@ -116,8 +160,8 @@ const AddUser  = () =>{
             "username": ''})
             
            }).catch(err=>{
-
-            alert(err.message)
+            handleClickError()
+            
            })
 
       console.log(userCommand)
@@ -133,6 +177,25 @@ const AddUser  = () =>{
 
     <div>
    <h5 className="h" style={styles.h}>New User</h5>
+   <div className={classes.root}>
+      
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          User added successfully
+        </Alert>
+      </Snackbar>
+   
+   
+      <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+      <Alert onClose={handleCloseError} severity="error">
+        There was an error, try again 
+      </Alert>
+    </Snackbar>
+    
+    </div>
+
+
+
    <Col sm="12" md={{ size: 6, offset: 3 }}>
 <Form className="col-sm-12" onSubmit={handleSubmit}>
       <div className="row">
