@@ -532,7 +532,7 @@ const AddPatient = ({next}) => {
 
         if (`${moment().diff(patientData.dateOfBirth, 'days', false)}` < '1'  ) {
 
-            alert('Your date of birth must be  of person betwen 1 & 95')
+            alert('Please enter a valid date of birth!')
 
         } else {
 
@@ -565,13 +565,13 @@ const AddPatient = ({next}) => {
 
                 <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success">
-                        This is a success message!
+                        Patient added successfully
                     </Alert>
                 </Snackbar>
 
                 <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
                     <Alert onClose={handleCloseError} severity="error">
-                        There was an error
+                        There was an error, try again
                     </Alert>
                 </Snackbar>
 
@@ -733,7 +733,7 @@ const AddPatient = ({next}) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            label="Address"
+                            label="Street Address"
                             value={patientData.address}
                             onKeyPress={(e) => {
                             isAlphaNumeric(e)
@@ -743,7 +743,7 @@ const AddPatient = ({next}) => {
                             ...patientData,
                             address: e.target.value
                         })}
-                            placeholder="Address"
+                            placeholder=" Street Address"
                             fullWidth
                             required/>
                         <span
@@ -772,11 +772,11 @@ const AddPatient = ({next}) => {
                             }}>
                                 <option aria-label="None" value=""/>
                                 <option value="MANICALAND">MANICALAND</option>
-                                <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
-                                <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+                                <option value="MASHONALAND_CENTRAL">MASHONALAND CENTRAL</option>
+                                <option value="MASHONALAND_EAST">MASHONALAND EAST</option>
                                 <option value="HARARE">HARARE</option>
                                 <option value="BULAWAYO">BULAWAYO</option>
-                                <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
+                                <option value="MASHONALAND_WEST">MASHONALAND WEST</option>
                                 <option value="MASVINGO">MASVINGO</option>
                                 <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
                                 <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>

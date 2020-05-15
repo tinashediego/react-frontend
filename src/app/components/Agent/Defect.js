@@ -79,12 +79,7 @@ const useStyles = makeStyles((theme) => ({
         "testingAgentUsername": '' 
     })
 
-    function resetForm ()  {
-      this.setState({"testKitTypeId":'',    
-      "batchNumber": '',
-      "serialNumber": '',
-      "testingAgentUsername": ''})
-  }
+  
 
 function handleSubmit(e) {
   e.preventDefault()
@@ -142,14 +137,14 @@ var newScreen = {
       
    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
      <Alert onClose={handleClose} severity="success">
-       This is a success message!
+       Defect registered successfully
      </Alert>
    </Snackbar>
 
 
    <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
    <Alert onClose={handleCloseError} severity="error">
-     There was an error 
+     There was an error, try again 
    </Alert>
  </Snackbar>
  
@@ -198,7 +193,7 @@ var newScreen = {
    </Row>
 
    <div align="right" style={{paddingTop:10}}>
-   <button className="btn btn-success" type="submit" onClick="resetForm()">submit</button>
+   <button className="btn btn-success" type="submit">submit</button>
 </div>
     
 

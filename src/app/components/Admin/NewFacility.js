@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
- function NewKit() {
+ function NewFacility() {
 
 
 
@@ -167,4 +167,4 @@ const styles = {
   
   
   }
-export default NewKit
+export default NewFacility
