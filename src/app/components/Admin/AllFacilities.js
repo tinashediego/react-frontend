@@ -704,7 +704,7 @@ aria-describedby="alert-dialog-description"
   <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"100%"}}>
   <FormGroup className="col-sm-12" >
     
-    <TextField className="col-sm-12" label="Facility  Name"  value={state.testingFacilityName}  onChange={e=> setstate({ ...state, testingFacilityName:e.target.value})} id="exampleEmail" placeholder="New Facility" />
+    <TextField className="col-sm-12" label="Facility  Name"  value={state.testingFacilityName}  onChange={e=> setstate({ ...state, testingFacilityName:e.target.value})} id="exampleEmail" placeholder="New Facility" required={true} />
   </FormGroup>
   <FormControl className={classes.formControl}>
   <InputLabel htmlFor="age-native-simple">Province</InputLabel>

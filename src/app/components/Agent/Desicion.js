@@ -24,7 +24,7 @@ export default function Desicion({next ,reset}) {
 
           
             <Typography variant="body2" component="p">
-            DO NOT PROCCED TO TEST
+            DO NOT PROCEED TO TEST
           </Typography>
          
             </CardContent>
@@ -38,7 +38,7 @@ export default function Desicion({next ,reset}) {
 
 
               <Typography variant="body2" component="p">
-              PROCCED TO TEST
+              PROCEED TO TEST
             </Typography>
             
             </CardContent>

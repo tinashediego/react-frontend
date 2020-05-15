@@ -563,13 +563,19 @@ const AddPatient = ({next}) => {
 
             <div className={classes.root}>
 
-                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                <Snackbar open={open} onClose={handleClose} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }}>
                     <Alert onClose={handleClose} severity="success">
-                        Patient added successfully
+                        Patient added successfully!
                     </Alert>
                 </Snackbar>
 
-                <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+                <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }}>
                     <Alert onClose={handleCloseError} severity="error">
                         There was an error, try again
                     </Alert>

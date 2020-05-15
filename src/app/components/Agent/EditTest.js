@@ -132,14 +132,20 @@ const handleSubmit = (e) => {
 
    <div className={classes.root}>
       
-   <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+   <Snackbar open={open} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }} onClose={handleClose}>
      <Alert onClose={handleClose} severity="success">
-       Patient tested successfully
+       Patient tested successfully!
      </Alert>
    </Snackbar>
 
 
-   <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+   <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }}>
    <Alert onClose={handleCloseError} severity="error">
      There was an error, try again 
    </Alert>

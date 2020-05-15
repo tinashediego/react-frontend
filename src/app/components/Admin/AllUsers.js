@@ -19,6 +19,19 @@ import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import api from '../../../utils/helpers/api';
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
@@ -91,6 +104,56 @@ TablePaginationActions.propTypes = {
 
 export default function AllUsers() {
 
+
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+
+  
+  
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClickError = () => {
+      setOpenError(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+    
+  }
+
+ const handleCloseError = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenError(false);
+      
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -134,10 +197,11 @@ export default function AllUsers() {
   axios.post(`${api.apiUrl}/users/reset-password`,newData)
        .then(resp=>{
 
-
+        handleClick() 
+        
         console.log('suceess')
        }).catch(err=>{
-
+        handleClickError() 
         alert(err.message)
        })
 
@@ -152,6 +216,29 @@ export default function AllUsers() {
       <h5 style={styles.container}>
     All Users
      </h5>
+
+     <div className={classes.root}>
+      
+      <Snackbar open={open} onClose={handleClose}  anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }}>
+        <Alert   onClose={handleClose} severity="success">
+          New password sent to user's email!
+        </Alert>
+      </Snackbar>
+      
+      
+      <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"}}>
+      <Alert onClose={handleCloseError} severity="error">
+        There was an error, try again 
+      </Alert>
+      </Snackbar>
+      
+      </div>
+
      <Button style={{color:'green'}}variant="contained"> <Link to='/adduser'>Add user</Link></Button>
       <Table className='table table-striped table-bordered' aria-label="custom pagination table">
       
@@ -186,7 +273,7 @@ export default function AllUsers() {
             <TableCell>{x.testingFacilityName}</TableCell>
             <TableCell> {x.addressOfPractice} </TableCell>
         
-            <TableCell align="right"><Button style={{backgroundColor:"green" ,color:"white"}}   onClick={()=>{ reset(x.email , x.username)}}>reset</Button>
+            <TableCell align="right"><Button className="btn-sm" style={{backgroundColor:"orange" ,color:"white"}}   onClick={()=>{ reset(x.email , x.username)}}>Reset password</Button>
             </TableCell>
             </TableRow>
         
