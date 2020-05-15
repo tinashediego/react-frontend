@@ -84,6 +84,8 @@ const useStyles = makeStyles((theme) => ({
 
           axios.post(`${api.customUrl}/test-kit-type` ,state)
                .then(res=>{
+
+                
                 setstate({manufacturer:'', brandName:''})
 
                 handleClick()  

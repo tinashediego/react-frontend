@@ -108,7 +108,7 @@ export default function AllPatients() {
     const [rowsPerPage,
         setRowsPerPage] = React.useState(5);
     const [allpat,
-        sePatinet] = useState([])
+        sePatinet] = useState()
 
     useEffect(() => {
         const fetchData = async() => {
@@ -141,6 +141,9 @@ export default function AllPatients() {
         pu.push(`/test/${x}`)
 
     }
+
+
+
 
     const [SearchData,
         setSearch] = useState({search: ''})
@@ -210,7 +213,7 @@ export default function AllPatients() {
                             <TableCell align="left">{row.lastName}</TableCell>
                             <TableCell align="left">{row.phoneNumber}</TableCell>
                             <TableCell align="left">{row.email}</TableCell>
-                            <TableCell align="left">{row.passportNumber}</TableCell>
+                            <TableCell align="left">{row.nationalIdNumber}</TableCell>
                             <TableCell align="left">{row.passportNumber}</TableCell>
                             <TableCell align="left">{row.testResult}</TableCell>
                             <TableCell align="left">{row.dateOfBirth}</TableCell>
