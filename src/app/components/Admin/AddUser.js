@@ -97,7 +97,7 @@ const AddUser  = () =>{
 
       axios.post(`${api.apiUrl}/testing-agents` ,userCommand)
            .then(resp=>{
-
+           setUser('')
             alert('success')
            }).catch(err=>{
 
