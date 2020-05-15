@@ -165,6 +165,7 @@ const AllFacilities  = (props) =>{
                .then(resp=>{
                  alert('Sucess')
                  setOpen(false);
+                 window.location.href = '/allfacilities'
                })
                .catch(err=>{
 
@@ -201,7 +202,7 @@ const AllFacilities  = (props) =>{
       <TableHead>
           
           <TableRow>
-      <TableCell>No#</TableCell>
+     
       <TableCell>ID</TableCell>
       <TableCell>TESTING FACILITY</TableCell>
   
@@ -214,7 +215,7 @@ const AllFacilities  = (props) =>{
           ).map((x ,i) => (
             <TableRow key={i}>
           
-    <TableCell>{i +1}</TableCell>
+    
     <TableCell>{x.id}</TableCell>
     <TableCell>{x.testingFacilityName}</TableCell>
  

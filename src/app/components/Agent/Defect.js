@@ -106,7 +106,7 @@ var newScreen = {
         axios.post(`${api.apiUrl}/test-kits/register-defective` ,newScreen)
              .then(resp=>{
               
-              
+               window.location.href = '/defect'
               handleClick() 
              
              }

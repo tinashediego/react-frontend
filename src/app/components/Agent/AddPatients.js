@@ -532,7 +532,7 @@ const AddPatient = ({next}) => {
 
         if (`${moment().diff(patientData.dateOfBirth, 'days', false)}` < '1'  ) {
 
-            alert('Your date of birth must be  of person betwen 1 & 95')
+            alert('Do not enter future date')
 
         } else {
 
@@ -565,7 +565,7 @@ const AddPatient = ({next}) => {
 
                 <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success">
-                        This is a success message!
+                        patient added!
                     </Alert>
                 </Snackbar>
 

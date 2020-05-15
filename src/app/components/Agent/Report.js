@@ -66,6 +66,8 @@ export default function Report({reset}) {
 
     console.log(repo)
 
+    
+
     let {testingDetails} = repo
     if (!repo) {
 
