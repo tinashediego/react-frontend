@@ -253,7 +253,7 @@ export default function AllUsers() {
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Group</TableCell>
             <TableCell align="left">Testing Facility</TableCell>
-            <TableCell align="left">Address Of Practice</TableCell>
+          
             <TableCell align="left">Actions</TableCell>
           </TableRow>
         </TableHead>
@@ -271,7 +271,7 @@ export default function AllUsers() {
             <TableCell>{x.email}</TableCell>
             <TableCell>{x.group}</TableCell>
             <TableCell>{x.testingFacilityName}</TableCell>
-            <TableCell> {x.addressOfPractice} </TableCell>
+            
         
             <TableCell align="right"><Button className="btn-sm" style={{backgroundColor:"orange" ,color:"white"}}   onClick={()=>{ reset(x.email , x.username)}}>Reset password</Button>
             </TableCell>
