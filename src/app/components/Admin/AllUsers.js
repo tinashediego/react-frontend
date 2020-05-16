@@ -1,4 +1,4 @@
-import React  ,{useEffect}from 'react';
+import React  ,{useEffect ,useState}from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {allUsers} from '../../../redux/actions/authActions'
 import PropTypes from 'prop-types';
@@ -21,6 +21,7 @@ import axios from 'axios'
 import api from '../../../utils/helpers/api';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import {TextField} from '@material-ui/core'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -156,6 +157,10 @@ export default function AllUsers() {
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [getAdmins ,setAdmins ] = useState([])
+   
+  const [SearchData,
+    setSearch] = useState({search: 'hbybu'})
 
 
 
@@ -177,6 +182,18 @@ export default function AllUsers() {
 
 
   useEffect(() => {
+
+
+
+    const fetchData = async() => {
+
+      const resp = await axios.get(`${api.apiUrl}/users/all`)
+
+      setAdmins(resp.data)
+
+  }
+
+  fetchData()
     dispatch(allUsers());
   }, [dispatch]);
 
@@ -208,7 +225,24 @@ export default function AllUsers() {
   }
 
 
+if(!getAdmins){
 
+  return '.... Loading'
+}
+  console.log(getAdmins)
+
+  getAdmins.map(x=>{
+
+
+    if(x.group === 'ADMIN'){
+
+
+      return content.push(x)
+    }
+
+  })
+
+ 
 
   return (
    
@@ -240,13 +274,16 @@ export default function AllUsers() {
       </div>
 
      <Button style={{color:'green'}}variant="contained"> <Link to='/adduser'>Add user</Link></Button>
+
       <Table className='table table-striped table-bordered' aria-label="custom pagination table">
       
       <TableHead>
           
           <TableRow>
             <TableCell align="left">First name</TableCell>
+            
             <TableCell align="left">Last name</TableCell>
+            <TableCell align="left">User Name</TableCell>
             <TableCell align="left">Phone Number</TableCell>
             <TableCell align="left">National ID</TableCell>
             <TableCell align="left">Practicing Number</TableCell>
@@ -265,12 +302,13 @@ export default function AllUsers() {
             <TableRow key={i}>
             <TableCell>{x.firstName}</TableCell>
             <TableCell>{x.lastName}</TableCell>
+            <TableCell>{x.username}</TableCell>
             <TableCell>{x.phoneNumber}</TableCell>
             <TableCell>{x.nationalIdNumber}</TableCell>
-            <TableCell>{x.practicingNumber}</TableCell>
+            <TableCell>{x.practicingNumber === undefined ? 'n/n' : x.practicingNumber}</TableCell>
             <TableCell>{x.email}</TableCell>
             <TableCell>{x.group}</TableCell>
-            <TableCell>{x.testingFacilityName}</TableCell>
+            <TableCell>{x.testingFacilityName === undefined ? 'n/n' : x.testingFacilityName}</TableCell>
             
         
             <TableCell align="right"><Button className="btn-sm" style={{backgroundColor:"orange" ,color:"white"}}   onClick={()=>{ reset(x.email , x.username)}}>Reset password</Button>
@@ -278,6 +316,9 @@ export default function AllUsers() {
             </TableRow>
         
           ))}
+
+
+          
 
         
         </TableBody>
