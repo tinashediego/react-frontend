@@ -12,6 +12,6 @@ const setAuthToken = token => {
 
 
 
-console.log(axios.interceptors)
+//console.log(axios.interceptors)
 
 export default setAuthToken;

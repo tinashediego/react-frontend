@@ -75,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-      console.log(state)
 
       
       function handleSubmit(e) {

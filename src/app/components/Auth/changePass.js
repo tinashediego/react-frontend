@@ -87,7 +87,7 @@ const ChangePass = () => {
         "password": ""})
 
     const pu = useHistory()
-    console.log(userData)
+  
 
     function validatePassword(password) {
                 

@@ -8,7 +8,6 @@ import styles from './Cards.module.css';
 export default function Desicion({next ,reset}) {
 
 
-    console.log(next)
     return (
         <div>
 

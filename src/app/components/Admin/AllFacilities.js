@@ -32,8 +32,7 @@ import mashwest from '../Agent/MashWest'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+
 import api from '../../../utils/helpers/api'
 import Snackbar from '@material-ui/core/Snackbar';
 
@@ -227,11 +226,9 @@ const AllFacilities  = (props) =>{
   }, [dispatch])
 
 
- console.log(content)
   
   function handleCities() {
 
-    console.log(state.city)
 
     switch (state.city) {
         case 'HARARE':

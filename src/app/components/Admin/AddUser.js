@@ -65,7 +65,7 @@ const AddUser  = () =>{
 
   
   
-  console.log(content)
+ 
 
   const [newUser ,setUser] = useState({
 
@@ -201,7 +201,6 @@ const adminCommand =
 
 
 
-  console.log(newUser.testingFacility)
 
 
     
@@ -279,8 +278,7 @@ const adminCommand =
         
       }
 
-    
-      console.log(userCommand)
+
   
 
 

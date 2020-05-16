@@ -21,7 +21,7 @@ import axios from 'axios'
 import api from '../../../utils/helpers/api';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import {TextField} from '@material-ui/core'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -176,7 +176,7 @@ export default function AllUsers() {
   
   const content = useSelector((state) => state.auth.allusers);
 
-  console.log(content)
+ 
   const dispatch = useDispatch(allUsers());
 
 
@@ -216,7 +216,7 @@ export default function AllUsers() {
 
         handleClick() 
         
-        console.log('success')
+       
        }).catch(err=>{
         handleClickError() 
       
@@ -229,8 +229,7 @@ if(!getAdmins){
 
   return '.... Loading'
 }
-  console.log(getAdmins)
-
+ 
   getAdmins.map(x=>{
 
 

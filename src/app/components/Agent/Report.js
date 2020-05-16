@@ -64,7 +64,7 @@ export default function Report({reset}) {
 
     }, [id])
 
-    console.log(repo)
+  
 
     
 
@@ -81,14 +81,13 @@ export default function Report({reset}) {
 
     } else {
 
-        console.log(Object.keys(testingDetails))
     }
 
     // let {patient} =  patientScreening
     // {`${`${patientScreening.bodyAchesPresent}`}`}
-    // console.log(patientScreening[0].patientId);
+    // //console.log(patientScreening[0].patientId);
 
-    console.log(repo.patientScreeningDTO)
+    //console.log(repo.patientScreeningDTO)
 
 
     

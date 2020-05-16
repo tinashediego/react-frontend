@@ -16,7 +16,7 @@ import api  from '../../utils/helpers/api'
       })
       .catch(err =>{ 
 
-        console.log(err)
+        //console.log(err)
         dispatch({
           type: GET_ERRORS,
           payload: err
@@ -36,7 +36,7 @@ import api  from '../../utils/helpers/api'
 
     axios.get(`${api.customUrl}/test-kit-type/all`)
          .then(resp=>{
-           console.log(resp)
+           
            dispatch({
            type:ALL_KITS,
            payload:resp.data
@@ -63,7 +63,7 @@ import api  from '../../utils/helpers/api'
 
     axios.get(`${api.apiUrl}/testing-facilities/all`)
          .then(resp=>{
-           console.log(resp)
+          
            dispatch({
            type:ALL_FACILITY,
            payload:resp.data
@@ -95,7 +95,7 @@ import api  from '../../utils/helpers/api'
       })
       .catch(err =>{ 
 
-        console.log(err)
+        //console.log(err)
         dispatch({
           type: GET_ERRORS,
           payload: err

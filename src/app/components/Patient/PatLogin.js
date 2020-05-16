@@ -67,7 +67,7 @@ const PatLogin = ({next}) => {
 
     };
 
-    console.log(userData)
+
     function handleSubmit(e) {
         e.preventDefault();
         if (userData) {

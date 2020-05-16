@@ -23,7 +23,7 @@ export const allUsers = () => dispatch=>{
 
   axios.get(`${api.apiUrl}/testing-agents/all`)
        .then(resp=>{
-         console.log(resp)
+  
          dispatch({
          type:ALL_USERS,
          payload:resp.data

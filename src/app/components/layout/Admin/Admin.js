@@ -201,7 +201,7 @@ export default function Admin() {
 
   
 
-  console.log(location.pathname)
+
 
   return (
     <div className={classes.root}>

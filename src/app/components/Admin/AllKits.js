@@ -127,7 +127,7 @@ const AllKits  = (props) =>{
 
 
   const content = useSelector((state) => state.kits.allkits);
-  console.log(content)
+
   //this hook gives us redux store state
 
 
@@ -151,8 +151,6 @@ const AllKits  = (props) =>{
                                     })
 
 
-
-      console.log(state)
 
       const dispatchs = useDispatch();
       

@@ -132,7 +132,7 @@ export default function Patient() {
   let  para = useParams()
   let his =  useHistory()
 
-  console.log(para)
+  //console.log(para)
 
 
 
@@ -149,7 +149,7 @@ export default function Patient() {
 
   }
 
-  //console.log(location)
+  ////console.log(location)
   function switchPages(){
 
     switch (location.pathname) {
@@ -176,7 +176,7 @@ export default function Patient() {
   
  
 
-  console.log(location.pathname)
+  //console.log(location.pathname)
 
   return (
     <div className={classes.root}>

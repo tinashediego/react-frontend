@@ -159,7 +159,6 @@ const handleSubmit = (e) => {
 
   }
 
-  console.log(para.patie)
   
     return (
       

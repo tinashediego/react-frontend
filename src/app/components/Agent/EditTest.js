@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     })
 
 
-    console.log(content2)
+    //console.log(content2)
 
 const handleSubmit = (e) => {
 
@@ -104,7 +104,7 @@ const handleSubmit = (e) => {
         }
 
 
-        console.log(newScreen)
+        //console.log(newScreen)
 
         axios.post(`${api.apiUrl}/tests` ,newScreen)
              .then(resp=>{

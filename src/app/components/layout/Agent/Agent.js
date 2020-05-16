@@ -154,7 +154,7 @@ export default function Agent() {
   }
 
 
-console.log(para)
+
 
 
   const handleDrawerOpen = () => {

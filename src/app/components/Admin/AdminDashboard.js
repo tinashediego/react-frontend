@@ -301,13 +301,7 @@ const AdminDashboard = () => {
 
 
    }
-    //console.log(cumCity)
-
-
   
-    
-    console.log(cityDaily)
-    //console.log(cityDaily)
 
 
     let colum = {
