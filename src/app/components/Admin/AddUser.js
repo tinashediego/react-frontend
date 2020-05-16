@@ -69,8 +69,8 @@ const AddUser  = () =>{
 
   const [newUser ,setUser] = useState({
 
-    "city": "",
-    "province":"",
+    "city": "NOT_PROVIDED",
+    "province":"NOT_PROVIDED",
     streetAddress:'',
     "addressOfPractice": "",
     "email": "",
@@ -88,6 +88,54 @@ const AddUser  = () =>{
   
   })
 
+
+
+  function handleAgent(){
+
+
+    if(newUser.group === 'AGENT'){
+
+
+      return  <div className="row">
+      
+      <FormGroup className="col-sm-6">
+        
+        <TextField label="Qualification" 
+               value={newUser.qualification}
+               
+             onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
+               placeholder="Qualification" required />
+      </FormGroup>
+
+      
+      <FormGroup className="col-sm-6">
+      
+      <TextField label="Practicing Number" 
+             value={newUser.practicingNumber}
+             onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
+             placeholder="practicing number" required />
+    </FormGroup>
+      
+      <FormGroup className="col-sm-12">
+
+      
+      <Input type="select" name="group"  value={newUser.testingFacility} 
+      onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
+               <option>Testing Facility</option>
+              {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
+              </Input>
+    </FormGroup>
+
+    </div>
+  
+
+
+
+    }
+
+
+   
+  }
 
   let userCommand ={
 
@@ -123,6 +171,8 @@ const adminCommand =
     "address": {
      
       "streetAddress": newUser.streetAddress,
+      "city": newUser.city,
+      "province": newUser.province
       
     },
     
@@ -311,23 +361,6 @@ const adminCommand =
   <div className="row">
 
 
-      <FormGroup className="col-sm-6">
-        
-        <TextField label="Qualification" 
-               value={newUser.qualification}
-               
-             onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
-               placeholder="Qualification" required />
-      </FormGroup>
-
-      
-      <FormGroup className="col-sm-6">
-      
-      <TextField label="Practicing Number" 
-             value={newUser.practicingNumber}
-             onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
-             placeholder="practicing number" required />
-    </FormGroup>
     </div>
 
 
@@ -337,7 +370,7 @@ const adminCommand =
     <TextField label="Residential Addresss" 
            value={newUser.streetAddress}
            onChange={e=>setUser({ ...newUser ,streetAddress:e.target.value})}
-           placeholder="Residential Addresss" required />
+           placeholder="Residential Addresss"/>
   </FormGroup>
 
 
@@ -346,14 +379,7 @@ const adminCommand =
     <div className="row">
     
  
-    <FormGroup className="col-sm-12">
-      
-    <Input type="select" name="group"  value={newUser.testingFacility} 
-    onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
-             <option>Testing Facility</option>
-            {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
-            </Input>
-  </FormGroup>
+  
 
   </div>
 
@@ -380,7 +406,7 @@ const adminCommand =
   
     
 
-
+   {handleAgent()}
 
 
       </div>

@@ -623,10 +623,10 @@ const AdminDashboard = () => {
                                 {(rowsPerPage > 0
                                     ? cityDemographics.filter( (row)=>{ return row.city.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     : cityDemographics
-                                  ).filter( (row)=>{ return row.city.toLowerCase().indexOf(SearchData.search.toLowerCase()) !== -1 }).map((row ,i) => (
+                                  ).slice(1).map((row ,i) => (
                                     <TableRow key={i}>
                                 <TableCell>{i + 1}</TableCell>
-                                <TableCell>{row.city}</TableCell>
+                                <TableCell>{row.city === 'NOT_PROVIDED'? 'n/n':row.city}</TableCell>
                                 <TableCell>{row.positiveTotal}</TableCell>
                                 <TableCell>{row.negativeTotal}</TableCell>
 
