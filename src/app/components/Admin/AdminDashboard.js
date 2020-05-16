@@ -707,7 +707,7 @@ const AdminDashboard = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>No#</TableCell>
-                            <TableCell>CITY</TableCell>
+                            <TableCell>DATE</TableCell>
                             <TableCell>POSITIVE</TableCell>
                             <TableCell>NEGATIVE</TableCell>
                         </TableRow>
@@ -801,7 +801,7 @@ const AdminDashboard = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>No#</TableCell>
-                            <TableCell>CITY</TableCell>
+                            <TableCell>DATE</TableCell>
                             <TableCell>POSITIVE</TableCell>
                             <TableCell>NEGATIVE</TableCell>
                         </TableRow>

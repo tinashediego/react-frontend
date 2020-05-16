@@ -122,14 +122,20 @@ const Login = ({next}) => {
 
             <div className={classes.root}>
       
-            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+            <Snackbar open={open} autoHideDuration={3000} anchorOrigin={{
+vertical: "top",
+horizontal: "center"
+}} onClose={handleClose}>
               <Alert onClose={handleClose} severity="success">
                 Logged in successfully
               </Alert>
             </Snackbar>
          
          
-            <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+            <Snackbar open={openError} anchorOrigin={{
+vertical: "top",
+horizontal: "center"
+}} autoHideDuration={3000} onClose={handleCloseError}>
             <Alert onClose={handleCloseError} severity="error">
               Invalid credentials! 
             </Alert>
