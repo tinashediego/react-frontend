@@ -89,6 +89,31 @@ const AddUser  = () =>{
   })
 
 
+
+  function handleAgent(){
+
+
+    if(newUser.group === 'AGENT'){
+
+
+      return  <FormGroup className="col-sm-12">
+      
+      <Input type="select" name="group"  value={newUser.testingFacility} 
+      onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
+               <option>Testing Facility</option>
+              {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
+              </Input>
+    </FormGroup>
+  
+
+
+
+    }
+
+
+   
+  }
+
   let userCommand ={
 
    "userCommand":{
@@ -346,14 +371,7 @@ const adminCommand =
     <div className="row">
     
  
-    <FormGroup className="col-sm-12">
-      
-    <Input type="select" name="group"  value={newUser.testingFacility} 
-    onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
-             <option>Testing Facility</option>
-            {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
-            </Input>
-  </FormGroup>
+  
 
   </div>
 
@@ -380,7 +398,7 @@ const adminCommand =
   
     
 
-
+   {handleAgent()}
 
 
       </div>
