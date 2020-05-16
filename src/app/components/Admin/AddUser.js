@@ -96,7 +96,28 @@ const AddUser  = () =>{
     if(newUser.group === 'AGENT'){
 
 
-      return  <FormGroup className="col-sm-12">
+      return  <div className="row">
+      
+      <FormGroup className="col-sm-6">
+        
+        <TextField label="Qualification" 
+               value={newUser.qualification}
+               
+             onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
+               placeholder="Qualification" required />
+      </FormGroup>
+
+      
+      <FormGroup className="col-sm-6">
+      
+      <TextField label="Practicing Number" 
+             value={newUser.practicingNumber}
+             onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
+             placeholder="practicing number" required />
+    </FormGroup>
+      
+      <FormGroup className="col-sm-12">
+
       
       <Input type="select" name="group"  value={newUser.testingFacility} 
       onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
@@ -104,6 +125,8 @@ const AddUser  = () =>{
               {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
               </Input>
     </FormGroup>
+
+    </div>
   
 
 
@@ -336,23 +359,6 @@ const adminCommand =
   <div className="row">
 
 
-      <FormGroup className="col-sm-6">
-        
-        <TextField label="Qualification" 
-               value={newUser.qualification}
-               
-             onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
-               placeholder="Qualification" required />
-      </FormGroup>
-
-      
-      <FormGroup className="col-sm-6">
-      
-      <TextField label="Practicing Number" 
-             value={newUser.practicingNumber}
-             onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
-             placeholder="practicing number" required />
-    </FormGroup>
     </div>
 
 
