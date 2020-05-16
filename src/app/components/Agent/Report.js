@@ -387,7 +387,7 @@ export default function Report({reset}) {
                         <Row form>
                         <Col md={5}>
                             <FormGroup>
-                                <Label for="exampleCity">Country Travveled</Label>
+                                <Label for="exampleCity">Country Travelled</Label>
                                 <h6
                                     style={{
                                     color:  repo.patientScreeningDTO.countryTravelledTo === null
@@ -398,7 +398,7 @@ export default function Report({reset}) {
                         </Col>
                         <Col md={3}>
                             <FormGroup>
-                                <Label for="exampleState">Received any Covid Councelling?</Label>
+                                <Label for="exampleState">Received any Covid Counselling?</Label>
                                 <h6
                                     style={{
                                     color:  repo.patientScreeningDTO.receivedAnyCounsellingOnCovid19 === true

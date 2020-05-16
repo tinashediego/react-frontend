@@ -229,7 +229,7 @@ console.log(para)
             <Tooltip title="Log Out" aria-label="Log Out" onClick={logout}>
           
             <IconButton color="inherit" >
-                {username}
+                <h5>{username} | Logout</h5>
 
                 <AccountCircleIcon/>
 

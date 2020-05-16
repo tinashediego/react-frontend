@@ -220,8 +220,8 @@ export default function Admin() {
           <Typography component="h1" variant="h6" color="inherit"   noWrap className={classes.title}>
           <img src={Logo} style={{width:"64px"}} alt="Admin"></img>
           </Typography>
-          <IconButton color="inherit"  onClick={logout}>'
-          {username}'
+          <IconButton color="inherit"  onClick={logout}>
+           <h5>{username} | Logout</h5>
             
               <AccountCircleIcon/>
           

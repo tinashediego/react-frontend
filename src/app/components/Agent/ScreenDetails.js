@@ -232,7 +232,7 @@ const handleSubmit = (e) => {
               </Col>
               <Col md={6}>
                   <FormGroup>
-                      <Label for="exampleState">Difficult in Breathing</Label>
+                      <Label for="exampleState">Difficulty in Breathing</Label>
                       <Input type="select" name="travelled" value={ScreenData.difficultiesInBreathingPresent} onChange={e=>setScreen({ ...ScreenData ,difficultiesInBreathingPresent:e.target.value})}  >
                       <option>Select</option>
                       <option value="true">Yes</option>
@@ -281,7 +281,7 @@ const handleSubmit = (e) => {
 
               <Col md={6}>
               <FormGroup>
-                  <Label for="exampleCity">Received Covid-Related-Councelling Before </Label>
+                  <Label for="exampleCity">Received Covid-Related-Counselling Before </Label>
                   <Input type="select" name="travelled" value={ScreenData.receivedAnyCounsellingOnCovid19} onChange={e=>setScreen({ ...ScreenData ,receivedAnyCounsellingOnCovid19:e.target.value})} >
                   <option>Select</option>
                   <option value="true">Yes</option>
@@ -311,7 +311,7 @@ const handleSubmit = (e) => {
 
               <Col md={6}>
               <FormGroup>
-                  <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
+                  <Label for="exampleCity">Travelled to Covid-19 Infected Area</Label>
                   <Input type="select" name="travelled" value={ScreenData.hasATravelHistoryToACovid19InfectedArea} onChange={e=>setScreen({ ...ScreenData ,hasATravelHistoryToACovid19InfectedArea:e.target.value})}  >
                   <option>Select</option>
                   <option value="true">Yes</option>
@@ -327,7 +327,7 @@ const handleSubmit = (e) => {
 
           <Col md={6}>
           <FormGroup>
-              <Label for="exampleState">Travelled in the past 21 days to Other Countries</Label>
+              <Label for="exampleState">Travelled in the past 21 days to Other countries</Label>
               <Input type="select" name="travelled" value={ScreenData.hasTravelledPast14Days} onChange={e=>setScreen({ ...ScreenData ,hasTravelledPast14Days:e.target.value})}  >
               <option>Select</option>
               <option value="true">Yes</option>
