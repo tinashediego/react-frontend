@@ -69,8 +69,8 @@ const AddUser  = () =>{
 
   const [newUser ,setUser] = useState({
 
-    "city": "",
-    "province":"",
+    "city": "NOT_PROVIDED",
+    "province":"NOT_PROVIDED",
     streetAddress:'',
     "addressOfPractice": "",
     "email": "",
