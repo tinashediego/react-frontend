@@ -211,7 +211,7 @@ const ChangePass = () => {
 
 <div className={classes.root}>
 
-<Snackbar open={open} onClose={handleClose} anchorOrigin={{
+<Snackbar open={open} onClose={handleClose} autoHideDuration={3000} anchorOrigin={{
 vertical: "top",
 horizontal: "center"
 }}>
@@ -220,7 +220,7 @@ horizontal: "center"
     </Alert>
 </Snackbar>
 
-<Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+<Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError} anchorOrigin={{
 vertical: "top",
 horizontal: "center"
 }}>
@@ -229,7 +229,7 @@ horizontal: "center"
     </Alert>
 </Snackbar>
 
-<Snackbar open={openIncorrect} autoHideDuration={5000} onClose={handleCloseIncorrect} anchorOrigin={{
+<Snackbar open={openIncorrect} autoHideDuration={3000} onClose={handleCloseIncorrect} anchorOrigin={{
 vertical: "top",
 horizontal: "center"
 }}>

@@ -177,14 +177,14 @@ const handleSubmit = (e) => {
       <Snackbar open={open} onClose={handleClose} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
-   }} autoHideDuration={5000}>
+   }} autoHideDuration={3000}>
         <Alert onClose={handleClose} severity="success">
           Patient screened successfully!
         </Alert>
       </Snackbar>
 
 
-      <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+      <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
    }}>

@@ -116,7 +116,7 @@ const PatLogin = ({next}) => {
 
             <div className={classes.root}>
 
-                <Snackbar open={open} anchorOrigin={{
+                <Snackbar open={open} autoHideDuration={3000} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
    }} onClose={handleClose}>
@@ -125,7 +125,7 @@ const PatLogin = ({next}) => {
                     </Alert>
                 </Snackbar>
 
-                <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+                <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
    }}>

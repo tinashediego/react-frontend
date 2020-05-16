@@ -142,14 +142,14 @@ var newScreen = {
    <Snackbar open={open} onClose={handleClose} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
-   }} autoHideDuration={5000}>
+   }} autoHideDuration={3000}>
      <Alert onClose={handleClose} severity="success">
        Patient tested successfully!
      </Alert>
    </Snackbar>
 
 
-   <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError}>
+   <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
    <Alert onClose={handleCloseError} severity="error">
      There was an error, try again 
    </Alert>

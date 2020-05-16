@@ -570,7 +570,7 @@ const AddPatient = ({next}) => {
 
             <div className={classes.root}>
 
-                <Snackbar open={open} onClose={handleClose} autoHideDuration={5000} anchorOrigin={{
+                <Snackbar open={open} onClose={handleClose} autoHideDuration={3000} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
    }}>
@@ -579,7 +579,7 @@ const AddPatient = ({next}) => {
                     </Alert>
                 </Snackbar>
 
-                <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+                <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
    }}>
@@ -588,7 +588,7 @@ const AddPatient = ({next}) => {
                     </Alert>
                 </Snackbar>
 
-                <Snackbar open={openBirth} autoHideDuration={5000} onClose={handleCloseErrorBirth} anchorOrigin={{
+                <Snackbar open={openBirth} autoHideDuration={3000} onClose={handleCloseErrorBirth} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
    }}>

@@ -181,14 +181,14 @@ const AddUser  = () =>{
       
       <Snackbar open={open} anchorOrigin={{
       vertical: "top",
-      horizontal: "center"}} autoHideDuration={5000} onClose={handleClose}>
+      horizontal: "center"}} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
           User added successfully
         </Alert>
       </Snackbar>
    
    
-      <Snackbar open={openError} autoHideDuration={5000} onClose={handleCloseError} anchorOrigin={{
+      <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError} anchorOrigin={{
       vertical: "top",
       horizontal: "center"}}>
       <Alert onClose={handleCloseError} severity="error">
