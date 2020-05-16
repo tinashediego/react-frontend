@@ -659,7 +659,7 @@ const AddPatient = ({next}) => {
                             ...patientData,
                             nationalId: e.target.value
                         })}
-                            placeholder="e.g 63-1234567A12"
+                            placeholder="e.g 631234567A12"
                             fullWidth
                             required/>
                         <span
@@ -743,7 +743,7 @@ const AddPatient = ({next}) => {
                             ...patientData,
                             phoneNumber: e.target.value
                         })}
-                            placeholder="0123456789"
+                            placeholder="0772123456"
                             fullWidth
                             required/>
                         <span

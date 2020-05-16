@@ -44,7 +44,7 @@ import api  from '../../utils/helpers/api'
           dispatch({
             type:GET_ERRORS,
             payload:err,
-            msg:alert('trouble getting data ,please refresh')
+            
           })
 
         })
