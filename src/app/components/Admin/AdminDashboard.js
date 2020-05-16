@@ -463,7 +463,7 @@ const AdminDashboard = () => {
             sym.cough,
             sym.headache,
             sym.diarrhoea,
-            sym.soreThroat,
+         
 
             sym.bodyAches,
             sym.fever,
@@ -480,7 +480,7 @@ const AdminDashboard = () => {
                 'COUGH',
                 'HEADACHE',
                 'Diarrhoea',
-                'Sore Throat',
+               
                 'Body Aches',
                 'Fever',
                 'breathing'
