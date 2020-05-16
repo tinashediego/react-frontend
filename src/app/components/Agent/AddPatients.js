@@ -743,7 +743,7 @@ const AddPatient = ({next}) => {
                             ...patientData,
                             phoneNumber: e.target.value
                         })}
-                            placeholder="0123456789"
+                            placeholder="0772123456"
                             fullWidth
                             required/>
                         <span
