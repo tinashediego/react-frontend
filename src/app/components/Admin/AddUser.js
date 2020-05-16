@@ -115,6 +115,29 @@ const AddUser  = () =>{
    "testingFacilityId":newUser.testingFacility,
 
 }
+
+
+const adminCommand = 
+
+  {
+    "address": {
+     
+      "streetAddress": newUser.streetAddress,
+      
+    },
+    
+
+    "firstName":newUser.firstName,
+    "lastName":newUser.lastName ,
+    "group":newUser.group,
+    username:newUser.username,
+    "gender":newUser.gender,
+    "phoneNumber": newUser.phoneNumber,
+    "email": newUser.email,
+    "nationalIdNumber":newUser.nationalIdNumber,
+    "passportNumber": newUser.nationalIdNumber,
+  }
+
    
 
 
@@ -136,34 +159,77 @@ const AddUser  = () =>{
     e.preventDefault();
     if (newUser) {
 
-      axios.post(`${api.apiUrl}/testing-agents` ,userCommand)
-           .then(resp=>{
+
+      if(newUser.group === 'ADMIN'){
+
+        axios.post(`${api.apiUrl}/users` ,adminCommand)
+        .then(resp=>{
 
 
-            handleClick()
-           setUser({
-            "city": "",
-            "province":"",
-            streetAddress:'',
-            "addressOfPractice": "",
-            "email": "",
-            "firstName": "",
-            "gender": "",
-            "lastName": "",
-            group:'',
-            testingFacility:0,
-            "nationalIdNumber": "",
-            "passportNumber":'',
-            "practicingNumber": "",
-            "qualification": "",
-            "phoneNumber":"",
-            "username": ''})
-            
-           }).catch(err=>{
-            handleClickError()
-            
-           })
+         handleClick()
+        setUser({
+         "city": "",
+         "province":"",
+         streetAddress:'',
+         "addressOfPractice": "",
+         "email": "",
+         "firstName": "",
+         "gender": "",
+         "lastName": "",
+         group:'',
+         testingFacility:0,
+         "nationalIdNumber": "",
+         "passportNumber":'',
+         "practicingNumber": "",
+         "qualification": "",
+         "phoneNumber":"",
+         "username": ''})
+         
+        }).catch(err=>{
+         handleClickError()
+         
+        })
 
+
+
+
+      }else{
+
+
+        
+        axios.post(`${api.apiUrl}/testing-agents` ,userCommand)
+        .then(resp=>{
+
+
+         handleClick()
+        setUser({
+         "city": "",
+         "province":"",
+         streetAddress:'',
+         "addressOfPractice": "",
+         "email": "",
+         "firstName": "",
+         "gender": "",
+         "lastName": "",
+         group:'',
+         testingFacility:0,
+         "nationalIdNumber": "",
+         "passportNumber":'',
+         "practicingNumber": "",
+         "qualification": "",
+         "phoneNumber":"",
+         "username": ''})
+         
+        }).catch(err=>{
+         handleClickError()
+         
+        })
+
+
+        
+      }
+
+    
       console.log(userCommand)
   
 
