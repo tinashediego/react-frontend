@@ -274,7 +274,7 @@ const handleSubmit = (e) => {
 
               <Col md={6}>
               <FormGroup>
-                  <Label for="exampleCity">Received Covid-Related-Councelling Before </Label>
+                  <Label for="exampleCity">Received Covid-Related-Counselling Before </Label>
                   <Input type="select" name="travelled" value={ScreenData.receivedAnyCounsellingOnCovid19} onChange={e=>setScreen({ ...ScreenData ,receivedAnyCounsellingOnCovid19:e.target.value})} >
                   <option>Select</option>
                   <option value="true">Yes</option>
@@ -304,7 +304,7 @@ const handleSubmit = (e) => {
 
               <Col md={6}>
               <FormGroup>
-                  <Label for="exampleCity">travelled in Covid-19 Infected Area</Label>
+                  <Label for="exampleCity">travelled to a Covid-19 Infected Area</Label>
                   <Input type="select" name="travelled" value={ScreenData.hasATravelHistoryToACovid19InfectedArea} onChange={e=>setScreen({ ...ScreenData ,hasATravelHistoryToACovid19InfectedArea:e.target.value})} id="gender">
                   <option>Select</option>
                   <option value="true">Yes</option>
