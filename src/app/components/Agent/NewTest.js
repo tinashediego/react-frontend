@@ -142,7 +142,7 @@ var newScreen = {
    <Snackbar open={open} onClose={handleClose} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
-   }}>
+   }} autoHideDuration={5000}>
      <Alert onClose={handleClose} severity="success">
        Patient tested successfully!
      </Alert>

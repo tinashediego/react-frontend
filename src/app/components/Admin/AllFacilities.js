@@ -619,7 +619,7 @@ function handleProvinces() {
       vertical: "top",
       horizontal: "center"
    }} onClose={handleCloseR}>
-      <Alert onClose={handleCloseR} severity="success">
+      <Alert onClose={handleCloseR} autoHideDuration={5000} severity="success">
         This is a success message!
       </Alert>
     </Snackbar>

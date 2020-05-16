@@ -570,7 +570,7 @@ const AddPatient = ({next}) => {
 
             <div className={classes.root}>
 
-                <Snackbar open={open} onClose={handleClose} anchorOrigin={{
+                <Snackbar open={open} onClose={handleClose} autoHideDuration={5000} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
    }}>

@@ -135,7 +135,8 @@ const handleSubmit = (e) => {
    <Snackbar open={open} anchorOrigin={{
       vertical: "top",
       horizontal: "center"
-   }} onClose={handleClose}>
+   }} onClose={handleClose}
+   autoHideDuration={5000}>
      <Alert onClose={handleClose} severity="success">
        Patient tested successfully!
      </Alert>

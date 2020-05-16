@@ -181,7 +181,7 @@ const AddUser  = () =>{
       
       <Snackbar open={open} anchorOrigin={{
       vertical: "top",
-      horizontal: "center"}} onClose={handleClose}>
+      horizontal: "center"}} autoHideDuration={5000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
           User added successfully
         </Alert>
