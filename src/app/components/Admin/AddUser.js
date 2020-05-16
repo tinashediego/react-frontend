@@ -171,6 +171,8 @@ const adminCommand =
     "address": {
      
       "streetAddress": newUser.streetAddress,
+      "city": newUser.city,
+      "province": newUser.province
       
     },
     
