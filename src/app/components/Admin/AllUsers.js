@@ -159,10 +159,7 @@ export default function AllUsers() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [getAdmins ,setAdmins ] = useState([])
    
-  const [SearchData,
-    setSearch] = useState({search: 'hbybu'})
-
-
+  
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

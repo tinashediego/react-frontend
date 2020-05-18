@@ -16,7 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './mainListItems';
-import {useLocation ,useParams ,useHistory} from 'react-router'
+import {useLocation ,useHistory} from 'react-router'
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {logoutUser ,} from '../../../../redux/actions/authActions'
@@ -129,7 +129,7 @@ export default function Patient() {
   };
  
   const location =  useLocation()
-  let  para = useParams()
+ 
   let his =  useHistory()
 
   //console.log(para)
