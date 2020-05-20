@@ -33,14 +33,16 @@ const useStyles = makeStyles((theme) => ({
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [openError, setOpenError] = React.useState(false);
-
+  const [errorMessage,
+    setErrorMsage] = useState('')
 
 
   
   const handleClick = () => {
     setOpen(true);
   };
-  const handleClickError = () => {
+  const handleClickError = (x) => {
+    setErrorMsage(x)
       setOpenError(true);
     };
 
@@ -118,7 +120,7 @@ var newScreen = {
               )
               .catch(err=>{
 
-                handleClickError()
+                handleClickError(err.response.data.message)
               })
 
              
@@ -153,9 +155,12 @@ var newScreen = {
    </Snackbar>
 
 
-   <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
+   <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"
+   }}>
    <Alert onClose={handleCloseError} severity="error">
-     There was an error, try again 
+     {errorMessage}
    </Alert>
  </Snackbar>
  
