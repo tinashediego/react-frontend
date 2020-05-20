@@ -221,10 +221,10 @@ const EditUser = () => {
             }
         },
 
-        "qualification": oldUser.qualification,
+        "qualification": oldUser.qualification ,
         "practicingNumber": oldUser.practicingNumber,
         "addressOfPractice": newUser.addressOfPractice,
-        "testingFacilityId": newUser.testingFacility
+        "testingFacilityId": newUser.testingFacility || oldUser.testingFacility.id
     }
 
     const adminCommand = {
@@ -427,7 +427,7 @@ const EditUser = () => {
 
                         <TextField
                             label="Residential Addresss"
-                            value={newUser.streetAddress}
+                            value={newUser.address === undefined || newUser.address === null ? 'n/n': newUser.address.streetAddress}
                             onChange={e => setUser({
                             ...newUser,
                             streetAddress: e.target.value
