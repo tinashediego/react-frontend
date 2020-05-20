@@ -181,12 +181,14 @@ const EditUser = () => {
 
                 <FormGroup className="col-sm-12">
 
+                {console.log(oldUser.testingFacility)}
+
                     <Input
                         type="select"
                         name="group"
-                        value={newUser.address === undefined  || newUser.address === null ? 'n/n' :newUser.address.streetAddress}
-                        onChange={e => setUser({
-                        ...newUser,
+                        value={oldUser.testingFacility === undefined  || oldUser.testingFacility === null ? 'n/n' :oldUser.testingFacility.id}
+                        onChange={e => setOldUser({
+                        ...oldUser,
                         testingFacility: e.target.value
                     })}>
                         <option>Testing Facility</option>
@@ -502,49 +504,9 @@ const EditUser = () => {
                         </FormGroup>
                     </div>
 
-                    <div className="row">
-                        <FormGroup className="col-sm-6">
-                            <Input
-                                type="select"
-                                name="travelled"
-                                value={newUser.countryVisited}
-                                onChange={e => setUser({
-                                ...newUser,
-                                city: e.target.value
-                            })}>
-                                <option>City</option>
-                                {cityList.map((team, i) => <option key={team.i} value={team}>{team}</option>)}
+            
 
-                            </Input>
-
-                        </FormGroup>
-
-                        <FormGroup className="col-sm-6">
-                            <Input
-                                type="select"
-                                name="group"
-                                value={newUser.province}
-                                onChange={e => setUser({
-                                ...newUser,
-                                province: e.target.value
-                            })}>
-                                <option>Province</option>
-
-                                <option value="MANICALAND">MANICALAND</option>
-                                <option value="HARARE">HARARE</option>
-                                <option value="BULAWAYO">BULAWAYO</option>
-                                <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
-                                <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
-                                <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
-                                <option value="MASVINGO">MASVINGO</option>
-                                <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
-                                <option value="MATABELELAND_SOUTH">MATABEKELAND_SOUTH</option>
-                                <option value="MIDLANDS">MIDLANDS</option>
-
-                            </Input>
-                        </FormGroup>
-
-                    </div>
+         
 
                     <div align="right">
                         <button className="btn btn-success" type="submit">submit</button>
