@@ -120,14 +120,17 @@ export default function AllUsers() {
     const handleClick = () => {
         setOpen(true);
     };
-
+    const [errorMessage,
+        setErrorMsage] = useState('')
     const handleClickDel = () => {
         setOpenDel(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
+        setErrorMsage(x)
         setOpenError(true);
     };
-    const handleClickErrorDel = () => {
+    const handleClickErrorDel = (x) => {
+        setErrorMsage(x)
         setOpenErrorDel(true);
     };
 
@@ -216,7 +219,7 @@ export default function AllUsers() {
 
             })
             .catch(err => {
-                handleClickError()
+                handleClickError(err.response.data.message)
 
             })
 
@@ -242,87 +245,83 @@ export default function AllUsers() {
 
     }
 
+
     function deleteUser (x ,y ,z){
 
-      if(x === undefined){
 
-        if( z === true){
+        if(x=== undefined){
 
-            axios.patch(`${api.apiUrl}/users/${y}?status=false`)
-            .then(resp=>{
+            if(z === true){
 
-             //alert('sucess')
-             handleClickDel()
-            }).catch(err=>{
-
-             //alert('error')
-
-             handleClickErrorDel()
-            })
-
-        }else{
-
-            axios.patch(`${api.apiUrl}/users/${y}?status=true`)
-            .then(resp=>{
-
-             //alert('sucess')
-             handleClickDel()
-            }).catch(err=>{
-
-             //alert('error')
-
-             handleClickErrorDel()
-            })
-
-
-
-        }
-
+                axios.patch(`${api.apiUrl}/users/${y}?status=false`)
+                .then(resp=>{
     
-            
+                 //alert('sucess')
+                 handleClickDel()
+                }).catch(err=>{
+    
+                  handleClickError(err.response.data.message)
+                 })
 
-      }else{
 
-        if( z === true){
+            }else{
 
-            axios.patch(`${api.apiUrl}/users/${x}?status=false`)
-            .then(resp=>{
+                axios.patch(`${api.apiUrl}/users/${y}?status=true`)
+                .then(resp=>{
+    
+                 //alert('sucess')
+                 handleClickDel()
+                }).catch(err=>{
+    
+                  handleClickError(err.response.data.message)
+                 })
 
-             //alert('sucess')
-             handleClickDel()
-            }).catch(err=>{
 
-             //alert('error')
 
-             handleClickErrorDel()
-            })
+            }
+
+
 
         }else{
 
-            axios.patch(`${api.apiUrl}/users/${x}?status=true`)
-            .then(resp=>{
+            if(z === true){
 
-             //alert('sucess')
-             handleClickDel()
-            }).catch(err=>{
+                axios.patch(`${api.apiUrl}/users/${x}?status=false`)
+                .then(resp=>{
+    
+                 //alert('sucess')
+                 handleClickDel()
+                }).catch(err=>{
+    
+                  handleClickError(err.response.data.message)
+                 })
 
-             //alert('error')
 
-             handleClickErrorDel()
-            })
+            }else{
+
+                axios.patch(`${api.apiUrl}/users/${x}?status=true`)
+                .then(resp=>{
+    
+                 //alert('sucess')
+                 handleClickDel()
+                }).catch(err=>{
+    
+                  handleClickError(err.response.data.message)
+                 })
+
+
+
+            }
+
 
 
 
         }
-
-       
-
-      }
 
 
 
     }
-
+ 
   
 
     if (!getAdmins) {
@@ -395,7 +394,7 @@ export default function AllUsers() {
                     horizontal: "center"
                 }}>
                     <Alert onClose={handleCloseDelError} severity="error">
-                        There was an error, try again
+                    {errorMessage}
                     </Alert>
                 </Snackbar>
 

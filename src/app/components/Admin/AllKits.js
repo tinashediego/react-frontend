@@ -31,6 +31,17 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import axios  from 'axios'
 import api from '../../../utils/helpers/api'
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+      width: '100%',
+      '& > * + *': {
+          marginTop: theme.spacing(2)
+      }
+  }
+}));
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -106,7 +117,7 @@ TablePaginationActions.propTypes = {
 
 const AllKits  = (props) =>{ 
 
-
+  const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -139,18 +150,39 @@ const AllKits  = (props) =>{
   const dispatch = useDispatch(allKits());
 
 
-
+  const [openDel, setOpenDel] = useState();
+  const [openErrorDel, setOpenErrorDel] = useState();
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handleClickErrorDel = () => {
+    setOpenErrorDel(true);
+};
+  const handleClickDel = () => {
+    setOpenDel(true);
+};
 
   useEffect(() => {
     dispatch(allKits());
   }, [dispatch])
 
 
+  const handleCloseDelError = (event, reason) => {
+    if (reason === 'clickaway') {
+        return;
+    }
 
+    setOpenErrorDel(false);
+
+};
+const handleCloseDel = (event, reason) => {
+  if (reason === 'clickaway') {
+      return;
+  }
+
+  setOpenDel(false);
+
+}
   const [state, setstate] = useState({"batchNumber": "",
                                       "brandName": "" 
                                     })
@@ -190,13 +222,15 @@ const AllKits  = (props) =>{
       axios.delete(`${api.customUrl}/test-kit-type/${x}`)
       .then(resp=>{
 
-         alert('success')
+        // alert('success')
+        handleClickDel()
          pu.push(`/allkits`)
          
       })
       .catch(err=>{
 
-         alert(err.message)
+        // alert(err.message)
+        handleClickErrorDel()
       })
 
     }
@@ -206,6 +240,35 @@ const AllKits  = (props) =>{
    
 
     <h5  style={styles.container}>All Kits</h5>
+
+    <div className={classes.root}>
+
+<Snackbar
+    open={openDel}
+    onClose={handleCloseDel}
+    anchorOrigin={{
+    vertical: "top",
+    horizontal: "center"
+}}>
+    <Alert onClose={handleCloseDel} severity="success">
+        User deleted successfully!
+    </Alert>
+</Snackbar>
+
+<Snackbar
+    open={openErrorDel}
+    autoHideDuration={5000}
+    onClose={handleCloseDelError}
+    anchorOrigin={{
+    vertical: "top",
+    horizontal: "center"
+}}>
+    <Alert onClose={handleCloseDelError} severity="error">
+        There was an error, try again
+    </Alert>
+</Snackbar>
+
+</div>
     <Button style={{color:'green'}}variant="contained" > <Link to='/newkit'>New Kit</Link></Button>
 
 

@@ -144,6 +144,11 @@ TablePaginationActions.propTypes = {
 
 const AllFacilities = (props) => {
 
+
+    const [errorMessage,
+        setErrorMsage] = useState('')
+    const [openDel, setOpenDel] = useState();
+  const [openErrorDel, setOpenErrorDel] = useState();
     const [page,
         setPage] = React.useState(0);
     const [rowsPerPage,
@@ -160,11 +165,34 @@ const AllFacilities = (props) => {
 
 
         var pu = useHistory()
+        const handleClickErrorDel = (x) => {
+            setErrorMsage(x)
+            setOpenErrorDel(true);
+        };
+          const handleClickDel = () => {
+            setOpenDel(true);
+        };
 
+        const handleCloseDelError = (event, reason) => {
+            if (reason === 'clickaway') {
+                return;
+            }
+        
+            setOpenErrorDel(false);
+        
+        };
+        const handleCloseDel = (event, reason) => {
+          if (reason === 'clickaway') {
+              return;
+          }
+        
+          setOpenDel(false);
+        
+        }
     const handleClick = () => {
         setOpenR(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
         setOpenError(true);
     };
 
@@ -552,7 +580,7 @@ const AllFacilities = (props) => {
                 })
                 .catch(err => {
 
-                    handleClickError()
+                    handleClickError(err.response.data.message)
 
                     //alert(err.message)
 
@@ -568,13 +596,15 @@ const AllFacilities = (props) => {
     axios.delete(`${api.apiUrl}/testing-facilities/${x}`)
          .then(resp=>{
 
-            alert('success')
+           // alert('success')
+           handleClickDel()
             pu.push(`/allfacilities`)
             
          })
          .catch(err=>{
 
-            alert(err.message)
+           // alert(err.message)
+           handleClickErrorDel(err.response.data.message)
          })
 
   }
@@ -593,7 +623,34 @@ const AllFacilities = (props) => {
         <div>
 
             <h5 style={styles.container}>All Facilities</h5>
+ <div className={classes.root}>
 
+<Snackbar
+    open={openDel}
+    onClose={handleCloseDel}
+    anchorOrigin={{
+    vertical: "top",
+    horizontal: "center"
+}}>
+    <Alert onClose={handleCloseDel} severity="success">
+        Facility deleted successfully!
+    </Alert>
+</Snackbar>
+
+<Snackbar
+    open={openErrorDel}
+    autoHideDuration={5000}
+    onClose={handleCloseDelError}
+    anchorOrigin={{
+    vertical: "top",
+    horizontal: "center"
+}}>
+    <Alert onClose={handleCloseDelError} severity="error">
+        There was an error, try again
+    </Alert>
+</Snackbar>
+
+</div>
             <Button
                 style={{
                 color: 'green'
