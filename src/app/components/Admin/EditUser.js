@@ -218,7 +218,7 @@ const EditUser = () => {
         },
 
         "qualification": newUser.qualification,
-        "practicingNumber": newUser.practicingNumber,
+        "practicingNumber": oldUser.practicingNumber,
         "addressOfPractice": newUser.addressOfPractice,
         "testingFacilityId": newUser.testingFacility
     }

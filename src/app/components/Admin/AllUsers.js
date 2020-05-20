@@ -231,7 +231,7 @@ export default function AllUsers() {
 
       }else{
 
-        axios.delete(`${api.apiUrl}//testing-agents/${x}`)
+        axios.delete(`${api.apiUrl}/testing-agents/${x}`)
         .then(resp=>{
 
          alert('sucess')
