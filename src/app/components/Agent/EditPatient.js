@@ -77,7 +77,7 @@ const EditPatient = ({next}) => {
         }
 
         setOpen(false);
-        next()
+    
     };
 
     const handleCloseError = (reason) => {
@@ -548,7 +548,7 @@ const EditPatient = ({next}) => {
                 "gender": patientData.gender,
                 "phoneNumber": patientData.phoneNumber,                  
                 "email": patientData.email,
-                "nationalIdNumber": patientData.nationalId,
+                "nationalIdNumber": patientData.nationalIdNumber,
                 "passportNumber": patientData.passportNumber,
                 "dateOfBirth": moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
                 thisAChildIsThisChildOrincapacitatedToUsePhone: patientData.thisAChild,
