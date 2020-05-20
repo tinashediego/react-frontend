@@ -9,6 +9,7 @@ import cityList from '../Agent/city'
 import axios from 'axios'
 import api from '../../../utils/helpers/api';
 import {makeStyles} from '@material-ui/core/styles';
+import {useParams ,} from 'react-router'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,6 +56,9 @@ const EditUser = () => {
 
     const content = useSelector((state) => state.kits.allfacility);
 
+
+    
+
     const dispatchs = useDispatch(Allfacility());
 
     const [newUser,
@@ -79,6 +83,68 @@ const EditUser = () => {
 
     })
 
+    const [oldUser ,setOldUser] = useState({
+
+        "city": "NOT_PROVIDED",
+        "province": "NOT_PROVIDED",
+        streetAddress: '',
+        "addressOfPractice": "",
+        "email": "",
+        "firstName": "",
+        "gender": "",
+        "lastName": "",
+        group: '',
+        testingFacility: 0,
+        "nationalIdNumber": "",
+        "passportNumber": '',
+        "practicingNumber": "",
+        "qualification": "",
+        "phoneNumber": "",
+        "username": ""
+
+    })
+
+    let a  = useParams()
+
+    useEffect(() => {
+        const fetchData = async() => {
+              let ady = localStorage.getItem('itsAdmin')
+
+
+              if(ady ===  true){
+
+                
+            const resp = await axios.get(`${api.apiUrl}/users/${a.id}`)
+
+            let {user} = resp.data
+
+            setUser(user)
+            setOldUser(resp.data)
+              }else{
+
+
+
+                const resp = await axios.get(`${api.apiUrl}/testing-agents/${a.id}`)
+
+                let {user} = resp.data
+                setUser(user);
+                setOldUser(resp.data)
+            
+              
+
+
+              }
+
+
+        }
+
+        fetchData()
+
+
+    },[a.id])
+
+
+  console.log(oldUser)
     function handleAgent() {
 
         if (newUser.group === 'AGENT') {
@@ -89,7 +155,7 @@ const EditUser = () => {
 
                     <TextField
                         label="Qualification"
-                        value={newUser.qualification}
+                        value={oldUser.qualification}
                         onChange={e => setUser({
                         ...newUser,
                         qualification: e.target.value
@@ -102,7 +168,7 @@ const EditUser = () => {
 
                     <TextField
                         label="Practicing Number"
-                        value={newUser.practicingNumber}
+                        value={oldUser.practicingNumber}
                         onChange={e => setUser({
                         ...newUser,
                         practicingNumber: e.target.value
@@ -116,7 +182,7 @@ const EditUser = () => {
                     <Input
                         type="select"
                         name="group"
-                        value={newUser.testingFacility}
+                        value={newUser.address === undefined  || newUser.address === null ? 'n/n' :newUser.address.streetAddress}
                         onChange={e => setUser({
                         ...newUser,
                         testingFacility: e.target.value
@@ -188,7 +254,7 @@ const EditUser = () => {
             if (newUser.group === 'ADMIN') {
 
                 axios
-                    .post(`${api.apiUrl}/users`, adminCommand)
+                    .put(`${api.apiUrl}/users/${a.id}`, adminCommand)
                     .then(resp => {
 
                         handleClick()
@@ -220,7 +286,7 @@ const EditUser = () => {
             } else {
 
                 axios
-                    .post(`${api.apiUrl}/testing-agents`, userCommand)
+                    .put(`${api.apiUrl}/testing-agents/${a.id}`, userCommand)
                     .then(resp => {
 
                         handleClick()
@@ -304,7 +370,7 @@ const EditUser = () => {
                                 ...newUser,
                                 firstName: e.target.value
                             })}
-                                placeholder="First Name"
+                               
                                 className="formControl"
                                 required/>
                         </FormGroup>
