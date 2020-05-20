@@ -681,7 +681,7 @@ const AllFacilities = (props) => {
                 }}
                     onClose={handleCloseError}>
                     <Alert onClose={handleCloseError} severity="error">
-                        There was an error
+                       {errorMessage}
                     </Alert>
                 </Snackbar>
 
