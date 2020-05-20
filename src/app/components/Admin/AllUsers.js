@@ -215,7 +215,34 @@ export default function AllUsers() {
 
     }
 
-    function deleteUser (){
+    function deleteUser (x ,y){
+
+      if(x === undefined){
+
+       axios.delete(`${api.apiUrl}/users/${y}`)
+             .then(resp=>{
+
+              alert('sucess')
+             }).catch(err=>{
+
+              alert('error')
+             })
+            
+
+      }else{
+
+        axios.delete(`${api.apiUrl}/testing-agents/${x}`)
+        .then(resp=>{
+
+         alert('sucess')
+        }).catch(err=>{
+
+         alert('error')
+        })
+       
+
+      }
+
 
 
     }
@@ -350,7 +377,7 @@ export default function AllUsers() {
                             color: 'white'
                         }}
                         onClick={() => {
-                          deleteUser(x.id)
+                          deleteUser(x.testingAgentId , x.id)
                       }}
                             variant="contained">DELETE</Button>
 

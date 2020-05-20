@@ -1,4 +1,4 @@
-import React  ,{useState} from 'react';
+import React  ,{useState ,useEffect} from 'react';
  
 import {
   Form,
@@ -11,6 +11,7 @@ import { TextField } from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios'
+import {useParams ,} from 'react-router'
 
 import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles } from '@material-ui/core/styles';
@@ -67,12 +68,37 @@ const useStyles = makeStyles((theme) => ({
     };
 
 
+
+
+    let a  = useParams()
+
+
+
   const [state, setstate] = useState({"brandName": "",
                                       "manufacturer": "" ,
                                       "used": false
                                       
                                     })
 
+
+    
+                                    useEffect(() => {
+                                        const fetchData = async() => {
+                                
+                                            const resp = await axios.get(`${api.customUrl}/test-kit-type/${a.id}`)
+                                
+                                            setstate(resp.data)
+                                
+                                        }
+                                
+                                        fetchData()
+                                
+                                
+                                    },[])
+
+
+
+                                    console.log(state)
 
 
 
@@ -81,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
         e.preventDefault();
         if (state) {
 
-          axios.post(`${api.customUrl}/test-kit-type` ,state)
+          axios.put(`${api.customUrl}/test-kit-type/${a.id}` ,state)
                .then(res=>{
 
                 
@@ -97,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
         }
     }
 
+
    
     
     
@@ -105,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     return (
 
 <div>   
-<div className="h" style={styles.h}><h5>New Kit</h5></div>
+<div className="h" style={styles.h}><h5>Edit Kit</h5></div>
 
 
    

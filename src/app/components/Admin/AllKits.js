@@ -8,6 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import {useHistory} from 'react-router'
 
 import {FormGroup,Form }  from 'reactstrap'
 import TextField from '@material-ui/core/TextField';
@@ -28,6 +29,8 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import axios  from 'axios'
+import api from '../../../utils/helpers/api'
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -107,6 +110,8 @@ const AllKits  = (props) =>{
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  var pu = useHistory()
+
 
 
   const handleChangePage = (event, newPage) => {
@@ -166,13 +171,33 @@ const AllKits  = (props) =>{
 
    
 
-    function EditKit (){
+    function EditKit (x){
+
+      
+    
+
+    pu.push(`/editKit/${x}`)
+
+  
 
 
     }
 
 
-    function deleteKit (){
+    function deleteKit (x){
+
+
+      axios.delete(`${api.customUrl}/test-kit-type/${x}`)
+      .then(resp=>{
+
+         alert('success')
+         pu.push(`/allkits`)
+         
+      })
+      .catch(err=>{
+
+         alert(err.message)
+      })
 
     }
   return (
@@ -211,7 +236,7 @@ const AllKits  = (props) =>{
     <TableCell>
 
     <Button color="primary"   onClick={() => {
-      EditKit(x.email, x.username)
+      EditKit(x.id)
   }} variant="contained">
     Edit</Button>
 &nbsp;&nbsp;
@@ -221,7 +246,7 @@ const AllKits  = (props) =>{
     color: 'white'
 }}
 onClick={() => {
-  deleteKit(x.email, x.username)
+  deleteKit(x.id)
 }}
     variant="contained">DELETE</Button>
 </TableCell>
