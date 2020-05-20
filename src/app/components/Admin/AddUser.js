@@ -272,7 +272,7 @@ const adminCommand =
          
         }).catch(err=>{
          handleClickError()
-         
+        
         })
 
 
@@ -308,7 +308,7 @@ const adminCommand =
       vertical: "top",
       horizontal: "center"}}>
       <Alert onClose={handleCloseError} severity="error">
-        There was an error, try again 
+        Error 
       </Alert>
     </Snackbar>
     
