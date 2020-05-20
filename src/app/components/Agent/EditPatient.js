@@ -99,7 +99,7 @@ const EditPatient = ({next}) => {
         "lastName": "",
         dateOfBirth: '',
         "passportNumber": "",
-        nationalId: "",
+        nationalIdNumber: "",
         "phoneNumber": "",
         "gender": "",
         "city": "",
@@ -115,10 +115,13 @@ const EditPatient = ({next}) => {
         const fetchData = async() => {
 
             const resp = await axios.get(`${api.apiUrl}/patients/${a.id}`)
+
+            let {user} = resp.data
+
            
                                     
 
-            setPatient(resp)
+            setPatient(user)
 
         }
 
@@ -128,7 +131,7 @@ const EditPatient = ({next}) => {
     },[])
 
 
-    console.log(patientData)
+    console.log(patientData.phoneNumber)
 
     function handleCities() {
 
@@ -677,10 +680,10 @@ const EditPatient = ({next}) => {
                             isAlphaNumeric3(e)
                         }}
                             ondrop="return false;"
-                            value={patientData.nationalId}
+                            value={patientData.nationalIdNumber}
                             onChange={e => setPatient({
                             ...patientData,
-                            nationalId: e.target.value
+                            nationalIdNumber: e.target.value
                         })}
                             placeholder="e.g 631234567A12"
                             fullWidth
@@ -755,7 +758,7 @@ const EditPatient = ({next}) => {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Phone Number"
-                            type='number'
+                            type='text'
                             name="number"
                             onKeyPress={(e) => {
                             isAlphaNumeric(e)
@@ -766,7 +769,7 @@ const EditPatient = ({next}) => {
                             ...patientData,
                             phoneNumber: e.target.value
                         })}
-                            placeholder="0772123456"
+                        
                             fullWidth
                             required/>
                         <span
@@ -779,7 +782,7 @@ const EditPatient = ({next}) => {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             label="Street Address"
-                            value={patientData.address}
+                            value={patientData.address.streetAddress}
                             onKeyPress={(e) => {
                             isAlphaNumeric(e)
                         }}
@@ -788,7 +791,7 @@ const EditPatient = ({next}) => {
                             ...patientData,
                             address: e.target.value
                         })}
-                            placeholder=" Street Address"
+                        
                             fullWidth
                             required/>
                         <span
