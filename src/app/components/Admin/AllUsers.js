@@ -113,13 +113,22 @@ export default function AllUsers() {
     const [openError,
         setOpenError] = React.useState(false);
 
+        const [openDel, setOpenDel] = useState();
+        const [openErrorDel, setOpenErrorDel] = useState();
         var pu = useHistory()
 
     const handleClick = () => {
         setOpen(true);
     };
+
+    const handleClickDel = () => {
+        setOpenDel(true);
+    };
     const handleClickError = () => {
         setOpenError(true);
+    };
+    const handleClickErrorDel = () => {
+        setOpenErrorDel(true);
     };
 
     const handleClose = (event, reason) => {
@@ -128,6 +137,14 @@ export default function AllUsers() {
         }
 
         setOpen(false);
+
+    }
+    const handleCloseDel = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenDel(false);
 
     }
 
@@ -139,6 +156,16 @@ export default function AllUsers() {
         setOpenError(false);
 
     };
+
+    const handleCloseDelError = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenErrorDel(false);
+
+    };
+
 
     const [page,
         setPage] = React.useState(0);
@@ -222,10 +249,13 @@ export default function AllUsers() {
        axios.delete(`${api.apiUrl}/users/${y}`)
              .then(resp=>{
 
-              alert('sucess')
+              //alert('sucess')
+              handleClickDel()
              }).catch(err=>{
 
-              alert('error')
+              //alert('error')
+
+              handleClickErrorDel()
              })
             
 
@@ -234,10 +264,13 @@ export default function AllUsers() {
         axios.delete(`${api.apiUrl}/testing-agents/${x}`)
         .then(resp=>{
 
-         alert('sucess')
+         //alert('sucess')
+         handleClickDel()
         }).catch(err=>{
 
-         alert('error')
+         //alert('error')
+
+         handleClickErrorDel()
         })
        
 
@@ -293,6 +326,32 @@ export default function AllUsers() {
                     horizontal: "center"
                 }}>
                     <Alert onClose={handleCloseError} severity="error">
+                        There was an error, try again
+                    </Alert>
+                </Snackbar>
+
+
+                <Snackbar
+                    open={openDel}
+                    onClose={handleCloseDel}
+                    anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center"
+                }}>
+                    <Alert onClose={handleCloseDel} severity="success">
+                        User deleted successfully!
+                    </Alert>
+                </Snackbar>
+
+                <Snackbar
+                    open={openErrorDel}
+                    autoHideDuration={5000}
+                    onClose={handleCloseDelError}
+                    anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center"
+                }}>
+                    <Alert onClose={handleCloseDelError} severity="error">
                         There was an error, try again
                     </Alert>
                 </Snackbar>
