@@ -562,17 +562,25 @@ const AllFacilities = (props) => {
     }
 
 
-  function  deleteFacility (){
+  function  deleteFacility (x){
 
-    alert("deleting in progress")
+
+    axios.delete(`${api.apiUrl}/testing-facilities/${x}`)
+         .then(resp=>{
+
+            alert('success')
+            pu.push(`/allfacilities`)
+            
+         })
+         .catch(err=>{
+
+            alert(err.message)
+         })
+
   }
 
   function EditFacility (x){
-
-
     pu.push(`/editFacility/${x}`)
-
-  
 
   }
 
@@ -649,11 +657,11 @@ const AllFacilities = (props) => {
                             <TableCell>
                                 {x.location === null|| x.location === undefined
                                     ? 'n/n'
-                                    : 'x.location.city'}</TableCell>
+                                    : x.location.city}</TableCell>
                             <TableCell>
                                 {x.location === null || x.location === undefined
                                     ? 'n/n'
-                                    : 'x.location.province'}</TableCell>
+                                    : x.location.province}</TableCell>
 
                                     <TableCell> 
                                     
@@ -662,7 +670,7 @@ const AllFacilities = (props) => {
                                     }}> Edit</Button>
                                     &nbsp;&nbsp;
                                     <Button style={{backgroundColor:'red' ,color:'white'}}  onClick={() => {
-                                        deleteFacility(x.email, x.username)
+                                        deleteFacility(x.id)
                                     }} variant="contained">DELETE</Button>
                                     
                                     </TableCell>
