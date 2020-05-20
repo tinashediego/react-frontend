@@ -94,6 +94,8 @@ const Login = ({next}) => {
                 })
                 .catch(err => {
 
+                  console.log(err)
+
                   handleClickError()
                 })
 

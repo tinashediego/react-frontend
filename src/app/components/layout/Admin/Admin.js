@@ -16,7 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems} from './mainListItems';
-import {useLocation ,useHistory} from 'react-router'
+import {useLocation ,useHistory ,useParams} from 'react-router'
 import AllKits from '../../Admin/AllKits';
 import NewKit from '../../Admin/NewKit';
 import AddUser from '../../Admin/AddUser';
@@ -27,6 +27,9 @@ import {logoutUser ,} from '../../../../redux/actions/authActions'
 import { useDispatch } from "react-redux"
 import Logo from '../../../../assets/logo.png';
 import AllFacilities from '../../Admin/AllFacilities';
+import EditKit from '../../Admin/EditKit';
+import EditUser from '../../Admin/EditUser';
+import EditFacility from '../../Admin/EditFacility';
 //import Logo from '../../../../assets/logo.png';
 
 
@@ -134,6 +137,7 @@ export default function Admin() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const location =  useLocation()
+  let  para = useParams()
   let his =  useHistory()
  
   
@@ -183,8 +187,16 @@ export default function Admin() {
 
     case '/allfacilities':
           return <AllFacilities />
+          case `/editKit/${para.id}`:
+            return <EditKit/>
+            case `/editUser/${para.id}`:
+              return <EditUser />
+              case `/editFacility/${para.id}`:
+                return <EditFacility />
           
       default:
+
+
         break;
     }
 

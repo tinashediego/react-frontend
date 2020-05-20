@@ -23,6 +23,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 
 import AllPatients from '../../Agent/AllPatients';
+import EditPatient from '../../Agent/EditPatient';
 
 
 
@@ -187,6 +188,9 @@ export default function Agent() {
 
       case '/defect':
       return <Defect />
+      case`/editPatient/${para.id}`:
+
+      return <EditPatient/>
 
     
       default:

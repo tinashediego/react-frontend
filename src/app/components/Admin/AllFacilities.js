@@ -1,7 +1,7 @@
-import React  ,{useEffect , useState}from 'react';
+import React, {useEffect, useState} from 'react';
 
-import {Allfacility } from '../../../redux/actions/KitsActions'
-import { useDispatch, useSelector } from "react-redux";
+import {Allfacility} from '../../../redux/actions/KitsActions'
+import {useDispatch, useSelector} from "react-redux";
 
 import Table from '@material-ui/core/Table';
 import Alert from '@material-ui/lab/Alert';
@@ -9,7 +9,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import {FormGroup,Form }  from 'reactstrap'
+import {FormGroup, Form} from 'reactstrap'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -17,6 +17,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {useHistory} from 'react-router'
 import axios from 'axios';
 import HarareSurburbs from '../Agent/Haras'
 import BulawayoSurbubs from '../Agent/Blues'
@@ -36,12 +37,8 @@ import Select from '@material-ui/core/Select';
 import api from '../../../utils/helpers/api'
 import Snackbar from '@material-ui/core/Snackbar';
 
-
-
-
-
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import {makeStyles, useTheme} from '@material-ui/core/styles';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import IconButton from '@material-ui/core/IconButton';
@@ -53,729 +50,753 @@ import Grid from '@material-ui/core/Grid';
 
 
 const useStyles1 = makeStyles((theme) => ({
-  root: {
-    flexShrink: 0,
-    marginLeft: theme.spacing(2.5),
-  },
+    root: {
+        flexShrink: 0,
+        marginLeft: theme.spacing(2.5)
+    }
 }));
 
-
 const useStyles = makeStyles((theme) => ({
-  paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center'
-  },
-  avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main
-  },
-  form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1)
-  },
-  submit: {
-      margin: theme.spacing(3, 0, 2)
-  }
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1)
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2)
+    }
 }));
 
 function TablePaginationActions(props) {
-  const classes = useStyles1();
-  const theme = useTheme();
-  const { count, page, rowsPerPage, onChangePage } = props;
+    const classes = useStyles1();
+    const theme = useTheme();
+    const {count, page, rowsPerPage, onChangePage} = props;
 
-  const handleFirstPageButtonClick = (event) => {
-    onChangePage(event, 0);
-  };
+    const handleFirstPageButtonClick = (event) => {
+        onChangePage(event, 0);
+    };
 
-  const handleBackButtonClick = (event) => {
-    onChangePage(event, page - 1);
-  };
+    const handleBackButtonClick = (event) => {
+        onChangePage(event, page - 1);
+    };
 
-  const handleNextButtonClick = (event) => {
-    onChangePage(event, page + 1);
-  };
+    const handleNextButtonClick = (event) => {
+        onChangePage(event, page + 1);
+    };
 
-  const handleLastPageButtonClick = (event) => {
-    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-  };
+    const handleLastPageButtonClick = (event) => {
+        onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    };
 
-  
-
-  return (
-    <div className={classes.root}>
-      <IconButton
-        onClick={handleFirstPageButtonClick}
-        disabled={page === 0}
-        aria-label="first page"
-      >
-        {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
-      </IconButton>
-      <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
-        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-      </IconButton>
-      <IconButton
-        onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="next page"
-      >
-        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-      </IconButton>
-      <IconButton
-        onClick={handleLastPageButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="last page"
-      >
-        {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
-      </IconButton>
-    </div>
-  );
+    return (
+        <div className={classes.root}>
+            <IconButton
+                onClick={handleFirstPageButtonClick}
+                disabled={page === 0}
+                aria-label="first page">
+                {theme.direction === 'rtl'
+                    ? <LastPageIcon/>
+                    : <FirstPageIcon/>}
+            </IconButton>
+            <IconButton
+                onClick={handleBackButtonClick}
+                disabled={page === 0}
+                aria-label="previous page">
+                {theme.direction === 'rtl'
+                    ? <KeyboardArrowRight/>
+                    : <KeyboardArrowLeft/>}
+            </IconButton>
+            <IconButton
+                onClick={handleNextButtonClick}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+                aria-label="next page">
+                {theme.direction === 'rtl'
+                    ? <KeyboardArrowLeft/>
+                    : <KeyboardArrowRight/>}
+            </IconButton>
+            <IconButton
+                onClick={handleLastPageButtonClick}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+                aria-label="last page">
+                {theme.direction === 'rtl'
+                    ? <FirstPageIcon/>
+                    : <LastPageIcon/>}
+            </IconButton>
+        </div>
+    );
 }
 
 TablePaginationActions.propTypes = {
-  count: PropTypes.number.isRequired,
-  onChangePage: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+    onChangePage: PropTypes.func.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired
 };
 
+const AllFacilities = (props) => {
+
+    const [page,
+        setPage] = React.useState(0);
+    const [rowsPerPage,
+        setRowsPerPage] = React.useState(5);
+    const classes = useStyles();
+
+    const [state,
+        setstate] = useState({"testingFacilityName": "", "city": "", "province": "", "streetAddress": "", "suburb": ""})
+
+    const [openR,
+        setOpenR] = React.useState(false);
+    const [openError,
+        setOpenError] = React.useState(false);
 
 
+        var pu = useHistory()
 
+    const handleClick = () => {
+        setOpenR(true);
+    };
+    const handleClickError = () => {
+        setOpenError(true);
+    };
 
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
 
-const AllFacilities  = (props) =>{ 
+        setOpenR(false);
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const classes = useStyles();
-  
-  const [state, setstate] = useState({"testingFacilityName": "",    "city": "",
-  "province": "",
-  "streetAddress": "",
-  "suburb": ""
-                                      
-                                    })
+    };
 
+    const handleCloseError = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
 
+        setOpenError(false);
 
-                                    const [openR, setOpenR] = React.useState(false);
-                                    const [openError, setOpenError] = React.useState(false);
-                                  
-                                    const handleClick = () => {
-                                      setOpenR(true);
-                                    };
-                                    const handleClickError = () => {
-                                        setOpenError(true);
-                                      };
-                                  
-                                    const handleClose = (event, reason) => {
-                                      if (reason === 'clickaway') {
-                                        return;
-                                      }
-                                  
-                                      setOpenR(false);
-                                    
-                                    };
-                                
-                                   const handleCloseError = (event, reason) => {
-                                        if (reason === 'clickaway') {
-                                          return;
-                                        }
-                                    
-                                        setOpenError(false);
-                                        
-                                      };
-                                  
+    };
 
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
 
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+    const [open,
+        setOpen] = useState(false);
+    // Generate Order Data
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
+    const content = useSelector((state) => state.kits.allfacility);
 
-  const [open, setOpen] = useState(false);
-// Generate Order Data
+    //this hook gives us redux store state
 
+    const dispatch = useDispatch(Allfacility());
 
-  const content = useSelector((state) => state.kits.allfacility);
-  
-  //this hook gives us redux store state
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
+    const handleCloseR = () => {
+        setOpen(false);
+    };
 
-  const dispatch = useDispatch(Allfacility());
+    useEffect(() => {
+        dispatch(Allfacility());
+    }, [dispatch])
 
+    function handleCities() {
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+        switch (state.city) {
+            case 'HARARE':
 
-  const handleCloseR = () => {
-    setOpen(false);
-  };
+                return (
+                    <Grid item xs={12} sm={6}>
 
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                            <Select
+                                native
+                                value={state.suburb}
+                                onChange={e => setstate({
+                                ...state,
+                                suburb: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}
+                                required>
+                                <option aria-label="None" value=""/> {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-  useEffect(() => {
-    dispatch(Allfacility());
-  }, [dispatch])
+                    </Grid>
+                )
 
+            case 'BULAWAYO':
 
-  
-  function handleCities() {
+                return (
+                    <Grid item xs={12} sm={6}>
 
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                            <Select
+                                native
+                                value={state.suburb}
+                                onChange={e => setstate({
+                                ...state,
+                                suburb: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-    switch (state.city) {
-        case 'HARARE':
+                    </Grid>
+                )
 
-            return (
-                <Grid item xs={12} sm={6}>
+            default:
+                break;
+        }
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
-                        <Select
-                            native
-                            value={state.suburb}
-                            onChange={e => setstate({
-                            ...state,
-                            suburb: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'suburb',
-                            id: 'age-native-simple'
-                        }} required>
-                            <option aria-label="None" value=""/> {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
-
-                </Grid>
-            )
-
-        case 'BULAWAYO':
-
-            return (
-                <Grid item xs={12} sm={6}>
-
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
-                        <Select
-                            native
-                            value={state.suburb}
-                            onChange={e => setstate({
-                            ...state,
-                            suburb: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'suburb',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
-
-                </Grid>
-            )
-
-        default:
-            break;
     }
 
-}
+    function handleProvinces() {
 
-function handleProvinces() {
+        switch (state.province) {
+            case 'MIDLANDS':
+                return (
+                    <Grid item xs={12} sm={6}>
 
-    switch (state.province) {
-        case 'MIDLANDS':
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {MidlandsCities.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'suburb',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {MidlandsCities.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
 
-                </Grid>
-            )
+            case "MANICALAND":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-        case "MANICALAND":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {manicaland.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {manicaland.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
+            case "MASHONALAND_CENTRAL":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-                </Grid>
-            )
-        case "MASHONALAND_CENTRAL":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {mashcent.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {mashcent.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
+            case "MASHONALAND_EAST":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-                </Grid>
-            )
-        case "MASHONALAND_EAST":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {masheast.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {masheast.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
+            case "HARARE":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-                </Grid>
-            )
-        case "HARARE":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/>
+                                <option value="HARARE">HARARE</option>
+                                <option value="CHITUNGWIZA">CHITUNGWIZA</option>
+                                <option value="EPWORTH">EPWORTH</option>
+                            </Select>
+                        </FormControl>
 
-                            <option value="HARARE">HARARE</option>
-                            <option value="CHITUNGWIZA">CHITUNGWIZA</option>
-                            <option value="EPWORTH">EPWORTH</option>
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
+            case "BULAWAYO":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-                </Grid>
-            )
-        case "BULAWAYO":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/>
+                                <option value="BULAWAYO">BULUWAYO</option>
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'suburb',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/>
-                            <option value="BULAWAYO">BULUWAYO</option>
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
+            case "MASHONALAND_WEST":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-                </Grid>
-            )
-        case "MASHONALAND_WEST":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {mashwest.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {mashwest.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
 
-                </Grid>
-            )
+            case "MASVINGO":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-        case "MASVINGO":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {masvingo.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {masvingo.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
+            case "MATABELELAND_NORTH":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-                </Grid>
-            )
-        case "MATABELELAND_NORTH":
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {matN.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {matN.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
 
-                </Grid>
-            )
+            case "MATABELELAND_SOUTH":
 
-        case "MATABELELAND_SOUTH":
+                return (
+                    <Grid item xs={12} sm={6}>
 
-            return (
-                <Grid item xs={12} sm={6}>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={state.city}
+                                onChange={e => setstate({
+                                ...state,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {matSouth.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
-                        <Select
-                            native
-                            value={state.city}
-                            onChange={e => setstate({
-                            ...state,
-                            city: e.target.value
-                        })}
-                            inputProps={{
-                            name: 'city',
-                            id: 'age-native-simple'
-                        }}>
-                            <option aria-label="None" value=""/> {matSouth.map((team) => <option key={team.value} value={team}>{team}</option>)}
-                        </Select>
-                    </FormControl>
+                    </Grid>
+                )
 
-                </Grid>
-            )
-
-        default:
-            break;
+            default:
+                break;
+        }
     }
-}
 
-
-
-
-
-
-     
-      
-    
-    
-      function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         if (state) {
 
+            var newFac = {
 
+                "location": {
+                    "city": state.city,
+                    "province": state.province,
+                    "streetAddress": state.streetAddress,
+                    surburb: state.surburb
 
-        var newFac = {
+                },
 
+                "testingFacilityName": state.testingFacilityName
 
-          
-  "location": {
-    "city": state.city,
-    "province": state.province,
-    "streetAddress": state.streetAddress,
-    surburb:state.surburb
-  
-  },
+            }
 
-  "testingFacilityName":state.testingFacilityName
+            axios
+                .post(`${api.apiUrl}/testing-facilities`, newFac)
+                .then(resp => {
+                    handleClick()
+                    setOpen(false);
+                    window.location.href = '/allfacilities'
+                })
+                .catch(err => {
 
-        }
+                    handleClickError()
 
+                    //alert(err.message)
 
-          axios.post(`${api.apiUrl}/testing-facilities` ,newFac)
-               .then(resp=>{
-                handleClick()          
-                 setOpen(false);
-                 window.location.href = '/allfacilities'
-               })
-               .catch(err=>{
+                })
 
-
-                handleClickError()
-               
-                //alert(err.message)
-
-               })
-
-     
-          
         }
     }
 
 
-    if(!content){
+  function  deleteFacility (){
+
+    alert("deleting in progress")
+  }
+
+  function EditFacility (x){
+
+
+    pu.push(`/editFacility/${x}`)
+
+  
+
+  }
+
+    if (!content) {
 
         return 'Loading  ...'
     }
 
- 
+    return (
+        <div>
 
+            <h5 style={styles.container}>All Facilities</h5>
 
+            <Button
+                style={{
+                color: 'green'
+            }}
+                onClick={handleClickOpen}variant="contained" >New Facility</Button>
 
-  return (
-    <div>
+            <div className={classes.root}>
 
-   
+                <Snackbar
+                    open={openR}
+                    anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center"
+                }}
+                    onClose={handleCloseR}>
+                    <Alert onClose={handleCloseR} autoHideDuration={3000} severity="success">
+                        This is a success message!
+                    </Alert>
+                </Snackbar>
 
-    <h5 className="container" style={styles.container}>All Facilities</h5>
+                <Snackbar
+                    open={openError}
+                    autoHideDuration={3000}
+                    anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center"
+                }}
+                    onClose={handleCloseError}>
+                    <Alert onClose={handleCloseError} severity="error">
+                        There was an error
+                    </Alert>
+                </Snackbar>
 
-    <Button style={{color:'green'}}variant="contained" onClick={handleClickOpen}>New Facility</Button>
+            </div>
 
+            <Table
+                className='table table-striped table-bordered'
+                aria-label="custom pagination table">
 
+                <TableHead>
 
+                    <TableRow>
 
+                        <TableCell>ID</TableCell>
+                        <TableCell>TESTING FACILITY</TableCell>
+                        <TableCell>City</TableCell>
+                        <TableCell>Province</TableCell>
+                        <TableCell>Actions</TableCell>
 
-    <div className={classes.root}>
-      
-    <Snackbar open={openR} anchorOrigin={{
-      vertical: "top",
-      horizontal: "center"
-   }} onClose={handleCloseR}>
-      <Alert onClose={handleCloseR} autoHideDuration={3000} severity="success">
-        This is a success message!
-      </Alert>
-    </Snackbar>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {(rowsPerPage > 0
+                        ? content.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        : content).map((x, i) => (
+                        <TableRow key={i}>
 
+                            <TableCell>{x.id}</TableCell>
+                            <TableCell>{x.testingFacilityName}</TableCell>
 
-    <Snackbar open={openError} autoHideDuration={3000} anchorOrigin={{
-      vertical: "top",
-      horizontal: "center"
-   }} onClose={handleCloseError}>
-    <Alert onClose={handleCloseError} severity="error">
-      There was an error 
-    </Alert>
-  </Snackbar>
-  
-  </div>
+                            <TableCell>
+                                {x.location === null|| x.location === undefined
+                                    ? 'n/n'
+                                    : 'x.location.city'}</TableCell>
+                            <TableCell>
+                                {x.location === null || x.location === undefined
+                                    ? 'n/n'
+                                    : 'x.location.province'}</TableCell>
 
+                                    <TableCell> 
+                                    
+                                    <Button color="primary" variant="contained"   onClick={() => {
+                                        EditFacility(x.id)
+                                    }}> Edit</Button>
+                                    &nbsp;&nbsp;
+                                    <Button style={{backgroundColor:'red' ,color:'white'}}  onClick={() => {
+                                        deleteFacility(x.email, x.username)
+                                    }} variant="contained">DELETE</Button>
+                                    
+                                    </TableCell>
 
-<Table className='table table-striped table-bordered' aria-label="custom pagination table">
-      
-      <TableHead>
-          
-          <TableRow>
-     
-      <TableCell>ID</TableCell>
-      <TableCell>TESTING FACILITY</TableCell>
-      <TableCell>City</TableCell>
-      <TableCell>Province</TableCell>
-     
-  
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {(rowsPerPage > 0
-            ? content.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : content
-          ).map((x ,i) => (
-            <TableRow key={i}>
-          
-    
-    <TableCell>{x.id}</TableCell>
-    <TableCell>{x.testingFacilityName}</TableCell>
+                        </TableRow>
 
-    <TableCell>  {x.location === null ?  'n/n':  x.location.city}</TableCell>
-    <TableCell>  {x.location === null ?  'n/n':  x.location.province}</TableCell>
-   
- 
-        
-          </TableRow>
-        
-          ))}
+                    ))}
 
-        
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
-              count={content.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: { 'aria-label': 'rows per page' },
-                native: true,
-              }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
-        </TableFooter>
-      </Table>
+                </TableBody>
+                <TableFooter>
+                    <TableRow>
+                        <TablePagination
+                            rowsPerPageOptions={[
+                            5,
+                            10,
+                            25, {
+                                label: 'All',
+                                value: -1
+                            }
+                        ]}
+                            colSpan={3}
+                            count={content.length}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            SelectProps={{
+                            inputProps: {
+                                'aria-label': 'rows per page'
+                            },
+                            native: true
+                        }}
+                            onChangePage={handleChangePage}
+                            onChangeRowsPerPage={handleChangeRowsPerPage}
+                            ActionsComponent={TablePaginationActions}/>
+                    </TableRow>
+                </TableFooter>
+            </Table>
 
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description">
+                <DialogTitle id="alert-dialog-title" style={styles.dialog}>New Facility</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        <Form
+                            className="col-sm-12"
+                            onSubmit={handleSubmit}
+                            style={{
+                            width: "100%"
+                        }}>
+                            <FormGroup className="col-sm-12">
 
+                                <TextField
+                                    className="col-sm-12"
+                                    label="Facility  Name"
+                                    value={state.testingFacilityName}
+                                    onChange={e => setstate({
+                                    ...state,
+                                    testingFacilityName: e.target.value
+                                })}
+                                    id="exampleEmail"
+                                    placeholder="New Facility"
+                                    required/>
+                            </FormGroup>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">Province</InputLabel>
+                                <Select
+                                    native
+                                    value={state.province}
+                                    required
+                                    onChange={e => setstate({
+                                    ...state,
+                                    province: e.target.value
+                                })}
+                                    inputProps={{
+                                    name: 'province',
+                                    id: 'age-native-simple'
+                                }}>
+                                    <option aria-label="None" value=""/>
+                                    <option value="MANICALAND">MANICALAND</option>
+                                    <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
+                                    <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
+                                    <option value="HARARE">HARARE</option>
+                                    <option value="BULAWAYO">BULAWAYO</option>
+                                    <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
+                                    <option value="MASVINGO">MASVINGO</option>
+                                    <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
+                                    <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
+                                    <option value="MIDLANDS">MIDLANDS</option>
+                                </Select>
+                            </FormControl>
+                            {handleProvinces()}
+                            {handleCities()}
 
+                            <FormGroup className="col-sm-12">
 
+                                <TextField
+                                    className="col-sm-12"
+                                    label="streetAddress"
+                                    value={state.streetAddress}
+                                    onChange={e => setstate({
+                                    ...state,
+                                    streetAddress: e.target.value
+                                })}
+                                    id="exampleEmail"
+                                    placeholder="New Facility"/>
+                            </FormGroup>
 
-<Dialog
-open={open}
-onClose={handleClose}
-aria-labelledby="alert-dialog-title"
-aria-describedby="alert-dialog-description"
+                        </Form>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseR} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleSubmit} color="primary" autoFocus>
+                        Submit
+                    </Button>
+                </DialogActions>
+            </Dialog>
 
->
-<DialogTitle id="alert-dialog-title" style={styles.dialog}>New Facility</DialogTitle>
-<DialogContent>
-  <DialogContentText id="alert-dialog-description">
-  <Form className="col-sm-12" onSubmit={handleSubmit} style={{width:"100%"}}>
-  <FormGroup className="col-sm-12" >
-    
-    <TextField className="col-sm-12" label="Facility  Name"  value={state.testingFacilityName}  onChange={e=> setstate({ ...state, testingFacilityName:e.target.value})} id="exampleEmail" placeholder="New Facility" required />
-  </FormGroup>
-  <FormControl className={classes.formControl}>
-  <InputLabel htmlFor="age-native-simple">Province</InputLabel>
-  <Select
-      native
-      value={state.province}
-      required
-      onChange={e => setstate({
-      ...state,
-      province: e.target.value
-  })}
-      inputProps={{
-      name: 'province',
-      id: 'age-native-simple'
-  }}>
-      <option aria-label="None" value=""/>
-      <option value="MANICALAND">MANICALAND</option>
-      <option value="MASHONALAND_CENTRAL">MASHONALAND_CENTRAL</option>
-      <option value="MASHONALAND_EAST">MASHONALAND_EAST</option>
-      <option value="HARARE">HARARE</option>
-      <option value="BULAWAYO">BULAWAYO</option>
-      <option value="MASHONALAND_WEST">MASHONALAND_WEST</option>
-      <option value="MASVINGO">MASVINGO</option>
-      <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
-      <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
-      <option value="MIDLANDS">MIDLANDS</option>
-  </Select>
-</FormControl>
-{handleProvinces()}
-{handleCities()}
-
-<FormGroup className="col-sm-12" >
-    
-<TextField className="col-sm-12" label="streetAddress"  value={state.streetAddress}  onChange={e=> setstate({ ...state, streetAddress:e.target.value})} id="exampleEmail" placeholder="New Facility" />
-</FormGroup>
-
- 
-
-</Form>
-  </DialogContentText>
-</DialogContent>
-<DialogActions>
-  <Button onClick={handleCloseR} color="primary">
-    Cancel
-  </Button>
-  <Button onClick={handleSubmit} color="primary" autoFocus>
-    Submit
-  </Button>
-</DialogActions>
-</Dialog>
-
-
-
-    </div>
-  );
+        </div>
+    );
 }
 
-
-const styles={
-  container:{
-    borderLeft:"10px solid #4c8c40"
-  },
-  dialog:{
-    borderLeft:"10px solid #4c8c40",
-    marginLeft:"10px"
-  }
+const styles = {
+    container: {
+        borderLeft: "10px solid #4c8c40"
+    },
+    dialog: {
+        borderLeft: "10px solid #4c8c40",
+        marginLeft: "10px"
+    }
 }
-
-
 
 export default AllFacilities;
