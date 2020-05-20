@@ -1,13 +1,13 @@
 import React  ,{useEffect, useState} from 'react'
 import axios from 'axios';
-
+import Alert from '@material-ui/lab/Alert';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import {FormGroup, Form} from 'reactstrap'
 import TextField from '@material-ui/core/TextField';
-
+import Snackbar from '@material-ui/core/Snackbar';
 import api from '../../../utils/helpers/api'
 import {useParams ,} from 'react-router'
 import HarareSurburbs from '../Agent/Haras'
@@ -34,7 +34,35 @@ const useStyles1 = makeStyles((theme) => ({
 
 export default function EditFacility() {
 
+  const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
 
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClickError = () => {
+      setOpenError(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+
+  };
+
+ const handleCloseError = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenError(false);
+      
+    };
+  
 
     let a  = useParams()
     const classes = useStyles1();
@@ -398,16 +426,16 @@ export default function EditFacility() {
                 .put(`${api.apiUrl}/testing-facilities/${a.id}`, newFac)
                 .then(resp => {
 
-                    alert('success')
-                    
+                    //alert('success')
+                    handleClick()
              
                 })
                 .catch(err => {
 
                 
 
-                    alert(err.message)
-
+                    //alert(err.message)
+                    handleClickError()
                 })
 
         }
@@ -422,13 +450,36 @@ export default function EditFacility() {
         <div>
 
 
-        <h1>Edit Testing Facility</h1>
+        <h5 className="h" style={styles.h}>Edit Testing Facility</h5>
         <Form
         className="col-sm-12"
         onSubmit={handleSubmit}
         style={{
         width: "100%"
     }}>
+
+<div className={classes.root}>
+      
+      <Snackbar open={open} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"}} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Facility edited successfully
+        </Alert>
+      </Snackbar>
+   
+   
+      <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError} anchorOrigin={{
+      vertical: "top",
+      horizontal: "center"}}>
+      <Alert onClose={handleCloseError} severity="error">
+        Error, try again!
+      </Alert>
+    </Snackbar>
+    
+    </div>
+
+
         <FormGroup className="col-sm-12">
 
             <TextField
@@ -495,3 +546,11 @@ export default function EditFacility() {
         </div>
     )
 }
+
+const styles = {
+
+    h:{
+      borderLeft:"10px solid #4c8c40",
+      
+    }
+    }

@@ -335,7 +335,7 @@ const EditUser = () => {
                     autoHideDuration={3000}
                     onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success">
-                        User added successfully
+                        User updated successfully
                     </Alert>
                 </Snackbar>
 
