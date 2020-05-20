@@ -142,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
       vertical: "top",
       horizontal: "center"}}>
   <Alert onClose={handleClose} severity="success">
-    Kit added successfully
+    Kit updated successfully
   </Alert>
 </Snackbar>
 
