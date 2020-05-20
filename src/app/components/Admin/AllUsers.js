@@ -242,36 +242,79 @@ export default function AllUsers() {
 
     }
 
-    function deleteUser (x ,y){
+    function deleteUser (x ,y ,z){
 
       if(x === undefined){
 
-       axios.delete(`${api.apiUrl}/users/${y}`)
-             .then(resp=>{
+        if( z === true){
 
-              //alert('sucess')
-              handleClickDel()
-             }).catch(err=>{
+            axios.patch(`${api.apiUrl}/users/${y}?status=false`)
+            .then(resp=>{
 
-              //alert('error')
+             //alert('sucess')
+             handleClickDel()
+            }).catch(err=>{
 
-              handleClickErrorDel()
-             })
+             //alert('error')
+
+             handleClickErrorDel()
+            })
+
+        }else{
+
+            axios.patch(`${api.apiUrl}/users/${y}?status=true`)
+            .then(resp=>{
+
+             //alert('sucess')
+             handleClickDel()
+            }).catch(err=>{
+
+             //alert('error')
+
+             handleClickErrorDel()
+            })
+
+
+
+        }
+
+    
             
 
       }else{
 
-        axios.delete(`${api.apiUrl}/testing-agents/${x}`)
-        .then(resp=>{
+        if( z === true){
 
-         //alert('sucess')
-         handleClickDel()
-        }).catch(err=>{
+            axios.patch(`${api.apiUrl}/users/${x}?status=false`)
+            .then(resp=>{
 
-         //alert('error')
+             //alert('sucess')
+             handleClickDel()
+            }).catch(err=>{
 
-         handleClickErrorDel()
-        })
+             //alert('error')
+
+             handleClickErrorDel()
+            })
+
+        }else{
+
+            axios.patch(`${api.apiUrl}/users/${x}?status=true`)
+            .then(resp=>{
+
+             //alert('sucess')
+             handleClickDel()
+            }).catch(err=>{
+
+             //alert('error')
+
+             handleClickErrorDel()
+            })
+
+
+
+        }
+
        
 
       }
@@ -339,7 +382,7 @@ export default function AllUsers() {
                     horizontal: "center"
                 }}>
                     <Alert onClose={handleCloseDel} severity="success">
-                        User deleted successfully!
+                        User successfully!
                     </Alert>
                 </Snackbar>
 
@@ -436,9 +479,9 @@ export default function AllUsers() {
                             color: 'white'
                         }}
                         onClick={() => {
-                          deleteUser(x.testingAgentId , x.id)
+                          deleteUser( x.testingAgentId , x.id , x.enabled)
                       }}
-                            variant="contained">DELETE</Button>
+                            variant="contained">{x.enabled === true ? 'Suspend' :'Activate'}</Button>
 
                     </TableCell>
                         </TableRow>

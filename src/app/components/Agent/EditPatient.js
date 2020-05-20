@@ -131,7 +131,7 @@ const EditPatient = ({next}) => {
     },[])
 
 
-    console.log(patientData.phoneNumber)
+    console.log(patientData)
 
     function handleCities() {
 
@@ -542,19 +542,18 @@ const EditPatient = ({next}) => {
         var newPatient = {
             userCommand: {
                 "firstName": patientData.firstName,
+                "username":patientData.username,
                 "lastName": patientData.lastName,
                 "group": patientData.group,
                 "gender": patientData.gender,
-                "phoneNumber": '+263' + patientData
-                    .phoneNumber
-                    .substr(1),
+                "phoneNumber": patientData.phoneNumber,                  
                 "email": patientData.email,
                 "nationalIdNumber": patientData.nationalId,
                 "passportNumber": patientData.passportNumber,
                 "dateOfBirth": moment(patientData.dateOfBirth).format('DD/MM/YYYY'),
                 thisAChildIsThisChildOrincapacitatedToUsePhone: patientData.thisAChild,
                 "address": {
-                    "streetAddress": patientData.address,
+                    "streetAddress": patientData.address.streetAddress,
                     "city": patientData.city,
                     "province": patientData.province,
                     "suburb": patientData.suburb
@@ -565,12 +564,14 @@ const EditPatient = ({next}) => {
 
         if (`${moment().diff(patientData.dateOfBirth, 'days', false)}` < '1'  ) {
             handleClickErrorBirth()
-            alert('Please enter a valid date of birth!')
+            //alert('Please enter a valid date of birth!')
 
         } else {
 
+
+            console.log(newPatient)
             axios
-                .post(`${api.apiUrl}/patients`, newPatient)
+                .put(`${api.apiUrl}/patients/${a.id}`, newPatient)
                 .then(resp => {
                 
                     localStorage.setItem('patientId', resp.data.id)
