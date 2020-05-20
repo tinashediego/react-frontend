@@ -143,6 +143,16 @@ export default function AllPatients() {
     }
 
 
+    
+    function EditPatient(x, y) {
+
+        localStorage.setItem('tempName', y)
+
+        pu.push(`/editPatient/${x}`)
+
+    }
+
+
 
 
     const [SearchData,
@@ -220,14 +230,23 @@ export default function AllPatients() {
 
                                 <Button
                                     variant="contained"
+                                    style={{color:'red'}}
                                     onClick={() => {
                                     testAgain(row.patientId, row.firstName)
                                 }}>
-                                    <Link
-                                        style={{
-                                        color: "red"
-                                    }}>Repeat Test</Link>
+                                   Repeat Test
                                 </Button>
+
+
+                                &nbsp;&nbsp;
+                                <Button
+                                variant="contained"
+                                style={{color:'green'}}
+                                onClick={() => {
+                                EditPatient(row.patientId)
+                            }}>
+                               Edit Patient
+                            </Button>
 
                             </TableCell>
                         </TableRow>
