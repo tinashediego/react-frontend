@@ -158,8 +158,8 @@ const EditUser = () => {
                     <TextField
                         label="Qualification"
                         value={oldUser.qualification}
-                        onChange={e => setUser({
-                        ...newUser,
+                        onChange={e => setOldUser({
+                        ...oldUser,
                         qualification: e.target.value
                     })}
                         placeholder="Qualification"
@@ -171,8 +171,8 @@ const EditUser = () => {
                     <TextField
                         label="Practicing Number"
                         value={oldUser.practicingNumber}
-                        onChange={e => setUser({
-                        ...newUser,
+                        onChange={e => setOldUser({
+                        ...oldUser,
                         practicingNumber: e.target.value
                     })}
                         placeholder="practicing number"
@@ -219,7 +219,7 @@ const EditUser = () => {
             }
         },
 
-        "qualification": newUser.qualification,
+        "qualification": oldUser.qualification,
         "practicingNumber": oldUser.practicingNumber,
         "addressOfPractice": newUser.addressOfPractice,
         "testingFacilityId": newUser.testingFacility
