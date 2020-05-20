@@ -30,12 +30,14 @@ const AddUser  = () =>{
 
   const [open, setOpen] = React.useState(false);
   const [openError, setOpenError] = React.useState(false);
-
+  const [errorMessage,
+    setErrorMsage] = useState('')
 
   const handleClick = () => {
     setOpen(true);
   };
-  const handleClickError = () => {
+  const handleClickError = (x) => {
+    setErrorMsage(x)
       setOpenError(true);
     };
 
@@ -236,7 +238,7 @@ const adminCommand =
          "username": ''})
          
         }).catch(err=>{
-         handleClickError()
+         handleClickError(err.response.data.message)
          
         })
 
@@ -271,7 +273,7 @@ const adminCommand =
          "username": ''})
          
         }).catch(err=>{
-         handleClickError()
+         handleClickError(err.response.data.message)
          
         })
 
@@ -308,7 +310,7 @@ const adminCommand =
       vertical: "top",
       horizontal: "center"}}>
       <Alert onClose={handleCloseError} severity="error">
-        Error, try again!
+        {errorMessage}
       </Alert>
     </Snackbar>
     

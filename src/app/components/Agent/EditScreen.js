@@ -31,11 +31,13 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [openError, setOpenError] = React.useState(false);
-  
+    const [errorMessage,
+      setErrorMsage] = useState('')
     const handleClick = () => {
       setOpen(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
+      setErrorMsage(x)
         setOpenError(true);
       };
   
@@ -129,7 +131,7 @@ const handleSubmit = (e) => {
 
         }).catch(err=>{
 
-            handleClickError()
+            handleClickError(err.response.data.message)
            
         })
 
@@ -179,7 +181,7 @@ const handleSubmit = (e) => {
 
       <Snackbar open={openError} autoHideDuration={3000} onClose={handleCloseError}>
       <Alert onClose={handleCloseError} severity="error">
-        There was an error, try again 
+        {errorMessage} 
       </Alert>
     </Snackbar>
     

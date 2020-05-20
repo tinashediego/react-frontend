@@ -53,21 +53,26 @@ const AddPatient = ({next}) => {
     const [openBirth, setOpenBirth] = useState();
         const [open,
         setOpen] = React.useState(false);
+        const [errorMessage,
+            setErrorMsage] = useState('')
     const [openError,
         setOpenError] = React.useState(false);
 
     const handleClick = () => {
         setOpen(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
+        setErrorMsage(x)
         setOpenError(true);
     };
 
-    const handleClickErrorBirth = () => {
+    const handleClickErrorBirth = (x) => {
+        setErrorMsage(x)
         setOpenBirth(true);
     };
 
     const handleCloseErrorBirth = ()=>{
+    
         setOpenBirth(false);
     }
     const handleClose = (reason) => {
@@ -539,7 +544,7 @@ const AddPatient = ({next}) => {
 
         if (`${moment().diff(patientData.dateOfBirth, 'days', false)}` < '1'  ) {
             handleClickErrorBirth()
-            alert('Please enter a valid date of birth!')
+            //alert('Please enter a valid date of birth!')
 
         } else {
 
@@ -553,7 +558,7 @@ const AddPatient = ({next}) => {
                 })
                 .catch(err => {
 
-                    handleClickError()
+                    handleClickError(err.response.data.message)
 
                 })
 
@@ -584,7 +589,7 @@ const AddPatient = ({next}) => {
       horizontal: "center"
    }}>
                     <Alert onClose={handleCloseError} severity="error">
-                        There was an error, try again
+                        {errorMessage}
                     </Alert>
                 </Snackbar>
 

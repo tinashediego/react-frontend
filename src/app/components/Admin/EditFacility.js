@@ -36,12 +36,14 @@ export default function EditFacility() {
 
   const [open, setOpen] = React.useState(false);
   const [openError, setOpenError] = React.useState(false);
-
+  const [errorMessage,
+    setErrorMsage] = useState('')
 
   const handleClick = () => {
     setOpen(true);
   };
-  const handleClickError = () => {
+  const handleClickError = (x) => {
+    setErrorMsage(x)
       setOpenError(true);
     };
 
@@ -288,7 +290,7 @@ export default function EditFacility() {
                                 id: 'age-native-simple'
                             }}>
                                 <option aria-label="None" value=""/>
-                                <option value="BULAWAYO">BULUWAYO</option>
+                                <option value="BULAWAYO">BULAWAYO</option>
                             </Select>
                         </FormControl>
 
@@ -435,7 +437,7 @@ export default function EditFacility() {
                 
 
                     //alert(err.message)
-                    handleClickError()
+                    handleClickError(err.response.data.message)
                 })
 
         }
@@ -473,7 +475,7 @@ export default function EditFacility() {
       vertical: "top",
       horizontal: "center"}}>
       <Alert onClose={handleCloseError} severity="error">
-        Error, try again!
+        {errorMessage}
       </Alert>
     </Snackbar>
     

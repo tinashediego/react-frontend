@@ -149,13 +149,15 @@ const AllKits  = (props) =>{
 
   const dispatch = useDispatch(allKits());
 
-
+  const [errorMessage,
+    setErrorMsage] = useState('')
   const [openDel, setOpenDel] = useState();
   const [openErrorDel, setOpenErrorDel] = useState();
   const handleClose = () => {
     setOpen(false);
   };
-  const handleClickErrorDel = () => {
+  const handleClickErrorDel = (x) => {
+    setErrorMsage(x)
     setOpenErrorDel(true);
 };
   const handleClickDel = () => {
@@ -230,7 +232,7 @@ const handleCloseDel = (event, reason) => {
       .catch(err=>{
 
         // alert(err.message)
-        handleClickErrorDel()
+        handleClickErrorDel(err.response.data.message)
       })
 
     }
@@ -264,7 +266,7 @@ const handleCloseDel = (event, reason) => {
     horizontal: "center"
 }}>
     <Alert onClose={handleCloseDelError} severity="error">
-        There was an error, try again
+        {errorMessage}
     </Alert>
 </Snackbar>
 

@@ -193,6 +193,7 @@ const AllFacilities = (props) => {
         setOpenR(true);
     };
     const handleClickError = (x) => {
+        setErrorMsage(x)
         setOpenError(true);
     };
 
@@ -646,7 +647,7 @@ const AllFacilities = (props) => {
     horizontal: "center"
 }}>
     <Alert onClose={handleCloseDelError} severity="error">
-        There was an error, try again
+        {errorMessage}
     </Alert>
 </Snackbar>
 

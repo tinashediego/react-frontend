@@ -56,11 +56,13 @@ const EditPatient = ({next}) => {
         setOpen] = React.useState(false);
     const [openError,
         setOpenError] = React.useState(false);
-
+        const [errorMessage,
+            setErrorMsage] = useState('')
     const handleClick = () => {
         setOpen(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
+        setErrorMsage(x)
         setOpenError(true);
     };
 
@@ -335,7 +337,7 @@ const EditPatient = ({next}) => {
                                 id: 'age-native-simple'
                             }}>
                                 <option aria-label="None" value=""/>
-                                <option value="BULAWAYO">BULUWAYO</option>
+                                <option value="BULAWAYO">BULAWAYO</option>
                             </Select>
                         </FormControl>
 
@@ -580,7 +582,7 @@ const EditPatient = ({next}) => {
                 })
                 .catch(err => {
 
-                    handleClickError()
+                    handleClickError(err.response.data.message)
 
                 })
 
@@ -611,7 +613,7 @@ const EditPatient = ({next}) => {
       horizontal: "center"
    }}>
                     <Alert onClose={handleCloseError} severity="error">
-                        There was an error, try again
+                        {errorMessage}
                     </Alert>
                 </Snackbar>
 

@@ -368,7 +368,7 @@ export default function AllUsers() {
                     horizontal: "center"
                 }}>
                     <Alert onClose={handleCloseError} severity="error">
-                        There was an error, try again
+                        {errorMessage}
                     </Alert>
                 </Snackbar>
 
@@ -381,7 +381,7 @@ export default function AllUsers() {
                     horizontal: "center"
                 }}>
                     <Alert onClose={handleCloseDel} severity="success">
-                        User successfully!
+                        User suspended successfully!
                     </Alert>
                 </Snackbar>
 
