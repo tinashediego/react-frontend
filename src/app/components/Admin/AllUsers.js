@@ -120,14 +120,17 @@ export default function AllUsers() {
     const handleClick = () => {
         setOpen(true);
     };
-
+    const [errorMessage,
+        setErrorMsage] = useState('')
     const handleClickDel = () => {
         setOpenDel(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
+        setErrorMsage(x)
         setOpenError(true);
     };
-    const handleClickErrorDel = () => {
+    const handleClickErrorDel = (x) => {
+        setErrorMsage(x)
         setOpenErrorDel(true);
     };
 
@@ -216,7 +219,7 @@ export default function AllUsers() {
 
             })
             .catch(err => {
-                handleClickError()
+                handleClickError(err.response.data.message)
 
             })
 
@@ -255,7 +258,7 @@ export default function AllUsers() {
 
               //alert('error')
 
-              handleClickErrorDel()
+              handleClickError(err.response.data.message)
              })
             
 
@@ -270,7 +273,7 @@ export default function AllUsers() {
 
          //alert('error')
 
-         handleClickErrorDel()
+         handleClickErrorDel(err.response.data.message)
         })
        
 
@@ -352,7 +355,7 @@ export default function AllUsers() {
                     horizontal: "center"
                 }}>
                     <Alert onClose={handleCloseDelError} severity="error">
-                        There was an error, try again
+                    {errorMessage}
                     </Alert>
                 </Snackbar>
 
