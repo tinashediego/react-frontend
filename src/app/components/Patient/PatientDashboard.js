@@ -39,7 +39,7 @@ const PatientDashboard = (props) => {
 
     var {otpExpired} = user
 
-    console.log(otpExpired)
+    //console.log(otpExpired)
 
 
     let {testingDetails} = repo

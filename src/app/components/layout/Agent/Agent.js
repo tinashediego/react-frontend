@@ -23,6 +23,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 
 import AllPatients from '../../Agent/AllPatients';
+import EditPatient from '../../Agent/EditPatient';
 
 
 
@@ -154,7 +155,7 @@ export default function Agent() {
   }
 
 
-console.log(para)
+
 
 
   const handleDrawerOpen = () => {
@@ -187,6 +188,9 @@ console.log(para)
 
       case '/defect':
       return <Defect />
+      case`/editPatient/${para.id}`:
+
+      return <EditPatient/>
 
     
       default:

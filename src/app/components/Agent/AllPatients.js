@@ -153,7 +153,6 @@ export default function AllPatients() {
         return 'Loading'
     }
 
-    console.log(allpat)
     return (
 
         <div>

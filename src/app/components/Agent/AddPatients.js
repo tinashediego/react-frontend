@@ -109,7 +109,7 @@ const AddPatient = ({next}) => {
 
     function handleCities() {
 
-        console.log(patientData.city)
+       
 
         switch (patientData.city) {
             case 'HARARE':
@@ -546,7 +546,7 @@ const AddPatient = ({next}) => {
             axios
                 .post(`${api.apiUrl}/patients`, newPatient)
                 .then(resp => {
-                    console.log(resp)
+                
                     localStorage.setItem('patientId', resp.data.id)
                     localStorage.setItem('currentPatient', patientData.firstName)
                     handleClick()

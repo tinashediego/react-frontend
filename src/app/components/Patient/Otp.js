@@ -70,7 +70,7 @@ const Otp = () => {
         setData] = useState({nationalIdNumber: ''})
 
     const pu = useHistory()
-    console.log(userData)
+    //console.log(userData)
     function handleSubmit(e) {
         e.preventDefault();
         axios

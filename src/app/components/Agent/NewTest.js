@@ -102,7 +102,6 @@ var newScreen = {
 
         }
 
-        console.log(newScreen)
 
         axios.post(`${api.apiUrl}/tests` ,newScreen)
              .then(resp=>{

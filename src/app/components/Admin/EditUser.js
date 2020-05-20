@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AddUser = () => {
+const EditUser = () => {
 
     const classes = useStyles();
 
@@ -257,7 +257,7 @@ const AddUser = () => {
     return (
 
         <div>
-            <h5 className="h" style={styles.h}>New User</h5>
+            <h5 className="h" style={styles.h}>Edit User</h5>
             <div className={classes.root}>
 
                 <Snackbar
@@ -496,4 +496,4 @@ const styles = {
         borderLeft: "10px solid #4c8c40"
     }
 }
-export default AddUser;
+export default EditUser;

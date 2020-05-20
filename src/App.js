@@ -17,6 +17,7 @@ import Patient from "./app/components/layout/Patient/Patient";
 import Otp from './app/components/Patient/Otp'
 import PatLogin from './app/components/Patient/PatLogin'
 import ChangePass from "./app/components/Auth/changePass";
+import EditKit from "./app/components/Admin/EditKit";
 
 
 
@@ -44,7 +45,7 @@ axios.interceptors.request.use(
 
        // config.headers['Content-Type'] = 'application/json';
 
-       console.log(config)
+    
        return config;
     },
    error => {
@@ -97,6 +98,11 @@ function App() {
           <Route excat path='/patLogin' component={PatLogin} />
           <PrivateRoute excat path='/defect' component={Agent} />
           <PrivateRoute exact path='/change' component={ChangePass} />
+          <PrivateRoute excat path='/editKit/:id' component={Admin} />
+          <PrivateRoute exact path='/editUser/:id' component={Admin}/>
+          <PrivateRoute exact path='/editFacility/:id' component={Admin}/>
+          <PrivateRoute exact path='/editPatient/:id' component={Agent}/>
+
     
         </Switch>
       </div>

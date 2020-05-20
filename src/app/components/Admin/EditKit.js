@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
- function NewKit() {
+ function EditKit() {
 
 
 
@@ -172,4 +172,4 @@ const styles = {
   
   
   }
-export default NewKit
+export default EditKit

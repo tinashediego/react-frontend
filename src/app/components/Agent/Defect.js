@@ -96,7 +96,7 @@ var newScreen = {
 
         }
 
-        console.log(newScreen)
+        
 
         axios.post(`${api.apiUrl}/test-kits/register-defective` ,newScreen)
              .then(resp=>{

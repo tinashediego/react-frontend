@@ -127,7 +127,7 @@ const AllKits  = (props) =>{
 
 
   const content = useSelector((state) => state.kits.allkits);
-  console.log(content)
+
   //this hook gives us redux store state
 
 
@@ -152,8 +152,6 @@ const AllKits  = (props) =>{
 
 
 
-      console.log(state)
-
       const dispatchs = useDispatch();
       
     
@@ -167,12 +165,22 @@ const AllKits  = (props) =>{
     }
 
    
+
+    function EditKit (){
+
+
+    }
+
+
+    function deleteKit (){
+
+    }
   return (
     <div>
 
    
 
-    <h5 className="container" style={styles.container}>All Kits</h5>
+    <h5  style={styles.container}>All Kits</h5>
     <Button style={{color:'green'}}variant="contained" > <Link to='/newkit'>New Kit</Link></Button>
 
 
@@ -186,6 +194,7 @@ const AllKits  = (props) =>{
       <TableCell> Brand Name</TableCell>
     
       <TableCell>manufacturer</TableCell>
+      <TableCell>Actions</TableCell>
      
           </TableRow>
         </TableHead>
@@ -199,6 +208,23 @@ const AllKits  = (props) =>{
     <TableCell>{x.createdDate}</TableCell>
     <TableCell>{x.brandName}</TableCell>
     <TableCell>{x.manufacturer}</TableCell>
+    <TableCell>
+
+    <Button color="primary"   onClick={() => {
+      EditKit(x.email, x.username)
+  }} variant="contained">
+    Edit</Button>
+&nbsp;&nbsp;
+<Button
+    style={{
+    backgroundColor: 'red',
+    color: 'white'
+}}
+onClick={() => {
+  deleteKit(x.email, x.username)
+}}
+    variant="contained">DELETE</Button>
+</TableCell>
    
     </TableRow>
         

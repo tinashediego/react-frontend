@@ -74,7 +74,7 @@ const Login = ({next}) => {
             
           };
       
-    console.log(userData)
+    //console.log(userData)
     function handleSubmit(e) {
         e.preventDefault();
         if (userData) {
@@ -93,7 +93,9 @@ const Login = ({next}) => {
 
                 })
                 .catch(err => {
+
                   console.log(err)
+
                   handleClickError()
                   
                 })

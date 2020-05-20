@@ -21,13 +21,13 @@ export const addPatient = (user) => dispatch => {
            
       }).then(x=>{
 
-        console.log(x)
+        //console.log(x)
 
        // localStorage.setItem('patientId',x.id)
       })
       .catch(err =>{ 
 
-        console.log(err)
+        //console.log(err)
         dispatch({
           type: GET_ERRORS,
           payload: err,
@@ -94,7 +94,7 @@ export const updateTest = (patientData) => dispatch =>{
 
     axios.post(`${api.apiUrl}/patient-screenings`, patientData)
          .then(resp=>{
-              console.log(resp.data)
+              //console.log(resp.data)
             dispatch({
                 type:UPDATE_TEST,
                 payload:resp,
@@ -141,7 +141,7 @@ export const onePatient = (id) => dispatch=>{
 
     axios.get(`${api.apiUrl}/patients/${id}`)
          .then(resp=>{
-           console.log(resp.data)
+           //console.log(resp.data)
            dispatch({
            type:ONE_PATIENT,
            payload:resp
@@ -161,7 +161,7 @@ export const onePatient = (id) => dispatch=>{
 
     axios.get(`${api.apiUrl}/patient-screenings/all/${id}`)
          .then(resp=>{
-           console.log(resp.data)
+           //console.log(resp.data)
            dispatch({
            type:ONE_SCREEN,
            payload:resp.data
@@ -206,7 +206,7 @@ export const onePatient = (id) => dispatch=>{
 
         axios.put(`${api.apiUrl}/tests/${x.id}/results`,x)
              .then(resp=>{
-               console.log(resp.data)
+               //console.log(resp.data)
                dispatch({
                type:MYTESTS,
                payload:resp.data
