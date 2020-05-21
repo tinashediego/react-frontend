@@ -173,7 +173,7 @@ export default function AllPatients() {
                 marginBottom: 10
             }}>
                 <TextField
-                    sty
+                    
                     placeholder="search by phoneNumber"
                     value={SearchData.search}
                     onChange={e => setSearch({

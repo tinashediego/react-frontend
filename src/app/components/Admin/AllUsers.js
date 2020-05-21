@@ -192,7 +192,7 @@ export default function AllUsers() {
 
     const dispatch = useDispatch(allUsers());
 
-    const [SearchData ,setSearch] = useState('')
+    const [SearchData ,setSearch] = useState({search: ''})
 
     useEffect(() => {
 
@@ -348,7 +348,7 @@ if(y === undefined){
         return '.... Loading'
     }
 
-   
+    let finalArray = [...content]
 
     getAdmins.map(x => {
 
@@ -365,7 +365,16 @@ if(y === undefined){
         return '... Loading'
     }
 
-    console.log(content)
+
+
+console.log(finalArray)
+
+
+if(finalArray.length <2){
+
+    return '... Loading'
+}
+
 
 
    
@@ -476,8 +485,13 @@ if(y === undefined){
                 </TableHead>
                 <TableBody>
                     {(rowsPerPage > 0
-                        ? content.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : content).map((x, i) => (
+                        ? finalArray.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        : finalArray).filter((x) => {
+                            return x
+                                .username
+                                .toLowerCase()
+                                .indexOf(SearchData.search.toLowerCase()) !== -1
+                        }).map((x, i) => (
                         <TableRow key={i}>
                             <TableCell>{x.firstName}</TableCell>
                             <TableCell>{x.lastName}</TableCell>
@@ -547,7 +561,7 @@ if(y === undefined){
                             }
                         ]}
                             colSpan={3}
-                            count={content.length}
+                            count={finalArray.length}
                             rowsPerPage={rowsPerPage}
                             page={page}
                             SelectProps={{
