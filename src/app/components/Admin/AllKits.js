@@ -306,15 +306,18 @@ const handleCloseDel = (event, reason) => {
   }} variant="contained">
     Edit</Button>
 &nbsp;&nbsp;
-<Button
-    style={{
-    backgroundColor: 'red',
-    color: 'white'
+
+
+{x.deleteDisabled === false ?<Button
+  style={{
+  backgroundColor: 'red',
+  color: 'white'
 }}
 onClick={() => {
-  deleteKit(x.id)
+deleteKit(x.id)
 }}
-    variant="contained">DELETE</Button>
+  variant="contained">DELETE</Button> : ' '}
+
 </TableCell>
    
     </TableRow>

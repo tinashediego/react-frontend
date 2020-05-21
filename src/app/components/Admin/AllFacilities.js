@@ -728,9 +728,18 @@ const AllFacilities = (props) => {
                                         EditFacility(x.id)
                                     }}> Edit</Button>
                                     &nbsp;&nbsp;
-                                    <Button style={{backgroundColor:'red' ,color:'white'}}  onClick={() => {
-                                        deleteFacility(x.id)
-                                    }} variant="contained">DELETE</Button>
+
+
+                                    {x.deleteDisabled === false ?<Button
+                                        style={{
+                                        backgroundColor: 'red',
+                                        color: 'white'
+                                      }}
+                                      onClick={() => {
+                                      deleteFacility(x.id)
+                                      }}
+                                        variant="contained">DELETE</Button> : ' '}
+                                   
                                     
                                     </TableCell>
 
