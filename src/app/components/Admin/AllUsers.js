@@ -379,6 +379,7 @@ export default function AllUsers() {
 
                 <Snackbar
                     open={open}
+                    autoHideDuration={3000}
                     onClose={handleClose}
                     anchorOrigin={{
                     vertical: "top",
@@ -391,7 +392,7 @@ export default function AllUsers() {
 
                 <Snackbar
                     open={openError}
-                    autoHideDuration={5000}
+                    autoHideDuration={3000}
                     onClose={handleCloseError}
                     anchorOrigin={{
                     vertical: "top",
@@ -405,6 +406,7 @@ export default function AllUsers() {
                 <Snackbar
                     open={openDel}
                     onClose={handleCloseDel}
+                    autoHideDuration={3000}
                     anchorOrigin={{
                     vertical: "top",
                     horizontal: "center"
@@ -416,7 +418,7 @@ export default function AllUsers() {
 
                 <Snackbar
                     open={openErrorDel}
-                    autoHideDuration={5000}
+                    autoHideDuration={3000}
                     onClose={handleCloseDelError}
                     anchorOrigin={{
                     vertical: "top",

@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
  function NewTest({next}) {
 
   const classes = useStyles();
+  const [errorMessage,
+    setErrorMsage] = useState('')
   const [open, setOpen] = React.useState(false);
   const [openError, setOpenError] = React.useState(false);
 
@@ -48,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
   const handleClick = () => {
     setOpen(true);
   };
-  const handleClickError = () => {
+  const handleClickError = (x) => {
+    setErrorMsage(x)
       setOpenError(true);
     };
 
@@ -115,7 +118,7 @@ const handleSubmit = (e) => {
               )
               .catch(err=>{
 
-                handleClickError()
+                handleClickError(err.response.data.message)
               })
 
     
@@ -148,7 +151,7 @@ const handleSubmit = (e) => {
       horizontal: "center"
    }}>
    <Alert onClose={handleCloseError} severity="error">
-     There was an error, try again 
+     {errorMessage}
    </Alert>
  </Snackbar>
  
