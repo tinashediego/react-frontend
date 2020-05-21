@@ -94,7 +94,16 @@ const Login = ({next}) => {
                 })
                 .catch(err => {
 
-                    handleClickError(err.response.data.message)
+                    if(err.response.data === undefined){
+
+                        handleClickError('connection problem ,chack your internet')
+
+                    }else{
+
+                        handleClickError(err.response.data.message)
+                        
+                    }
+                    
 
                 })
 
