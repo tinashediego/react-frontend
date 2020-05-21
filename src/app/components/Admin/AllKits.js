@@ -183,6 +183,7 @@ const handleCloseDel = (event, reason) => {
   }
 
   setOpenDel(false);
+  pu.push(`/allkits`)
 
 }
   const [state, setstate] = useState({"batchNumber": "",
