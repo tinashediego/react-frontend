@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
 const Otp = () => {
 
     const classes = useStyles();
-
+    const [errorMessage,
+        setErrorMsage] = useState('')
     const [open,
         setOpen] = React.useState(false);
     const [openError,
@@ -44,7 +45,8 @@ const Otp = () => {
     const handleClick = () => {
         setOpen(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
+        setErrorMsage(x)
         setOpenError(true);
     };
 
@@ -82,7 +84,7 @@ const Otp = () => {
                 pu.push('/patLogin')
             })
             .catch(err => {
-                handleClickError()
+                handleClickError(err.response.data.message)
                 
             })
 
@@ -126,7 +128,7 @@ vertical: "top",
 horizontal: "center"
 }}>
     <Alert onClose={handleCloseError} severity="error">
-        There was an error, try again
+        {errorMessage}
     </Alert>
 </Snackbar>
 
