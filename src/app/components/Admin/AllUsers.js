@@ -395,6 +395,7 @@ if(y === undefined){
 
                 <Snackbar
                     open={open}
+                    autoHideDuration={3000}
                     onClose={handleClose}
                     anchorOrigin={{
                     vertical: "top",
@@ -407,7 +408,7 @@ if(y === undefined){
 
                 <Snackbar
                     open={openError}
-                    autoHideDuration={5000}
+                    autoHideDuration={3000}
                     onClose={handleCloseError}
                     anchorOrigin={{
                     vertical: "top",
@@ -422,6 +423,7 @@ if(y === undefined){
                 <Snackbar
                     open={openDel}
                     onClose={handleCloseDel}
+                    autoHideDuration={3000}
                     anchorOrigin={{
                     vertical: "top",
                     horizontal: "center"
@@ -433,7 +435,7 @@ if(y === undefined){
 
                 <Snackbar
                     open={openErrorDel}
-                    autoHideDuration={5000}
+                    autoHideDuration={3000}
                     onClose={handleCloseDelError}
                     anchorOrigin={{
                     vertical: "top",

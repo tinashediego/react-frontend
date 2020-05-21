@@ -629,6 +629,7 @@ const AllFacilities = (props) => {
 <Snackbar
     open={openDel}
     onClose={handleCloseDel}
+    autoHideDuration={3000}
     anchorOrigin={{
     vertical: "top",
     horizontal: "center"
@@ -640,7 +641,7 @@ const AllFacilities = (props) => {
 
 <Snackbar
     open={openErrorDel}
-    autoHideDuration={5000}
+    autoHideDuration={3000}
     onClose={handleCloseDelError}
     anchorOrigin={{
     vertical: "top",
@@ -666,8 +667,8 @@ const AllFacilities = (props) => {
                     vertical: "top",
                     horizontal: "center"
                 }}
-                    onClose={handleCloseR}>
-                    <Alert onClose={handleCloseR} autoHideDuration={3000} severity="success">
+                    onClose={handleCloseR} autoHideDuration={3000}>
+                    <Alert onClose={handleCloseR} severity="success">
                         This is a success message!
                     </Alert>
                 </Snackbar>

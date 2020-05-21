@@ -248,6 +248,7 @@ const handleCloseDel = (event, reason) => {
 <Snackbar
     open={openDel}
     onClose={handleCloseDel}
+    autoHideDuration={3000}
     anchorOrigin={{
     vertical: "top",
     horizontal: "center"
@@ -259,7 +260,7 @@ const handleCloseDel = (event, reason) => {
 
 <Snackbar
     open={openErrorDel}
-    autoHideDuration={5000}
+    autoHideDuration={3000}
     onClose={handleCloseDelError}
     anchorOrigin={{
     vertical: "top",
