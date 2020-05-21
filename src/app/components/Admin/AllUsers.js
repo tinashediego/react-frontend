@@ -366,7 +366,7 @@ export default function AllUsers() {
             }}>
                 <TextField
                     sty
-                    placeholder="search by username"
+                    placeholder="search by phoneNumber"
                     value={SearchData.search}
                     onChange={e => setSearch({
                     ...SearchData,
@@ -465,13 +465,17 @@ export default function AllUsers() {
                     {(rowsPerPage > 0
                         ? finalArray.filter((x) => {
                             return x
-                                .username
+                                .phoneNumber
                                 .toLowerCase()
                                 .indexOf(SearchData.search.toLowerCase()) !== -1
                         }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : finalArray).filter((x) => {
+                        : finalArray).sort(function (a, b) {
+                            var dateA = new Date(a.createdDate),
+                                dateB = new Date(b.createdDate);
+                            return dateA - dateB;
+                        }).filter((x) => {
                         return x
-                            .username
+                            .phoneNumber
                             .toLowerCase()
                             .indexOf(SearchData.search.toLowerCase()) !== -1
                     }).map((x, i) => (
