@@ -22,6 +22,7 @@ import axios from 'axios'
 import api from '../../../utils/helpers/api';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import {TextField} from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -124,6 +125,7 @@ export default function AllUsers() {
         setErrorMsage] = useState('')
     const handleClickDel = () => {
         setOpenDel(true);
+        window.location.href ='/allusers'
     };
     const handleClickError = (x) => {
         setErrorMsage(x)
@@ -190,6 +192,8 @@ export default function AllUsers() {
 
     const dispatch = useDispatch(allUsers());
 
+    const [SearchData ,setSearch] = useState('')
+
     useEffect(() => {
 
         const fetchData = async() => {
@@ -249,7 +253,22 @@ export default function AllUsers() {
     function deleteUser (x ,y ,z){
 
 
-        if(x=== undefined){
+        
+if(y === undefined){
+
+    console.log(x,y,z)
+
+
+}
+
+           
+
+
+
+
+        
+
+        if(x=== undefined ){
 
             if(z === true){
 
@@ -286,7 +305,7 @@ export default function AllUsers() {
 
             if(z === true){
 
-                axios.patch(`${api.apiUrl}/users/${x}?status=false`)
+                axios.patch(`${api.apiUrl}/testing-agents/${x}?status=false`)
                 .then(resp=>{
     
                  //alert('sucess')
@@ -299,7 +318,7 @@ export default function AllUsers() {
 
             }else{
 
-                axios.patch(`${api.apiUrl}/users/${x}?status=true`)
+                axios.patch(`${api.apiUrl}/testing-agents/${x}?status=true`)
                 .then(resp=>{
     
                  //alert('sucess')
@@ -329,6 +348,8 @@ export default function AllUsers() {
         return '.... Loading'
     }
 
+   
+
     getAdmins.map(x => {
 
         if (x.group === 'ADMIN') {
@@ -336,7 +357,18 @@ export default function AllUsers() {
             return content.push(x)
         }
 
-    })
+    }) 
+
+    if(!content){
+
+
+        return '... Loading'
+    }
+
+    console.log(content)
+
+
+   
 
     return (
 
@@ -344,6 +376,20 @@ export default function AllUsers() {
             <h5 style={styles.container}>
                 All Users
             </h5>
+
+            <div align="right" style={{
+                marginBottom: 10
+            }}>
+                <TextField
+                    sty
+                    placeholder="search by username"
+                    value={SearchData.search}
+                    onChange={e => setSearch({
+                    ...SearchData,
+                    search: e.target.value
+                })}/>
+
+            </div>
 
             <div className={classes.root}>
 
@@ -481,6 +527,7 @@ export default function AllUsers() {
                           deleteUser( x.testingAgentId , x.id , x.enabled)
                       }}
                             variant="contained">{x.enabled === true ? 'Suspend' :'Activate'}</Button>
+                            {console.log(x.enabled)}
 
                     </TableCell>
                         </TableRow>
