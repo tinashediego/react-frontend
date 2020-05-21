@@ -697,7 +697,7 @@ const AllFacilities = (props) => {
                     <TableRow>
 
                         <TableCell>ID</TableCell>
-                        <TableCell>TESTING FACILITY</TableCell>
+                        <TableCell>Testing facility</TableCell>
                         <TableCell>City</TableCell>
                         <TableCell>Province</TableCell>
                         <TableCell>Actions</TableCell>
