@@ -114,9 +114,11 @@ export default function AllUsers() {
     const [openError,
         setOpenError] = React.useState(false);
 
-        const [openDel, setOpenDel] = useState();
-        const [openErrorDel, setOpenErrorDel] = useState();
-        var pu = useHistory()
+    const [openDel,
+        setOpenDel] = useState();
+    const [openErrorDel,
+        setOpenErrorDel] = useState();
+    var pu = useHistory()
 
     const handleClick = () => {
         setOpen(true);
@@ -125,7 +127,7 @@ export default function AllUsers() {
         setErrorMsage] = useState('')
     const handleClickDel = () => {
         setOpenDel(true);
-        window.location.href ='/allusers'
+        window.location.href = '/allusers'
     };
     const handleClickError = (x) => {
         setErrorMsage(x)
@@ -171,7 +173,6 @@ export default function AllUsers() {
 
     };
 
-
     const [page,
         setPage] = React.useState(0);
     const [rowsPerPage,
@@ -192,7 +193,8 @@ export default function AllUsers() {
 
     const dispatch = useDispatch(allUsers());
 
-    const [SearchData ,setSearch] = useState({search: ''})
+    const [SearchData,
+        setSearch] = useState({search: ''})
 
     useEffect(() => {
 
@@ -229,119 +231,97 @@ export default function AllUsers() {
 
     }
 
+    function EditUser(x, y) {
 
-    function EditUser (x ,y){
+        if (x === undefined) {
 
-      if(x === undefined){
+            localStorage.setItem('itsAdmin', true)
+            pu.push(`/editUser/${y}`)
 
-        localStorage.setItem('itsAdmin',true)
-        pu.push(`/editUser/${y}`)
-       
+        } else {
 
-      }else{
-
-        localStorage.setItem('itsAdmin',false)
-        pu.push(`/editUser/${x}`)
-
-      }
-
-    
-
-    }
-
-
-    function deleteUser (x ,y ,z){
-
-
-        
-if(y === undefined){
-
-    console.log(x,y,z)
-
-
-}
-
-           
-
-
-
-
-        
-
-        if(x=== undefined ){
-
-            if(z === true){
-
-                axios.patch(`${api.apiUrl}/users/${y}?status=false`)
-                .then(resp=>{
-    
-                 //alert('sucess')
-                 handleClickDel()
-                }).catch(err=>{
-    
-                  handleClickError(err.response.data.message)
-                 })
-
-
-            }else{
-
-                axios.patch(`${api.apiUrl}/users/${y}?status=true`)
-                .then(resp=>{
-    
-                 //alert('sucess')
-                 handleClickDel()
-                }).catch(err=>{
-    
-                  handleClickError(err.response.data.message)
-                 })
-
-
-
-            }
-
-
-
-        }else{
-
-            if(z === true){
-
-                axios.patch(`${api.apiUrl}/testing-agents/${x}?status=false`)
-                .then(resp=>{
-    
-                 //alert('sucess')
-                 handleClickDel()
-                }).catch(err=>{
-    
-                  handleClickError(err.response.data.message)
-                 })
-
-
-            }else{
-
-                axios.patch(`${api.apiUrl}/testing-agents/${x}?status=true`)
-                .then(resp=>{
-    
-                 //alert('sucess')
-                 handleClickDel()
-                }).catch(err=>{
-    
-                  handleClickError(err.response.data.message)
-                 })
-
-
-
-            }
-
-
-
+            localStorage.setItem('itsAdmin', false)
+            pu.push(`/editUser/${x}`)
 
         }
 
+    }
 
+    function deleteUser(x, y, z) {
+
+        if (y === undefined) {
+
+            console.log(x, y, z)
+
+        }
+
+        if (x === undefined) {
+
+            if (z === true) {
+
+                axios
+                    .patch(`${api.apiUrl}/users/${y}?status=false`)
+                    .then(resp => {
+
+                        //alert('sucess')
+                        handleClickDel()
+                    })
+                    .catch(err => {
+
+                        handleClickError(err.response.data.message)
+                    })
+
+            } else {
+
+                axios
+                    .patch(`${api.apiUrl}/users/${y}?status=true`)
+                    .then(resp => {
+
+                        //alert('sucess')
+                        handleClickDel()
+                    })
+                    .catch(err => {
+
+                        handleClickError(err.response.data.message)
+                    })
+
+            }
+
+        } else {
+
+            if (z === true) {
+
+                axios
+                    .patch(`${api.apiUrl}/testing-agents/${x}?status=false`)
+                    .then(resp => {
+
+                        //alert('sucess')
+                        handleClickDel()
+                    })
+                    .catch(err => {
+
+                        handleClickError(err.response.data.message)
+                    })
+
+            } else {
+
+                axios
+                    .patch(`${api.apiUrl}/testing-agents/${x}?status=true`)
+                    .then(resp => {
+
+                        //alert('sucess')
+                        handleClickDel()
+                    })
+                    .catch(err => {
+
+                        handleClickError(err.response.data.message)
+                    })
+
+            }
+
+        }
 
     }
- 
-  
 
     if (!getAdmins) {
 
@@ -357,27 +337,19 @@ if(y === undefined){
             return content.push(x)
         }
 
-    }) 
+    })
 
-    if(!content){
-
+    if (!content) {
 
         return '... Loading'
     }
 
+    console.log(finalArray)
 
+    if (finalArray.length < 2) {
 
-console.log(finalArray)
-
-
-if(finalArray.length <2){
-
-    return '... Loading'
-}
-
-
-
-   
+        return '... Loading'
+    }
 
     return (
 
@@ -427,7 +399,6 @@ if(finalArray.length <2){
                     </Alert>
                 </Snackbar>
 
-
                 <Snackbar
                     open={openDel}
                     onClose={handleCloseDel}
@@ -449,13 +420,15 @@ if(finalArray.length <2){
                     horizontal: "center"
                 }}>
                     <Alert onClose={handleCloseDelError} severity="error">
-                    {errorMessage}
+                        {errorMessage}
                     </Alert>
                 </Snackbar>
 
             </div>
 
-            <Button variant="contained" style={{
+            <Button
+                variant="contained"
+                style={{
                 color: 'green'
             }}>
                 <Link to='/adduser'>Add user</Link>
@@ -485,13 +458,18 @@ if(finalArray.length <2){
                 </TableHead>
                 <TableBody>
                     {(rowsPerPage > 0
-                        ? finalArray.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : finalArray).filter((x) => {
+                        ? finalArray.filter((x) => {
                             return x
                                 .username
                                 .toLowerCase()
                                 .indexOf(SearchData.search.toLowerCase()) !== -1
-                        }).map((x, i) => (
+                        }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        : finalArray).filter((x) => {
+                        return x
+                            .username
+                            .toLowerCase()
+                            .indexOf(SearchData.search.toLowerCase()) !== -1
+                    }).map((x, i) => (
                         <TableRow key={i}>
                             <TableCell>{x.firstName}</TableCell>
                             <TableCell>{x.lastName}</TableCell>
@@ -509,7 +487,6 @@ if(finalArray.length <2){
 
                             <TableCell align="right">
                                 <Button
-                                  
                                     style={{
                                     backgroundColor: "orange",
                                     color: "white"
@@ -519,31 +496,32 @@ if(finalArray.length <2){
                                 }}>Reset password</Button>
                                 &nbsp;&nbsp;
 
-                            
-
                             </TableCell>
 
                             <TableCell>
 
+                                <Button
+                                    color="primary"
+                                    onClick={() => {
+                                    EditUser(x.testingAgentId, x.id)
+                                }}
+                                    variant="contained">
+                                    Edit</Button>
+                                &nbsp;&nbsp;
+                                <Button
+                                    style={{
+                                    backgroundColor: 'red',
+                                    color: 'white'
+                                }}
+                                    onClick={() => {
+                                    deleteUser(x.testingAgentId, x.id, x.enabled)
+                                }}
+                                    variant="contained">{x.enabled === true
+                                        ? 'Suspend'
+                                        : 'Activate'}</Button>
+                                {console.log(x.enabled)}
 
-
-                            <Button color="primary"   onClick={() => {
-                              EditUser(x.testingAgentId , x.id)
-                          }} variant="contained">
-                            Edit</Button>
-                        &nbsp;&nbsp;
-                        <Button
-                            style={{
-                            backgroundColor: 'red',
-                            color: 'white'
-                        }}
-                        onClick={() => {
-                          deleteUser( x.testingAgentId , x.id , x.enabled)
-                      }}
-                            variant="contained">{x.enabled === true ? 'Suspend' :'Activate'}</Button>
-                            {console.log(x.enabled)}
-
-                    </TableCell>
+                            </TableCell>
                         </TableRow>
 
                     ))}
