@@ -37,16 +37,18 @@ const ChangePass = () => {
     const classes = useStyles();
 
     const [openIncorrect,setOpenIncorrect] = useState();
-
+    const [errorMessage,
+        setErrorMsage] = useState('')
     const [open,
         setOpen] = React.useState(false);
     const [openError,
         setOpenError] = React.useState(false);
-
+        
     const handleClick = () => {
         setOpen(true);
     };
-    const handleClickError = () => {
+    const handleClickError = (x) => {
+        setErrorMsage(x)
         setOpenError(true);
     };
 
@@ -167,7 +169,7 @@ const ChangePass = () => {
         .catch((err) => {
             /*alert(err.message)*/
             //alert("Error, please make sure you are entering correct details");
-            handleClickError()
+            handleClickError(err.response.data.message)
         })
 
 
@@ -225,7 +227,7 @@ vertical: "top",
 horizontal: "center"
 }}>
     <Alert onClose={handleCloseError} severity="error">
-        Enter correct details
+        {errorMessage}
     </Alert>
 </Snackbar>
 
