@@ -10,6 +10,21 @@ import axios from 'axios'
 import api from '../../../utils/helpers/api';
 import {makeStyles} from '@material-ui/core/styles';
 import {useParams ,} from 'react-router'
+import Grid from '@material-ui/core/Grid';
+
+import HarareSurburbs from '../Agent/Haras'
+import BulawayoSurbubs from '../Agent/Blues'
+import MidlandsCities from '../Agent/MIDLANDS'
+import matN from '../Agent/MatableNorth'
+import matSouth from '../Agent/MatabelendSouth'
+import masvingo from '../Agent/Masvingo'
+import manicaland from '../Agent/Manicalands'
+import mashcent from '../Agent/MAshCent'
+import masheast from '../Agent/masheast'
+import mashwest from '../Agent/MashWest'
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -147,61 +162,366 @@ const EditUser = () => {
 
 
   console.log(oldUser)
-    function handleAgent() {
+ 
 
-        if (newUser.group === 'AGENT') {
+    function handleAgent(){
 
-            return <div className="row">
 
-                <FormGroup className="col-sm-6">
-
-                    <TextField
-                        label="Qualification"
-                        value={oldUser.qualification}
-                        onChange={e => setOldUser({
-                        ...oldUser,
-                        qualification: e.target.value
-                    })}
-                        placeholder="Qualification"
-                        required/>
-                </FormGroup>
-
-                <FormGroup className="col-sm-6">
-
-                    <TextField
-                        label="Practicing Number"
-                        value={oldUser.practicingNumber}
-                        onChange={e => setOldUser({
-                        ...oldUser,
-                        practicingNumber: e.target.value
-                    })}
-                        placeholder="practicing number"
-                        required/>
-                </FormGroup>
-
-                <FormGroup className="col-sm-12">
-
-                {console.log(oldUser.testingFacility)}
-
-                    <Input
-                        type="select"
-                        name="group"
-                        value={oldUser.testingFacility === undefined  || oldUser.testingFacility === null ? 'n/n' :oldUser.testingFacility.id}
-                        onChange={e => setOldUser({
-                        ...oldUser,
-                        testingFacility: e.target.value
-                    })}>
-                        <option>Testing Facility</option>
-                        {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
-                    </Input>
-                </FormGroup>
-
-            </div>
-
+        if(newUser.group === 'AGENT'){
+    
+    
+          return  <div className="row">
+          
+          <FormGroup className="col-sm-6">
+            
+            <TextField label="Qualification" 
+                   value={newUser.qualification}
+                   
+                 onChange={e=>setUser({ ...newUser ,qualification:e.target.value})} 
+                   placeholder="Qualification" required />
+          </FormGroup>
+    
+          
+          <FormGroup className="col-sm-6">
+          
+          <TextField label="Practicing Number" 
+                 value={newUser.practicingNumber}
+                 onChange={e=>setUser({ ...newUser ,practicingNumber:e.target.value})}
+                 placeholder="practicing number" required />
+        </FormGroup>
+          
+          <FormGroup className="col-sm-12">
+    
+          
+          <Input type="select" name="group"  value={newUser.testingFacility} 
+          onChange={e=>setUser({ ...newUser ,testingFacility:e.target.value})}> 
+                   <option>Testing Facility</option>
+                  {content.map((team) => <option key={team.id} value={team.id}>{team.testingFacilityName}</option>)}
+                  </Input>
+        </FormGroup>
+    
+        </div>
+      
+    
+    
+    
         }
-
+    
+    
+       
+      }
+    
+      function handleCities() {
+    
+           
+    
+        switch (newUser.city) {
+            case 'HARARE':
+    
+                return (
+                    <Grid item xs={6}>
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                            <Select
+                                native
+                                value={newUser.suburb}
+                                onChange={e => setUser({
+                                ...newUser,
+                                suburb: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {HarareSurburbs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+    
+            case 'BULAWAYO':
+    
+                return (
+                    <Grid item xs={6}>
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">Surburb</InputLabel>
+                            <Select
+                                native
+                                value={newUser.suburb}
+                                onChange={e => setUser({
+                                ...newUser,
+                                suburb: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {BulawayoSurbubs.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+    
+            default:
+                break;
+        }
+    
     }
-
+    
+    function handleProvinces() {
+    
+        switch (newUser.province) {
+            case 'MIDLANDS':
+                return (
+                    <Grid item xs={6} >
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {MidlandsCities.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+    
+            case "MANICALAND":
+                return (
+                    <Grid item xs={6} >
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {manicaland.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+            case "MASHONALAND_CENTRAL":
+                return (
+                    <Grid item xs={6} >
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {mashcent.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+            case "MASHONALAND_EAST":
+                return (
+                    <Grid item xs={6} >
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {masheast.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+            case "HARARE":
+                return (
+                    <Grid item xs={6} >
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/>
+    
+                                <option value="HARARE">HARARE</option>
+                                <option value="CHITUNGWIZA">CHITUNGWIZA</option>
+                                <option value="EPWORTH">EPWORTH</option>
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+            case "BULAWAYO":
+                return (
+                    <Grid item xs={6}>
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'suburb',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/>
+                                <option value="BULAWAYO">BULUWAYO</option>
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+            case "MASHONALAND_WEST":
+                return (
+                    <Grid item xs={6}>
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {mashwest.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+    
+            case "MASVINGO":
+                return (
+                    <Grid item xs={6} >
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {masvingo.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+            case "MATABELELAND_NORTH":
+                return (
+                    <Grid item xs={6}>
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {matN.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+    
+            case "MATABELELAND_SOUTH":
+    
+                return (
+                    <Grid item xs={6} >
+    
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-native-simple">CITIES</InputLabel>
+                            <Select
+                                native
+                                value={newUser.city}
+                                onChange={e => setUser({
+                                ...newUser,
+                                city: e.target.value
+                            })}
+                                inputProps={{
+                                name: 'city',
+                                id: 'age-native-simple'
+                            }}>
+                                <option aria-label="None" value=""/> {matSouth.map((team) => <option key={team.value} value={team}>{team}</option>)}
+                            </Select>
+                        </FormControl>
+    
+                    </Grid>
+                )
+    
+            default:
+                break;
+        }
+    }
+    
+    
+    
     let userCommand = {
 
         "userCommand": {
@@ -504,7 +824,45 @@ const EditUser = () => {
                         </FormGroup>
                     </div>
 
+                    <Grid item xs={12}>
+
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="age-native-simple">Province</InputLabel>
+                        <Select
+                            native
+                            value={newUser.province}
+                            required
+                            onChange={e => setUser({
+                            ...newUser,
+                            province: e.target.value
+                        })}
+                            inputProps={{
+                            name: 'province',
+                            id: 'age-native-simple'
+                        }}>
+                            <option aria-label="None" value=""/>
+                            <option value="MANICALAND">MANICALAND</option>
+                            <option value="MASHONALAND_CENTRAL">MASHONALAND CENTRAL</option>
+                            <option value="MASHONALAND_EAST">MASHONALAND EAST</option>
+                            <option value="HARARE">HARARE</option>
+                            <option value="BULAWAYO">BULAWAYO</option>
+                            <option value="MASHONALAND_WEST">MASHONALAND WEST</option>
+                            <option value="MASVINGO">MASVINGO</option>
+                            <option value="MATABELELAND_NORTH">MATABELELAND_NORTH</option>
+                            <option value="MATABELELAND_SOUTH">MATABELELAND_SOUTH</option>
+                            <option value="MIDLANDS">MIDLANDS</option>
+                        </Select>
+                    </FormControl>
+                  
+                  </Grid>
+
             
+
+                    {handleProvinces()}
+                     {handleCities()}
+
+
 
          
 
